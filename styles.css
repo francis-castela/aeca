@@ -1,0 +1,155 @@
+/* ESTILOS DE TODAS AS PÁGINAS */
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.blinking-bar {
+    animation: blink 1s infinite;
+    color: #2ECA17;
+    font-size: 100%;
+}
+
+@font-face {
+    font-family: "Liberation Mono";
+    src: url("/portfolio/CSS/LiberationMono-Regular.ttf");
+}
+
+body {
+    font-family: "Liberation Mono";
+    color: #ffffff;
+    background-color: #221b08;
+    background-image: linear-gradient(to bottom, #0f0c04 3px, transparent 1px);
+    background-size: 100% 6px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+h1, h2 {
+    color: #DAB203;
+}
+
+.link {
+    color: #00A1D2;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.link:hover {
+    color: #DAB203;
+}
+
+header {
+    text-align: center;
+    font-size: 150%;
+    color: #ffffff;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.monitor {
+    background-color: #121b10;
+    border: 6px solid #32312D;
+    background-image: linear-gradient(to bottom, #090c08 3px, transparent 1px);
+    background-size: 100% 6px;
+    border-radius: 100px;
+    width: 50%;
+    height: 50%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.icons {
+    text-align: center;
+    margin: 0px;
+    padding: 0;
+}
+
+.icons span {
+    display: inline-block;
+    margin: 25px 50px;
+    font-size: 600%;
+}
+
+hr {
+    border: 1px solid #DAB203;
+}
+
+.button-link {
+    display: inline-block;
+    margin: 10px;
+    background-color: #443710;
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-link:hover {
+    background-color: #DAB203;
+    color: #363301;
+}
+
+.table-container {
+    text-align: center;
+    overflow-x: auto;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.custom-table th {
+    text-align: center;
+    color: #363301;
+    background-color: #DAB203;
+    font-weight: bolder;
+    border: 1px solid #363301;
+}
+
+.custom-table td {
+    text-align: center;
+    padding: 1ch;
+    color: #ffffff;
+    border: 1px solid #DAB203;
+}
+
+.custom-table th button {
+    background-color: #DAB203;
+    padding: 1ch;
+    color: #363301;
+    border: 1px solid #DAB203;
+    padding: 8px 12px; 
+    cursor: pointer;
+    outline: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: bolder;
+}
+
+.custom-table th button:hover {
+    background-color: #363301;
+    color: #DAB203;
+}
+
+.custom-table th button:active {
+    background-color: #DAB203;
+    color: #363301;
+}
