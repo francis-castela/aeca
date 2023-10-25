@@ -35,18 +35,6 @@ h3 {
     font-family: "Octosquares Regular";
     color: #CBF6AF;
 }
-
-
-.link {
-    color: #00A1D2;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.link:hover {
-    color: #DAB203;
-}
-
 header {
     text-align: center;
     font-size: 150%;
@@ -54,18 +42,6 @@ header {
     position: relative;
     margin: 0;
     padding: 0;
-}
-
-.icons {
-    text-align: center;
-    margin: 0px;
-    padding: 0;
-}
-
-.icons span {
-    display: inline-block;
-    margin: 25px 50px;
-    font-size: 600%;
 }
 
 hr {
@@ -96,7 +72,7 @@ table {
 th, td {
     border: none;
     text-align: center;
-    padding: 8px;
+    padding: 2px;
 }
 
 img {
