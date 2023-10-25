@@ -4,10 +4,12 @@
     font-family: "Liberation Mono";
     src: url("/aeca/CSS/LiberationMono-Regular.ttf");
 }
+
 @font-face {
     font-family: "Octosquares Regular";
     src: url("/aeca/CSS/OctosquaresRegular.ttf");
 }
+
 @font-face {
     font-family: "Square";
     src: url("/aeca/CSS/Square.ttf");
@@ -59,6 +61,7 @@ button {
     width: 25ch;
     cursor: pointer
 }
+
 button:hover {
     color: #cbf6af;
     background-color: #9249a5;
@@ -72,7 +75,8 @@ table {
     background-color: #060405;
 }
 
-tr, td {
+tr,
+td {
     border: none;
     text-align: center;
     padding: 2px;
@@ -86,7 +90,7 @@ img {
 
 a {
     color: #cbf6af;
-    text-decoration: none; 
+    text-decoration: none;
 }
 
 a:hover {
