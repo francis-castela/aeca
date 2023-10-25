@@ -76,3 +76,19 @@ hr {
     background-color: #8B27AA;
     color: #CBF6AF;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    text-align: left;
+    padding: 8px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
