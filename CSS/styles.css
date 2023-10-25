@@ -12,6 +12,10 @@
     font-family: "Square";
     src: url("/aeca/CSS/Square.ttf");
 }
+@font-face {
+    font-family: "Tetra";
+    src: url("/aeca/CSS/tetra.otf");
+}
 
 body {
     font-family: "Liberation Mono";
@@ -28,16 +32,12 @@ h1 {
 
 h2 {
     font-family: "Octosquares Regular";
-    color: #AA87A7;
-}
-
-h3 {
-    font-family: "Octosquares Regular";
     color: #CBF6AF;
 }
+
 header {
     text-align: center;
-    font-size: 150%;
+    font-size: 200%;
     color: #ffffff;
     position: relative;
     margin: 0;
