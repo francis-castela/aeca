@@ -69,12 +69,14 @@ table {
     border-collapse: collapse;
     border: none;
     text-align: center;
+    background-color: #060405;
 }
 
 tr, td {
     border: none;
     text-align: center;
     padding: 2px;
+    background-color: #060405;
 }
 
 img {
