@@ -48,20 +48,19 @@ hr {
     border: 1px solid #8B27AA;
 }
 
-.button-link {
-    display: inline-block;
-    margin: 10px;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+button {
+    font-family: "Octosquares Regular";
+    color: #9249a5;
+    background-color: #cbf6af;
+    font-size: 28px;
+    border: 2px solid #9249a5;
+    border-radius: 15px;
+    padding: 10px 50px;
+    cursor: pointer
 }
-
-.button-link:hover {
-    background-color: #8B27AA;
-    color: #CBF6AF;
+button:hover {
+    color: #cbf6af;
+    background-color: #9249a5;
 }
 
 table {
