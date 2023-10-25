@@ -16,7 +16,7 @@
 body {
     font-family: "Liberation Mono";
     color: #ffffff;
-    background-color: #000000;
+    background-color: #060405;
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -67,6 +67,7 @@ hr {
 table {
     width: 100%;
     border-collapse: collapse;
+    border: none;
 }
 
 th, td {
