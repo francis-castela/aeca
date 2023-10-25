@@ -68,9 +68,10 @@ table {
     width: 100%;
     border-collapse: collapse;
     border: none;
+    text-align: center;
 }
 
-th, td {
+tr, td {
     border: none;
     text-align: center;
     padding: 2px;
