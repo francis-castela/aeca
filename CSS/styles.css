@@ -2,7 +2,15 @@
 
 @font-face {
     font-family: "Liberation Mono";
-    src: url("/portfolio/CSS/LiberationMono-Regular.ttf");
+    src: url("/aeca/CSS/LiberationMono-Regular.ttf");
+}
+@font-face {
+    font-family: "Octosquares Regular";
+    src: url("/aeca/CSS/OctosquaresRegular.ttf");
+}
+@font-face {
+    font-family: "Square";
+    src: url("/aeca/CSS/Square.ttf");
 }
 
 body {
@@ -14,14 +22,17 @@ body {
 }
 
 h1 {
+    font-family: "Square";
     color: #8B27AA;
 }
 
 h2 {
+    font-family: "Octosquares Regular";
     color: #AA87A7;
 }
 
 h3 {
+    font-family: "Octosquares Regular";
     color: #CBF6AF;
 }
 
