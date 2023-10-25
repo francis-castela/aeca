@@ -20,7 +20,7 @@ body {
     font-family: "Liberation Mono";
     color: #ffffff;
     background-color: #060405;
-    margin: 0 20px;
+    margin: 0;
     padding: 0;
 }
 
@@ -41,7 +41,7 @@ header {
     font-size: 200%;
     color: #ffffff;
     position: relative;
-    margin: 0 20px;
+    margin: 0;
     padding: 0;
 }
 
