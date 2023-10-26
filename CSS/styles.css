@@ -29,12 +29,16 @@ h1 {
     text-align: center;
     font-family: "Square";
     color: #8B27AA;
+    margin: 0;
+    padding: 0;
 }
 
 h2 {
     text-align: center;
     font-family: "Octosquares Regular";
     color: #CBF6AF;
+    margin: 0;
+    padding: 0;
 }
 
 header {
@@ -83,8 +87,9 @@ td {
     max-width: 100%;
     border: none;
     text-align: center;
-    padding: 2px;
     background-color: #060405;
+    margin: 0;
+    padding: 0;
 }
 
 img {
@@ -105,8 +110,11 @@ a:hover {
     text-align: center;
     font-size: small;
     padding: 5px;
+    margin: 5px;
 }
 
 .preco {
-    font-size: larger;
+    font-size: 300%;
+    margin: 0;
+    padding: 0;
 }
