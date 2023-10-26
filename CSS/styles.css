@@ -56,8 +56,8 @@ hr {
     border: 1px solid #8B27AA;
 }
 
-button {
-    font-family: "Octosquares Regular";
+.button1 {
+    font-family: "Liberation Mono";
     font-weight: bold;
     color: #9249a5;
     background-color: #cbf6af;
@@ -69,9 +69,27 @@ button {
     cursor: pointer
 }
 
-button:hover {
+.button1:hover {
     color: #cbf6af;
     background-color: #9249a5;
+}
+
+.button2 {
+    font-family: "Octosquares Regular";
+    font-weight: bold;
+    color: #cbf6af;
+    background-color: #1d1d1d;
+    font-size: 20px;
+    border: 2px solid #cbf6af;
+    border-radius: 15px;
+    padding: 10px 0;
+    width: 14ch;
+    cursor: pointer
+}
+
+.button2:hover {
+    color: #9249a5;
+    background-color: #cbf6af;
 }
 
 table {
