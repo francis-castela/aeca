@@ -27,10 +27,11 @@ body {
 
 h1 {
     text-align: center;
-    font-family: "Square";
+    font-family: "Octosquares Regular";
     color: #8B27AA;
     margin: 0;
     padding: 0;
+    font-size: large;
 }
 
 h2 {
@@ -56,25 +57,7 @@ hr {
     border: 1px solid #8B27AA;
 }
 
-.button1 {
-    font-family: "Liberation Mono";
-    font-weight: bold;
-    color: #9249a5;
-    background-color: #cbf6af;
-    font-size: 20px;
-    border: 2px solid #9249a5;
-    border-radius: 15px;
-    padding: 10px 0;
-    width: 14ch;
-    cursor: pointer
-}
-
-.button1:hover {
-    color: #cbf6af;
-    background-color: #9249a5;
-}
-
-.button2 {
+button {
     font-family: "Octosquares Regular";
     font-weight: bold;
     color: #cbf6af;
@@ -87,7 +70,7 @@ hr {
     cursor: pointer
 }
 
-.button2:hover {
+button:hover {
     color: #9249a5;
     background-color: #cbf6af;
 }
