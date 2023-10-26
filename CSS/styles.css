@@ -39,6 +39,7 @@ h2 {
     color: #CBF6AF;
     margin: 0;
     padding: 0;
+    font-size: medium;
 }
 
 header {
@@ -64,7 +65,7 @@ button {
     border: 2px solid #9249a5;
     border-radius: 15px;
     padding: 15px 0;
-    width: 13ch;
+    width: 14ch;
     cursor: pointer
 }
 
