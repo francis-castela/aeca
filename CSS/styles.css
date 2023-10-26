@@ -106,3 +106,7 @@ a:hover {
     font-size: small;
     padding: 5px;
 }
+
+.preco {
+    font-size: larger;
+}
