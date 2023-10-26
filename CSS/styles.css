@@ -10,11 +10,6 @@
     src: url("/aeca/CSS/OctosquaresRegular.ttf");
 }
 
-@font-face {
-    font-family: "Square";
-    src: url("/aeca/CSS/Square.ttf");
-}
-
 body {
     max-width: 100%;
     text-align: center;
@@ -57,7 +52,7 @@ hr {
     border: 1px solid #8B27AA;
 }
 
-button {
+.button {
     font-family: "Octosquares Regular";
     font-weight: bold;
     color: #cbf6af;
@@ -70,7 +65,7 @@ button {
     cursor: pointer
 }
 
-button:hover {
+.button:hover {
     color: #9249a5;
     background-color: #cbf6af;
 }
