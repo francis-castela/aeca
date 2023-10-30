@@ -16,7 +16,7 @@ body {
     font-family: "Liberation Mono";
     color: #ffffff;
     background-color: #060405;
-    margin: 0;
+    margin: 5px 15px;
     padding: 0;
 }
 
@@ -36,10 +36,6 @@ h2 {
     margin: 0;
     padding: 0;
     font-size: x-large;
-}
-
-p {
-    margin: 5px 15px;
 }
 
 hr {
