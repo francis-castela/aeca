@@ -86,3 +86,27 @@ a:hover {
     margin: 0;
     padding: 0;
 }
+
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.countdown-item {
+    text-align: center;
+}
+
+.countdown-value {
+    font-size: 3rem;
+    font-weight: bold;
+    background-color: #390947;
+    color: #CBF6AF;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.countdown-label {
+    font-size: 1.2rem;
+    margin-top: 5px;
+}

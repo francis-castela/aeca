@@ -22,7 +22,7 @@
         todos os nossos alunos!</p>
     <br>
     <p><button type="button" class="button"><a href="https://francis-castela.github.io/aeca/MARATONA/sobre.html"
-        style="text-decoration: none; color: inherit;">Saiba mais</a></button></p>
+                style="text-decoration: none; color: inherit;">Saiba mais</a></button></p>
     <br>
     <p><button type="button" class="button"><a
                 href="https://www.sympla.com.br/evento/11-maratona-teatral/2223689?_gl=1*1h6gbga*_ga*MjExNTAwNjM0NS4xNjk4MzMzNjA3*_ga_KXH10SQTZF*MTY5ODMzMzYwNi4xLjEuMTY5ODMzNjI2OC4wLjAuMA.."
@@ -31,10 +31,87 @@
     <p>Não consegue comprar online? Chama o Francis <a href="https://wa.me/5547997085692"
             style="text-decoration: underline;">(clique aqui)</a> e a gente resolve!</p>
     <br>
-    <p><b>Local dos espetáculos:</b> E.E.B NILTON KUCKER</p>
-    <p>R. Alfredo Trompovski, 506 - Vila Operaria, Itajaí - SC, 88303-140</p>
-    <p><a href="https://maps.app.goo.gl/B55rF1GF5jQoyRoS7" style="text-decoration: underline;">Veja no Google Maps</a>
-    </p>
+    <hr>
+    <br>
+    <h2>TEMPO ATÉ O PRÓXIMO ESPETÁCULO</h2>
+    <!-- Contador Regressivo -->
+    <div id="countdown" class="countdown-container">
+        <div class="countdown-item">
+            <span id="days" class="countdown-value">00</span>
+            <p class="countdown-label">Dias</p>
+        </div>
+        <div class="countdown-item">
+            <span id="hours" class="countdown-value">00</span>
+            <p class="countdown-label">Horas</p>
+        </div>
+        <div class="countdown-item">
+            <span id="minutes" class="countdown-value">00</span>
+            <p class="countdown-label">Minutos</p>
+        </div>
+        <div class="countdown-item">
+            <span id="seconds" class="countdown-value">00</span>
+            <p class="countdown-label">Segundos</p>
+        </div>
+    </div>
+    <script>
+        function startCountdown(targetDate) {
+            const interval = setInterval(function () {
+                const currentDate = new Date().getTime();
+                const timeRemaining = targetDate - currentDate;
+
+                if (timeRemaining <= 0) {
+                    clearInterval(interval); // O contador chegou a zero
+
+                    // Inicia o próximo contador ou exibe a mensagem final
+                    startNextCountdown();
+                } else {
+                    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+                    document.getElementById('days').textContent = formatTime(days);
+                    document.getElementById('hours').textContent = formatTime(hours);
+                    document.getElementById('minutes').textContent = formatTime(minutes);
+                    document.getElementById('seconds').textContent = formatTime(seconds);
+                }
+            }, 1000);
+        }
+
+        function formatTime(time) {
+            return time < 10 ? `0${time}` : time;
+        }
+
+        const eventDates = [
+            { date: '2023-11-15T18:00:00', },
+            { date: '2023-11-15T20:00:00', },
+            { date: '2023-11-18T18:00:00', },
+            { date: '2023-11-18T20:00:00', },
+            { date: '2023-11-19T18:00:00', },
+            { date: '2023-11-19T20:00:00', },
+            { date: '2023-11-25T18:00:00', },
+            { date: '2023-11-25T20:00:00', },
+            { date: '2023-12-02T18:00:00', },
+            { date: '2023-12-02T20:00:00', },
+        ];
+
+        let currentIndex = 0;
+
+        function startNextCountdown() {
+            if (currentIndex < eventDates.length - 1) {
+                currentIndex++;
+                const nextDate = new Date(eventDates[currentIndex].date).getTime();
+                startCountdown(nextDate);
+            } else {
+                document.getElementById('countdown').innerHTML = "Chegamos ao final da 11ª Maratona Teatral! Fique ligado para mais novidades!";
+            }
+        }
+
+        const initialTargetDate = new Date(eventDates[currentIndex].date).getTime();
+        startCountdown(initialTargetDate);
+    </script>
+    <!-- Fim do Contador Regressivo -->
+
     <br>
     <p>Abaixo você confere data e horário dos espetáculos, e clicando em "Saiba mais" você verifica informações sobre a
         peça e seu elenco!</p>
