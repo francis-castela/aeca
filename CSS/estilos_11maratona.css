@@ -60,25 +60,6 @@ hr {
     background-color: #cbf6af;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    border: none;
-    text-align: center;
-    background-color: #060405;
-    margin: 0 auto;
-}
-
-tr,
-td {
-    max-width: 100%;
-    border: none;
-    text-align: center;
-    background-color: #060405;
-    margin: 0;
-    padding: 0;
-}
-
 img {
     max-width: 90%;
     height: auto;
