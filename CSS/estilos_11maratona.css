@@ -98,15 +98,15 @@ a:hover {
 }
 
 .countdown-value {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
     background-color: #390947;
     color: #CBF6AF;
-    padding: 10px 20px;
+    padding: 2px 12px;
     border-radius: 5px;
 }
 
 .countdown-label {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     margin-top: 5px;
 }
