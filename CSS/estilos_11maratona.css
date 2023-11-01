@@ -56,7 +56,7 @@ hr {
 }
 
 .button:hover {
-    color: #9249a5;
+    color: #8B27AA;
     background-color: #cbf6af;
 }
 
@@ -100,7 +100,7 @@ a:hover {
 .countdown-value {
     font-size: 2rem;
     font-weight: bold;
-    background-color: #390947;
+    background-color: #8B27AA;
     color: #CBF6AF;
     padding: 2px 12px;
     border-radius: 5px;
