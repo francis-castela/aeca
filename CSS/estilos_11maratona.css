@@ -10,13 +10,33 @@
     src: url("/aeca/CSS/OctosquaresRegular.ttf");
 }
 
+/* Estilos para dispositivos menores que 768 pixels (mobile) */
+@media only screen and (max-width: 768px) {
+    img {
+        width: 90%;
+        height: auto;
+    }
+    body {
+        margin: 5px 15px;
+    }
+}
+
+/* Estilos para dispositivos maiores que 768 pixels (web) */
+@media only screen and (min-width: 769px) {
+    img {
+        width: 60%;
+        height: auto;
+    }
+    body {
+        margin: 5px 25%;
+    }
+}
+
 body {
-    max-width: 100%;
     text-align: center;
     font-family: "Liberation Mono";
     color: #ffffff;
     background-color: #060405;
-    margin: 5px 15px;
     padding: 0;
 }
 
@@ -60,11 +80,6 @@ hr {
     background-color: #cbf6af;
 }
 
-img {
-    max-width: 90%;
-    height: auto;
-}
-
 a {
     color: #cbf6af;
     text-decoration: none;
@@ -79,6 +94,12 @@ a:hover {
     font-size: x-small;
     padding: 5px;
     margin: 5px;
+}
+
+.footer img {
+    height: 22px;
+    margin-left: 3px;
+    vertical-align: text-bottom;
 }
 
 .preco {
