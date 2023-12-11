@@ -2,12 +2,12 @@
 
 @font-face {
     font-family: "Liberation Mono";
-    src: url("/aeca/CSS/LiberationMono-Regular.ttf");
+    src: url("/CSS/LiberationMono-Regular.ttf");
 }
 
 @font-face {
     font-family: "Octosquares Regular";
-    src: url("/aeca/CSS/OctosquaresRegular.ttf");
+    src: url("/CSS/OctosquaresRegular.ttf");
 }
 
 /* Estilos para dispositivos menores que 768 pixels (mobile) */
