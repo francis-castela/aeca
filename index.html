@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:image"
+        content="https://francis-castela.github.io/aeca/MARATONA/Logos/11_maratona_todos_fundopreto.webp" />
+    <meta property="og:title" content="11ª Maratona Teatral AECA" />
+    <meta property="og:description" content="Está chegando a 11ª Maratona Teatral!" />
+    <title>11ª Maratona Teatral</title>
+    <link rel="stylesheet" type="text/css" href="/aeca/CSS/estilos_11maratona.css">
+    <link rel="icon" href="/aeca/CSS/favicon.webp" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <img src="/aeca/MARATONA/Logos/11_maratona_todos.webp">
+    </header>
+    <hr>
+    <h1>O que é a Maratona Teatral?</h1>
+    <p>A Maratona Teatral é uma empolgante exercício de nossa escola! Nela, nossos alunos se dividem em grupos pequenos
+        para mergulhar na tarefa de estudar e apresentar adaptações de peças teatrais famosas.
+        <br>Escolhemos os alunos mais experientes em direção de cenas para liderar as produções da Maratona. Depois, é
+        hora do sorteio para definir quais elencos e espetáculos cada diretor terá a honra de guiar.
+    </p>
+    <br>
+    <h2>Por que "Maratona"?</h2>
+    <p>O nome reflete o desafio de nossos alunos, já que eles têm <b>menos de três meses</b> para preparar uma <b>peça
+            teatral completa</b>, incluindo luzes, som, figurinos, cenários, marcações de cena, e, o mais importante, a
+        interpretação! O resultado é um verdadeiro festival de criatividade e talento teatral!</p>
+    <br>
+    <hr>
+    <br>
+    <h2>TEMPO ATÉ O PRÓXIMO ESPETÁCULO</h2>
+    <br>
+    <!-- Contador Regressivo -->
+    <div id="countdown" class="countdown-container">
+        <div class="countdown-item">
+            <span id="days" class="countdown-value">00</span>
+            <p class="countdown-label">Dias</p>
+        </div>
+        <div class="countdown-item">
+            <span id="hours" class="countdown-value">00</span>
+            <p class="countdown-label">Horas</p>
+        </div>
+        <div class="countdown-item">
+            <span id="minutes" class="countdown-value">00</span>
+            <p class="countdown-label">Min.</p>
+        </div>
+        <div class="countdown-item">
+            <span id="seconds" class="countdown-value">00</span>
+            <p class="countdown-label">Seg.</p>
+        </div>
+    </div>
+    <script>
+        function startCountdown(targetDate) {
+            const interval = setInterval(function () {
+                const currentDate = new Date().getTime();
+                const timeRemaining = targetDate - currentDate;
+
+                if (timeRemaining <= 0) {
+                    clearInterval(interval); // O contador chegou a zero
+
+                    // Inicia o próximo contador ou exibe a mensagem final
+                    startNextCountdown();
+                } else {
+                    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+                    document.getElementById('days').textContent = formatTime(days);
+                    document.getElementById('hours').textContent = formatTime(hours);
+                    document.getElementById('minutes').textContent = formatTime(minutes);
+                    document.getElementById('seconds').textContent = formatTime(seconds);
+                }
+            }, 1000);
+        }
+
+        function formatTime(time) {
+            return time < 10 ? `0${time}` : time;
+        }
+
+        const eventDates = [
+            { date: '2023-11-15T18:00:00', },
+            { date: '2023-11-15T20:00:00', },
+            { date: '2023-11-18T18:00:00', },
+            { date: '2023-11-18T20:00:00', },
+            { date: '2023-11-19T18:00:00', },
+            { date: '2023-11-19T20:00:00', },
+            { date: '2023-11-25T18:00:00', },
+            { date: '2023-11-25T20:00:00', },
+            { date: '2023-12-02T18:00:00', },
+            { date: '2023-12-02T20:00:00', },
+        ];
+
+        let currentIndex = 0;
+
+        function startNextCountdown() {
+            if (currentIndex < eventDates.length - 1) {
+                currentIndex++;
+                const nextDate = new Date(eventDates[currentIndex].date).getTime();
+                startCountdown(nextDate);
+            } else {
+                document.getElementById('countdown').innerHTML = "A 11ª Maratona Teatral chegou ao final! Fique ligado no nosso <a href='https://www.instagram.com/anchieta_aeca' style='text-decoration: underline;'>Instagram</a> para mais novidades!";
+            }
+        }
+
+        const initialTargetDate = new Date(eventDates[currentIndex].date).getTime();
+        startCountdown(initialTargetDate);
+    </script>
+    <!-- Fim do Contador Regressivo -->
+    <br>
+    <hr>
+    <br>
+    <!-- GOTA DAGUA -->
+    <img src="/aeca/MARATONA/Logos/logo-gota.jpeg">
+    <br>
+    <br>
+    <p style="font-style: italic; text-align: justify;">Quando Jasão alcança o sucesso com um samba chamado "Gota
+        d'água," ele deixa Joana e os filhos, após uma década de convivência juntos, para se casar com Alma, a filha de
+        Creonte, o proprietário de todas as casas na Vila e uma figura de poder sobre os moradores locais.</p>
+    <br>
+    <button type="button" class="button"><a href="https://francis-castela.github.io/aeca/MARATONA/gotadagua.html"
+            style="text-decoration: none; color: inherit;">Saiba mais</a></button>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <!-- O REI DA VELA -->
+    <img src="/aeca/MARATONA/Logos/logo-vela.jpeg">
+    <br>
+    <br>
+    <p style="font-style: italic; text-align: justify;">Reconhecido como o "Rei da Vela", o empresário sem escrúpulos
+        Abelardo se aproveita da crise econômica no país, emprestando dinheiro à população faminta a taxas de juros
+        exorbitantes. Seu casamento com Heloísa de Lesbos, filha de fazendeiros de café arruinados, tem como único
+        propósito aproveitar o prestígio do nome da antiga família.</p>
+    <br>
+    <button type="button" class="button"><a href="https://francis-castela.github.io/aeca/MARATONA/reidavela.html"
+            style="text-decoration: none; color: inherit;">Saiba mais</a></button>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <!-- O BEIJO NO ASFALTO -->
+    <img src="/aeca/MARATONA/Logos/logo-beijo.jpeg">
+    <br>
+    <br>
+    <p style="font-style: italic; text-align: justify;">O ano é 1960. Um desconhecido é atropelado por um ônibus e, 
+        agonizante, pede a um bancário que lhe dê um beijo na boca. O gesto se torna alvo de sensacionalismo pela
+        imprensa, gerando um escândalo. O bancário enfrenta o preconceito da opinião pública e é até submetido a uma
+        investigação policial, que levanta a suspeita de que o acidente possa, na verdade, ter sido um assassinato.</p>
+    <br>
+    <button type="button" class="button"><a href="https://francis-castela.github.io/aeca/MARATONA/beijonoasfalto.html"
+            style="text-decoration: none; color: inherit;">Saiba mais</a></button>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <!-- AUTO DA BARCA DO INFERNO -->
+    <img src="/aeca/MARATONA/Logos/logo-barca.jpeg">
+    <br>
+    <br>
+    <p style="font-style: italic; text-align: justify;">Auto da Barca do Inferno apresenta o julgamento final católico
+        de maneira satírica e moralista. A cena se desenrola em um porto peculiar, onde duas barcas aguardam: uma,
+        liderada pela Diaba, parte em direção ao inferno, enquanto a outra, sob a orientação de um Anjo, segue rumo ao
+        paraíso. Ambos os comandantes estão à espera dos falecidos, que são as almas destinadas a seguir para o paraíso
+        ou o inferno.</p>
+    <br>
+    <button type="button" class="button"><a
+            href="https://francis-castela.github.io/aeca/MARATONA/autodabarcadoinferno.html"
+            style="text-decoration: none; color: inherit;">Saiba mais</a></button>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <!-- O PAGADOR DE PROMESSAS -->
+    <img src="/aeca/MARATONA/Logos/logo-pagador.jpeg">
+    <br>
+    <br>
+    <p style="font-style: italic; text-align: justify;">O sertanejo Zé-do-Burro tem o desejo de transportar uma grande
+        cruz de madeira até o interior da Igreja de Santa Bárbara para cumprir uma promessa que fez em um terreiro de
+        Candomblé, uma vez que não havia uma igreja no local interiorano. Sua motivação é a fé, e seu propósito é buscar
+        a cura para seu querido amigo Nicolau, um burro que está enfermo. No entanto, ao chegar à cidade, ele se torna
+        vítima de intolerância religiosa, enfrentando hostilidade por parte da Igreja Católica, dos moradores da cidade,
+        da mídia e da imprensa jornalística, e até mesmo enfrenta ameaças das autoridades locais.</p>
+    <br>
+    <button type="button" class="button"><a
+            href="https://francis-castela.github.io/aeca/MARATONA/pagadordepromessas.html"
+            style="text-decoration: none; color: inherit;">Saiba mais</a></button>
+    <br>
+    <br>
+    <hr>
+    <img src="/aeca/MARATONA/Cartazes/cartaz-maratona.webp">
+    <br>
+    <hr>
+    <br>
+    <!-- Rodapé da página -->
+    <div class="footer">
+        Página web por
+        <a href="https://francis-castela.github.io/portfolio/" style="color: inherit;">Francis Castela</a>
+        <br>
+        Design por <a href="https://www.instagram.com/vettocn" style="color: inherit;">Elivélton Alexsander</a>
+        <br>
+        <a href="https://www.instagram.com/anchieta_aeca" style="color: inherit;">Alunos do Exercício Cênico Anchieta -
+            AECA</a>, 2023
+        <br>
+        Licença <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt-br" target="_blank"
+            rel="license noopener noreferrer" style="color: inherit;">CC BY-NC-SA 4.0<br></a><img
+                style="width:22px;height:22px;vertical-align:text-bottom;"
+                src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img
+                style="width:22px;height:22px;vertical-align:text-bottom;"
+                src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img
+                style="width:22px;height:22px;vertical-align:text-bottom;"
+                src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img
+                style="width:22px;height:22px;vertical-align:text-bottom;"
+                src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"><br>
+        <div><br>
+            Siga o AECA no <a href="https://www.instagram.com/anchieta_aeca"
+                style="text-decoration: underline;">Instagram</a>!
+        </div>
+</body>
+
+</html>
