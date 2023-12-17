@@ -43,7 +43,7 @@ html {
 
 header {
     padding: 5px 5px;
-    max-width: 940px;
+    max-width: 100%;
     text-align: center;
     background-color: #060405;
 }
