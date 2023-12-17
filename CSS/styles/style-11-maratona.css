@@ -1,0 +1,226 @@
+/* FONTES */
+
+@font-face {
+    font-family: "Liberation Mono";
+    src: url("/CSS/fonts/LiberationMono-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Octosquares Regular";
+    src: url("/CSS/fonts/OctosquaresRegular.ttf");
+}
+
+/* BASE */
+
+html {
+    font-family: "Liberation Mono";
+    background-color: #171717;
+}
+
+#pageContent {
+    max-width: 1000px;
+    margin: auto;
+    border: none;
+}
+
+/* CABEÇALHO (imagem)*/
+
+/* Telas grandes */
+@media screen and (min-width: 501px) {
+    #cabecalho img {
+        max-width: 480px;
+    }
+}
+
+/* Telas pequenas */
+@media screen and (max-width: 500px) {
+    #cabecalho img {
+        max-width: 100%;
+    }
+}
+
+/* CABEÇALHO (Navegação com imagens) */
+
+header {
+    padding: 5px 5px;
+    max-width: 940px;
+    text-align: center;
+    background-color: #060405;
+}
+
+nav {
+    display: inline-block;
+    text-align: center;
+}
+
+nav ul li a img {
+    background: #060405;
+    padding: 10px;
+    font-weight: bold;
+    color: #CBF6AF;
+    border: outset 4px #8B27AA;
+    cursor: pointer
+}
+
+nav ul li a img:hover {
+    background: #5f5f5f;
+    color: #8B27AA;
+    box-shadow: 0 4px 8px 0 #8B27AA, 0 6px 20px 0 #8B27AA;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Telas grandes */
+@media screen and (min-width: 501px) {
+    nav ul li a img {
+        max-width: 35px;
+    }
+}
+
+/* Telas pequenas */
+@media screen and (max-width: 500px) {
+    nav ul li a img {
+        max-width: 35px;
+    }
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 5px;
+}
+
+nav ul {
+    list-style: none;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+/* Formatos de texto */
+
+h1 {
+    text-align: center;
+    font-family: "Octosquares Regular";
+    color: #8B27AA;
+    font-size: 25px;
+}
+
+h2 {
+    text-align: center;
+    font-family: "Octosquares Regular";
+    color: #CBF6AF;
+    margin: 0;
+    padding: 0;
+    font-size: 21px;
+}
+
+hr {
+    border: 1px solid #8B27AA;
+}
+
+p {
+    color: #ffffff;
+    text-align: left;
+}
+
+a {
+    color: #CBF6AF;
+}
+
+b {
+    color: #CBF6AF;
+}
+
+/* RODAPÉ */
+
+.footer {
+    color: #ffffff;
+    text-align: center;
+    font-size: x-small;
+    padding: 15px;
+    margin: 5px;
+}
+
+.footer img {
+    height: 22px;
+    margin-left: 3px;
+    vertical-align: text-bottom;
+}
+
+.footer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+footer {
+    background: #060405;
+    max-width: 100%;
+    margin: auto;
+    clear: both;
+}
+
+/* BLOCOS */
+
+main {
+    float: left;
+    width: 60%;
+}
+
+main img {
+    width: 100%;
+}
+
+.textogeral {
+    float: none;
+}
+
+aside {
+    float: right;
+    width: 30%;
+}
+
+aside>div {
+    margin: 10px auto;
+    min-height: 100px;
+}
+
+aside>div:hover {
+    box-shadow: 0 4px 8px 0 #8B27AA, 0 6px 20px 0 #8B27AA;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+body>section {
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px 20px;
+    border-bottom: 1px solid #999;
+    color: #333;
+}
+
+@media screen and (min-width: 501px) {
+    body>section {
+        padding: 30px 20px;
+    }
+
+    aside img {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    main {
+        float: none;
+        width: 100%;
+    }
+
+    aside {
+        display: none;
+    }
+
+    aside img {
+        display: none;
+    }
+
+
+}
