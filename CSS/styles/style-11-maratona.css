@@ -80,7 +80,7 @@ nav ul li a img:hover {
 /* Telas pequenas */
 @media screen and (max-width: 500px) {
     nav ul li a img {
-        max-width: 35px;
+        max-width: 20px;
     }
 }
 
