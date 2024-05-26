@@ -2,42 +2,78 @@
 <html>
 
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:image" content="/CSS/logos/meta_padrao.webp" />
-    <meta property="og:title" content="AECA" />
-    <meta property="og:description" content="Alunos do Exercício Cênico Anchieta" />
-    <title>Alunos do Exercício Cênico Anchieta - AECA</title>
-    <link rel="stylesheet" type="text/css" href="/CSS/styles/style-11-maratona.css">
-    <link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
+	<meta charset="UTF-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:image" content="/CSS/logos/logo-aeca-preto.webp" />
+	<meta property="og:title" content="AECA" />
+	<meta property="og:description" content="Alunos do Exercício Cênico Anchieta" />
+	<title>Alunos do Exercício Cênico Anchieta - AECA</title>
+	<link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
 </head>
 
 <body>
-    <h1>Em construção</h1>
-    <p style="text-align: center;">Página em construção. Volte em breve para novidades!</p>
-    <p style="text-align: center;">Para acessar o site da 11ª Maratona Teatral, <a href="/11-maratona.html">clique aqui</a>.</p>
-    <br>
-    <hr>
-    <br>
-    <!-- Rodapé da página -->
-    <footer class="footer">
-		<p></p>Página web por <a href="https://francis-castela.github.io/portfolio/">Francis Castela</a>
-		<br>
-		
-		<a href=" https://www.instagram.com/anchieta_aeca">Alunos do Exercício Cênico Anchieta -
-			AECA</a>, 2023
-		<br>
-		<br>
-		Licença <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt-br" target="_blank"
-			rel="license noopener noreferrer">CC BY-NC-SA 4.0<br></a><img
-			style="width:22px;height:22px;vertical-align:text-bottom;"
-			src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img
-			style="width:22px;height:22px;vertical-align:text-bottom;"
-			src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img
-			style="width:22px;height:22px;vertical-align:text-bottom;"
-			src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img
-			style="width:22px;height:22px;vertical-align:text-bottom;"
-			src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"><br>
-	</footer>
+	<header>
+		<nav>
+			<div id="logo"><a href="/index.html"><img src="/CSS/logos/logo-aeca-preto.webp"></a></div>
+			<ul>
+				<li><a href="/index.html">Início</a>
+				<li><a href="/quem-somos.html">Quem somos</a>
+				<li><a href="/projetos/projetos.html">Projetos</a>
+			</ul>
+		</nav>
+	</header>
+	<section id="pageContent">
+		<main role="main">
+			<article>
+				<p id="title">O que há de novo</p>
+			</article>
+			<article>
+				<h1>1º Cena Aberta</h1>
+				<h2>Primeira edição foi realizada no Colégio Nilton Kucker</h2>
+				<p>No dia 5 de maio de 2024, o Colégio Nilton Kucker foi palco da primeira edição do exercício teatral
+					Cena Aberta. O exercício desafiou grupos de 4 a 5 participantes a criar cenas teatrais de até 15
+					minutos de duração.</p>
+				<p>Durante a manhã, os grupos tiveram a oportunidade de apresentar suas cenas, explorando uma variedade
+					de temas e estilos, desde o drama até a comédia. O evento destacou-se por sua capacidade de engajar
+					os participantes em um processo criativo intenso, onde cada detalhe da produção – desde o roteiro
+					até a interpretação – foi desenvolvido pelos próprios alunos do AECA.</p>
+				<p>Leia mais sobre <a href="/projetos/1-cena-aberta/1-cena-aberta.html">aqui</a>.</p>
+			</article>
+			<article>
+				<h1>11ª Maratona Teatral</h1>
+				<h2>Décima primeira edição foi realizada no Colégio Nilton Kucker</h2>
+				<p>Entre os dias 15 de novembro e 2 de dezembro de 2023, o Colégio Nilton Kucker foi palco da 11ª
+					Maratona Teatral, um evento que se consolidou como um verdadeiro festival de criatividade e talento
+					teatral. Durante esse período, foram apresentados cinco espetáculos teatrais, fruto do esforço e
+					dedicação dos alunos do AECA.</p>
+				<p>A Maratona Teatral desafia os participantes a prepararem uma peça teatral completa em menos de três
+					meses. Esse desafio inclui a elaboração de todos os elementos necessários para uma produção teatral:
+					iluminação, som, figurinos, cenários, marcações de cena e, o mais importante, a interpretação.</p>
+				<p>Leia mais sobre <a href="/projetos/11-maratona/11-maratona.html">aqui</a>.</p>
+			</article>
+		</main>
+		<aside id="aside-padrao"></aside>
+		<script>
+			fetch('/aside-padrao.html')
+				.then(response => response.text())
+				.then(data => {
+					document.getElementById('aside-padrao').innerHTML = data;
+				});
+		</script>
+	</section>
+
+	<div id="footer"></div>
+	<script>
+		fetch('/footer.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('footer').innerHTML = data;
+			});
+	</script>
+
+
 </body>
 
 </html>

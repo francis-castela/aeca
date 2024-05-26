@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:image" content="/CSS/logos/logo-aeca-preto.webp" />
+	<meta property="og:title" content="Projetos" />
+	<meta property="og:description" content="O que o AECA faz?" />
+	<title>Projetos</title>
+	<link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
+</head>
+
+<body>
+	<header>
+		<nav>
+			<div id="logo"><a href="/index.html"><img src="/CSS/logos/logo-aeca-preto.webp"></a></div>
+			<ul>
+				<li><a href="/index.html">Início</a>
+				<li><a href="/quem-somos.html">Quem somos</a>
+				<li><a href="/projetos/projetos.html">Projetos</a>
+			</ul>
+		</nav>
+	</header>
+	<section id="pageContent">
+		<main role="main">
+			<article>
+				<p id="title">Projetos</p>
+			</article>
+			<article>
+				<h1>Página em construção</h1>
+				<h2>Retorne em breve</h2>
+				</article>
+		</main>
+		<aside id="aside-padrao"></aside>
+		<script>
+			fetch('/aside-padrao.html')
+				.then(response => response.text())
+				.then(data => {
+					document.getElementById('aside-padrao').innerHTML = data;
+				});
+		</script>
+	</section>
+
+	<div id="footer"></div>
+	<script>
+		fetch('/footer.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('footer').innerHTML = data;
+			});
+	</script>
+
+
+</body>
+
+</html>

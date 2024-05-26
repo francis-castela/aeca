@@ -12,10 +12,98 @@
 
 /* BASE */
 
-html {
+html,
+body {
+    line-height: 1.2;
     font-family: "Liberation Mono";
-    background-color: #171717;
+    font-weight: normal;
+    background: #090909;
+    font-size: medium;
 }
+
+p {
+    color: #EEE;
+    text-align: justify;
+}
+
+h1 {
+    font-family: "Octosquares Regular";
+    font-weight: normal;
+    font-size: 25px;
+    color: #8B27AA;
+    margin: 0;
+    text-align: center;
+}
+
+h2 {
+    font-family: "Octosquares Regular";
+    font-weight: normal;
+    font-size: 21px;
+    color: #CBF6AF;
+    margin: 0;
+    text-align: center;
+}
+
+a {
+    color: #CBF6AF;
+    text-decoration: none;
+}
+
+b {
+    color: #CBF6AF;
+}
+
+header {
+    background: #000000;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+nav {
+    padding-top: 5px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;  /* Adicionado */
+    padding: 0; /* Adicionado */
+    justify-content: center; /* Para centralizar os itens */
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 10px;
+}
+
+nav ul li a {
+    background: none;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    box-shadow: 0 0 20px #8B27AA;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+nav ul li a img {
+    background: #000000;
+    padding: 10px;
+    font-weight: bold;
+    color: #CBF6AF;
+    border: 4px outset #8B27AA;
+    cursor: pointer;
+}
+
+nav ul li a img:hover {
+    background: #5f5f5f;
+    color: #8B27AA;
+    box-shadow: 0 0px 20px #8B27AA;
+    transition: 0.3s;
+}
+
 
 #pageContent {
     max-width: 1000px;
@@ -23,51 +111,94 @@ html {
     border: none;
 }
 
-/* CABEÇALHO (imagem)*/
+#pageContent img {
+    width: 100%;
+}
+
+#title {
+    text-align: center;
+    text-indent: 0px;
+    font-size: 30px;
+    margin: 0;
+    font-family: "Octosquares Regular";
+    color: #8B27AA;
+}
+
+main {
+    float: left;
+    width: 65%;
+}
+
+article {
+    border-bottom: 1px solid #8B27AA;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+footer {
+    border-top: 1px solid #8B27AA;
+    padding-top: 10px;
+    margin-top: 10px;
+    font-size: smaller;
+    color: #EEE;
+    text-decoration: none;
+    background: none;
+    max-width: 1000px;
+    margin: auto;
+    clear: both;
+    text-align: center;
+}
+
+footer a {
+    text-decoration: none;
+    color: #EEE;
+}
+
+aside {
+    float: right;
+    width: 30%;
+}
+
+aside>div {
+    margin: 10px auto;
+    padding: 0;
+}
+
+aside>div img {
+    display: block;
+}
+
+aside>div:hover {
+    box-shadow: 0 0px 20px 0 #8B27AA;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+@media screen and (max-width: 600px) {
+    main {
+        float: none;
+        width: 100%;
+    }
+
+    aside {
+        float: none;
+        width: 100%;
+    }
+
+}
 
 /* Telas grandes */
 @media screen and (min-width: 501px) {
-    #cabecalho img {
+    #logo-centro img {
         max-width: 480px;
     }
 }
 
 /* Telas pequenas */
 @media screen and (max-width: 500px) {
-    #cabecalho img {
+    #logo-centro img {
         max-width: 100%;
     }
-}
-
-/* CABEÇALHO (Navegação com imagens) */
-
-header {
-    padding: 5px 5px;
-    max-width: 100%;
-    text-align: center;
-    background-color: #060405;
-}
-
-nav {
-    display: inline-block;
-    text-align: center;
-}
-
-nav ul li a img {
-    background: #060405;
-    padding: 10px;
-    font-weight: bold;
-    color: #CBF6AF;
-    border: outset 4px #8B27AA;
-    cursor: pointer
-}
-
-nav ul li a img:hover {
-    background: #5f5f5f;
-    color: #8B27AA;
-    box-shadow: 0 4px 8px 0 #8B27AA, 0 6px 20px 0 #8B27AA;
-    cursor: pointer;
-    transition: 0.3s;
 }
 
 /* Telas grandes */
@@ -84,119 +215,6 @@ nav ul li a img:hover {
     }
 }
 
-nav ul li {
-    display: inline-block;
-    margin: 5px;
-}
-
-nav ul {
-    list-style: none;
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-}
-
-/* Formatos de texto */
-
-h1 {
-    text-align: center;
-    font-family: "Octosquares Regular";
-    color: #8B27AA;
-    font-size: 25px;
-}
-
-h2 {
-    text-align: center;
-    font-family: "Octosquares Regular";
-    color: #CBF6AF;
-    margin: 0;
-    padding: 0;
-    font-size: 21px;
-}
-
-hr {
-    border: 1px solid #8B27AA;
-}
-
-p {
-    color: #ffffff;
-    text-align: left;
-}
-
-a {
-    color: #CBF6AF;
-}
-
-b {
-    color: #CBF6AF;
-}
-
-/* RODAPÉ */
-
-.footer {
-    color: #ffffff;
-    text-align: center;
-    font-size: x-small;
-    padding: 15px;
-    margin: 5px;
-}
-
-.footer img {
-    height: 22px;
-    margin-left: 3px;
-    vertical-align: text-bottom;
-}
-
-.footer a {
-    color: #ffffff;
-    text-decoration: none;
-}
-
-footer {
-    background: #060405;
-    max-width: 100%;
-    margin: auto;
-    clear: both;
-}
-
-/* BLOCOS */
-
-main {
-    float: left;
-    width: 60%;
-}
-
-main img {
-    width: 100%;
-}
-
-.textogeral {
-    float: none;
-}
-
-aside {
-    float: right;
-    width: 30%;
-}
-
-aside>div {
-    margin: 10px auto;
-    min-height: 100px;
-}
-
-aside>div:hover {
-    box-shadow: 0 4px 8px 0 #8B27AA, 0 6px 20px 0 #8B27AA;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-body>section {
-    max-width: 1000px;
-    margin: auto;
-    padding: 30px 20px;
-    border-bottom: 1px solid #999;
-    color: #333;
-}
 
 @media screen and (min-width: 501px) {
     body>section {
