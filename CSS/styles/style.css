@@ -158,9 +158,8 @@ article {
 }
 
 footer {
-    border-top: 1px solid #EEE;
-    padding-top: 10px;
-    margin-top: 10px;
+    padding: 10px;
+    margin: 10px;
     font-size: 10px;
     color: #EEE;
     text-decoration: none;
