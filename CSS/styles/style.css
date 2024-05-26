@@ -25,6 +25,7 @@ body {
     background: #090909;
     font-size: medium;
     text-align: justify;
+    overflow-x: hidden;
 }
 
 p {
@@ -177,7 +178,7 @@ footer a {
 
 @media screen and (max-width: 1000px) {
     body>section {
-        padding: 30px 20px;
+        padding: 30px 10px;
     }
 }
 
