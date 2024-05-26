@@ -152,9 +152,9 @@ aside>div:hover {
 }
 
 article {
-    border-top: 1px solid #EEE;
-    padding-top: 20px;
-    margin-top: 20px;
+    border-bottom: 1px solid #EEE;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 footer {
