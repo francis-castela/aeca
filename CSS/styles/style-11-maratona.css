@@ -68,9 +68,12 @@ nav {
 nav ul {
     list-style: none;
     display: flex;
-    margin: 0;  /* Adicionado */
-    padding: 0; /* Adicionado */
-    justify-content: center; /* Para centralizar os itens */
+    margin: 0;
+    /* Adicionado */
+    padding: 0;
+    /* Adicionado */
+    justify-content: center;
+    /* Para centralizar os itens */
 }
 
 nav ul li {
