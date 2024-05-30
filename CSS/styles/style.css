@@ -188,6 +188,30 @@ article {
     margin-bottom: 20px;
 }
 
+.google-docs-link {
+    justify-content: center;
+    display: flex;
+    padding: 10px 20px;
+    background-color: #222;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: Nunito;
+}
+
+.google-docs-link:hover {
+    background-color: #444;
+}
+
+.google-docs-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    background-image: url('https://www.gstatic.com/images/branding/product/2x/docs_48dp.png');
+    background-size: cover;
+}
+
 footer {
     padding: 10px;
     margin: 10px;
