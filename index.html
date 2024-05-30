@@ -12,36 +12,63 @@
 	<link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
 	<script defer>
-		fetch('/footer.html')
+		fetch('/HTML/footer.html')
 			.then(response => response.text())
 			.then(data => {
 				document.getElementById('footer').innerHTML = data;
 			});
 	</script>
 	<script defer>
-		fetch('/aside-padrao.html')
+		fetch('/HTML/aside-padrao.html')
 			.then(response => response.text())
 			.then(data => {
 				document.getElementById('aside-padrao').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/HTML/cabecalho.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('cabecalho').innerHTML = data;
 			});
 	</script>
 </head>
 
 <body>
 	<header>
-		<nav>
-			<div id="logo"><a href="/index.html"><img src="/CSS/logos/logo-AECA-preto.webp"></a></div>
-			<ul>
-				<li><a href="/index.html">Início</a>
-				<li><a href="/quem-somos.html">Quem somos</a>
-				<li><a href="/projetos/projetos.html">Projetos</a>
-			</ul>
-		</nav>
+		<nav id="cabecalho"></nav>
 	</header>
 	<section id="pageContent">
 		<main role="main">
 			<article>
 				<p id="title">O que há de novo</p>
+			</article>
+			<article>
+				<h1>Três espetáculos</h1>
+				<h2>Volta do AECA à Casa da Cultura é acompanhada de três produções</h2>
+				<p>Após quase um ano produzindo, ensaiando e apresentando em espaços alternativos, o AECA retoma suas
+					atividades na Casa da Cultura no início de junho de 2024. O retorno marca o início da produção de
+					três novos espetáculos para apresentação em novembro, prometendo trazer inovação e emoção ao cenário
+					cultural de Itajaí.</p>
+				<h3>Incidente em Antares</h3>
+				<p>Sob a direção de Rafael Bueno, com Letícia Santos como auxiliar de direção, a peça <i>Incidente em
+						Antares</i> promete uma interpretação intensa e envolvente desta clássica obra da literatura
+					brasileira. O romance do escritor brasileiro Érico Veríssimo, publicado em 1971, se passa na fictícia
+					cidade de Antares, no Rio Grande do Sul, e mistura elementos de realismo mágico e crítica social. O
+					enredo central gira em torno de um grupo de mortos que, devido a uma greve dos coveiros, não são
+					enterrados e começam a assombrar a cidade, revelando segredos e hipocrisias dos habitantes locais.
+				</p>
+				<h3>Pluft, O Fantasminha</h3>
+				<p>Dirigido por Caio Carvalho e auxiliado por Rui Glessander, <i>Pluft, O Fantasminha</i> é um
+					encantador conto infantil que irá cativar tanto crianças quanto adultos. A peça, escrita por Maria
+					Clara Machado, gira em torno de Pluft, um fantasminha que vive com sua mãe em uma velha casa à
+					beira-mar. Pluft tem medo de pessoas, mas sua vida muda quando conhece Maribel, uma menina que foi
+					sequestrada pelo pirata Perna-de-Pau e consegue escapar para a casa dos fantasmas. Juntos, eles
+					enfrentam desafios e aprendem sobre coragem e amizade.</p>
+				<h3>Peça de época</h3>
+				<p>A diretora Paula Ramos, juntamente com a auxiliar Maria Beatriz, está trabalhando em um espetáculo
+					com temática antiga e naturalista, "de época". A peça a ser adaptada será definida ainda no início
+					de junho.</p>
 			</article>
 			<article>
 				<h1>1ª Cena Aberta</h1>

@@ -13,7 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
 	<script src="/js/zoom.js" defer></script>
 	<script defer>
-		fetch('/footer.html')
+		fetch('/HTML/footer.html')
 			.then(response => response.text())
 			.then(data => {
 				document.getElementById('footer').innerHTML = data;
@@ -23,14 +23,9 @@
 
 <body>
 	<header>
-		<nav>
-			<div id="logo"><a href="/index.html"><img src="/CSS/logos/logo-AECA-preto.webp"></a></div>
-			<ul>
-				<li><a href="/index.html">Início</a>
-				<li><a href="/quem-somos.html">Quem somos</a>
-				<li><a href="/projetos/projetos.html">Projetos</a>
-			</ul>
-		</nav>
+		<header>
+			<nav id="cabecalho"></nav>
+		</header>
 	</header>
 	<section id="pageContent">
 		<main role="main">
@@ -78,7 +73,7 @@
 		<div id="overlay1" class="overlay">
 			<img id="largeImage1" src="/CSS/img/valentim-marcoskonder.webp">
 		</div>
-	
+
 		<aside>
 			<div>
 				Espetáculo As Pessoas de Minha Pessoa.<br>30/03/2022
@@ -88,7 +83,7 @@
 		<div id="overlay2" class="overlay">
 			<img id="largeImage2" src="/CSS/img/valentim-fernandopessoa.webp">
 		</div>
-	
+
 		<aside>
 			<div>Espetáculo Água Mole Em Pedra Dura.<br>28/06/2018
 				<img id="zoomImage3" src="/CSS/img/valentim-aguamole.webp">

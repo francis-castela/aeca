@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:image" content="/CSS/logos/logo-AECA-preto.png" />
+	<meta property="og:title" content="Espetáculos" />
+	<meta property="og:description" content="Peças apresentadas pelo AECA" />
+	<title>Espetáculos</title>
+	<link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
+	<script defer>
+		fetch('/HTML/footer.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('footer').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/HTML/aside-padrao.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('aside-padrao').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/HTML/cabecalho.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('cabecalho').innerHTML = data;
+			});
+	</script>
+</head>
+
+<body>
+	<header>
+		<nav id="cabecalho"></nav>
+	</header>
+	<section id="pageContent">
+		<main role="main">
+			<article>
+				<p id="title">Espetáculos</p>
+				<p>O AECA produz espetáculos desde 1995, dedicando-se à adaptação de peças famosas e à criação de roteiros originais. Com uma trajetória marcada pela inovação e pela busca constante de excelência artística, o AECA tem contribuído significativamente para a cena cultural de Itajaí e região.</p>
+				<p>A partir do final de 2023, os espetáculos do AECA passaram a ser documentados em páginas únicas neste site, permitindo um registro detalhado e acessível de cada produção.</p>
+			</article>
+			<article>
+				<h1 id="h1-2"><a href="">Incidente em Antares</a></h1>
+				<h2 id="h2-2">2024</h2>
+				<p id="small">O romance do escritor brasileiro Érico Veríssimo, publicado em 1971, se passa na fictícia
+					cidade de Antares, no Rio Grande do Sul, e mistura elementos de realismo mágico e crítica social. O
+					enredo central gira em torno de um grupo de mortos que, devido a uma greve dos coveiros, não são
+					enterrados e começam a assombrar a cidade, revelando segredos e hipocrisias dos habitantes locais.</p>
+			</article>
+		</main>
+		<aside id="aside-padrao"></aside>
+	</section>
+	<div id="footer"></div>
+</body>
+
+</html>

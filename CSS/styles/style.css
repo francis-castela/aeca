@@ -57,6 +57,7 @@ h3 {
     font-size: medium;
     color: #cc2128;
     text-indent: 30px;
+    margin: 30px 0 0 0;
 }
 
 a {
@@ -120,6 +121,21 @@ nav ul li a:hover {
     text-indent: 0px;
     font-size: 30px;
     margin: 0;
+}
+
+#h1-2 {
+    text-align: left;
+    font-size: 30px;
+    text-indent: 30px;
+}
+
+#h2-2 {
+    text-align: left;
+    text-indent: 30px
+}
+
+#small {
+    font-size: small;
 }
 
 main {
