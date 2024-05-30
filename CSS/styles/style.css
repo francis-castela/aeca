@@ -51,6 +51,14 @@ h2 {
     text-align: center;
 }
 
+h3 {
+    font-family: Nunito;
+    font-weight: bold;
+    font-size: medium;
+    color: #cc2128;
+    text-indent: 30px;
+}
+
 a {
     color: #cc2128;
 }
