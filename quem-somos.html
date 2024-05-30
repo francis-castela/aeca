@@ -11,6 +11,20 @@
 	<title>Quem somos</title>
 	<link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
+	<script defer>
+		fetch('/aside-padrao.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('aside-padrao').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/footer.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('footer').innerHTML = data;
+			});
+	</script>
 </head>
 
 <body>
@@ -31,11 +45,11 @@
 			</article>
 			<article>
 				<h1>Sem querer, nasce uma escola</h1>
-				<p>Em janeiro de 1995, ao final do Curso Básico de Teatro (CBT), alguns alunos procuraram o professor
-					Valentim Schmoeler, expressando o desejo de continuar seu aprendizado. Com o entusiasmo desses
-					alunos, Valentim decidiu dedicar suas tardes de sábado, mais tarde alteradas para as manhãs de
-					domingo, para orientar o grupo, conciliando com suas viagens e compromissos com o coletivo Anchieta
-					Arte Cênica.</p>
+				<p>Em janeiro de 1995, ao final do Curso Básico de Teatro (CBT), alguns alunos procuraram o professor <a
+						href="/valentim.html">Valentim Schmoeler</a>, expressando o desejo de continuar seu aprendizado.
+					Com o entusiasmo desses alunos, Valentim decidiu dedicar suas tardes de sábado, mais tarde alteradas
+					para as manhãs de domingo, para orientar o grupo, conciliando com suas viagens e compromissos com o
+					coletivo Anchieta Arte Cênica.</p>
 				<p>A proposta de Valentim para isso era simples: cada nova edição do CBT traria novos integrantes para o
 					grupo, garantindo uma renovação contínua. Inicialmente batizado de Anchieta Junior, o grupo adotou o
 					nome Alunos do Exercício Cênico Anchieta (AECA) no ano 2000.</p>
@@ -76,25 +90,8 @@
 			</article>
 		</main>
 		<aside id="aside-padrao"></aside>
-		<script>
-			fetch('/aside-padrao.html')
-				.then(response => response.text())
-				.then(data => {
-					document.getElementById('aside-padrao').innerHTML = data;
-				});
-		</script>
 	</section>
-
 	<div id="footer"></div>
-	<script>
-		fetch('/footer.html')
-			.then(response => response.text())
-			.then(data => {
-				document.getElementById('footer').innerHTML = data;
-			});
-	</script>
-
-
 </body>
 
 </html>

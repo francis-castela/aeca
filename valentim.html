@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:image" content="/CSS/img/valentim-og.jpg" />
+	<meta property="og:title" content="Valentim Schmoeler" />
+	<meta property="og:description" content="O fundador do AECA" />
+	<title>Valentim Schmoeler</title>
+	<link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
+	<script src="/js/zoom.js" defer></script>
+	<script defer>
+		fetch('/footer.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('footer').innerHTML = data;
+			});
+	</script>
+</head>
+
+<body>
+	<header>
+		<nav>
+			<div id="logo"><a href="/index.html"><img src="/CSS/logos/logo-AECA-preto.webp"></a></div>
+			<ul>
+				<li><a href="/index.html">Início</a>
+				<li><a href="/quem-somos.html">Quem somos</a>
+				<li><a href="/projetos/projetos.html">Projetos</a>
+			</ul>
+		</nav>
+	</header>
+	<section id="pageContent">
+		<main role="main">
+			<article>
+				<p id="title">Valentim Schmoeler</p>
+				<h2>Fundador do AECA</h2>
+			</article>
+			<article>
+				<h1>"Melhor vida é a vida Que dura sem medir-se"</h1>
+				<h2>Ricardo Reis - Fernando Pessoa</h2>
+				<p>Valentim Schmoeler nasceu em 09 de janeiro de 1956, na cidade de Tubarão (SC). Sua vida artística
+					teve início em Imbituba (SC), ainda na infância. Em 1972, mudou-se para Itajaí (SC), onde concluiu o
+					Ensino Médio e se destacou como ator, diretor e dramaturgo em diversos grupos teatrais. Em 1977,
+					Valentim se mudou para Curitiba (PR), onde trabalhou como ator na TV Paraná Canal 6, participando de
+					sete minisséries e colaborando com renomados artistas como Odelair Rodrigues, Delci e Edson Dávila e
+					Roberto Menghini.</p>
+				<p>Em 1978, Valentim ingressou na Equipe Vira-Lata, dirigida por Carlos Roberto Jardim, no Teatro Carlos
+					Gomes, em Blumenau (SC). Permanecendo na companhia até 1984, ele levou o teatro popular a várias
+					localidades de Santa Catarina. Em 1985, Valentim fundou a Anchieta Teatral Produções (ATP) em
+					Itajaí, com sede na Casa da Cultura Dide Brandão, junto com Toni Cunha e Carlos Leal. O objetivo era
+					levar o teatro a diversas cidades do estado, especialmente as interioranas.</p>
+				<p>Com a intenção de promover o movimento artístico em Itajaí, Valentim criou o Curso Básico de Teatro
+					(CBT) em 1986, com edições anuais no verão e no inverno, realizados na Casa da Cultura Dide Brandão.
+					Em 1995, fundou o Anchieta Junior, posteriormente renomeado para Alunos do Exercício Cênico Anchieta
+					(AECA), uma escola de teatro composta por alunos dos CBTs. Em 2000, criou o grupo Bagagem Cênica Cia
+					de Teatro, um desdobramento da Anchieta Teatral Produções, para levar os trabalhos da companhia por
+					todo o estado.</p>
+				<p>Em 2004, a companhia foi renomeada Anchieta Arte Cênica (AAC), continuando o legado da ATP. Com o
+					Anchieta, Valentim realizou mais de 100 espetáculos como ator e diretor, e mais de 50 edições do
+					Curso Básico de Teatro. Ministrou cursos em várias cidades, incluindo Balneário Camboriú, São Bento
+					do Sul, São Miguel do Oeste, Capinzal, Penha e Porto Alegre (RS).</p>
+				<p>Valentim Schmoeler aperfeiçoou suas habilidades com grandes mestres do teatro brasileiro, como Olga
+					Reverbel, Luiz Eduardo Vendramini, Antônio Mercado, Carmem Fossari, Vera Collaço, Francisco
+					Medeiros, Hilda Melo, Otto Buchsbaum, Florence Buchsbaum, Jorge Hartck, Maria Clara Machado,
+					Lourival Andrade Júnior e Bárbara Biscaro. Atualmente, reside em Itajaí, onde continua seu trabalho
+					artístico com a Anchieta Arte Cênica.</p>
+			</article>
+		</main>
+		<aside>
+			<div>
+				Valentim como Marcos Konder, em filmagem para documentário.<br>17/11/2022
+				<img id="zoomImage1" src="/CSS/img/valentim-marcoskonder.webp">
+			</div>
+		</aside>
+		<div id="overlay1" class="overlay">
+			<img id="largeImage1" src="/CSS/img/valentim-marcoskonder.webp">
+		</div>
+	
+		<aside>
+			<div>
+				Espetáculo As Pessoas de Minha Pessoa.<br>30/03/2022
+				<img id="zoomImage2" src="/CSS/img/valentim-fernandopessoa.webp">
+			</div>
+		</aside>
+		<div id="overlay2" class="overlay">
+			<img id="largeImage2" src="/CSS/img/valentim-fernandopessoa.webp">
+		</div>
+	
+		<aside>
+			<div>Espetáculo Água Mole Em Pedra Dura.<br>28/06/2018
+				<img id="zoomImage3" src="/CSS/img/valentim-aguamole.webp">
+			</div>
+		</aside>
+		<div id="overlay3" class="overlay">
+			<img id="largeImage3" src="/CSS/img/valentim-aguamole.webp">
+		</div>
+	</section>
+	<div id="footer"></div>
+</body>
+
+</html>
