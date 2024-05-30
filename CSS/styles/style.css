@@ -46,7 +46,7 @@ h2 {
     font-family: Nunito;
     font-weight: normal;
     font-size: medium;
-    color: #888888;
+    color: #888;
     margin: 0;
     text-align: center;
 }
@@ -136,6 +136,28 @@ nav ul li a:hover {
 
 #small {
     font-size: small;
+}
+
+table {
+    color: #EEE;
+    border-collapse: collapse;
+    font-family: "Source";
+    margin: 0 auto;
+    flex: 100%;
+}
+
+th, td {
+    border: 1px solid #888;
+    padding: 8px;
+    vertical-align: top;
+}
+
+th {
+    text-align: right;
+}
+
+td {
+    text-align: left;
 }
 
 main {
