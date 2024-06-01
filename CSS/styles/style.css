@@ -33,6 +33,11 @@ p {
     color: #EEE;
 }
 
+ul, li {
+    color: #EEE;
+    margin: 10px 0 0 0;
+}
+
 h1 {
     font-family: Bebas;
     font-weight: normal;
@@ -230,7 +235,7 @@ article {
     justify-content: center;
     display: flex;
     padding: 10px 20px;
-    background-color: #222;
+    background-color: #35080A;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
@@ -239,6 +244,9 @@ article {
 
 .google-docs-link:hover {
     background-color: #444;
+    box-shadow: 0 1px 20px 0 #FFF;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .google-docs-icon {
