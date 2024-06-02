@@ -12,6 +12,13 @@
 	<link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
 	<script defer>
+		fetch('/HTML/cabecalho.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('cabecalho').innerHTML = data;
+			});
+	</script>
+	<script defer>
 		fetch('/HTML/footer.html')
 			.then(response => response.text())
 			.then(data => {
@@ -51,6 +58,13 @@
 				<p>O AECA se divide em 4 grupos com número próximo de participantes. Cada grupo deve adaptar uma peça
 					teatral completa em um prazo de menos de três meses.</p>
 				<p>Leia mais sobre <a href="/projetos/maratona-teatral.html">aqui</a>.</p>
+			</article>
+			<article>
+				<h1>Letrada</h1>
+				<h2>Exercício de criação de personagem</h2>
+				<p>Cada aluno recebe do coordenador uma letra específica e, a partir dela, aprende a desenvolver a
+					gênese de um personagem.</p>
+				<p>Leia mais sobre <a href="/projetos/letrada.html">aqui</a>.</p>
 			</article>
 		</main>
 		<aside id="aside-padrao"></aside>
