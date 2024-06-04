@@ -11,6 +11,13 @@
 	<title>Maratona Teatral</title>
 	<link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
+	<script defer>
+		fetch('/HTML/cabecalho.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('cabecalho').innerHTML = data;
+			});
+	</script>
 	<script>
 		fetch('/HTML/aside-padrao.html')
 			.then(response => response.text())
