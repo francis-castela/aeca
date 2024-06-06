@@ -254,7 +254,8 @@ aside>div a {
     text-decoration: none;
 }
 
-aside img {
+aside img,
+article img {
     max-width: 100%;
     min-width: 100%;
     height: auto;
