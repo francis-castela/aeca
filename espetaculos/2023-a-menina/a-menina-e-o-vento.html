@@ -5,12 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:image" content="/CSS/logos/logo-AECA-preto.png" />
+
+    <meta property="og:url" content="https://aeca.com.br/espetaculos/2023-a-menina/a-menina-e-o-vento.html"/>
     <meta property="og:title" content="A Menina e o Vento" />
-    <meta property="og:description" content="Espetáculo teatral" />
+    <meta property="og:description" content="A.E.C.A" />
+    <meta property="og:site_name" content="A Menina e o Vento"/>
+    <meta property="og:image" content="http://aeca.com.br/espetaculos/2023-a-menina/IMG/elenco.jpeg" />
+    
     <title>A Menina e o Vento</title>
+
     <link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
+
+    <script src="/js/zoom.js" defer></script>
+
     <script defer>
         fetch('/HTML/footer.html')
             .then(response => response.text())
@@ -18,6 +26,7 @@
                 document.getElementById('footer').innerHTML = data;
             });
     </script>
+
     <script defer>
         fetch('/HTML/cabecalho.html')
             .then(response => response.text())
@@ -26,6 +35,22 @@
             });
     </script>
 </head>
+
+<style>
+    header {
+        background-color: #ABE5F3;
+    }
+
+    aside>div {
+        background: #ABE5F3;
+    }
+
+    h1,
+    h3,
+    a {
+        color: #ABE5F3;
+    }
+</style>
 
 <body>
     <header>
@@ -36,25 +61,88 @@
             <article>
                 <br>
                 <h1>A Menina e o Vento</h1>
-                <h2></h2>
             </article>
             <article>
-                <p>Esta página está em construção. Volte em breve.</p>
+                <p style="font-style: italic; text-indent: 0">Um dia, fugindo das rigorosas lições da Tia Adelaide,
+                    Maria e seu irmão Pedrinho acabam em uma escura caverna. Ali vive o Vento, que se irrita com o
+                    tumulto causado pelas crianças. Impaciente, o Vento sopra Pedrinho para longe, mas Maria consegue
+                    escapar. Encantado com a habilidade da menina em vencer seus poderosos movimentos, o Vento faz uma
+                    proposta: viajar pelo planeta. Maria então enfrenta o dilema de começar ou não essa nova vida cheia
+                    de aventuras.</p>
+                <img src="/espetaculos/2023-a-menina/IMG/cartaz.jpeg">
+            </article>
+            <article>
+                <p style="text-align: center; text-indent: 0"><b>A Menina e o Vento</b> foi apresentado 4 vezes, na Casa da Cultura Dide Brandão, nos dias 01, 02, 08 e 09 de julho de 2023. </p>
+                <img src="/espetaculos/2023-a-menina/IMG/elenco.jpeg">
             </article>
             <article>
                 <table>
                     <tr>
-                        <th colspan="2" style="text-align: center; background-color: #35080A;">ELENCO</th>
+                        <th colspan="2" style="color: #090909; text-align: center; background-color: #ABE5F3;">ELENCO
+                        </th>
                     </tr>
                     <tr>
-                        <th></th>
-                        <td></td>
+                        <th>Maria</th>
+                        <td>Malu Baião</td>
+                    </tr>
+                    <tr>
+                        <th>Vento</th>
+                        <td>Patrick Simões</td>
+                    </tr>
+                    <tr>
+                        <th>Pedrinho</th>
+                        <td>Murilo Grangel</td>
+                    </tr>
+                    <tr>
+                        <th>Brisa</th>
+                        <td>Júlia Schäffer</td>
+                    </tr>
+                    <tr>
+                        <th>Ventania</th>
+                        <td>Louise Moreira</td>
+                    </tr>
+                    <tr>
+                        <th>Mãe Anastácia</th>
+                        <td>Fernanda Lima</td>
+                    </tr>
+                    <tr>
+                        <th>Vó Aparecida</th>
+                        <td>Ione Brautigam</td>
+                    </tr>
+                    <tr>
+                        <th>Tia Adalgisa</th>
+                        <td>Alexya Sczotka</td>
+                    </tr>
+                    <tr>
+                        <th>Tia Adelaide</th>
+                        <td>Vania Vieira</td>
+                    </tr>
+                    <tr>
+                        <th>Tia Aurélia</th>
+                        <td>Maria Beatriz Araújo</td>
+                    </tr>
+                    <tr>
+                        <th>Delegada Plácida</th>
+                        <td>Heloisa Neves</td>
+                    </tr>
+                    <tr>
+                        <th>Policial Pacífico</th>
+                        <td>Guilherme Moura</td>
+                    </tr>
+                    <tr>
+                        <th>Policial Crispim</th>
+                        <td>Julian Félix</td>
+                    </tr>
+                    <tr>
+                        <th>Repórter Pink-Wink</th>
+                        <td>Sara Maquim</td>
                     </tr>
                 </table>
                 <br>
                 <table>
                     <tr>
-                        <th colspan="2" style="text-align: center; background-color: #35080A;">FICHA TÉCNICA</th>
+                        <th colspan="2" style="color: #090909; text-align: center; background-color: #ABE5F3;">FICHA
+                            TÉCNICA</th>
                     </tr>
                     <tr>
                         <th>Direção</th>
@@ -62,23 +150,23 @@
                     </tr>
                     <tr>
                         <th>Figurino</th>
-                        <td></td>
+                        <td>Fernanda Lima<br>Dreeh's<br>Jaqueline Tesch</td>
                     </tr>
                     <tr>
                         <th>Cenário</th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>Contrarregra</th>
-                        <td></td>
+                        <td>Todo o elenco</td>
                     </tr>
                     <tr>
                         <th>Iluminação</th>
-                        <td></td>
+                        <td>Francis Castela</td>
                     </tr>
                     <tr>
                         <th>Sonoplastia</th>
-                        <td></td>
+                        <td>Gustavo Bianchi</td>
+                    </tr>
+                    <tr>
+                        <th>Material promocional</th>
+                        <td>Davi Berndt<br>Murilo Grangel</td>
                     </tr>
                     <tr>
                         <th>Coordenação</th>
@@ -86,10 +174,95 @@
                     </tr>
                 </table>
             </article>
+            <article>
+                <p style="text-indent: 0; font-size: small;">O espetáculo <b>A Menina e o Vento</b>, de Maria Clara
+                    Machado, foi livremente adaptado e dirigido por Rafael Bueno em um processo de pesquisa e montagem
+                    sem fins lucrativos, sob a orientação da coordenação dos Alunos do Exercício Cênico Anchieta. Os
+                    recursos financeiros arrecadados com a venda de ingressos foram usados exclusivamente para cobrir
+                    despesas de figurino, maquiagem, transporte e outras operações.</p>
+            </article>
         </main>
         <aside>
-            <div></div>
+            <div>
+                <img id="zoomImage1" src="/espetaculos/2023-a-menina/IMG/1.jpeg">
+            </div>
         </aside>
+        <div id="overlay1" class="overlay">
+            <img id="largeImage1" src="/espetaculos/2023-a-menina/IMG/1.jpeg">
+        </div>
+
+        <aside>
+            <div>
+                <img id="zoomImage2" src="/espetaculos/2023-a-menina/IMG/2.jpeg">
+            </div>
+        </aside>
+        <div id="overlay2" class="overlay">
+            <img id="largeImage2" src="/espetaculos/2023-a-menina/IMG/2.jpeg">
+        </div>
+
+        <aside>
+            <div>
+                <img id="zoomImage3" src="/espetaculos/2023-a-menina/IMG/3.jpeg">
+            </div>
+        </aside>
+        <div id="overlay3" class="overlay">
+            <img id="largeImage3" src="/espetaculos/2023-a-menina/IMG/3.jpeg">
+        </div>
+
+        <aside>
+            <div>
+                <img id="zoomImage4" src="/espetaculos/2023-a-menina/IMG/4.jpeg">
+            </div>
+        </aside>
+        <div id="overlay4" class="overlay">
+            <img id="largeImage4" src="/espetaculos/2023-a-menina/IMG/4.jpeg">
+        </div>
+
+        <aside>
+            <div>
+                <img id="zoomImage5" src="/espetaculos/2023-a-menina/IMG/5.jpeg">
+            </div>
+        </aside>
+        <div id="overlay5" class="overlay">
+            <img id="largeImage5" src="/espetaculos/2023-a-menina/IMG/5.jpeg">
+        </div>
+
+        <aside>
+            <div>
+                <img id="zoomImage6" src="/espetaculos/2023-a-menina/IMG/6.jpeg">
+            </div>
+        </aside>
+        <div id="overlay6" class="overlay">
+            <img id="largeImage6" src="/espetaculos/2023-a-menina/IMG/6.jpeg">
+        </div>
+
+        <aside>
+            <div>
+                <img id="zoomImage7" src="/espetaculos/2023-a-menina/IMG/7.jpeg">
+            </div>
+        </aside>
+        <div id="overlay7" class="overlay">
+            <img id="largeImage7" src="/espetaculos/2023-a-menina/IMG/7.jpeg">
+        </div>
+
+        <aside>
+            <div>
+                <img id="zoomImage8" src="/espetaculos/2023-a-menina/IMG/8.jpeg">
+            </div>
+        </aside>
+        <div id="overlay8" class="overlay">
+            <img id="largeImage8" src="/espetaculos/2023-a-menina/IMG/8.jpeg">
+        </div>
+
+        <aside>
+            <div>
+                <img id="zoomImage9" src="/espetaculos/2023-a-menina/IMG/9.jpeg">
+            </div>
+        </aside>
+        <div id="overlay9" class="overlay">
+            <img id="largeImage9" src="/espetaculos/2023-a-menina/IMG/9.jpeg">
+        </div>
+
     </section>
     <div id="footer"></div>
 </body>
