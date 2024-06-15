@@ -5,7 +5,7 @@
 }
 
 :root {
-    --fundo-escuro: linear-gradient(to bottom, #35080A, #090909);
+    --fundo-escuro: linear-gradient(to bottom, #35080A, #00000000);
     --texto-titulo: #cc2128;
     --texto-comum: #EEE;
     --texto-subtitulo: #888;
@@ -14,7 +14,7 @@
     --borda: 1px solid #EEE;
     --menu-background: #000000;
     --botao-piscante-1: #35080A;
-    --botao-piscante-2: #cc2128;
+    --botao-piscante-2: #0a0707;
 }
 
 /* FONTES */

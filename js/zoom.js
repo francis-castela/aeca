@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
         { zoom: 'zoomImage6', overlay: 'overlay6', large: 'largeImage6' },
         { zoom: 'zoomImage7', overlay: 'overlay7', large: 'largeImage7' },
         { zoom: 'zoomImage8', overlay: 'overlay8', large: 'largeImage8' },
-        { zoom: 'zoomImage9', overlay: 'overlay9', large: 'largeImage9' }
+        { zoom: 'zoomImage9', overlay: 'overlay9', large: 'largeImage9' },
+        { zoom: 'zoomImage10', overlay: 'overlay10', large: 'largeImage10' }
     ];
 
     images.forEach(({ zoom, overlay, large }) => {
