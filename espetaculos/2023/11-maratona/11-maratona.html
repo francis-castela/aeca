@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta property="og:url" content="https://aeca.com.br/espetaculos/2023/11-maratona/11-maratona.html" />
+	<meta property="og:title" content="11ª Maratona Teatral" />
+	<meta property="og:description" content="A.E.C.A" />
+	<meta property="og:site_name" content="11ª Maratona Teatral" />
+	<meta property="og:image"
+		content="http://aeca.com.br/espetaculos/2023/11-maratona/IMG/11_maratona_todos_fundopreto.png" />
+
+	<title>11ª Maratona Teatral</title>
+
+	<link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
+
+	<script src="/js/zoom.js" defer></script>
+
+	<script defer>
+		fetch('/HTML/footer.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('footer').innerHTML = data;
+			});
+	</script>
+
+	<script defer>
+		fetch('/HTML/cabecalho.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('cabecalho').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/espetaculos/2023/11-maratona/maratona-header.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('maratona-header').innerHTML = data;
+			});
+	</script>
+
+	<style>
+		:root {
+			--fundo-escuro: linear-gradient(to bottom, #8B27AA, #00000000);
+        --texto-titulo: #8B27AA;
+        --hover-sombra: 0 0px 20px 0 #8B27AA;
+	}
+		
+	</style>
+</head>
+
+<body>
+
+	<header>
+		<nav id="cabecalho"></nav>
+		<nav id="maratona-header"></nav>
+	</header>
+
+	<section id="pageContent">
+		<main role="main">
+			<article>
+				<h1>O que é a Maratona Teatral?</h1>
+				<p>A Maratona Teatral é um emocionante exercício realizado pelo A.E.C.A! Durante este processo, nossos
+					alunos se dividem em pequenos grupos e mergulham na tarefa de estudar, adaptar e apresentar peças
+					teatrais famosas.</p>
+				<p>Optamos por selecionar os alunos mais experientes em direção de cenas para liderar as produções da
+					Maratona Teatral. Em seguida, realizamos um sorteio para determinar quais elencos e espetáculos cada
+					diretor terá a honra de guiar.</p>
+			</article>
+			<article>
+				<h1>Por que "Maratona"?</h1>
+				<p>Os alunos enfrentam o desafio de preparar uma peça teatral completa em um prazo de <b>menos de três
+						meses</b>. Isso inclui a criação de luzes, som, figurinos, cenários, marcações de cena e, o mais
+					importante, a interpretação!</p>
+			</article>
+			<article>
+				<p style="text-indent: 0; text-align: center;">A 11ª Maratona Teatral ocorreu de 15/11/2023 a 02/12/2023! Neste site você confere registros de cada
+				espetáculo.</p>
+			<a href="/espetaculos/2023/11-maratona/gotadagua.html"><img src="/espetaculos/2023/11-maratona/IMG/foto_gota_01.webp"></a>
+			<br>
+			<a href="/espetaculos/2023/11-maratona/oreidavela.html"><img src="/espetaculos/2023/11-maratona/IMG/foto_rei_01.webp"></a>
+			<br>
+			<a href="/espetaculos/2023/11-maratona/obeijonoasfalto.html"><img src="/espetaculos/2023/11-maratona/IMG/foto_beijo_01.webp"></a>
+			<br>
+			<a href="/espetaculos/2023/11-maratona/autodabarcadoinferno.html"><img src="/espetaculos/2023/11-maratona/IMG/foto_barca_01.webp"></a>
+			<br>
+			<a href="/espetaculos/2023/11-maratona/opagadordepromessas.html"><img src="/espetaculos/2023/11-maratona/IMG/foto_pagador_01.webp"></a>
+			<br>
+		</article>
+			</main>
+
+		<aside>
+			<div><a href="/espetaculos/2023/11-maratona/gotadagua.html"><img
+						src="/espetaculos/2023/11-maratona/IMG/foto_gota_02.webp">
+			</div>
+			<div><a href="/espetaculos/2023/11-maratona/oreidavela.html"><img
+						src="/espetaculos/2023/11-maratona/IMG/foto_rei_02.webp">
+			</div>
+			<div><a href="/espetaculos/2023/11-maratona/obeijonoasfalto.html"><img
+						src="/espetaculos/2023/11-maratona/IMG/foto_beijo_02.webp"></div>
+			<div><a href="/espetaculos/2023/11-maratona/autodabarcadoinferno.html"><img
+						src="/espetaculos/2023/11-maratona/IMG/foto_barca_02.webp">
+			</div>
+			<div><a href="/espetaculos/2023/11-maratona/opagadordepromessas.html"><img
+						src="/espetaculos/2023/11-maratona/IMG/foto_pagador_02.webp">
+			</div>
+		</aside>
+
+	</section>
+
+	<div id="footer"></div>
+
+</body>
+
+</html>

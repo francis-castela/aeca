@@ -5,12 +5,32 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:image" content="/CSS/logos/logo-AECA-preto.png" />
+
+	<meta property="og:url" content="https://aeca.com.br/projetos/letrada.html" />
 	<meta property="og:title" content="Letrada" />
-	<meta property="og:description" content="Exercício de criação de personagem" />
+	<meta property="og:description" content="A.E.C.A" />
+	<meta property="og:site_name" content="Letrada" />
+	<meta property="og:image" content="http://aeca.com.br/CSS/logos/logo-AECA-preto.png" />
+
 	<title>Letrada</title>
+	
 	<link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
+	
+	<script defer>
+		fetch('/HTML/footer.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('footer').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/HTML/aside-padrao.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('aside-padrao').innerHTML = data;
+			});
+	</script>
 	<script defer>
 		fetch('/HTML/cabecalho.html')
 			.then(response => response.text())
@@ -18,28 +38,14 @@
 				document.getElementById('cabecalho').innerHTML = data;
 			});
 	</script>
-	<script>
-		fetch('/HTML/aside-padrao.html')
-			.then(response => response.text())
-			.then(data => {
-				document.getElementById('aside-padrao').innerHTML = data;
-			});
-	</script>
-	<script>
-		fetch('/HTML/footer.html')
-			.then(response => response.text())
-			.then(data => {
-				document.getElementById('footer').innerHTML = data;
-			});
-	</script>
+
 </head>
 
 <body>
 	<header>
-		<header>
-			<nav id="cabecalho"></nav>
-		</header>
+		<nav id="cabecalho"></nav>
 	</header>
+
 	<section id="pageContent">
 		<main role="main">
 			<article>

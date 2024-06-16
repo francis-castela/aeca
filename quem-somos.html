@@ -5,17 +5,30 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:image" content="/CSS/logos/logo-AECA-preto.png" />
+
+	<meta property="og:url" content="https://aeca.com.br/quem-somos.html" />
 	<meta property="og:title" content="Quem somos" />
-	<meta property="og:description" content="O que é o AECA?" />
+	<meta property="og:description" content="A.E.C.A" />
+	<meta property="og:site_name" content="Quem somos" />
+	<meta property="og:image" content="http://aeca.com.br/CSS/logos/logo-AECA-preto.png" />
+
 	<title>Quem somos</title>
+	
 	<link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
+	
 	<script defer>
 		fetch('/HTML/footer.html')
 			.then(response => response.text())
 			.then(data => {
 				document.getElementById('footer').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/HTML/aside-padrao.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('aside-padrao').innerHTML = data;
 			});
 	</script>
 	<script defer>
@@ -25,13 +38,12 @@
 				document.getElementById('cabecalho').innerHTML = data;
 			});
 	</script>
+
 </head>
 
 <body>
 	<header>
-		<header>
-			<nav id="cabecalho"></nav>
-		</header>
+		<nav id="cabecalho"></nav>
 	</header>
 	<section id="pageContent">
 		<main role="main">
@@ -47,17 +59,17 @@
 					coletivo Anchieta Arte Cênica.</p>
 				<p>A proposta de Valentim para isso era simples: cada nova edição do CBT traria novos integrantes para o
 					grupo, garantindo uma renovação contínua. Inicialmente batizado de Anchieta Junior, o grupo adotou o
-					nome Alunos do Exercício Cênico Anchieta (AECA) no ano 2000.</p>
-				<p>Hoje, o AECA é um grupo de estudos teatrais que se dedica a explorar, desenvolver e compartilhar a
-					arte cênica. Com um forte compromisso com a formação contínua e a inclusão de novos talentos, o AECA
+					nome Alunos do Exercício Cênico Anchieta (A.E.C.A) no ano 2000.</p>
+				<p>Hoje, o A.E.C.A é um grupo de estudos teatrais que se dedica a explorar, desenvolver e compartilhar a
+					arte cênica. Com um forte compromisso com a formação contínua e a inclusão de novos talentos, o A.E.C.A
 					promove um ambiente de aprendizado colaborativo e criativo.</p>
-				<p>Os encontros e ensaios do AECA ocorrem aos domingos de manhã na Casa da Cultura Dide Brandão, em
+				<p>Os encontros e ensaios do A.E.C.A ocorrem aos domingos de manhã na Casa da Cultura Dide Brandão, em
 					Itajaí-SC. Esse espaço cultural se tornou o ponto de encontro onde ideias ganham forma e os membros
-					do AECA podem desenvolver suas habilidades e produções teatrais.</p>
+					do A.E.C.A podem desenvolver suas habilidades e produções teatrais.</p>
 			</article>
 			<article>
 				<h1>Missão e objetivos</h1>
-				<p>O AECA tem como missão primordial fomentar o desenvolvimento cultural e artístico de seus membros e
+				<p>O A.E.C.A tem como missão primordial fomentar o desenvolvimento cultural e artístico de seus membros e
 					da comunidade local por meio de estudos teatrais aprofundados, pesquisa contínua e montagem de
 					espetáculos de qualidade. Como um grupo de estudos teatrais sem fins lucrativos, dedicamo-nos a
 					proporcionar um ambiente estimulante para a exploração criativa, promovendo o aprendizado, a
@@ -69,10 +81,10 @@
 					aprimoramentos criativos que enriqueçam nossas produções, respeitando a essência do teatro popular e
 					proporcionando experiências impactantes.</p>
 				<h3>II. Formação cultural e artística</h3>
-				<p>Oferecer oportunidades de aprendizado e formação cultural para os membros do AECA. Promover o
+				<p>Oferecer oportunidades de aprendizado e formação cultural para os membros do A.E.C.A. Promover o
 					enriquecimento intelectual e emocional por meio da vivência teatral.</p>
 				<h3>III. Sem fins lucrativos</h3>
-				<p>Manter o caráter sem fins lucrativos como parte integral da identidade do AECA. Priorizar a qualidade
+				<p>Manter o caráter sem fins lucrativos como parte integral da identidade do A.E.C.A. Priorizar a qualidade
 					artística e cultural sobre ganhos financeiros, garantindo o acesso equitativo às experiências
 					teatrais.</p>
 				<h3>IV. Colaboração e compartilhamento</h3>

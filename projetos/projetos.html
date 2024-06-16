@@ -5,19 +5,18 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:image" content="/CSS/logos/logo-AECA-preto.png" />
+
+	<meta property="og:url" content="https://aeca.com.br/projetos.html" />
 	<meta property="og:title" content="Projetos" />
-	<meta property="og:description" content="O que o AECA faz?" />
+	<meta property="og:description" content="A.E.C.A" />
+	<meta property="og:site_name" content="Projetos" />
+	<meta property="og:image" content="http://aeca.com.br/CSS/logos/logo-AECA-preto.png" />
+
 	<title>Projetos</title>
+
 	<link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
-	<script defer>
-		fetch('/HTML/cabecalho.html')
-			.then(response => response.text())
-			.then(data => {
-				document.getElementById('cabecalho').innerHTML = data;
-			});
-	</script>
+
 	<script defer>
 		fetch('/HTML/footer.html')
 			.then(response => response.text())
@@ -32,13 +31,25 @@
 				document.getElementById('aside-padrao').innerHTML = data;
 			});
 	</script>
+	<script defer>
+		fetch('/HTML/cabecalho.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('cabecalho').innerHTML = data;
+			});
+	</script>
+
+	<style>
+		p {
+			font-size: small;
+		}
+	</style>
+
 </head>
 
 <body>
 	<header>
-		<header>
-			<nav id="cabecalho"></nav>
-		</header>
+		<nav id="cabecalho"></nav>
 	</header>
 	<section id="pageContent">
 		<main role="main">
@@ -46,25 +57,22 @@
 				<p id="title">Projetos</p>
 			</article>
 			<article>
-				<h1>Cena Aberta</h1>
-				<h2>Exercício de pesquisa e produção teatral</h2>
-				<p>O AECA se divide em grupos compostos entre 4 a 5 participantes, com o desafio de criar uma cena
+				<h1 id="h1-2"><a href="/projetos/cena-aberta.html">Cena Aberta</a></h1>
+				<h2 id="h2-2">Exercício de pesquisa e produção teatral</h2>
+				<p>O A.E.C.A se divide em grupos compostos entre 4 a 5 participantes, com o desafio de criar uma cena
 					teatral de até 10 minutos de duração.</p>
-				<p>Leia mais sobre <a href="/projetos/cena-aberta.html">aqui</a>.</p>
 			</article>
 			<article>
-				<h1>Maratona Teatral</h1>
-				<h2>Exercício de pesquisa e produção teatral</h2>
-				<p>O AECA se divide em 4 grupos com número próximo de participantes. Cada grupo deve adaptar uma peça
+				<h1 id="h1-2"><a href="/projetos/maratona-teatral.html">Maratona Teatral</a></h1>
+				<h2 id="h2-2">Exercício de pesquisa e produção teatral</h2>
+				<p>O A.E.C.A se divide em 4 grupos com número próximo de participantes. Cada grupo deve adaptar uma peça
 					teatral completa em um prazo de menos de três meses.</p>
-				<p>Leia mais sobre <a href="/projetos/maratona-teatral.html">aqui</a>.</p>
 			</article>
 			<article>
-				<h1>Letrada</h1>
-				<h2>Exercício de criação de personagem</h2>
+				<h1 id="h1-2"><a href="/projetos/letrada.html">Letrada</a></h1>
+				<h2 id="h2-2">Exercício de criação de personagem</h2>
 				<p>Cada aluno recebe do coordenador uma letra específica e, a partir dela, aprende a desenvolver a
 					gênese de um personagem.</p>
-				<p>Leia mais sobre <a href="/projetos/letrada.html">aqui</a>.</p>
 			</article>
 		</main>
 		<aside id="aside-padrao"></aside>

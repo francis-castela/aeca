@@ -5,12 +5,32 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:image" content="/CSS/logos/logo-AECA-preto.png" />
+
+	<meta property="og:url" content="https://aeca.com.br/maratona-teatral.html" />
 	<meta property="og:title" content="Maratona Teatral" />
-	<meta property="og:description" content="Exercício de pesquisa e produção teatral" />
+	<meta property="og:description" content="A.E.C.A" />
+	<meta property="og:site_name" content="Maratona Teatral" />
+	<meta property="og:image" content="http://aeca.com.br/CSS/logos/logo-AECA-preto.png" />
+
 	<title>Maratona Teatral</title>
+	
 	<link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
+	
+	<script defer>
+		fetch('/HTML/footer.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('footer').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/HTML/aside-padrao.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('aside-padrao').innerHTML = data;
+			});
+	</script>
 	<script defer>
 		fetch('/HTML/cabecalho.html')
 			.then(response => response.text())
@@ -18,27 +38,12 @@
 				document.getElementById('cabecalho').innerHTML = data;
 			});
 	</script>
-	<script>
-		fetch('/HTML/aside-padrao.html')
-			.then(response => response.text())
-			.then(data => {
-				document.getElementById('aside-padrao').innerHTML = data;
-			});
-	</script>
-	<script>
-		fetch('/HTML/footer.html')
-			.then(response => response.text())
-			.then(data => {
-				document.getElementById('footer').innerHTML = data;
-			});
-	</script>
+
 </head>
 
 <body>
 	<header>
-		<header>
-			<nav id="cabecalho"></nav>
-		</header>
+		<nav id="cabecalho"></nav>
 	</header>
 	<section id="pageContent">
 		<main role="main">
@@ -52,7 +57,7 @@
 					criação, adaptação e apresentação de peças teatrais consagradas. A essência da Maratona reside na
 					superação de desafios e na busca pela excelência artística em um prazo determinado de três meses.
 				</p>
-				<p>Para este exercício, o AECA se divide em 4 grupos com número próximo de participantes. Cada grupo
+				<p>Para este exercício, o A.E.C.A se divide em 4 grupos com número próximo de participantes. Cada grupo
 					deve adaptar uma peça teatral completa em um prazo de menos de três meses. As peças são selecionadas
 					e distribuídas pelo coordenador do exercício, o elenco é escolhido por sorteio, e os diretores das
 					peças são selecionados entre os alunos mais experientes em direção de cenas.</p>
