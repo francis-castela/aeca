@@ -20,7 +20,7 @@ body>section {
 }
 
 :root {
-    --fundo-escuro: #CCC;
+    --fundo-escuro: #BBB;
     --texto-titulo: #cc2128;
     --texto-comum: #000000;
     --texto-subtitulo: #444;
@@ -277,6 +277,7 @@ main {
 aside {
     float: right;
     width: 30%;
+    text-decoration: none;
 }
 
 aside>div {
@@ -287,6 +288,7 @@ aside>div {
     text-align: center;
     border-radius: 10px;
     font-weight: bold;
+    text-decoration: none;
 }
 
 aside>div a {
