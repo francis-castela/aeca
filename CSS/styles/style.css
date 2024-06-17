@@ -143,8 +143,8 @@ h1 {
 
 h2 {
     font-family: "Nunito";
-    font-weight: normal;
-    font-size: medium;
+    font-weight: bold;
+    font-size: large;
     color: var(--texto-subtitulo);
     margin: 0 0 20px 0;
     text-align: center;
