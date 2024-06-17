@@ -1,11 +1,7 @@
 <style>
     :root {
         --menu-background: #000000;
-    }
-
-    @font-face {
-        font-family: "Liberation Mono";
-        src: url("/CSS/fonts/LiberationMono-Regular.ttf");
+        --texto-titulo: #8B27AA;
     }
 
     @font-face {
@@ -28,37 +24,11 @@
 
     .botao li img:hover,
     .botao li img:focus {
-        box-shadow: var(--hover-sombra);
         background-color: var(--hover-fundo);
-        transition: background-color 0.3s, box-shadow 0.3s;
+        transform: scale(1.1);
+        transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s ease;
     }
 
-    p {
-        font-family: "Liberation Mono";
-    }
-
-    h1 {
-        font-family: "Octosquares Regular";
-        font-size: 25px;
-        margin-bottom: 10px;
-    }
-
-    h2 {
-        font-family: "Octosquares Regular";
-        font-size: 21px;
-        margin-bottom: 10px;
-        color: #CBF6AF;
-    }
-
-    a {
-        color: #CBF6AF;
-        text-decoration: none;
-    }
-
-    aside div {
-        color: #EEE;
-        font-weight: bold;
-    }
 </style>
 
 <nav class="botao">

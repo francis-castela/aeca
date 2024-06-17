@@ -4,17 +4,31 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    line-height: 1.5;
+    font-family: "Nunito";
+    font-weight: normal;
+    background: #EEE;
+    font-size: medium;
+    text-align: justify;
+    overflow-x: hidden;
+}
+
+body>section {
+    padding: 30px 10px;
+}
+
 :root {
-    --fundo-escuro: linear-gradient(to bottom, #35080A, #35080A,  #00000000);
+    --fundo-escuro: #CCC;
     --texto-titulo: #cc2128;
-    --texto-comum: #EEE;
-    --texto-subtitulo: #888;
+    --texto-comum: #000000;
+    --texto-subtitulo: #444;
     --hover-fundo: #444;
-    --hover-sombra: 0 0px 20px 0 #EEE;
-    --borda: 1px solid #EEE;
+    --borda: 1px solid #000000;
     --menu-background: #000000;
-    --botao-piscante-1: #35080A;
-    --botao-piscante-2: #0a0707;
+    --botao-piscante-1: #cc2128;
+    --botao-piscante-2: #35080A;
 }
 
 /* FONTES */
@@ -50,6 +64,11 @@ header {
 .logo img {
     max-width: 120px;
     border-radius: 0;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.1);
 }
 
 nav {
@@ -73,21 +92,20 @@ nav {
     text-decoration: none;
     background-color: var(--menu-background);
     text-align: center;
-    color: var(--texto-comum);
+    color: #ffffff;
     font-weight: normal;
     font-size: 22px;
-    border: var(--borda);
     padding: 5px 10px;
     border-radius: 5px;
     width: 120px;
-    transition: background-color 0.3s, box-shadow 0.3s;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s ease;
 }
 
 .menu a:hover,
 .menu a:focus {
-    box-shadow: var(--hover-sombra);
     background-color: var(--hover-fundo);
     cursor: pointer;
+    transform: scale(1.1);
 }
  
 @media screen and (max-width: 600px) {
@@ -101,17 +119,6 @@ nav {
 }
 
 /* BASE */
-
-html,
-body {
-    line-height: 1.5;
-    font-family: "Nunito";
-    font-weight: normal;
-    background: #090909;
-    font-size: medium;
-    text-align: justify;
-    overflow-x: hidden;
-}
 
 p {
     text-indent: 30px;
@@ -177,7 +184,7 @@ video {
     display: flex;
     padding: 10px 20px;
     background-color: var(--fundo-escuro);
-    color: var(--texto-comum);
+    color: #EEE;
     text-decoration: none;
     border-radius: 5px;
     font-family: Nunito;
@@ -186,9 +193,9 @@ video {
 }
 
 .google-docs-link:hover {
-    box-shadow: var(--hover-sombra);
     cursor: pointer;
     transition: 0.3s;
+    transform: scale(1.03);
 }
 
 .google-docs-icon {
@@ -245,8 +252,10 @@ th {
 }
 
 .cabecalho-tabela {
+    padding-bottom: 0;
     text-align: center;
-    background: var(--fundo-escuro);
+    background: var(--texto-titulo);
+    color: #EEE;
     font-family: "Bebas";
     font-weight: normal;
     font-size: 40px;
@@ -277,6 +286,7 @@ aside>div {
     color: var(--texto-comum);
     text-align: center;
     border-radius: 10px;
+    font-weight: bold;
 }
 
 aside>div a {
@@ -290,12 +300,13 @@ article img {
     min-width: 100%;
     height: auto;
     display: block;
+    transition: transform 0.3s ease;
 }
 
 aside>div:hover {
-    box-shadow: var(--hover-sombra);
     cursor: pointer;
-    transition: 0.3s;
+    transition: transform 0.3s ease;
+    transform: scale(1.1);
 }
 
 /* ZOOM EM IMAGEM */
@@ -308,7 +319,8 @@ aside>div:hover {
 #zoomImage6,
 #zoomImage7,
 #zoomImage8,
-#zoomImage9 {
+#zoomImage9,
+#zoomImage10 {
     cursor: pointer;
     transition: transform 0.5s;
 }
@@ -352,12 +364,6 @@ footer a {
 }
 
 /* AJUSTES RESPONSIVOS */
-
-@media screen and (max-width: 1000px) {
-    body>section {
-        padding: 30px 10px;
-    }
-}
 
 @media screen and (max-width: 600px) {
     main {
