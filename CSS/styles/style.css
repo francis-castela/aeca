@@ -353,7 +353,7 @@ footer {
     font-size: 10px;
     color: var(--texto-comum);
     text-decoration: none;
-    background: none;
+    background: var(--fundo-escuro);
     max-width: 1000px;
     margin: auto;
     clear: both;
