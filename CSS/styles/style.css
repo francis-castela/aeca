@@ -277,6 +277,7 @@ main {
 aside {
     float: right;
     width: 30%;
+    text-decoration: none;
 }
 
 aside>div {
@@ -287,6 +288,7 @@ aside>div {
     text-align: center;
     border-radius: 10px;
     font-weight: bold;
+    text-decoration: none;
 }
 
 aside>div a {
