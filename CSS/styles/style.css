@@ -223,12 +223,12 @@ video {
 #h1-2 {
     text-align: left;
     font-size: 30px;
-    text-indent: 30px;
+    margin-left: 30px;
 }
 
 #h2-2 {
     text-align: left;
-    text-indent: 30px
+    margin: 0 0 5px 30px;
 }
 
 table {
@@ -275,10 +275,15 @@ main {
 /* LATERAL */
 
 aside {
-    float: right;
     width: 30%;
+    max-width: 300px;
+    margin-left: 5%; 
     text-decoration: none;
+    display: inline-block;
+    vertical-align: top;
+    white-space: normal;
 }
+
 
 aside>div {
     padding: 4px;
@@ -289,6 +294,8 @@ aside>div {
     border-radius: 10px;
     font-weight: bold;
     text-decoration: none;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 aside>div a {
@@ -340,9 +347,31 @@ aside>div:hover {
     z-index: 1000;
 }
 
-.overlay img {
+.overlay img,
+.overlay video {
     max-width: 90%;
     max-height: 90%;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.text-overlay {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 40%;
+    left: 25%;
+    right: 25%;
+    bottom: 40%; 
+    background: var(--fundo-escuro);
+    padding: 5px 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 1.3em;
 }
 
 /* RODAPÉ */
@@ -354,7 +383,6 @@ footer {
     color: var(--texto-comum);
     text-decoration: none;
     background: var(--fundo-escuro);
-    max-width: 1000px;
     margin: auto;
     clear: both;
     text-align: center;
@@ -374,8 +402,13 @@ footer a {
     }
 
     aside {
-        float: none;
         width: 100%;
+        max-width: 100%;
+        margin-left: 0; 
+    }
+    .text-overlay {
+        font-size: 10vw;
     }
 
 }
+

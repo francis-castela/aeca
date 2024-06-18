@@ -19,10 +19,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         zoomImage.addEventListener('click', function () {
             overlayElement.style.display = 'flex';
+            largeImage.play();
         });
 
         overlayElement.addEventListener('click', function () {
             overlayElement.style.display = 'none';
+            largeImage.pause();
         });
 
         largeImage.addEventListener('click', function (event) {
