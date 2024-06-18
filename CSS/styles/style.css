@@ -234,16 +234,17 @@ video {
 table {
     color: var(--texto-comum);
     border-collapse: collapse;
-    font-family: "Source";
     margin: 0 auto;
     width: 95%;
 }
 
 th, td {
-    padding: 8px;
+    padding: 7px 10px 7px 10px;
     vertical-align: top;
     width: 40%;
+    border-bottom: 1px dashed #BBB;
     border-radius: 5px;
+    line-height: 1.2;
 }
 
 th {
@@ -252,6 +253,7 @@ th {
 }
 
 .cabecalho-tabela {
+    border-bottom: 0;
     padding-bottom: 0;
     text-align: center;
     background: var(--texto-titulo);
