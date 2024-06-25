@@ -269,6 +269,12 @@ td {
     text-align: left;
 }
 
+#elencosempersonagem {
+    td {
+        text-align: center;
+    }
+}
+
 main {
     float: left;
     width: 65%;
