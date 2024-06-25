@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:url" content="https://aeca.com.br/espetaculos/2020/fala-pessoa.html" />
+    <meta property="og:title" content="Fala Pessoa" />
+    <meta property="og:description" content="A.E.C.A" />
+    <meta property="og:site_name" content="Fala Pessoa" />
+    <meta property="og:image" content="http://aeca.com.br/espetaculos/2020/IMG/fala-elenco.jpg" />
+
+    <title>Fala Pessoa</title>
+
+    <link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
+
+    <script src="/js/zoom.js" defer></script>
+
+    <script defer>
+        fetch('/HTML/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+    </script>
+
+    <script defer>
+        fetch('/HTML/cabecalho.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('cabecalho').innerHTML = data;
+            });
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav id="cabecalho"></nav>
+    </header>
+    <section id="pageContent">
+        <main role="main">
+
+            <h1>Fala Pessoa</h1>
+            <h1 style="font-size: 25px;">Fernando Pessoa fala através de seus heterônimos</h1>
+            <h2>Processo de pesquisa e montagem 2020/2</h2>
+
+            <article>
+                <p style="font-style: italic; text-indent: 0">Dentre as muitas personas que o maior poeta do século XX,
+                    Fernando Pessoa, criou, destacam-se: Ricardo Reis, erudito e clássico, com uma maneira singular de
+                    retratar paisagens em suas odes horacianas; Álvaro de Campos, modernista e futurista, com uma
+                    escrita revoltosa e sensacionalista; e Alberto Caeiro, camponês autodidata, poeta da natureza e seu
+                    grande mestre. Fernando Pessoa foi um grande criador de mitos, vivendo vários deles durante seu
+                    tempo. Definia-se como poeta e filósofo, mas o mundo literário o vê como moderno, clássico,
+                    nacionalista, místico, revolucionário, materialista e panteísta. Neste espetáculo, Fernando Pessoa
+                    fala através de seus variados heterônimos, incluindo Bernardo Soares, Antonio Moura, Barão de Teive,
+                    Thomas Crosse, Maria José, entre outros.</p>
+                <img src="/espetaculos/2020/IMG/fala-cartaz.jpg">
+            </article>
+            <article>
+                <p style="text-align: center; text-indent: 0"><b>Fala Pessoa</b> teve 4 apresentações, transmitidas pelo
+                    canal <a href="https://www.youtube.com/@anchietaartecenica387">Anchieta Arte Cênica</a> no YouTube,
+                    nos dias 28 de dezembro de 2020, 4 de janeiro, 22 e 29 de abril de 2021.
+                </p>
+                <img src="/espetaculos/2020/IMG/fala-elenco.jpg">
+            </article>
+            <article>
+                <table id="elencosempersonagem">
+                    <tr>
+                        <th colspan="2" class="cabecalho-tabela">ELENCO</th>
+                    </tr>
+                    <tr>
+                        <td>Filipe dos Santos</td>
+                    </tr>
+                    <tr>
+                        <td>Gabrielli Pacheco Ribeiro</td>
+                    </tr>
+                    <tr>
+                        <td>Pedro Vieira</td>
+                    </tr>
+                    <tr>
+                        <td>Rafael Bueno</td>
+                    </tr>
+                    <tr>
+                        <td>Thaís Tonin</td>
+                    </tr>
+                    <tr>
+                        <td>Valentim Schmoeler</td>
+                    </tr>
+                </table>
+                <br>
+                <table>
+                    <tr>
+                        <th colspan="2" class="cabecalho-tabela">FICHA TÉCNICA</th>
+                    </tr>
+                    <tr>
+                        <th>Direção</th>
+                        <td>Rafael Orsi de Melo</td>
+                    </tr>
+                    <tr>
+                        <th>Coordenação</th>
+                        <td>Valentim Schmoeler</td>
+                    </tr>
+                </table>
+            </article>
+            <article>
+                <p style="text-indent: 0; font-size: small;">A obra <b>Fala Pessoa</b> foi concebida e dirigida por
+                    Rafael Orsi de Melo em um processo de pesquisa e montagem sem fins lucrativos, sob a orientação da
+                    coordenação dos Alunos do Exercício Cênico Anchieta. O projeto foi viabilizado com recursos da Lei
+                    Municipal de Incentivo à Cultura, com patrocínio da Fundação Cultural de Itajaí e Prefeitura de
+                    Itajaí, com renúncia fiscal da APM Terminals, Brasfrigo S/A e Rodan, fazendo parte da programação
+                    do evento Anchieta Arte Cênica 35 Anos. Os recursos financeiros foram usados exclusivamente para
+                    cobrir despesas de figurino, maquiagem, transporte e outras operações.</p>
+            </article>
+
+        </main>
+
+        <aside>
+            <div>
+                <img id="zoomImage1" src="/espetaculos/2020/IMG/fala-1.jpg">
+            </div>
+        </aside>
+        <div id="overlay1" class="overlay">
+            <img id="largeImage1" src="/espetaculos/2020/IMG/fala-1.jpg">
+        </div>
+
+        <aside>
+            <div>
+                <img id="zoomImage2" src="/espetaculos/2020/IMG/fala-2.jpg">
+            </div>
+        </aside>
+        <div id="overlay2" class="overlay">
+            <img id="largeImage2" src="/espetaculos/2020/IMG/fala-2.jpg">
+        </div>
+
+        <aside>
+            <div>
+                <img id="zoomImage3" src="/espetaculos/2020/IMG/fala-3.jpg">
+            </div>
+        </aside>
+        <div id="overlay3" class="overlay">
+            <img id="largeImage3" src="/espetaculos/2020/IMG/fala-3.jpg">
+        </div>
+
+        <aside>
+            <div>
+                <img id="zoomImage4" src="/espetaculos/2020/IMG/fala-4.jpg">
+            </div>
+        </aside>
+        <div id="overlay4" class="overlay">
+            <img id="largeImage4" src="/espetaculos/2020/IMG/fala-4.jpg">
+        </div>
+
+        <aside>
+            <div>
+                <img id="zoomImage5" src="/espetaculos/2020/IMG/fala-5.jpg">
+            </div>
+        </aside>
+        <div id="overlay5" class="overlay">
+            <img id="largeImage5" src="/espetaculos/2020/IMG/fala-5.jpg">
+        </div>
+
+    </section>
+    <div id="footer"></div>
+</body>
+
+</html>

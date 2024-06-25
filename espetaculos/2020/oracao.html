@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:url" content="https://aeca.com.br/espetaculos/2020/oracao.html" />
+    <meta property="og:title" content="Oração" />
+    <meta property="og:description" content="A.E.C.A" />
+    <meta property="og:site_name" content="Oração" />
+    <meta property="og:image" content="http://aeca.com.br/espetaculos/2020/IMG/oracao-1.jpg" />
+
+    <title>Oração</title>
+
+    <link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
+
+    <script src="/js/zoom.js" defer></script>
+
+    <script defer>
+        fetch('/HTML/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+    </script>
+
+    <script defer>
+        fetch('/HTML/cabecalho.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('cabecalho').innerHTML = data;
+            });
+    </script>
+</head>
+
+<style>
+    :root {
+        --fundo-escuro: #FD6D6C;
+        --texto-titulo: #FD6D6C;
+    }
+</style>
+
+<body>
+    <header>
+        <nav id="cabecalho"></nav>
+    </header>
+    <section id="pageContent">
+        <main role="main">
+
+            <h1>Oração</h1>
+            <h2>Processo de pesquisa e montagem 2020/2</h2>
+
+            <article>
+                <p style="font-style: italic; text-indent: 0">Oração lança as personagens Fídio e Lilibé ao
+                    descobrimento da Bíblia. Livro sagrado, que até então desconheciam. Suas ações, antes inocentes
+                    ao seus olhos, passam a carregar o peso de uma moral severa. O livro é a esperança e a
+                    contradição, pois percebem que nada do que viveram foi digno perante as leis divinas.</p>
+                <img src="/espetaculos/2020/IMG/oracao-cartaz.jpg">
+            </article>
+            <article>
+                <p style="text-align: center; text-indent: 0"><b>Oração</b> teve 1 apresentação, transmitida pelo canal
+                    <a href="https://www.youtube.com/@anchietaartecenica387">Anchieta Arte Cênica</a> no YouTube, no dia
+                    28 de dezembro de 2020.
+                </p>
+            </article>
+            <article>
+                <table>
+                    <tr>
+                        <th colspan="2" class="cabecalho-tabela">ELENCO</th>
+                    </tr>
+                    <tr>
+                        <th>Fídio</th>
+                        <td>Pedro Vieira</td>
+                    </tr>
+                    <tr>
+                        <th>Lilibé</th>
+                        <td>Josiane Onofre</td>
+                    </tr>
+                </table>
+                <br>
+                <table>
+                    <tr>
+                        <th colspan="2" class="cabecalho-tabela">FICHA TÉCNICA</th>
+                    </tr>
+                    <tr>
+                        <th>Direção</th>
+                        <td>Gabrielli Pacheco Ribeiro</td>
+                    </tr>
+                    <tr>
+                        <th>Iluminação</th>
+                        <td>Felipe Laurêncio</td>
+                    </tr>
+                    <tr>
+                        <th>Produção audiovisual</th>
+                        <td>Leon Cesar,<br>Âmbar Audiovisual</td>
+                    </tr>
+                    <tr>
+                        <th>Coordenação</th>
+                        <td>Valentim Schmoeler</td>
+                    </tr>
+                </table>
+            </article>
+            <article>
+                <p style="text-indent: 0; font-size: small;">A obra <b>Oração</b>, de Fernando Arrabal, foi livremente
+                    adaptada e dirigida por Gabrielli Pacheco Ribeiro em um processo de pesquisa e montagem sem fins
+                    lucrativos, sob a orientação da coordenação dos Alunos do Exercício Cênico Anchieta. O projeto foi
+                    viabilizado com recursos da Lei Municipal de Incentivo à Cultura, com patrocínio da Fundação
+                    Cultural de Itajaí e Prefeitura de Itajaí, com renúncia fiscal da APM Terminals, Brasfrigo S/A e
+                    Rodan, fazendo parte da programação do evento Anchieta Arte Cênica 35 Anos. Os recursos financeiros
+                    foram usados exclusivamente para cobrir despesas de figurino, maquiagem, transporte e outras
+                    operações.</p>
+            </article>
+
+        </main>
+
+        <aside>
+            <div>
+                <img id="zoomImage1" src="/espetaculos/2020/IMG/oracao-1.jpg">
+            </div>
+        </aside>
+        <div id="overlay1" class="overlay">
+            <img id="largeImage1" src="/espetaculos/2020/IMG/oracao-1.jpg">
+        </div>
+
+        <aside>
+            <div>
+                <img id="zoomImage2" src="/espetaculos/2020/IMG/oracao-2.jpg">
+            </div>
+        </aside>
+        <div id="overlay2" class="overlay">
+            <img id="largeImage2" src="/espetaculos/2020/IMG/oracao-2.jpg">
+        </div>
+
+        <aside>
+            <div>
+                <img id="zoomImage3" src="/espetaculos/2020/IMG/oracao-3.jpg">
+            </div>
+        </aside>
+        <div id="overlay3" class="overlay">
+            <img id="largeImage3" src="/espetaculos/2020/IMG/oracao-3.jpg">
+        </div>
+
+    </section>
+    <div id="footer"></div>
+</body>
+
+</html>
