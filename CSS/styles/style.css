@@ -277,13 +277,13 @@ td {
 
 main {
     float: left;
-    width: 65%;
+    width: 70%;
 }
 
 /* LATERAL */
 
 aside {
-    width: 30%;
+    width: 25%;
     max-width: 300px;
     margin-left: 5%; 
     text-decoration: none;
