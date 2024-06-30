@@ -79,15 +79,24 @@ nav {
 .menu {
     display: flex;
     list-style-type: none;
-    align-items: center;
+    justify-content: center;
 }
 
-.menu li {
+.botoesdeano {
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.menu li,
+.botoesdeano li {
     margin-top: 1px;
     margin-left: 10px;
 }
 
-.menu a {
+.menu a,
+.botoesdeano a {
     display: inline-block;
     text-decoration: none;
     background-color: var(--menu-background);
@@ -101,8 +110,15 @@ nav {
     transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s ease;
 }
 
+.botoesdeano a {
+    font-size: medium;
+    width: 65px;
+}
+
 .menu a:hover,
-.menu a:focus {
+.menu a:focus,
+.botoesdeano a:hover,
+.botoesdeano a:focus {
     background-color: var(--hover-fundo);
     cursor: pointer;
     transform: scale(1.1);
@@ -229,6 +245,15 @@ video {
 #h2-2 {
     text-align: left;
     margin: 0 0 5px 30px;
+}
+
+.enfaseclick {
+    animation: blink 10s;
+}
+
+@keyframes blink {
+    0% { background-color: yellow; }
+    100% { background-color: transparent; }
 }
 
 table {
