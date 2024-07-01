@@ -125,9 +125,6 @@ nav {
         flex-direction: column;
         align-items: left;
     }
-    .logo img{
-        max-width: 193px;
-    }
 }
 
 /* BASE */
