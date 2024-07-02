@@ -9,10 +9,10 @@ body {
     line-height: 1.5;
     font-family: "Nunito";
     font-weight: normal;
-    background: #EEE;
     font-size: medium;
     text-align: justify;
     overflow-x: hidden;
+    background: #EEE;
 }
 
 body>section {
