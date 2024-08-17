@@ -10,12 +10,14 @@
 	<meta property="og:title" content="Quem somos" />
 	<meta property="og:description" content="A.E.C.A" />
 	<meta property="og:site_name" content="Quem somos" />
-	<meta property="og:image" content="http://aeca.com.br/CSS/logos/logo-AECA-preto.png" />
+	<meta property="og:image" content="http://aeca.com.br/CSS/img/novos-aecas-4.png" />
 
 	<title>Quem somos</title>
 
 	<link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
+
+	<script src="/js/zoom.js" defer></script>
 
 	<script defer>
 		fetch('/HTML/footer.html')
@@ -49,8 +51,7 @@
 		<main role="main">
 			<article>
 				<p id="title">Quem somos</p>
-			</article>
-			<article>
+				<br>
 				<h1>Sem querer, nasce uma escola</h1>
 				<br>
 				<p>Em janeiro de 1995, ao final do <a href="/cbt">Curso Básico de Teatro (CBT)</a>, alguns
@@ -67,8 +68,8 @@
 				<p>Os encontros e ensaios do A.E.C.A ocorrem aos domingos de manhã na Casa da Cultura Dide Brandão, em
 					Itajaí-SC. Esse espaço cultural se tornou o ponto de encontro onde ideias ganham forma e os membros
 					do A.E.C.A podem desenvolver suas habilidades e produções teatrais.</p>
-			</article>
-			<article>
+				<br>
+				<br>
 				<h1>Missão e objetivos</h1>
 				<br>
 				<p>O A.E.C.A tem como missão primordial fomentar o desenvolvimento cultural e artístico de seus membros
@@ -99,7 +100,15 @@
 					compreensão das artes cênicas.</p>
 			</article>
 		</main>
-		<aside></aside>
+		<aside>
+			<div>
+				<img id="zoomImage1" src="/CSS/img/novos-aecas-4.png">
+				Integrantes do A.E.C.A no pátio da Casa da Cultura Dide Brandão, julho de 2024
+			</div>
+		</aside>
+		<div id="overlay1" class="overlay">
+			<img id="largeImage1" src="/CSS/img/novos-aecas-4.png">
+		</div>
 	</section>
 	<div id="footer"></div>
 </body>

@@ -324,6 +324,7 @@ aside>div {
     text-align: center;
     border-radius: 10px;
     font-weight: bold;
+    font-size: small;
     text-decoration: none;
     max-width: 100%;
     box-sizing: border-box;
