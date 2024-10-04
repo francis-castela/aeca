@@ -195,6 +195,7 @@ video {
 
 .google-docs-link {
     justify-content: center;
+    text-align: center;
     display: flex;
     padding: 10px 20px;
     background-color: var(--fundo-escuro);
