@@ -119,7 +119,7 @@ nav {
     cursor: pointer;
     transform: scale(1.1);
 }
- 
+
 @media screen and (max-width: 600px) {
     .menu {
         flex-direction: column;
@@ -140,7 +140,8 @@ p {
     margin-bottom: 10px;
 }
 
-ul, li {
+ul,
+li {
     color: var(--texto-comum);
     margin-bottom: 10px;
 }
@@ -189,8 +190,15 @@ video {
 }
 
 @keyframes backgroundBlink {
-    0%, 100% { background: var(--botao-piscante-1); }
-    50% { background: var(--botao-piscante-2); }
+
+    0%,
+    100% {
+        background: var(--botao-piscante-1);
+    }
+
+    50% {
+        background: var(--botao-piscante-2);
+    }
 }
 
 .google-docs-link {
@@ -204,7 +212,7 @@ video {
     border-radius: 5px;
     font-family: Nunito;
     font-weight: bold;
-    animation: backgroundBlink 2s infinite; 
+    animation: backgroundBlink 2s infinite;
 }
 
 .google-docs-link:hover {
@@ -251,8 +259,13 @@ video {
 }
 
 @keyframes blink {
-    0% { background-color: yellow; }
-    100% { background-color: transparent; }
+    0% {
+        background-color: yellow;
+    }
+
+    100% {
+        background-color: transparent;
+    }
 }
 
 table {
@@ -262,7 +275,8 @@ table {
     width: 95%;
 }
 
-th, td {
+th,
+td {
     padding: 7px 10px 7px 10px;
     vertical-align: top;
     width: 40%;
@@ -309,7 +323,7 @@ main {
 aside {
     width: 25%;
     max-width: 300px;
-    margin-left: 5%; 
+    margin-left: 5%;
     text-decoration: none;
     display: inline-block;
     vertical-align: top;
@@ -397,12 +411,33 @@ aside>div:hover {
     top: 40%;
     left: 25%;
     right: 25%;
-    bottom: 40%; 
+    bottom: 40%;
     background: var(--fundo-escuro);
     padding: 5px 10px;
     font-weight: bold;
     border-radius: 5px;
     font-size: 1.3em;
+}
+
+/* IMAGEM COM SLIDE */
+
+.imagem-slide {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    width: 100%;
+    height: 200%;
+    transition: transform 1s ease-in-out;
+}
+
+.slides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* RODAPÉ */
@@ -435,11 +470,11 @@ footer a {
     aside {
         width: 100%;
         max-width: 100%;
-        margin-left: 0; 
+        margin-left: 0;
     }
+
     .text-overlay {
         font-size: 10vw;
     }
 
 }
-

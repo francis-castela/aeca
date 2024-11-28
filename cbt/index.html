@@ -10,7 +10,7 @@
     <meta property="og:title" content="CBT" />
     <meta property="og:description" content="Curso Básico de Teatro - 39ª Edição de Verão" />
     <meta property="og:site_name" content="CBT" />
-    <meta property="og:image" content="http://aeca.com.br/cbt/IMG/cbt-flyer-39verao-og.jpg" />
+    <meta property="og:image" content="http://aeca.com.br/cbt/IMG/cbt-header.jpg" />
 
     <title>Curso Básico de Teatro</title>
 
@@ -41,28 +41,39 @@
 <body>
     <section id="pageContent">
         <main role="main">
+            <div class="imagem-slide">
+                <div class="slides">
+                    <img src="/cbt/IMG/cbt-banner-1.jpg">
+                    <img src="/cbt/IMG/cbt-banner-2.jpg">
+                    <img src="/cbt/IMG/cbt-banner-3.jpg">
+                    <img src="/cbt/IMG/cbt-banner-4.jpg">
+                </div>
+            </div>
+            <script>
+                // Lista de imagens e variáveis
+                const slides = document.querySelector(".slides");
+                const totalImagens = document.querySelectorAll(".slides img").length;
+                let currentIndex = 0;
+
+                // Função para alterar o slide
+                function changeSlide() {
+                    // Calcula a posição para o próximo slide
+                    currentIndex = (currentIndex + 1) % totalImagens;
+                    const offset = -currentIndex * 100; // Movimenta 100% para cada slide
+                    slides.style.transform = `translateX(${offset}%)`;
+                }
+
+                // Altera o slide a cada 5 segundos
+                setInterval(changeSlide, 5000);
+            </script>
             <article>
-                <a href="/cbt"><img src="/cbt/IMG/cbt-flyer-39verao.jpg"></a>
+                <a href="https://forms.gle/trToTEo2GkFPeofx6" class="google-docs-link" target="_blank" style="font-family: Bebas; font-weight: 100; font-size: 7vh;">CLIQUE AQUI E
+                    INSCREVA-SE!</a>
             </article>
             <article>
-                <table id="elencosempersonagem">
-                    <tr>
-                        <th colspan="2" class="cabecalho-tabela">
-                            Ficha de inscrição</th>
-                    </tr>
-                    <tr>
-                        <td> <a href="https://forms.gle/trToTEo2GkFPeofx6" class="google-docs-link"
-                                target="_blank">Inscreva-se
-                                aqui</a></td>
-                    </tr>
-                    <br>
-                </table>
+                <h3 style="text-align: center; text-indent: 0;">Está chegando 39ª Edição de Verão do Curso Básico de Teatro!</h3>
+                <p style="text-align: center; text-indent: 0;">Durante 4 semanas, mergulhe em exercícios de expressão corporal, concentração e dinâmica de grupo!</p>
                 <br>
-                <br>
-                <h1>Então você quer fazer teatro?</h1>
-                <br>
-                <p>Está chegando 39ª Edição de Verão do Curso Básico de Teatro! Este intensivo de quatro semanas é ideal
-                    para quem deseja mergulhar no universo teatral e desenvolver suas habilidades artísticas.</p>
                 <p>O que você vai encontrar no curso:</p>
                 <ul>
                     <li><b style="color: #ff494f;">Expressão corporal:</b> Aprenda a usar seu corpo como um instrumento
@@ -73,6 +84,7 @@
                         interação com outros alunos através de atividades colaborativas.</li>
                     <li><b style="color: #ff494f;">Jogos dramáticos e improvisação:</b> Desenvolva a criatividade e a
                         espontaneidade com técnicas de improvisação e jogos teatrais.</li>
+                        <li><b style="color: #ff494f;">Espetáculo final:</b> Coloque em prática tudo o que aprendeu ao longo do curso, apresentando um espetáculo teatral que celebrará o encerramento dessa jornada artística.</li>
                 </ul>
                 <br>
                 <br>
@@ -83,7 +95,7 @@
                     </tr>
                     <tr>
                         <th>Data do curso</th>
-                        <td>De 6 de janeiro a 2 de fevereiro, segunda a sexta</td>
+                        <td>De 6 de janeiro a 2 de fevereiro</td>
                     </tr>
                     <tr>
                         <th>Horário</th>
@@ -111,23 +123,21 @@
                         <td>O pagamento é realizado online através de um link de pagamento na ficha de inscrição.
                             Aceitamos PIX e cartões de crédito e débito.</td>
                     </tr>
+                    <tr>
+                        <th>Realização</th>
+                        <td>Bagagem Cênica Cia de Teatro</td>
+                    </tr>
+                    <tr>
+                        <th>Apoio</th>
+                        <td>Alunos do Exercício Cênico Anchieta - A.E.C.A</td>
+                    </tr>
                 </table>
                 <br>
-                <p style="text-align: center; text-indent: 0">Dúvidas? Entre em contato com nosso suporte via WhatsApp:<br>
+                <p style="text-align: center; text-indent: 0">Dúvidas? Entre em contato com nosso suporte via
+                    WhatsApp:<br>
                     <b><a style="color: #25D366;" href="https://wa.me/5547997085692"><i class="fa fa-whatsapp"></i>
                             Francis Castela</a></b>.
                 </p>
-                <br>
-                <br>
-                <h3>Política de Segurança e Convivência</h3>
-                <p style="font-size: small;">Ao se inscrever, o participante concorda com as diretrizes de convivência
-                    do curso, que incluem o respeito mútuo e a manutenção de um ambiente livre de comportamentos
-                    abusivos, intimidações, assédios, discriminação ou quaisquer condutas que possam comprometer o
-                    bem-estar e a segurança dos demais.</p>
-                <p style="font-size: small;">A coordenação pode negar a participação de pessoas cujas atitudes ou
-                    comportamento sejam considerados incompatíveis com a política de segurança e convivência
-                    estabelecida. A decisão será pautada no objetivo de preservar um ambiente saudável e seguro para
-                    todos os inscritos.</p>
             </article>
             <article>
                 <video controls width="100%" loop preload="auto">
