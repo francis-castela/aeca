@@ -355,6 +355,7 @@ article img {
     max-width: 100%;
     display: block;
     transition: transform 0.3s ease;
+    margin: auto;
 }
 
 aside>div:hover {
