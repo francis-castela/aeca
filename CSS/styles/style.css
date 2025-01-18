@@ -449,7 +449,7 @@ footer {
     font-size: 10px;
     color: var(--texto-comum);
     text-decoration: none;
-    background: var(--fundo-escuro);
+    background: #BBB;
     margin: auto;
     clear: both;
     text-align: center;
