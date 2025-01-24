@@ -48,6 +48,11 @@ body>section {
     src: url("/CSS/fonts/SourceCodePro.ttf");
 }
 
+@font-face {
+    font-family: "Raleway";
+    src: url("/CSS/fonts/Raleway-VariableFont_wght.ttf");
+}
+
 /* CABEÇALHO */
 header {
     display: flex;
