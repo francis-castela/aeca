@@ -8,7 +8,7 @@
 
     <meta property="og:url" content="https://aeca.com.br/cbt" />
     <meta property="og:title" content="CBT" />
-    <meta property="og:description" content="Curso Básico de Teatro - 39ª Edição de Verão" />
+    <meta property="og:description" content="Curso Básico de Teatro" />
     <meta property="og:site_name" content="CBT" />
     <meta property="og:image" content="http://aeca.com.br/cbt/IMG/cbt-header.jpg" />
 
@@ -16,126 +16,68 @@
 
     <link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="/js/zoom.js" defer></script>
 
-    <style>
-        html,
-        body {
-            background: #000000;
-        }
+    <script defer>
+        fetch('/HTML/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+    </script>
 
-        :root {
-            --fundo-escuro: #35080A;
-            --texto-comum: #EEE;
-            --borda: 1px solid #EEE;
-        }
-
-        a {
-            color: #ff494f;
-        }
-    </style>
+    <script defer>
+        fetch('/HTML/cabecalho.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('cabecalho').innerHTML = data;
+            });
+    </script>
 </head>
 
 <body>
+
+    <header>
+        <nav id="cabecalho"></nav>
+    </header>
+
     <section id="pageContent">
         <main role="main">
-            <div class="imagem-slide">
-                <div class="slides">
-                    <img src="/cbt/IMG/cbt-banner-1.jpg">
-                    <img src="/cbt/IMG/cbt-banner-2.jpg">
-                    <img src="/cbt/IMG/cbt-banner-3.jpg">
-                    <img src="/cbt/IMG/cbt-banner-4.jpg">
-                </div>
-            </div>
-            <script>
-                // Lista de imagens e variáveis
-                const slides = document.querySelector(".slides");
-                const totalImagens = document.querySelectorAll(".slides img").length;
-                let currentIndex = 0;
 
-                // Função para alterar o slide
-                function changeSlide() {
-                    // Calcula a posição para o próximo slide
-                    currentIndex = (currentIndex + 1) % totalImagens;
-                    const offset = -currentIndex * 100; // Movimenta 100% para cada slide
-                    slides.style.transform = `translateX(${offset}%)`;
-                }
+            <h1>Curso Básico de Teatro – CBT</h1>
+            <h2>Curso intensivo com edições de inverno e verão</h2>
 
-                // Altera o slide a cada 4 segundos
-                setInterval(changeSlide, 4000);
-            </script>
             <article>
-                <h1>Inscrições encerradas</h1>
-            </article>
-            <article>
-                <h3 style="text-align: center; text-indent: 0;">Chegou a 39ª Edição de Verão do Curso Básico de Teatro!</h3>
-                <p style="text-align: center; text-indent: 0;">Durante 4 semanas, mergulhe em exercícios de expressão corporal, concentração e dinâmica de grupo!</p>
-                <br>
-                <p>O que você vai encontrar no curso:</p>
+                <p>O Curso Básico de Teatro – CBT é um intensivo de duas semanas ideal para quem deseja mergulhar no
+                    universo teatral e desenvolver habilidades artísticas. Nele, os alunos encontram um ambiente
+                    propício para explorar e aprimorar diversas facetas da atuação, através de uma abordagem prática e
+                    colaborativa.</p>
+                <p>Os principais componentes do CBT incluem:</p>
                 <ul>
-                    <li><b style="color: #ff494f;">Expressão corporal:</b> Aprenda a usar seu corpo como um instrumento
-                        de comunicação e expressão artística.</li>
-                    <li><b style="color: #ff494f;">Concentração:</b> Exercícios para melhorar a sua capacidade de foco e
-                        presença de palco.</li>
-                    <li><b style="color: #ff494f;">Interação e dinâmica de grupo:</b> Trabalhe em equipe e fortaleça a
-                        interação com outros alunos através de atividades colaborativas.</li>
-                    <li><b style="color: #ff494f;">Jogos dramáticos e improvisação:</b> Desenvolva a criatividade e a
-                        espontaneidade com técnicas de improvisação e jogos teatrais.</li>
-                        <li><b style="color: #ff494f;">Espetáculo final:</b> Coloque em prática tudo o que aprendeu ao longo do curso, apresentando um espetáculo teatral que celebrará o encerramento dessa jornada artística.</li>
+                    <li><b style="color: var(--texto-titulo)">Expressão corporal:</b> Os alunos aprendem a usar o corpo
+                        como um instrumento de comunicação e expressão artística, explorando movimentos e posturas que
+                        ajudam a transmitir emoções e contar histórias.</li>
+                    <li><b style="color: var(--texto-titulo)">Articulação vocal:</b> Os alunos praticam exercícios
+                        específicos para melhorar a clareza, projeção e expressividade da voz, essenciais para uma
+                        performance teatral.
+                    </li>
+                    <li><b style="color: var(--texto-titulo)">Concentração:</b> Os alunos trabalham sua capacidade de
+                        foco e presença de palco, essenciais para qualquer ator.</li>
+                    <li><b style="color: var(--texto-titulo)">Interação e dinâmica de grupo:</b> O curso enfatiza o
+                        trabalho em equipe e a interação com outros alunos. Atividades colaborativas são projetadas para
+                        fortalecer os laços entre os participantes, promovendo um ambiente de apoio e cooperação.</li>
+                    <li><b style="color: var(--texto-titulo)">Jogos dramáticos e improvisação:</b> Desenvolver a
+                        criatividade e a espontaneidade é crucial para o teatro. O curso inclui técnicas de improvisação
+                        e jogos teatrais que desafiam os alunos a pensar rapidamente e a reagir de forma criativa às
+                        situações imprevistas.</li>
                 </ul>
-                <br>
-                <br>
-                <table>
-                    <tr>
-                        <th colspan="2" class="cabecalho-tabela" style="color: #FFF;">INFORMAÇÕES
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>Data do curso</th>
-                        <td>De 6 de janeiro a 2 de fevereiro</td>
-                    </tr>
-                    <tr>
-                        <th>Horário</th>
-                        <td>Das 19h às 22h</td>
-                    </tr>
-                    <tr>
-                        <th>Local</th>
-                        <td><a href="https://maps.app.goo.gl/WeaFhzNd7XgLcr2DA">Casa da Cultura Dide Brandão</a>. R.
-                            Hercílio Luz, 655, Centro. Itajaí-SC.</td>
-                    </tr>
-                    <tr>
-                        <th>Ministrante</th>
-                        <td><a href="/valentim.html">Valentim Schmoeler</a></td>
-                    </tr>
-                    <tr>
-                        <th>Valor</th>
-                        <td>R$ 400,00 (quatrocentos reais)</td>
-                    </tr>
-                    <tr>
-                        <th>Idade mínima</th>
-                        <td>14 anos</td>
-                    </tr>
-                    <tr>
-                        <th>Forma de pagamento</th>
-                        <td>O pagamento é realizado online através de um link de pagamento na ficha de inscrição.
-                            Aceitamos PIX e cartões de crédito e débito.</td>
-                    </tr>
-                    <tr>
-                        <th>Realização</th>
-                        <td>Bagagem Cênica Cia de Teatro</td>
-                    </tr>
-                    <tr>
-                        <th>Apoio</th>
-                        <td>Alunos do Exercício Cênico Anchieta - A.E.C.A</td>
-                    </tr>
-                </table>
-                <br>
-                <p style="text-align: center; text-indent: 0">Dúvidas? Entre em contato com nosso suporte via
-                    WhatsApp:<br>
-                    <b><a style="color: #25D366;" href="https://wa.me/5547997085692"><i class="fa fa-whatsapp"></i> Francis Castela</a></b>.
-                </p>
+                <p>Ministrado desde 1985 por <a href="/valentim">Valentim Schmoeler</a>, o CBT tem uma longa tradição de
+                    excelência na formação de novos atores. Desde 1995, o curso conta também com o apoio de vários
+                    alunos do Alunos do Exercício Cênico Anchieta (A.E.C.A), que contribuem para a realização das
+                    atividades, enriquecendo ainda mais a experiência dos participantes.</p>
+                <p>O CBT é realizado duas vezes por ano, com edições de verão (em janeiro) e inverno (em julho). A
+                    edição de verão dura 4 semanas, enquanto a de inverno é um intensivo de 2 semanas.</p>
             </article>
             <article>
                 <video controls width="100%" loop preload="auto">
@@ -143,6 +85,7 @@
                 </video>
             </article>
         </main>
+
         <aside>
             <div>
                 <img id="zoomImage1" src="/cbt/IMG/cbt-foto-1.png">
@@ -224,8 +167,8 @@
             <img id="largeImage9" src="/cbt/IMG/cbt-foto-9.png">
         </div>
 
-        </aside>
     </section>
+    <div id="footer"></div>
 </body>
 
 </html>
