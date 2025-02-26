@@ -206,7 +206,7 @@ video {
     }
 }
 
-.google-docs-link {
+.botao-piscante {
     justify-content: center;
     text-align: center;
     display: flex;
@@ -220,19 +220,10 @@ video {
     animation: backgroundBlink 2s infinite;
 }
 
-.google-docs-link:hover {
+.botao-piscante:hover {
     cursor: pointer;
     transition: 0.3s;
     transform: scale(1.03);
-}
-
-.google-docs-icon {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-    background-image: url('https://www.gstatic.com/images/branding/product/2x/docs_48dp.png');
-    background-size: cover;
 }
 
 #pageContent {
