@@ -27,12 +27,12 @@
             });
     </script>
     <script defer>
-		fetch('/HTML/aside-padrao.html')
-			.then(response => response.text())
-			.then(data => {
-				document.getElementById('aside-padrao').innerHTML = data;
-			});
-	</script>
+        fetch('/HTML/aside-padrao.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('aside-padrao').innerHTML = data;
+            });
+    </script>
     <script defer>
         fetch('/HTML/cabecalho.html')
             .then(response => response.text())
@@ -60,40 +60,110 @@
             <h1 style="font-size: 25px;">Uma (nem tão) divina comédia</h1>
             <h2>Processo de pesquisa e montagem 2025/1</h2>
             <article>
-                <p style="font-style: italic; text-indent: 0"> A clássica história bíblica... contada pela perspectiva dos demônios! Após serem expulsos do Paraíso, os anjos caídos liderados por Lúcifer planejam sua vingança nas chamas do Inferno. Incapazes de atacar diretamente o Céu, decidem corromper a criação divina: o homem. Seduzidos pela serpente, Adão e Eva sucumbem à tentação, trazendo o pecado e a morte ao mundo. Jesus, acompanhando os acontecimentos, promete descer e salvar a humanidade.</p>
-                    <br>
+                <p style="font-style: italic; text-indent: 0"> Após serem expulsos do Paraíso, os anjos caídos liderados
+                    por Lúcifer planejam sua vingança nas chamas do Inferno. Incapazes de atacar diretamente o Céu,
+                    decidem corromper a criação divina: os humanos. Seduzidos pela serpente, Adão e Eva sucumbem à
+                    tentação, trazendo o pecado e a morte ao mundo. Jesus, acompanhando os acontecimentos, promete
+                    descer e salvar a humanidade.</p>
+                <br>
                 <h1>Processo em produção</h1>
                 <h2>Volte em breve para mais detalhes</h2>
 
                 <!-- <article>
-
-                <img src="/espetaculos/2025/IMG/paraiso-cartaz.webp">
-            </article>
-                <h1>COMPRE OS INGRESSOS ONLINE!</h1>
-                <a href="/erro-ingresso" class="botao-piscante" target="_blank">CLIQUE AQUI PARA COMPRAR OS
-                    INGRESSOS!</a>
+                    <img src="/espetaculos/2025/IMG/paraiso-cartaz.webp"> 
+                </article> -->
+                <table id="tabela-sessoes">
+                    <thead>
+                        <tr>
+                            <th class="cabecalho-tabela" style="color: #FFF;">AUTOCLASSIFICAÇÃO INDICATIVA</th>
+                        </tr>
+                        <tr>
+                            <td>Não recomendado para menores de 14 anos<br>
+                                <img src="/CSS/classificacao/classificacao-14.webp"
+                                    style="height: 64px; display: block; margin: auto;">
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
                 <br>
-                <p style="text-indent: 0px; text-align: center;"><b style="font-size: larger;">VALOR DOS INGRESSOS</b><br>
-                    INTEIRA: A definir<br>
-                    MEIA: A definir<br>
-                    <span style="font-size: small;">Meia-entrada válida para beneficiados pela <a href="/meia-entrada">Lei da Meia-Entrada</a> ou levando 1kg de alimento não perecível.</span>
-                </p>
                 <br>
-                <p style="text-indent: 0px; text-align: center;"><b style="font-size: larger;">AUTOCLASSIFICAÇÃO INDICATIVA</b><br>A definir<br>
-                    <img src=""
-                        style="height: 64px; display: block; margin: auto;">
-                </p>
+                <table id="tabela-sessoes">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="cabecalho-tabela" style="color: #FFF;">COMPRE OS INGRESSOS</th>
+                        </tr>
+                        <tr>
+                            <!-- <td colspan="2"><a href="/erro-ingresso" class="botao-piscante" target="_blank">CLIQUE AQUI
+                                    PARA COMPRAR</a></td> -->
+                            <td colspan="2"><b>Venda de ingressos ainda não disponível</b></td>
+                        </tr>
+                        <tr>
+                            <th>Inteira</th>
+                            <td>A definir</td>
+                        </tr>
+                        <tr>
+                            <th>Meia</th>
+                            <td>A definir</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="font-size: small;">Meia-entrada válida para beneficiados pela <a
+                                    href="/meia-entrada">Lei da Meia-Entrada</a> ou levando 1kg de alimento não
+                                perecível</td>
+                        </tr>
+                    </thead>
+                </table>
                 <br>
-                <p style="text-indent: 0px; text-align: center;"><b style="font-size: larger;">SESSÕES</b><br>
-                    A definir</p>
                 <br>
-                <p style="text-indent: 0px; text-align: center;"><b style="font-size: larger;">LOCAL</b><br>
-                    Casa da Cultura Dide Brandão<br>
-                    <a href="https://maps.app.goo.gl/7K6gkpnrpFwBKKBm9">
-                        R. Hercílio Luz, 655 - Centro, Itajaí - SC</a>
-                </p>
-            </article>-->
-            <article>
+                <table id="tabela-sessoes">
+                    <thead>
+                        <tr>
+                            <th colspan="3" class="cabecalho-tabela" style="color: #FFF;">SESSÕES</th>
+                        </tr>
+                        <tr>
+                            <th>Data</th>
+                            <th>Dia</th>
+                            <th>Horário</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>12/07</td>
+                            <td>Sábado</td>
+                            <td>20h</td>
+                        </tr>
+                        <tr>
+                            <td>13/07</td>
+                            <td>Domingo</td>
+                            <td>20h</td>
+                        </tr>
+                        <tr>
+                            <td>19/07</td>
+                            <td>Sábado</td>
+                            <td>20h</td>
+                        </tr>
+                        <tr>
+                            <td>20/07</td>
+                            <td>Domingo</td>
+                            <td>20h</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <br>
+                <table id="tabela-sessoes">
+                    <thead>
+                        <tr>
+                            <th class="cabecalho-tabela" style="color: #FFF;">LOCAL</th>
+                        </tr>
+                        <tr>
+                            <td><a href="https://maps.app.goo.gl/7K6gkpnrpFwBKKBm9"><b>Casa da Cultura Dide
+                                        Brandão</b></a><br>
+                                R. Hercílio Luz, 655 - Centro, Itajaí - SC</a></td>
+                        </tr>
+                    </thead>
+                </table>
+                <br>
+                <br>
                 <table>
                     <tr>
                         <th colspan="2" class="cabecalho-tabela" style="color: #FFF;">ELENCO
@@ -101,77 +171,78 @@
                     </tr>
                     <tr>
                         <th></th>
-                        <td></td>
+                        <td>Ana Rosa Batista</td>
                     </tr>
                     <tr>
                         <th></th>
-                        <td></td>
+                        <td>Beatriz Serafim</td>
                     </tr>
                     <tr>
                         <th></th>
-                        <td></td>
+                        <td>Carla Baião</td>
                     </tr>
                     <tr>
                         <th></th>
-                        <td></td>
+                        <td>Célio Donato</td>
                     </tr>
                     <tr>
                         <th></th>
-                        <td></td>
+                        <td>Dales Hoeckesfeld</td>
                     </tr>
                     <tr>
                         <th></th>
-                        <td></td>
+                        <td>Dayane Maia</td>
                     </tr>
                     <tr>
                         <th></th>
-                        <td></td>
+                        <td>Dyonata dos Santos</td>
                     </tr>
                     <tr>
                         <th></th>
-                        <td></td>
+                        <td>Fernanda Amaral</td>
                     </tr>
                     <tr>
                         <th></th>
-                        <td></td>
+                        <td>Idalicio Neto</td>
                     </tr>
                     <tr>
                         <th></th>
-                        <td></td>
+                        <td>Julian Félix</td>
                     </tr>
                     <tr>
                         <th></th>
-                        <td></td>
+                        <td>Léo Crispim</td>
                     </tr>
                     <tr>
                         <th></th>
-                        <td></td>
+                        <td>Luanny Rodrigues</td>
                     </tr>
                     <tr>
                         <th></th>
-                        <td></td>
+                        <td>Maria Nunes</td>
                     </tr>
                     <tr>
                         <th></th>
-                        <td></td>
+                        <td>Mariana Nunes</td>
                     </tr>
                     <tr>
                         <th></th>
-                        <td></td>
+                        <td>Marilú Müller</td>
                     </tr>
                     <tr>
                         <th></th>
-                        <td></td>
+                        <td>Murilo Lavandoski</td>
                     </tr>
                     <tr>
                         <th></th>
-                        <td></td>
+                        <td>Thiago Simões</td>
                     </tr>
                     <tr>
                         <th></th>
-                        <td></td>
+                        <td>Vinicius Mateus</td>
                     </tr>
                 </table>
+                <br>
                 <br>
                 <table>
                     <tr>
@@ -203,7 +274,7 @@
                         <td>Paula Ramos</td>
                     </tr>
                     <tr>
-                        <th>Coordenação Geral</th>
+                        <th>Supervisão</th>
                         <td>Valentim Schmoeler</td>
                     </tr>
                     <tr>
@@ -216,6 +287,7 @@
                         <td>John Milton</td>
                     </tr>
                 </table>
+                <br>
                 <br>
                 <table id="elencosempersonagem">
                     <tr>
@@ -237,11 +309,15 @@
                 </table>
             </article>
             <article>
-                <p style="text-indent: 0; font-size: small;">As obras <b>Paradise Lost</b> e <b>Paradise Regained</b> foram livremente adaptadas em um processo de pesquisa e montagem sem fins lucrativos, sob a orientação da coordenação dos Alunos do Exercício Cênico Anchieta. Os recursos financeiros arrecadados foram usados exclusivamente para cobrir despesas de figurino, maquiagem, transporte e outras operações.
+                <p style="text-indent: 0; font-size: small;">As obras <b>Paradise Lost</b> e <b>Paradise Regained</b>
+                    foram livremente adaptadas em um processo de pesquisa e montagem sem fins lucrativos, sob a
+                    orientação da coordenação dos Alunos do Exercício Cênico Anchieta. Os recursos financeiros
+                    arrecadados foram usados exclusivamente para cobrir despesas de figurino, maquiagem, transporte e
+                    outras operações.
                 </p>
 
             </article>
-            
+
         </main>
         <aside id="aside-padrao"></aside>
     </section>

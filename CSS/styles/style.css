@@ -275,7 +275,7 @@ th,
 td {
     padding: 7px 10px 7px 10px;
     vertical-align: top;
-    width: 40%;
+    width: 0%;
     border-bottom: 1px dashed #BBB;
     border-radius: 5px;
     line-height: 1.2;
@@ -304,10 +304,21 @@ td {
 }
 
 #elencosempersonagem {
+    th,
     td {
         text-align: center;
+        text-indent: 0px;
     }
 }
+
+#tabela-sessoes {
+    th,
+    td {
+        text-align: center;
+        text-indent: 0px;
+    }
+}
+
 
 main {
     float: left;
