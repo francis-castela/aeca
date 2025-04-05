@@ -137,6 +137,12 @@ h4 {
     margin-top: 0.3rem;
 }
 
+.logo-main a,
+.logo-sub a {
+    color: var(--texto-header);
+    text-decoration: none;
+}
+
 /* ===================== NAVEGAÇÃO ===================== */
 .nav {
     background-color: #ffffff;
