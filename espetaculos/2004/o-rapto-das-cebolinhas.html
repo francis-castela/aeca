@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:url" content="https://aeca.com.br/espetaculos/2004/o-rapto-das-cebolinhas" />
+    <meta property="og:title" content="O Rapto das Cebolinhas" />
+    <meta property="og:description" content="A.E.C.A" />
+    <meta property="og:site_name" content="O Rapto das Cebolinhas" />
+    <meta property="og:image" content="http://aeca.com.br/espetaculos/2004/img/rapto-og.jpg" />
+
+    <title>O Rapto das Cebolinhas</title>
+
+	<link rel="icon" href="/css/logos/favicon.webp" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/css/styles/style.css">
+
+	<script defer>
+		fetch('/html/footer.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('footer').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/aside-padrao.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('aside-padrao').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/cabecalho.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('cabecalho').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/imagem-modal.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('imagem-modal').innerHTML = data;
+			});
+	</script>
+	<script src="/js/zoom.js" defer></script>
+	<script src="/js/scrollback.js"></script>
+
+</head>
+
+<style>
+	:root {
+		--fundo-pagina: #EEE;
+		--header: #8C171B;
+	}
+</style>
+
+<body>
+	<div id="cabecalho"></div>
+
+	<div class="container">
+		<main class="main-content">
+            <h1>O Rapto das Cebolinhas</h1>
+			<h3>Processo de pesquisa e montagem 2004</h3>
+			<hr>
+
+			<h2>Página em construção</h2>
+			<hr>
+			<p>Volte em breve!</p>
+			
+
+		</main>
+
+		<aside class="sidebar">
+			<div class="sidebar-titulo">Cartaz do espetáculo</div>
+			<div><img src="/espetaculos/2004/img/rapto-cartaz.webp"></div>
+			<hr>
+			<div class="sidebar-titulo">Elenco</div>
+			<div><img src="/espetaculos/2004/img/rapto-elenco.webp"></div>
+			<hr>
+			<div class="sidebar-titulo">Galeria de fotos</div>
+			<div class="sidebar-texto">Clique para ampliar</div>
+			<div class="sidebar-galeria">
+				<img src="/espetaculos/2004/img/rapto-1.webp">
+				<img src="/espetaculos/2004/img/rapto-2.webp">
+				<img src="/espetaculos/2004/img/rapto-3.webp">
+				<img src="/espetaculos/2004/img/rapto-4.webp">
+				<img src="/espetaculos/2004/img/rapto-5.webp">
+				<img src="/espetaculos/2004/img/rapto-6.webp">
+				<img src="/espetaculos/2004/img/rapto-7.webp">
+				<img src="/espetaculos/2004/img/rapto-8.webp">
+				<img src="/espetaculos/2004/img/rapto-9.webp">
+			</div>
+			<hr>
+			<div class="sidebar-texto" style="font-size: 0.8rem; text-align: justify;">A obra <b>O Rapto das Cebolinhas</b> foi livremente adaptada em um processo de pesquisa e montagem sem fins lucrativos, sob a orientação da coordenação dos Alunos do Exercício Cênico Anchieta. Os recursos financeiros arrecadados foram usados exclusivamente para cobrir despesas de figurino, maquiagem, transporte e outras operações.</div>
+		</aside>
+
+	</div>
+</body>
+<div id="footer"></div>
+<div id="imagem-modal"></div>
+
+</html>

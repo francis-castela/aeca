@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta property="og:url" content="https://aeca.com.br/valentim" />
+	<meta property="og:title" content="Valentim Schmoeler" />
+	<meta property="og:description" content="Fundador do Anchieta Arte Cênica" />
+	<meta property="og:site_name" content="Valentim Schmoeler" />
+	<meta property="og:image" content="http://aeca.com.br/css/img/valentim-fernandopessoa.webp" />
+
+	<title>Valentim Schmoeler</title>
+
+	<link rel="icon" href="/css/logos/favicon.webp" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/css/styles/style.css">
+
+	<script defer>
+		fetch('/html/footer.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('footer').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/aside-padrao.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('aside-padrao').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/cabecalho.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('cabecalho').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/imagem-modal.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('imagem-modal').innerHTML = data;
+			});
+	</script>
+	<script src="/js/zoom.js" defer></script>
+	<script src="/js/scrollback.js"></script>
+
+</head>
+
+<body>
+	<div id="cabecalho"></div>
+
+	<div class="container">
+		<main class="main-content">
+			<h1>Valentim Schmoeler</h1>
+			<h3>Fundador do Anchieta Arte Cênica</h3>
+			<hr>
+			<p>Valentim Schmoeler nasceu em 09 de janeiro de 1956, na cidade de Tubarão-SC. Sua vida artística
+				teve início em Imbituba-SC, ainda na infância. Em 1972, mudou-se para Itajaí-SC, onde concluiu o
+				Ensino Médio e se destacou como ator, diretor e dramaturgo em diversos grupos teatrais. Em 1977,
+				Valentim se mudou para Curitiba-PR, onde trabalhou como ator na TV Paraná Canal 6, participando de
+				sete minisséries e colaborando com renomados artistas como Odelair Rodrigues, Delci e Edson Dávila e
+				Roberto Menghini.</p>
+			<p>Em 1978, Valentim ingressou na Equipe Vira-Lata, dirigida por Carlos Roberto Jardim, no Teatro Carlos
+				Gomes, em Blumenau-SC. Permanecendo na companhia até 1984, ele levou o teatro popular a várias
+				localidades de Santa Catarina. Em 1985, Valentim fundou a Anchieta Teatral Produções (ATP) em
+				Itajaí, com sede na Casa da Cultura Dide Brandão, junto com Toni Cunha e Carlos Leal. O objetivo era
+				levar o teatro a diversas cidades do estado, especialmente as interioranas.</p>
+			<p>Com a intenção de promover o movimento artístico em Itajaí, Valentim criou o
+				<a href="/cbt">Curso Básico de Teatro - CBT</a> em 1986, com edições anuais no verão e no inverno,
+				realizados na Casa da Cultura Dide Brandão. Em 1995, fundou o Anchieta Junior, posteriormente
+				renomeado para <a href="/">Alunos do Exercício Cênico Anchieta – A.E.C.A</a>, uma escola de teatro
+				composta por alunos dos CBTs. Em 2000, criou o grupo Bagagem Cênica Cia de Teatro, um desdobramento
+				da Anchieta Teatral Produções, para levar os trabalhos da companhia por todo o estado.
+			</p>
+			<p>Em 2004, a companhia foi renomeada Anchieta Arte Cênica (AAC), continuando o legado da ATP. Com o
+				Anchieta, Valentim realizou mais de 100 espetáculos como ator e diretor, e mais de 50 edições do
+				Curso Básico de Teatro. Ministrou cursos em várias cidades, incluindo Balneário Camboriú, São Bento
+				do Sul, São Miguel do Oeste, Capinzal, Penha e Porto Alegre.</p>
+			<p>Valentim Schmoeler aperfeiçoou suas habilidades com grandes mestres do teatro brasileiro, como Olga
+				Reverbel, Luiz Eduardo Vendramini, Antônio Mercado, Carmem Fossari, Vera Collaço, Francisco
+				Medeiros, Hilda Melo, Otto Buchsbaum, Florence Buchsbaum, Jorge Hartck, Maria Clara Machado,
+				Lourival Andrade Júnior e Bárbara Biscaro.</p>
+			<p>Atualmente, Valentim reside em Itajaí, onde continua seu trabalho artístico com a Anchieta Arte
+				Cênica. Desde 2018 é professor de teatro através do programa Arte Nos Bairros, orientando alunos a
+				partir de 14 anos.</p>
+			<br>
+			<h4>"Melhor vida é a vida Que dura sem medir-se"</h4>
+			<p>Ricardo Reis - Fernando Pessoa</p>
+		</main>
+
+		<aside class="sidebar">
+			<div><img src="/css/img/valentim-marcoskonder.webp"></div>
+			<div><img src="/css/img/valentim-fernandopessoa.webp"></div>
+			<div><img src="/css/img/valentim-aguamole.webp"></div>
+		</aside>
+	</div>
+</body>
+<div id="footer"></div>
+<div id="imagem-modal"></div>
+
+</html>

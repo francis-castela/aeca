@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta property="og:url" content="https://aeca.com.br/cbt" />
+	<meta property="og:title" content="CBT" />
+	<meta property="og:description" content="Curso Básico de Teatro" />
+	<meta property="og:site_name" content="CBT" />
+	<meta property="og:image" content="http://aeca.com.br/css/logos/logo-AECA-preto.png" />
+
+	<title>Curso Básico de Teatro</title>
+
+	<link rel="icon" href="/css/logos/favicon.webp" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/css/styles/style.css">
+
+	<script defer>
+		fetch('/html/footer.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('footer').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/aside-padrao.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('aside-padrao').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/cabecalho.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('cabecalho').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/imagem-modal.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('imagem-modal').innerHTML = data;
+			});
+	</script>
+	<script src="/js/zoom.js" defer></script>
+	<script src="/js/scrollback.js"></script>
+
+</head>
+
+<body>
+	<div id="cabecalho"></div>
+
+	<div class="container">
+		<main class="main-content">
+			<h1>Curso Básico de Teatro – CBT</h1>
+			<h3>Curso intensivo com edições de inverno e verão</h3>
+			<hr>
+			<p>O Curso Básico de Teatro – CBT é um intensivo de duas semanas ideal para quem deseja mergulhar no
+				universo teatral e desenvolver habilidades artísticas. Nele, os alunos encontram um ambiente
+				propício para explorar e aprimorar diversas facetas da atuação, através de uma abordagem prática e
+				colaborativa.</p>
+			<p>Os principais componentes do CBT incluem:</p>
+			<p><b style="color: var(--texto-titulo)">Expressão corporal:</b> Os alunos aprendem a usar o corpo como um
+				instrumento de comunicação e expressão artística, explorando movimentos e posturas que ajudam a
+				transmitir emoções e contar histórias.</p>
+			<p><b style="color: var(--texto-titulo)">Articulação vocal:</b> Os alunos praticam exercícios específicos
+				para melhorar a clareza, projeção e expressividade da voz, essenciais para uma performance teatral.</p>
+			<p><b style="color: var(--texto-titulo)">Concentração:</b> Os alunos trabalham sua capacidade de foco e
+				presença de palco, essenciais para qualquer ator.</p>
+			<p><b style="color: var(--texto-titulo)">Interação e dinâmica de grupo:</b> O curso enfatiza o trabalho em
+				equipe e a interação com outros alunos. Atividades colaborativas são projetadas para
+				fortalecer os laços entre os participantes, promovendo um ambiente de apoio e cooperação.</p>
+			<p><b style="color: var(--texto-titulo)">Jogos dramáticos e improvisação:</b> Desenvolver a criatividade e a
+				espontaneidade é crucial para o teatro. O curso inclui técnicas de improvisação e jogos teatrais que
+				desafiam os alunos a pensar rapidamente e a reagir de forma criativa às situações imprevistas.</p>
+			<p>Ministrado desde 1985 por <a href="/valentim">Valentim Schmoeler</a>, o CBT tem uma longa tradição de
+				excelência na formação de novos atores. Desde 1995, o curso conta também com o apoio de vários alunos do
+				Alunos do Exercício Cênico Anchieta (A.E.C.A), que contribuem para a realização das atividades,
+				enriquecendo ainda mais a experiência dos participantes.</p>
+			<p>O CBT é realizado duas vezes por ano, com edições de verão (em janeiro) e inverno (em julho). A edição de
+				verão dura 4 semanas, enquanto a de inverno é um intensivo de 2 semanas.</p>
+			
+			<hr>
+				<video controls width="100%" loop preload="auto">
+                    <source src="/cbt/IMG/CBT.mp4" type="video/mp4">
+                </video>
+		</main>
+
+		<aside class="sidebar">
+			<div class="sidebar-titulo">Galeria de fotos</div>
+			<div><img src="/cbt/img/cbt-foto-1.png"></div>
+			<div><img src="/cbt/img/cbt-foto-2.jpg"></div>
+			<div><img src="/cbt/img/cbt-foto-3.jpg"></div>
+			<div><img src="/cbt/img/cbt-foto-4.jpg"></div>
+			<div><img src="/cbt/img/cbt-foto-5.jpg"></div>
+			<div><img src="/cbt/img/cbt-foto-6.jpg"></div>
+			<div><img src="/cbt/img/cbt-foto-7.jpg"></div>
+			<div><img src="/cbt/img/cbt-foto-8.png"></div>
+			<div><img src="/cbt/img/cbt-foto-9.png"></div>
+		</aside>
+	</div>
+</body>
+<div id="footer"></div>
+<div id="imagem-modal"></div>
+
+</html>
