@@ -4,17 +4,17 @@
 /* ===================== DEFINIÇÃO DE FONTES ===================== */
 @font-face {
     font-family: "Bebas";
-    src: url("/CSS/fonts/BebasNeue-Regular.ttf");
+    src: url("/css/fonts/BebasNeue-Regular.ttf");
 }
 
 @font-face {
     font-family: "Nunito";
-    src: url("/CSS/fonts/Nunito.ttf");
+    src: url("/css/fonts/Nunito.ttf");
 }
 
 @font-face {
     font-family: "Source";
-    src: url("/CSS/fonts/SourceCodePro.ttf");
+    src: url("/css/fonts/SourceCodePro.ttf");
 }
 
 /* ===================== RESET E CONFIGURAÇÕES GLOBAIS ===================== */
