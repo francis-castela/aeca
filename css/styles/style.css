@@ -1,6 +1,22 @@
 /* Por Francis Castela, para o A.E.C.A */
 /* Inspirado no design da MediaWiki */
 
+/* ===================== DEFINIÇÃO DE FONTES ===================== */
+@font-face {
+    font-family: "Bebas";
+    src: url("/CSS/fonts/BebasNeue-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Nunito";
+    src: url("/CSS/fonts/Nunito.ttf");
+}
+
+@font-face {
+    font-family: "Source";
+    src: url("/CSS/fonts/SourceCodePro.ttf");
+}
+
 /* ===================== RESET E CONFIGURAÇÕES GLOBAIS ===================== */
 * {
     margin: 0;
@@ -27,22 +43,6 @@ body {
     color: var(--texto-comum);
     background: var(--fundo-pagina);
     text-align: justify;
-}
-
-/* ===================== DEFINIÇÃO DE FONTES ===================== */
-@font-face {
-    font-family: "Bebas";
-    src: url("/CSS/fonts/BebasNeue-Regular.ttf");
-}
-
-@font-face {
-    font-family: "Nunito";
-    src: url("/CSS/fonts/Nunito.ttf");
-}
-
-@font-face {
-    font-family: "Source";
-    src: url("/CSS/fonts/SourceCodePro.ttf");
 }
 
 /* ===================== ELEMENTOS BÁSICOS ===================== */
@@ -370,7 +370,7 @@ footer a {
     color: #EEE;
     text-decoration: none;
     border-radius: 5px;
-    font-family: Nunito;
+    font-family: "Nunito";
     font-weight: bold;
     animation: backgroundBlink 3s infinite;
 }
@@ -404,7 +404,7 @@ table {
 
 thead th {
     text-align: left;
-    font-family: Bebas;
+    font-family: "Bebas";
     font-size: 1.4rem;
     font-weight: normal;
 }
