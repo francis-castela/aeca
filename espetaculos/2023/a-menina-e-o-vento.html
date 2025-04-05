@@ -10,300 +10,224 @@
     <meta property="og:title" content="A Menina e o Vento" />
     <meta property="og:description" content="A.E.C.A" />
     <meta property="og:site_name" content="A Menina e o Vento" />
-    <meta property="og:image" content="http://aeca.com.br/espetaculos/2023/IMG/menina-og.jpg" />
+    <meta property="og:image" content="http://aeca.com.br/espetaculos/2023/img/menina-og.jpg" />
 
     <title>A Menina e o Vento</title>
 
-    <link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
+	<link rel="icon" href="/css/logos/favicon.webp" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/css/styles/style.css">
 
-    <script src="/js/zoom.js" defer></script>
+	<script defer>
+		fetch('/html/footer.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('footer').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/aside-padrao.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('aside-padrao').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/cabecalho.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('cabecalho').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/imagem-modal.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('imagem-modal').innerHTML = data;
+			});
+	</script>
+	<script src="/js/zoom.js" defer></script>
+	<script src="/js/scrollback.js"></script>
 
-    <script defer>
-        fetch('/HTML/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer').innerHTML = data;
-            });
-    </script>
-
-    <script defer>
-        fetch('/HTML/cabecalho.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('cabecalho').innerHTML = data;
-            });
-    </script>
 </head>
 
+<style>
+	:root {
+		--fundo-pagina: #CFE8F2;
+		--header: #50AECE;
+	}
+</style>
+
 <body>
+	<div id="cabecalho"></div>
 
-    <header>
-        <nav id="cabecalho"></nav>
-    </header>
-
-    <style>
-        :root {
-            --fundo-escuro: #AFDAE9;
-            --texto-titulo: #50AECE;
-        }
-    </style>
-
-    <section id="pageContent">
-        <main role="main">
-
+	<div class="container">
+		<main class="main-content">
             <h1>A Menina e o Vento</h1>
-            <h2>Processo de pesquisa e montagem 2023/1</h2>
+			<h3>Processo de pesquisa e montagem 2023/1</h3>
+			<hr>
+			
+			<p>Um dia, fugindo das rigorosas lições da Tia Adelaide,
+			Maria e seu irmão Pedrinho acabam em uma escura caverna. Ali vive o Vento, que se irrita com o tumulto causado pelas crianças. Impaciente, o Vento sopra Pedrinho para longe, mas Maria consegue escapar. Encantado com a habilidade da menina em vencer seus poderosos movimentos, o Vento, junto de sua filha, a Brisa, faz uma proposta: viajar pelo planeta. Maria então enfrenta o dilema de começar ou não essa nova vida cheia de aventuras.</p>
 
-            <article>
-                <p style="font-style: italic; text-indent: 0">Um dia, fugindo das rigorosas lições da Tia Adelaide,
-                    Maria e seu irmão Pedrinho acabam em uma escura caverna. Ali vive o Vento, que se irrita com o
-                    tumulto causado pelas crianças. Impaciente, o Vento sopra Pedrinho para longe, mas Maria consegue
-                    escapar. Encantado com a habilidade da menina em vencer seus poderosos movimentos, o Vento, junto de
-                    sua filha, a Brisa, faz uma proposta: viajar pelo planeta. Maria então enfrenta o dilema de começar
-                    ou não essa nova vida cheia de aventuras.</p>
-                <img src="/espetaculos/2023/IMG/menina-cartaz.jpg">
-            </article>
-            <article>
-                <p style="text-align: center; text-indent: 0"><b>A Menina e o Vento</b> teve 4 apresentações, na <a
-                        href="https://fundacaocultural.itajai.sc.gov.br/casa-da-cultura">Casa da Cultura Dide
-                        Brandão</a>, nos dias 01, 02, 08 e 09 de julho de 2023. </p>
-                <img src="/espetaculos/2023/IMG/menina-elenco.jpg">
-            </article>
-            <article>
-                <table>
-                    <tr>
-                        <th colspan="2" class="cabecalho-tabela">ELENCO</th>
-                    </tr>
-                    <tr>
-                        <th>Maria</th>
-                        <td>Malu Baião</td>
-                    </tr>
-                    <tr>
-                        <th>Vento</th>
-                        <td>Patrick Simões</td>
-                    </tr>
-                    <tr>
-                        <th>Pedrinho</th>
-                        <td>Murilo Grangel</td>
-                    </tr>
-                    <tr>
-                        <th>Brisa</th>
-                        <td>Júlia Schäffer</td>
-                    </tr>
-                    <tr>
-                        <th>Ventania</th>
-                        <td>Louise Moreira</td>
-                    </tr>
-                    <tr>
-                        <th>Mãe Anastácia</th>
-                        <td>Fernanda Lima</td>
-                    </tr>
-                    <tr>
-                        <th>Vó Aparecida</th>
-                        <td>Ione Brautigam</td>
-                    </tr>
-                    <tr>
-                        <th>Tia Adalgisa</th>
-                        <td>Alexya Sczotka</td>
-                    </tr>
-                    <tr>
-                        <th>Tia Adelaide</th>
-                        <td>Vania Vieira</td>
-                    </tr>
-                    <tr>
-                        <th>Tia Aurélia</th>
-                        <td>Maria Beatriz Araújo</td>
-                    </tr>
-                    <tr>
-                        <th>Delegada Plácida</th>
-                        <td>Heloisa Neves</td>
-                    </tr>
-                    <tr>
-                        <th>Policial Pacífico</th>
-                        <td>Guilherme Moura</td>
-                    </tr>
-                    <tr>
-                        <th>Policial Crispim</th>
-                        <td>Julian Félix</td>
-                    </tr>
-                    <tr>
-                        <th>Repórter Pink-Wink</th>
-                        <td>Sara Maquim</td>
-                    </tr>
-                </table>
-                <br>
-                <table>
-                    <tr>
-                        <th colspan="2" class="cabecalho-tabela">FICHA TÉCNICA</th>
-                    </tr>
-                    <tr>
-                        <th>Direção,<br>Adaptação</th>
-                        <td>Rafael Bueno</td>
-                    </tr>
-                    <tr>
-                        <th>Maquiagem</th>
-                        <td>Heloisa Neves,<br>Luana Xavier</td>
-                    </tr>
-                    <tr>
-                        <th>Figurino</th>
-                        <td>Fernanda Lima,<br>Dreeh's,<br>Jaqueline Tesch</td>
-                    </tr>
-                    <tr>
-                        <th>Cenário</th>
-                        <td>Concepção coletiva</td>
-                    </tr>
-                    <tr>
-                        <th>Preparação vocal</th>
-                        <td>Letícia Santos</td>
-                    </tr>
-                    <tr>
-                        <th>Iluminação</th>
-                        <td>Felipe Laurêncio,<br>Francis Castela</td>
-                    </tr>
-                    <tr>
-                        <th>Sonoplastia</th>
-                        <td>Gustavo Bianchi</td>
-                    </tr>
-                    <tr>
-                        <th>Material promocional</th>
-                        <td>Davi Berndt,<br>Murilo Grangel</td>
-                    </tr>
-                    <tr>
-                        <th>Fotografia</th>
-                        <td>Dales Hoeckesfeld</td>
-                    </tr>
-                    <tr>
-                        <th>Coordenação</th>
-                        <td>Paula Ramos,<br>Valentim Schmoeler</td>
-                    </tr>
-                    <tr>
-                        <th>Obra original</th>
-                        <td>A Menina e o Vento</td>
-                    </tr>
-                    <tr>
-                        <th>Autor original</th>
-                        <td>Maria Clara Machado</td>
-                    </tr>
-                </table>
-                <br>
-                <table id="elencosempersonagem">
+			<p><b>A Menina e o Vento</b> teve 4 apresentações, na <a href="https://fundacaocultural.itajai.sc.gov.br/casa-da-cultura">Casa da Cultura Dide Brandão</a>, nos dias 01, 02, 08 e 09 de julho de 2023.</p>
+
+			<h2>Elenco</h2>
+			<hr>
+			<table>
+				<thead>
 					<tr>
-						<th colspan="2" class="cabecalho-tabela">
-							APOIO</th>
+						<th>Personagem</th>
+						<th>Ator / Atriz</th>
 					</tr>
-					<tr>
-						<td>Tupã Contabilidade</td>
-					</tr>
-                    <tr>
-						<td>Prefeitura de Itajaí</td>
-					</tr>
-                    <tr>
-						<td>Fundação Cultural de Itajaí</td>
-					</tr>
-                    <tr>
-						<td>Casa da Cultura Dide Brandão</td>
-					</tr>
-                </table>
-            </article>
-            <article>
-                <p style="text-indent: 0; font-size: small;">A obra <b>A Menina e o Vento</b>
-                    foi livremente adaptada em um processo de pesquisa e montagem sem fins lucrativos, sob a orientação
-                    da coordenação dos Alunos do Exercício Cênico Anchieta. Os recursos financeiros arrecadados foram
-                    usados exclusivamente para cobrir despesas de figurino, maquiagem, transporte e outras operações.
-                </p>
-            </article>
-        </main>
-        <a href="https://dales.com.br/" style="font-weight: bold;">
-            <aside>
-                <div><span style="color: #090909;">FOTOGRAFIA</span><br>Dales
-                    Hoeckesfeld</div>
-            </aside>
-        </a>
+				</thead>
+				<tr>
+					<th>Maria</th>
+					<td>Malu Baião</td>
+				</tr>
+				<tr>
+					<th>Vento</th>
+					<td>Patrick Simões</td>
+				</tr>
+				<tr>
+					<th>Pedrinho</th>
+					<td>Murilo Grangel</td>
+				</tr>
+				<tr>
+					<th>Brisa</th>
+					<td>Júlia Schäffer</td>
+				</tr>
+				<tr>
+					<th>Ventania</th>
+					<td>Louise Moreira</td>
+				</tr>
+				<tr>
+					<th>Mãe Anastácia</th>
+					<td>Fernanda Lima</td>
+				</tr>
+				<tr>
+					<th>Vó Aparecida</th>
+					<td>Ione Brautigam</td>
+				</tr>
+				<tr>
+					<th>Tia Adalgisa</th>
+					<td>Alexya Sczotka</td>
+				</tr>
+				<tr>
+					<th>Tia Adelaide</th>
+					<td>Vania Vieira</td>
+				</tr>
+				<tr>
+					<th>Tia Aurélia</th>
+					<td>Maria Beatriz Araújo</td>
+				</tr>
+				<tr>
+					<th>Delegada Plácida</th>
+					<td>Heloisa Neves</td>
+				</tr>
+				<tr>
+					<th>Policial Pacífico</th>
+					<td>Guilherme Moura</td>
+				</tr>
+				<tr>
+					<th>Policial Crispim</th>
+					<td>Julian Félix</td>
+				</tr>
+				<tr>
+					<th>Repórter Pink-Wink</th>
+					<td>Sara Maquim</td>
+				</tr>
+			</table>
 
-        <aside>
-            <div>
-                <img id="zoomImage1" src="/espetaculos/2023/IMG/menina-1.jpeg">
-            </div>
-        </aside>
-        <div id="overlay1" class="overlay">
-            <img id="largeImage1" src="/espetaculos/2023/IMG/menina-1.jpeg">
-        </div>
+			<h2>Ficha Técnica</h2>
+			<hr>
+			<table>
+				<tr>
+					<th>Direção,<br>Adaptação</th>
+					<td>Rafael Bueno</td>
+				</tr>
+				<tr>
+					<th>Maquiagem</th>
+					<td>Heloisa Neves,<br>Luana Xavier</td>
+				</tr>
+				<tr>
+					<th>Figurino</th>
+					<td>Fernanda Lima,<br>Dreeh's,<br>Jaqueline Tesch</td>
+				</tr>
+				<tr>
+					<th>Cenário</th>
+					<td>Concepção coletiva</td>
+				</tr>
+				<tr>
+					<th>Preparação vocal</th>
+					<td>Letícia Santos</td>
+				</tr>
+				<tr>
+					<th>Iluminação</th>
+					<td>Felipe Laurêncio,<br>Francis Castela</td>
+				</tr>
+				<tr>
+					<th>Sonoplastia</th>
+					<td>Gustavo Bianchi</td>
+				</tr>
+				<tr>
+					<th>Material promocional</th>
+					<td>Davi Berndt,<br>Murilo Grangel</td>
+				</tr>
+				<tr>
+					<th>Fotografia</th>
+					<td>Dales Hoeckesfeld</td>
+				</tr>
+				<tr>
+					<th>Coordenação</th>
+					<td>Paula Ramos,<br>Valentim Schmoeler</td>
+				</tr>
+				<tr>
+					<th>Obra original</th>
+					<td>A Menina e o Vento</td>
+				</tr>
+				<tr>
+					<th>Autor original</th>
+					<td>Maria Clara Machado</td>
+				</tr>
+			</table>
 
-        <aside>
-            <div>
-                <img id="zoomImage2" src="/espetaculos/2023/IMG/menina-2.jpeg">
-            </div>
-        </aside>
-        <div id="overlay2" class="overlay">
-            <img id="largeImage2" src="/espetaculos/2023/IMG/menina-2.jpeg">
-        </div>
+			<h2>Apoio</h2>
+			<hr>
+			<p>Tupã Contabilidade</p>
+			<p>Prefeitura de Itajaí</p>
+			<p>Fundação Cultural de Itajaí</p>
+			<p>Casa da Cultura Dide Brandão</p>
 
-        <aside>
-            <div>
-                <img id="zoomImage3" src="/espetaculos/2023/IMG/menina-3.jpeg">
-            </div>
-        </aside>
-        <div id="overlay3" class="overlay">
-            <img id="largeImage3" src="/espetaculos/2023/IMG/menina-3.jpeg">
-        </div>
+		</main>
 
-        <aside>
-            <div>
-                <img id="zoomImage4" src="/espetaculos/2023/IMG/menina-4.jpeg">
-            </div>
-        </aside>
-        <div id="overlay4" class="overlay">
-            <img id="largeImage4" src="/espetaculos/2023/IMG/menina-4.jpeg">
-        </div>
+		<aside class="sidebar">
+			<div class="sidebar-titulo">Cartaz do espetáculo</div>
+			<div><img src="/espetaculos/2023/img/menina-cartaz.webp"></div>
+			<hr>
+			<div class="sidebar-titulo">Elenco</div>
+			<div><img src="/espetaculos/2023/img/menina-elenco.webp"></div>
+			<hr>
+			<div class="sidebar-titulo">Galeria de fotos</div>
+			<div class="sidebar-texto">Clique para ampliar<a href="https://dales.com.br/">Fotógrafo: Dales
+				Hoeckesfeld</a></div>
+			<div class="sidebar-galeria">
+				<img src="/espetaculos/2023/img/menina-1.webp">
+				<img src="/espetaculos/2023/img/menina-2.webp">
+				<img src="/espetaculos/2023/img/menina-3.webp">
+				<img src="/espetaculos/2023/img/menina-4.webp">
+				<img src="/espetaculos/2023/img/menina-5.webp">
+				<img src="/espetaculos/2023/img/menina-6.webp">
+				<img src="/espetaculos/2023/img/menina-7.webp">
+				<img src="/espetaculos/2023/img/menina-8.webp">
+				<img src="/espetaculos/2023/img/menina-9.webp">
+			</div>
+			<hr>
+			<div class="sidebar-texto" style="font-size: 0.8rem; text-align: justify;">A obra <b>A Menina e o Vento</b> foi livremente adaptada em um processo de pesquisa e montagem sem fins lucrativos, sob a orientação da coordenação dos Alunos do Exercício Cênico Anchieta. Os recursos financeiros arrecadados foram usados exclusivamente para cobrir despesas de figurino, maquiagem, transporte e outras operações.</div>
+		</aside>
 
-        <aside>
-            <div>
-                <img id="zoomImage5" src="/espetaculos/2023/IMG/menina-5.jpeg">
-            </div>
-        </aside>
-        <div id="overlay5" class="overlay">
-            <img id="largeImage5" src="/espetaculos/2023/IMG/menina-5.jpeg">
-        </div>
-
-        <aside>
-            <div>
-                <img id="zoomImage6" src="/espetaculos/2023/IMG/menina-6.jpeg">
-            </div>
-        </aside>
-        <div id="overlay6" class="overlay">
-            <img id="largeImage6" src="/espetaculos/2023/IMG/menina-6.jpeg">
-        </div>
-
-        <aside>
-            <div>
-                <img id="zoomImage7" src="/espetaculos/2023/IMG/menina-7.jpeg">
-            </div>
-        </aside>
-        <div id="overlay7" class="overlay">
-            <img id="largeImage7" src="/espetaculos/2023/IMG/menina-7.jpeg">
-        </div>
-
-        <aside>
-            <div>
-                <img id="zoomImage8" src="/espetaculos/2023/IMG/menina-8.jpeg">
-            </div>
-        </aside>
-        <div id="overlay8" class="overlay">
-            <img id="largeImage8" src="/espetaculos/2023/IMG/menina-8.jpeg">
-        </div>
-
-        <aside>
-            <div>
-                <img id="zoomImage9" src="/espetaculos/2023/IMG/menina-9.jpeg">
-            </div>
-        </aside>
-        <div id="overlay9" class="overlay">
-            <img id="largeImage9" src="/espetaculos/2023/IMG/menina-9.jpeg">
-        </div>
-
-    </section>
-    <div id="footer"></div>
+	</div>
 </body>
+<div id="footer"></div>
+<div id="imagem-modal"></div>
 
 </html>

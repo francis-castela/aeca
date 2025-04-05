@@ -1,38 +1,35 @@
+/* Por Francis Castela, para o A.E.C.A */
+/* Inspirado no design da MediaWiki */
+
+/* ===================== RESET E CONFIGURAÇÕES GLOBAIS ===================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html,
-body {
-    line-height: 1.5;
-    font-family: "Nunito";
-    font-weight: normal;
-    font-size: medium;
-    text-align: justify;
-    overflow-x: hidden;
-    background: #EEE;
-}
-
-body>section {
-    padding: 30px 10px;
-}
-
 :root {
-    --fundo-escuro: #BBB;
-    --texto-titulo: #cc2128;
+    --fundo-pagina: #EEE;
+    --fundo-main: #FFF;
+    --header: #8C171B;
+    --texto-header: #FFF;
     --texto-comum: #000000;
-    --texto-subtitulo: #444;
-    --hover-fundo: #444;
-    --borda: 1px solid #444;
-    --menu-background: #000000;
-    --botao-piscante-1: #cc2128;
-    --botao-piscante-2: #35080A;
+    --texto-subtitulo: #333;
+    --botao-piscante: #E25054;
 }
 
-/* FONTES */
+body {
+    font-family: "Nunito";
+    line-height: 1.5;
+    font-weight: normal;
+    font-size: 1rem;
+    overflow-x: hidden;
+    color: var(--texto-comum);
+    background: var(--fundo-pagina);
+    text-align: justify;
+}
 
+/* ===================== DEFINIÇÃO DE FONTES ===================== */
 @font-face {
     font-family: "Bebas";
     src: url("/CSS/fonts/BebasNeue-Regular.ttf");
@@ -48,161 +45,320 @@ body>section {
     src: url("/CSS/fonts/SourceCodePro.ttf");
 }
 
-@font-face {
-    font-family: "Raleway";
-    src: url("/CSS/fonts/Raleway-VariableFont_wght.ttf");
+/* ===================== ELEMENTOS BÁSICOS ===================== */
+p {
+    margin-bottom: 1rem;
 }
 
-/* CABEÇALHO */
-header {
+a {
+    color: var(--header);
+}
+
+hr {
+    border-bottom: 0;
+    margin-bottom: 1rem;
+}
+
+h1,
+h2 {
+    font-family: "Bebas";
+    color: var(--header);
+    font-weight: normal;
+    line-height: 1;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+
+h3 {
+    font-weight: bold;
+    color: var(--texto-subtitulo);
+}
+
+h4,
+h4 a {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--header);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    text-align: left;
+}
+
+
+/* ===================== CABEÇALHO ===================== */
+.header {
+    background: var(--header);
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+}
+
+.logo-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    background: var(--fundo-escuro);
-    font-family: "Bebas", sans-serif;
-    padding: 10px 20px;
 }
 
-.logo img {
-    max-width: 120px;
-    border-radius: 0;
+.header-img-left,
+.header-img-right {
+    height: 3.8rem;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.logo-main {
+    margin-top: 0.6rem;
+    font-family: "Bebas";
+    font-size: 1.8rem;
+    line-height: 1;
+    color: var(--texto-header);
+}
+
+.logo-sub {
+    font-family: "Bebas";
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: var(--texto-header);
+    margin-top: 0.3rem;
+}
+
+/* ===================== NAVEGAÇÃO ===================== */
+.nav {
+    background-color: #ffffff;
+    padding: 1.3rem 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: inline-flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.nav-links a {
+    color: #000000;
+    text-decoration: none;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    font-weight: bold;
+    background-color: #DDD;
+}
+
+.nav-links a:hover {
+    background-color: var(--header);
+    color: #ffffff;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* ===================== LAYOUT PRINCIPAL ===================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.main-content {
+    flex: 1;
+    background-color: var(--fundo-main);
+    padding: 1rem;
+}
+
+.main-content img {
+    width: 100%;
+}
+
+.grade-espetaculos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.grade-espetaculos a {
+    display: block;
+    text-decoration: none;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.grade-espetaculos img {
+    max-width: 100px;
+    max-height: auto;
+}
+
+.grade-espetaculos img:hover {
     transition: transform 0.3s ease;
-}
-
-.logo img:hover {
     transform: scale(1.1);
 }
 
-nav {
-    display: flex;
+
+/* ===================== SIDEBAR ===================== */
+.sidebar {
+    width: 300px;
+    background-color: var(--fundo-main);
+    padding: 1rem;
 }
 
-.menu,
-.botoesdeano {
-    display: flex;
-    list-style-type: none;
+.sidebar-titulo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+.sidebar-texto {
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.sidebar-texto a {
+    font-size: 1rem;
+    text-align: left;
+}
+
+.sidebar-texto li {
+    list-style: none;
+    font-size: 0.5rem;
+}
+
+.sidebar-texto li a {
+    font-size: 0.8rem;
+}
+
+.sidebar a {
+    color: var(--header);
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.sidebar a:hover:not(:has(img:hover)) {
+    background-color: var(--header);
+    color: #ffffff;
+    transition: all 0.3s ease;
+
+}
+
+.sidebar img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.sidebar img:hover {
+    transform: scale(1.1);
+}
+
+.sidebar ul {
+    margin-bottom: 1rem;
+}
+
+.sidebar-galeria {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar-galeria img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sidebar-galeria img:first-child:nth-last-child(odd) {
+    grid-column: 1 / -1; 
+    max-width: 100%;
+    object-position: center;
+}
+
+
+/* ===================== RODAPÉ ===================== */
+footer {
+    padding: 10px;
+    font-size: 0.8rem;
+    color: #fff;
+    background: var(--header);
+    text-align: center;
+    margin-top: auto;
+    width: 100%;
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--texto-comum);
+}
+
+/* ===================== COMPONENTES ESPECÍFICOS ===================== */
+/* Modal de Imagem */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
     justify-content: center;
     align-items: center;
 }
 
-.botoesdeano {
-    flex-wrap: wrap;
-}
-
-.menu li,
-.botoesdeano li {
-    margin-top: 1px;
-    margin-left: 10px;
-}
-
-.menu a,
-.botoesdeano a {
-    display: inline-block;
-    text-decoration: none;
-    background-color: var(--menu-background);
-    text-align: center;
-    color: #ffffff;
-    font-weight: normal;
-    font-size: 22px;
-    padding: 5px 10px;
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
     border-radius: 5px;
-    width: 120px;
-    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s ease;
 }
 
-.botoesdeano a {
-    font-size: medium;
-    width: 65px;
-}
-
-.menu a:hover,
-.menu a:focus,
-.botoesdeano a:hover,
-.botoesdeano a:focus {
-    background-color: var(--hover-fundo);
-    cursor: pointer;
-    transform: scale(1.1);
-}
-
-@media screen and (max-width: 600px) {
-    .menu {
-        flex-direction: column;
-        align-items: left;
-    }
-}
-
-/* BASE */
-
-hr {
-    margin-top: 25px;
-    margin-bottom: 25px;
-}
-
-p {
-    text-indent: 30px;
-    color: var(--texto-comum);
-    margin-bottom: 10px;
-}
-
-ul,
-li {
-    color: var(--texto-comum);
-    margin-bottom: 10px;
-}
-
-h1 {
-    font-family: "Bebas";
-    font-weight: normal;
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
     font-size: 40px;
-    color: var(--texto-titulo);
-    margin: 0;
-    text-align: center;
-    line-height: 1;
-}
-
-h2 {
-    font-family: "Nunito";
     font-weight: bold;
-    font-size: large;
-    color: var(--texto-subtitulo);
-    margin: 0 0 20px 0;
-    text-align: center;
+    cursor: pointer;
+    transition: color 0.3s ease;
 }
 
-h3 {
-    font-family: "Nunito";
-    font-weight: bold;
-    font-size: larger;
-    color: var(--texto-titulo);
-    text-indent: 30px;
-    margin: 20px 0 10px;
+.close-modal:hover {
+    color: #bbb;
 }
 
-a {
-    color: var(--texto-titulo);
-}
-
-article {
-    border-bottom: var(--borda);
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-}
-
-img,
-video {
-    border-radius: 10px;
-}
-
+/* Botão piscante */
 @keyframes backgroundBlink {
-
     0%,
     100% {
-        background: var(--botao-piscante-1);
+        background: var(--header);
     }
-
     50% {
-        background: var(--botao-piscante-2);
+        background: var(--botao-piscante);
     }
 }
 
@@ -210,14 +366,13 @@ video {
     justify-content: center;
     text-align: center;
     display: flex;
-    padding: 10px 20px;
-    background-color: var(--fundo-escuro);
+    padding: 0.5rem;
     color: #EEE;
     text-decoration: none;
     border-radius: 5px;
     font-family: Nunito;
     font-weight: bold;
-    animation: backgroundBlink 2s infinite;
+    animation: backgroundBlink 3s infinite;
 }
 
 .botao-piscante:hover {
@@ -226,263 +381,89 @@ video {
     transform: scale(1.03);
 }
 
-#pageContent {
-    max-width: 1000px;
-    margin: auto;
-    border: none;
+/* Classificação Indicativa */
+.classificacao-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: left;
 }
 
-#title {
-    text-align: center;
-    text-indent: 0px;
-    font-size: 30px;
-    margin-top: 20px;
+.classificacao-box img {
+    width: 100px;
+    height: auto;
+    flex-shrink: 0;
 }
 
-#h1-2 {
-    text-align: left;
-    font-size: 30px;
-    margin-left: 30px;
-}
-
-#h2-2 {
-    text-align: left;
-    margin: 0 0 5px 30px;
-}
-
-.enfaseclick {
-    animation: blink 10s;
-}
-
-@keyframes blink {
-    0% {
-        background-color: yellow;
-    }
-
-    100% {
-        background-color: transparent;
-    }
-}
-
+/* Tabelas */
 table {
-    color: var(--texto-comum);
     border-collapse: collapse;
-    margin: 0 auto;
-    width: 95%;
+    width: auto;
+    margin-bottom: 2rem;
+}
+
+thead th {
+    text-align: left;
+    font-family: Bebas;
+    font-size: 1.4rem;
+    font-weight: normal;
 }
 
 th,
 td {
-    padding: 7px 10px 7px 10px;
-    vertical-align: top;
-    width: 0%;
-    border-bottom: 1px dashed #BBB;
-    border-radius: 5px;
+    text-align: left;
+    padding: 0.4rem;
+    border: 1px solid #BBB;
     line-height: 1.2;
 }
 
 th {
-    text-align: right;
-    color: var(--texto-titulo);
+    color: var(--header);
 }
 
-.cabecalho-tabela {
-    border-bottom: 0;
-    padding-bottom: 0;
-    text-align: center;
-    background: var(--texto-titulo);
-    color: #EEE;
-    font-family: "Bebas";
-    font-weight: normal;
-    font-size: 40px;
-    text-align: center;
-    line-height: 0.9;
-}
+/* ===================== RESPONSIVIDADE ===================== */
 
-td {
-    text-align: left;
-}
-
-#elencosempersonagem {
-    th,
-    td {
-        text-align: center;
-        text-indent: 0px;
+@media (max-width: 768px) {
+    .header {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 0.5rem;
     }
-}
 
-#tabela-sessoes {
-    th,
-    td {
-        text-align: center;
-        text-indent: 0px;
+    .header-img-left,
+    .header-img-right {
+        display: none;
     }
-}
 
-
-main {
-    float: left;
-    width: 70%;
-}
-
-/* LATERAL */
-
-aside {
-    width: 25%;
-    max-width: 300px;
-    margin-left: 5%;
-    text-decoration: none;
-    display: inline-block;
-    vertical-align: top;
-    white-space: normal;
-}
-
-
-aside>div {
-    padding: 4px;
-    margin: 10px;
-    background: var(--fundo-escuro);
-    color: var(--texto-comum);
-    text-align: center;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: small;
-    text-decoration: none;
-    max-width: 100%;
-    box-sizing: border-box;
-}
-
-aside>div a {
-    color: var(--texto-comum);
-    text-decoration: none;
-}
-
-aside img,
-article img {
-    max-width: 100%;
-    display: block;
-    transition: transform 0.3s ease;
-    margin: auto;
-}
-
-aside>div:hover {
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    transform: scale(1.1);
-}
-
-/* ZOOM EM IMAGEM */
-
-#zoomImage1,
-#zoomImage2,
-#zoomImage3,
-#zoomImage4,
-#zoomImage5,
-#zoomImage6,
-#zoomImage7,
-#zoomImage8,
-#zoomImage9,
-#zoomImage10 {
-    cursor: pointer;
-    transition: transform 0.5s;
-}
-
-.overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000000cb;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.overlay img,
-.overlay video {
-    max-width: 90%;
-    max-height: 90%;
-}
-
-.image-container {
-    position: relative;
-    display: inline-block;
-}
-
-.text-overlay {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 40%;
-    left: 25%;
-    right: 25%;
-    bottom: 40%;
-    background: var(--fundo-escuro);
-    padding: 5px 10px;
-    font-weight: bold;
-    border-radius: 5px;
-    font-size: 1.3em;
-}
-
-/* IMAGEM COM SLIDE */
-
-.imagem-slide {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-}
-
-.slides {
-    display: flex;
-    width: 100%;
-    height: 200%;
-    transition: transform 0.2s ease-in-out;
-}
-
-.slides img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* RODAPÉ */
-
-footer {
-    padding: 10px;
-    margin: 10px;
-    font-size: 10px;
-    color: var(--texto-comum);
-    text-decoration: none;
-    background: #BBB;
-    margin: auto;
-    clear: both;
-    text-align: center;
-}
-
-footer a {
-    text-decoration: none;
-    color: var(--texto-comum);
-}
-
-/* AJUSTES RESPONSIVOS */
-
-@media screen and (max-width: 600px) {
-    main {
-        float: none;
+    .logo-container {
         width: 100%;
+        text-align: center;
     }
 
-    aside {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
         width: 100%;
-        max-width: 100%;
-        margin-left: 0;
+        order: 1;
     }
 
-    .text-overlay {
-        font-size: 10vw;
+    .nav-links {
+        flex-wrap: wrap;
     }
 
+    .footer img {
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .classificacao-box {
+        text-align: left;
+    }
+
+    .classificacao-box img {
+        width: 60px;
+    }
 }

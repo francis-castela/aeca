@@ -10,253 +10,178 @@
     <meta property="og:title" content="O Inspetor Geral" />
     <meta property="og:description" content="A.E.C.A" />
     <meta property="og:site_name" content="O Inspetor Geral" />
-    <meta property="og:image" content="http://aeca.com.br/espetaculos/2019/IMG/inspetor-og.jpg" />
+    <meta property="og:image" content="http://aeca.com.br/espetaculos/2019/img/inspetor-og.jpg" />
 
     <title>O Inspetor Geral</title>
 
-    <link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
+	<link rel="icon" href="/css/logos/favicon.webp" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/css/styles/style.css">
 
-    <script src="/js/zoom.js" defer></script>
+	<script defer>
+		fetch('/html/footer.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('footer').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/aside-padrao.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('aside-padrao').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/cabecalho.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('cabecalho').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/imagem-modal.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('imagem-modal').innerHTML = data;
+			});
+	</script>
+	<script src="/js/zoom.js" defer></script>
+	<script src="/js/scrollback.js"></script>
 
-    <script defer>
-        fetch('/HTML/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer').innerHTML = data;
-            });
-    </script>
-
-    <script defer>
-        fetch('/HTML/cabecalho.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('cabecalho').innerHTML = data;
-            });
-    </script>
-
-    <style>
-        :root {
-            --fundo-escuro: #cc2128;
-        }
-    </style>
 </head>
 
+<style>
+	:root {
+		--fundo-pagina: #F6CACC;
+		--header: #cc2128;
+	}
+</style>
+
 <body>
-    <header>
-        <nav id="cabecalho"></nav>
-    </header>
-    <section id="pageContent">
-        <main role="main">
+	<div id="cabecalho"></div>
 
+	<div class="container">
+		<main class="main-content">
             <h1>O Inspetor Geral</h1>
-            <h2>Processo de pesquisa e montagem 2019/1</h2>
-            <article>
-                <p style="font-style: italic; text-indent: 0">Os cidadãos de uma pequena província recebem a notícia da
-                    visita de um Inspetor Geral, vindo diretamente de São Petersburgo para avaliar se tudo está nos
-                    conformes. Instaura-se então o completo caos, numa sociedade onde desde o governador até os simples
-                    comerciantes são corruptos e vigaristas, todos irão se dobrar e desdobrar para não sofrer as severas
-                    punições pelos seus crimes.</p>
-                <img src="/espetaculos/2019/IMG/inspetor-cartaz.webp">
-            </article>
-            <article>
-                <p style="text-align: center; text-indent: 0"><b>O Inspetor Geral</b> teve 2 apresentações, no <a
-                        href="https://fundacaocultural.itajai.sc.gov.br/teatro-municipal">Teatro Municipal de Itajaí</a>
-                    e na <a href="https://fundacaocultural.itajai.sc.gov.br/casa-da-cultura">Casa da Cultura Dide
-                        Brandão</a>, nos dias 30 de junho e 21 julho de 2019. </p>
-                <img src="/espetaculos/2019/IMG/inspetor-elenco.jpg">
-            </article>
-            <article>
-                <table id="elencosempersonagem">
-                    <tr>
-                        <th colspan="2" class="cabecalho-tabela">ELENCO</th>
-                    </tr>
-                    <tr>
-                        <td>Alisson Baemns</td>
-                    </tr>
-                    <tr>
-                        <td>Ari Mateus Adami</td>
-                    </tr>
-                    <tr>
-                        <td>Camila Muniz</td>
-                    </tr>
-                    <tr>
-                        <td>Elivélton Alexsander</td>
-                    </tr>
-                    <tr>
-                        <td>Filipe dos Santos</td>
-                    </tr>
-                    <tr>
-                        <td>Fernanda Scherer</td>
-                    </tr>
-                    <tr>
-                        <td>Gabrielli Pacheco Ribeiro</td>
-                    </tr>
-                    <tr>
-                        <td>Guilherme Artmann</td>
-                    </tr>
-                    <tr>
-                        <td>Guilherme Moura</td>
-                    </tr>
-                    <tr>
-                        <td>Gustavo Freitas</td>
-                    </tr>
-                    <tr>
-                        <td>Luís Henrique</td>
-                    </tr>
-                </table>
-                <br>
-                <table>
-                    <tr>
-                        <th colspan="2" class="cabecalho-tabela">FICHA TÉCNICA</th>
-                    </tr>
-                    <tr>
-                        <th>Direção</th>
-                        <td>Pedro Vieira</td>
-                    </tr>
-                    <tr>
-                        <th>Produção</th>
-                        <td>Ana Luiza Marcolina</td>
-                    </tr>
-                    <tr>
-                        <th>Fotografia</th>
-                        <td>Acervo Anchieta Arte Cênica</td>
-                    </tr>
-                    <tr>
-                        <th>Coordenação</th>
-                        <td>Valentim Schmoeler</td>
-                    </tr>
-                    <tr>
-                        <th>Obra original</th>
-                        <td>O Inspetor Geral</td>
-                    </tr>
-                    <tr>
-                        <th>Autor original</th>
-                        <td>Nicolai Gogol</td>
-                    </tr>
-                </table>
-                <br>
-				<table id="elencosempersonagem">
+			<h3>Processo de pesquisa e montagem 2019/1</h3>
+			<hr>
+			
+			<p>Os cidadãos de uma pequena província recebem a notícia da visita de um Inspetor Geral, vindo diretamente de São Petersburgo para avaliar se tudo está nos conformes. Instaura-se então o completo caos, numa sociedade onde desde o governador até os simples comerciantes são corruptos e vigaristas, todos irão se dobrar e desdobrar para não sofrer as severas punições pelos seus crimes.</p>
+
+			<p><b>O Inspetor Geral</b> teve 2 apresentações, no <a href="https://fundacaocultural.itajai.sc.gov.br/teatro-municipal">Teatro Municipal de Itajaí</a> e na <a href="https://fundacaocultural.itajai.sc.gov.br/casa-da-cultura">Casa da Cultura Dide Brandão</a>, nos dias 30 de junho e 21 julho de 2019.</p>
+
+			<h2>Elenco</h2>
+			<hr>
+			<table>
+				<thead>
 					<tr>
-						<th colspan="2" class="cabecalho-tabela">
-							PATROCÍNIO</th>
+						<th>Ator / Atriz</th>
 					</tr>
-                    <tr>
-                        <td>APM Terminals</td>
-                    </tr>
-				</table>
-                <br>
-                <table id="elencosempersonagem">
-                    <tr>
-                        <th colspan="2" class="cabecalho-tabela">
-                            APOIO</th>
-                    </tr>
-                    <tr>
-                        <td>Tupã Contabilidade</td>
-                    </tr>
-                    <tr>
-                        <td>Prefeitura de Itajaí</td>
-                    </tr>
-                    <tr>
-                        <td>Fundação Cultural de Itajaí</td>
-                    </tr>
-                    <tr>
-                        <td>Casa da Cultura Dide Brandão</td>
-                    </tr>
-                </table>
-            </article>
-            <article>
-                <p style="text-indent: 0; font-size: small;">A obra <b>O Inspetor Geral</b>
-                    foi livremente adaptada em um processo de pesquisa e montagem sem fins lucrativos, sob a orientação
-                    da coordenação dos Alunos do Exercício Cênico Anchieta. Os recursos financeiros arrecadados foram
-                    usados exclusivamente para cobrir despesas de figurino, maquiagem, transporte e outras operações.
-                </p>
-            </article>
+				</thead>
+				<tr>
+					<td>Alisson Baemns</td>
+				</tr>
+				<tr>
+					<td>Ari Mateus Adami</td>
+				</tr>
+				<tr>
+					<td>Camila Muniz</td>
+				</tr>
+				<tr>
+					<td>Elivélton Alexsander</td>
+				</tr>
+				<tr>
+					<td>Filipe dos Santos</td>
+				</tr>
+				<tr>
+					<td>Fernanda Scherer</td>
+				</tr>
+				<tr>
+					<td>Gabrielli Pacheco Ribeiro</td>
+				</tr>
+				<tr>
+					<td>Guilherme Artmann</td>
+				</tr>
+				<tr>
+					<td>Guilherme Moura</td>
+				</tr>
+				<tr>
+					<td>Gustavo Freitas</td>
+				</tr>
+				<tr>
+					<td>Luís Henrique</td>
+				</tr>
+			</table>
 
-        </main>
+			<h2>Ficha Técnica</h2>
+			<hr>
+			<table>
+				<tr>
+					<th>Direção</th>
+					<td>Pedro Vieira</td>
+				</tr>
+				<tr>
+					<th>Produção</th>
+					<td>Ana Luiza Marcolina</td>
+				</tr>
+				<tr>
+					<th>Fotografia</th>
+					<td>Acervo Anchieta Arte Cênica</td>
+				</tr>
+				<tr>
+					<th>Coordenação</th>
+					<td>Valentim Schmoeler</td>
+				</tr>
+				<tr>
+					<th>Obra original</th>
+					<td>O Inspetor Geral</td>
+				</tr>
+				<tr>
+					<th>Autor original</th>
+					<td>Nicolai Gogol</td>
+				</tr>
+			</table>
 
-        <aside>
-            <div>
-                <img id="zoomImage1" src="/espetaculos/2019/IMG/inspetor-1.jpg">
-            </div>
-        </aside>
-        <div id="overlay1" class="overlay">
-            <img id="largeImage1" src="/espetaculos/2019/IMG/inspetor-1.jpg">
-        </div>
+			<h2>Patrocínio</h2>
+			<hr>
+			<p>APM Terminals</p>
 
-        <aside>
-            <div>
-                <img id="zoomImage2" src="/espetaculos/2019/IMG/inspetor-2.jpg">
-            </div>
-        </aside>
-        <div id="overlay2" class="overlay">
-            <img id="largeImage2" src="/espetaculos/2019/IMG/inspetor-2.jpg">
-        </div>
+			<h2>Apoio</h2>
+			<hr>
+			<p>Tupã Contabilidade</p>
+			<p>Prefeitura de Itajaí</p>
+			<p>Fundação Cultural de Itajaí</p>
+			<p>Casa da Cultura Dide Brandão</p>
 
-        <aside>
-            <div>
-                <img id="zoomImage3" src="/espetaculos/2019/IMG/inspetor-3.jpg">
-            </div>
-        </aside>
-        <div id="overlay3" class="overlay">
-            <img id="largeImage3" src="/espetaculos/2019/IMG/inspetor-3.jpg">
-        </div>
+		</main>
 
-        <aside>
-            <div>
-                <img id="zoomImage4" src="/espetaculos/2019/IMG/inspetor-4.jpg">
-            </div>
-        </aside>
-        <div id="overlay4" class="overlay">
-            <img id="largeImage4" src="/espetaculos/2019/IMG/inspetor-4.jpg">
-        </div>
+		<aside class="sidebar">
+			<div class="sidebar-titulo">Cartaz do espetáculo</div>
+			<div><img src="/espetaculos/2019/img/inspetor-cartaz.webp"></div>
+			<hr>
+			<div class="sidebar-titulo">Elenco</div>
+			<div><img src="/espetaculos/2019/img/inspetor-elenco.webp"></div>
+			<hr>
+			<div class="sidebar-titulo">Galeria de fotos</div>
+			<div class="sidebar-texto">Clique para ampliar</div>
+			<div class="sidebar-galeria">
+				<img src="/espetaculos/2019/img/inspetor-1.webp">
+				<img src="/espetaculos/2019/img/inspetor-2.webp">
+				<img src="/espetaculos/2019/img/inspetor-3.webp">
+				<img src="/espetaculos/2019/img/inspetor-4.webp">
+				<img src="/espetaculos/2019/img/inspetor-5.webp">
+				<img src="/espetaculos/2019/img/inspetor-6.webp">
+				<img src="/espetaculos/2019/img/inspetor-7.webp">
+				<img src="/espetaculos/2019/img/inspetor-8.webp">
+				<img src="/espetaculos/2019/img/inspetor-9.webp">
+			</div>
+			<hr>
+			<div class="sidebar-texto" style="font-size: 0.8rem; text-align: justify;">A obra <b>O Inspetor Geral</b> foi livremente adaptada em um processo de pesquisa e montagem sem fins lucrativos, sob a orientação da coordenação dos Alunos do Exercício Cênico Anchieta. Os recursos financeiros arrecadados foram usados exclusivamente para cobrir despesas de figurino, maquiagem, transporte e outras operações.</div>
+		</aside>
 
-        <aside>
-            <div>
-                <img id="zoomImage5" src="/espetaculos/2019/IMG/inspetor-5.jpg">
-            </div>
-        </aside>
-        <div id="overlay5" class="overlay">
-            <img id="largeImage5" src="/espetaculos/2019/IMG/inspetor-5.jpg">
-        </div>
-
-        <aside>
-            <div>
-                <img id="zoomImage6" src="/espetaculos/2019/IMG/inspetor-6.jpg">
-            </div>
-        </aside>
-        <div id="overlay6" class="overlay">
-            <img id="largeImage6" src="/espetaculos/2019/IMG/inspetor-6.jpg">
-        </div>
-
-        <aside>
-            <div>
-                <img id="zoomImage7" src="/espetaculos/2019/IMG/inspetor-7.jpg">
-            </div>
-        </aside>
-        <div id="overlay7" class="overlay">
-            <img id="largeImage7" src="/espetaculos/2019/IMG/inspetor-7.jpg">
-        </div>
-
-        <aside>
-            <div>
-                <img id="zoomImage8" src="/espetaculos/2019/IMG/inspetor-8.jpg">
-            </div>
-        </aside>
-        <div id="overlay8" class="overlay">
-            <img id="largeImage8" src="/espetaculos/2019/IMG/inspetor-8.jpg">
-        </div>
-
-        <aside>
-            <div>
-                <img id="zoomImage9" src="/espetaculos/2019/IMG/inspetor-9.jpg">
-            </div>
-        </aside>
-        <div id="overlay9" class="overlay">
-            <img id="largeImage9" src="/espetaculos/2019/IMG/inspetor-9.jpg">
-        </div>
-    </section>
-    <div id="footer"></div>
+	</div>
 </body>
+<div id="footer"></div>
+<div id="imagem-modal"></div>
 
 </html>

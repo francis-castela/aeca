@@ -10,240 +10,173 @@
     <meta property="og:title" content="Camaleão e as Batatas Mágicas" />
     <meta property="og:description" content="A.E.C.A" />
     <meta property="og:site_name" content="Camaleão e as Batatas Mágicas" />
-    <meta property="og:image" content="http://aeca.com.br/espetaculos/2014/IMG/camaleao-og.jpg" />
+    <meta property="og:image" content="http://aeca.com.br/espetaculos/2014/img/camaleao-og.jpg" />
 
     <title>Camaleão e as Batatas Mágicas</title>
 
-    <link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
+	<link rel="icon" href="/css/logos/favicon.webp" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/css/styles/style.css">
 
-    <script src="/js/zoom.js" defer></script>
+	<script defer>
+		fetch('/html/footer.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('footer').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/aside-padrao.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('aside-padrao').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/cabecalho.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('cabecalho').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/imagem-modal.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('imagem-modal').innerHTML = data;
+			});
+	</script>
+	<script src="/js/zoom.js" defer></script>
+	<script src="/js/scrollback.js"></script>
 
-    <script defer>
-        fetch('/HTML/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer').innerHTML = data;
-            });
-    </script>
-
-    <script defer>
-        fetch('/HTML/cabecalho.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('cabecalho').innerHTML = data;
-            });
-    </script>
 </head>
 
 <style>
-    :root {
-        --fundo-escuro: #4769AC;
-        --texto-titulo: #122359;
-    }
+	:root {
+		--fundo-pagina: #CCD6F5;
+		--header: #122359;
+	}
 </style>
 
 <body>
-    <header>
-        <nav id="cabecalho"></nav>
-    </header>
-    <section id="pageContent">
-        <main role="main">
+	<div id="cabecalho"></div>
 
+	<div class="container">
+		<main class="main-content">
             <h1>Camaleão e as Batatas Mágicas</h1>
-            <h2>Processo de pesquisa e montagem 2014/1<br></h2>
-            <article>
-                <p style="font-style: italic; text-indent: 0"></p>
-                <img src="/espetaculos/2014/IMG/camaleao-cartaz.webp">
-            </article>
-            <article>
-                <p style="text-align: center; text-indent: 0"><b>Camaleão e as Batatas Mágicas</b> teve 2 apresentações, na <a href="https://fundacaocultural.itajai.sc.gov.br/casa-da-cultura">Casa da Cultura Dide
-                    Brandão</a>, nos dias 03 e 04 de maio de 2014.
-            </p>
-                <img src="/espetaculos/2014/IMG/camaleao-elenco.jpg">
-            </article>
-            <article>
-                <table id="elencosempersonagem">
-                    <tr>
-                        <th colspan="2" class="cabecalho-tabela">ELENCO</th>
-                    </tr>
-                    <tr>
-                        <td>Gabriel Fidelis</td>
-                    </tr>
-                    <tr>
-                        <td>Larissa Guadagnin</td>
-                    </tr>
-                    <tr>
-                        <td>Matheus Piroo</td>
-                    </tr>
-                    <tr>
-                        <td>Rafael Gartner</td>
-                    </tr>
-                    <tr>
-                        <td>Valentim Schmoeler</td>
-                    </tr>
-                    <tr>
-                        <td>Wesley C. de Oliveira</td>
-                    </tr>
-                </table>
-                <br>
-                <table>
-                    <tr>
-                        <th colspan="2" class="cabecalho-tabela">FICHA TÉCNICA</th>
-                    </tr>
-                    <tr>
-                        <th>Direção</th>
-                        <td>Valentim Schmoeler</td>
-                    </tr>
-                    <tr>
-                        <th>Auxiliar de direção</th>
-                        <td>Flávia Marcos,<br>
-                            Felipe Laurêncio</td>
-                    </tr>
-                    <tr>
-                        <th>Figurino</th>
-                        <td>Maria Júlia Kumm</td>
-                    </tr>
-                    <tr>
-                        <th>Iluminação</th>
-                        <td>Felipe Laurêncio</td>
-                    </tr>
-                    <tr>
-                        <th>Sonoplastia</th>
-                        <td>Ana Luiza Marcolina</td>
-                    </tr>
-                    <tr>
-                        <th>Fotografia</th>
-                        <td>Acervo Anchieta Arte Cênica</td>
-                    </tr>
-                    <tr>
-                        <th>Coordernação</th>
-                        <td>Valentim Schmoeler</td>
-                    </tr>
-                    <tr>
-                        <th>Obra original</th>
-                        <td>Camaleão e as Batatas Mágicas</td>
-                    </tr>
-                    <tr>
-                        <th>Autor original</th>
-                        <td>Maria Clara Machado</td>
-                    </tr>
-                </table>
-                <br>
-                <table id="elencosempersonagem">
-                    <tr>
-                        <th colspan="2" class="cabecalho-tabela">
-                            APOIO</th>
-                    </tr>
-                    <tr>
-                        <td>Itajaí Shopping</td>
-                    </tr>
-                    <tr>
-                        <td>Tupã Contabilidade</td>
-                    </tr>
-                    <tr>
-                        <td>Prefeitura de Itajaí</td>
-                    </tr>
-                    <tr>
-                        <td>Fundação Cultural de Itajaí</td>
-                    </tr>
-                    <tr>
-                        <td>Casa da Cultura Dide Brandão</td>
-                    </tr>
-                </table>
-            </article>
-            <article>
-                <p style="text-indent: 0; font-size: small;">A obra <b>Camaleão e as Batatas Mágicas</b>
-                    foi livremente adaptada em um processo de pesquisa e montagem sem fins lucrativos, sob a orientação
-                    da coordenação dos Alunos do Exercício Cênico Anchieta. Os recursos financeiros arrecadados foram
-                    usados exclusivamente para cobrir despesas de figurino, maquiagem, transporte e outras operações.
-                </p>
-            </article>
+			<h3>Processo de pesquisa e montagem 2014/1</h3>
+			<hr>
+			
+			<p>Vovô Felício criou uma fórmula para plantar batatas em terreno árido, independente da região ou clima com resultados imediatos, criando assim uma nova alternativa para resolver o problema da fome do país. Só que esta grande descoberta desperta o interesse de pessoas ambiciosas, gananciosas e interessadas em riquezas. Camaleão Alface e seu fiel companheiro Sheik Boçal são maus e fazem qualquer coisa pelo dinheiro, por isso farão de tudo para roubar as batatas do vovô Felício. Porém, os espertos netinhos do vovô, Maneco e Lúcia e o seu cão de estimação, Gaspar, irão fazer tudo o que puderem para proteger as batatas mágicas.</p>
 
-        </main>
+			<p><b>Camaleão e as Batatas Mágicas</b> teve 2 apresentações, na <a href="https://fundacaocultural.itajai.sc.gov.br/casa-da-cultura">Casa da Cultura Dide Brandão</a>, nos dias 03 e 04 de maio de 2014.</p>
 
-        <aside>
-            <div>
-                <img id="zoomImage1" src="/espetaculos/2014/IMG/camaleao-1.jpg">
-            </div>
-        </aside>
-        <div id="overlay1" class="overlay">
-            <img id="largeImage1" src="/espetaculos/2014/IMG/camaleao-1.jpg">
-        </div>
+			<h2>Elenco</h2>
+			<hr>
+			<table>
+				<thead>
+					<tr>
+						<th>Ator / Atriz</th>
+					</tr>
+				</thead>
+				<tr>
+					<td>Gabriel Fidelis</td>
+				</tr>
+				<tr>
+					<td>Larissa Guadagnin</td>
+				</tr>
+				<tr>
+					<td>Matheus Piroo</td>
+				</tr>
+				<tr>
+					<td>Rafael Gartner</td>
+				</tr>
+				<tr>
+					<td>Valentim Schmoeler</td>
+				</tr>
+				<tr>
+					<td>Wesley C. de Oliveira</td>
+				</tr>
+			</table>
 
-        <aside>
-            <div>
-                <img id="zoomImage2" src="/espetaculos/2014/IMG/camaleao-2.jpg">
-            </div>
-        </aside>
-        <div id="overlay2" class="overlay">
-            <img id="largeImage2" src="/espetaculos/2014/IMG/camaleao-2.jpg">
-        </div>
+			<h2>Ficha Técnica</h2>
+			<hr>
+			<table>
+				<tr>
+					<th>Direção</th>
+					<td>Valentim Schmoeler</td>
+				</tr>
+				<tr>
+					<th>Auxiliar de direção</th>
+					<td>Flávia Marcos,<br>
+						Felipe Laurêncio</td>
+				</tr>
+				<tr>
+					<th>Figurino</th>
+					<td>Maria Júlia Kumm</td>
+				</tr>
+				<tr>
+					<th>Iluminação</th>
+					<td>Felipe Laurêncio</td>
+				</tr>
+				<tr>
+					<th>Sonoplastia</th>
+					<td>Ana Luiza Marcolina</td>
+				</tr>
+				<tr>
+					<th>Fotografia</th>
+					<td>Acervo Anchieta Arte Cênica</td>
+				</tr>
+				<tr>
+					<th>Coordernação</th>
+					<td>Valentim Schmoeler</td>
+				</tr>
+				<tr>
+					<th>Obra original</th>
+					<td>Camaleão e as Batatas Mágicas</td>
+				</tr>
+				<tr>
+					<th>Autor original</th>
+					<td>Maria Clara Machado</td>
+				</tr>
+			</table>
 
-        <aside>
-            <div>
-                <img id="zoomImage3" src="/espetaculos/2014/IMG/camaleao-3.jpg">
-            </div>
-        </aside>
-        <div id="overlay3" class="overlay">
-            <img id="largeImage3" src="/espetaculos/2014/IMG/camaleao-3.jpg">
-        </div>
+			<h2>Apoio</h2>
+			<hr>
+			<p>Itajaí Shopping</p>
+			<p>Tupã Contabilidade</p>
+			<p>Prefeitura de Itajaí</p>
+			<p>Fundação Cultural de Itajaí</p>
+			<p>Casa da Cultura Dide Brandão</p>
 
-        <aside>
-            <div>
-                <img id="zoomImage4" src="/espetaculos/2014/IMG/camaleao-4.jpg">
-            </div>
-        </aside>
-        <div id="overlay4" class="overlay">
-            <img id="largeImage4" src="/espetaculos/2014/IMG/camaleao-4.jpg">
-        </div>
+		</main>
 
-        <aside>
-            <div>
-                <img id="zoomImage5" src="/espetaculos/2014/IMG/camaleao-5.jpg">
-            </div>
-        </aside>
-        <div id="overlay5" class="overlay">
-            <img id="largeImage5" src="/espetaculos/2014/IMG/camaleao-5.jpg">
-        </div>
+		<aside class="sidebar">
+			<div class="sidebar-titulo">Cartaz do espetáculo</div>
+			<div><img src="/espetaculos/2014/img/camaleao-cartaz.webp"></div>
+			<hr>
+			<div class="sidebar-titulo">Elenco</div>
+			<div><img src="/espetaculos/2014/img/camaleao-elenco.webp"></div>
+			<hr>
+			<div class="sidebar-titulo">Galeria de fotos</div>
+			<div class="sidebar-texto">Clique para ampliar</div>
+			<div class="sidebar-galeria">
+				<img src="/espetaculos/2014/img/camaleao-1.webp">
+				<img src="/espetaculos/2014/img/camaleao-2.webp">
+				<img src="/espetaculos/2014/img/camaleao-3.webp">
+				<img src="/espetaculos/2014/img/camaleao-4.webp">
+				<img src="/espetaculos/2014/img/camaleao-5.webp">
+				<img src="/espetaculos/2014/img/camaleao-6.webp">
+				<img src="/espetaculos/2014/img/camaleao-7.webp">
+				<img src="/espetaculos/2014/img/camaleao-8.webp">
+				<img src="/espetaculos/2014/img/camaleao-9.webp">
+			</div>
+			<hr>
+			<div class="sidebar-texto" style="font-size: 0.8rem; text-align: justify;">A obra <b>Camaleão e as Batatas Mágicas</b> foi livremente adaptada em um processo de pesquisa e montagem sem fins lucrativos, sob a orientação da coordenação dos Alunos do Exercício Cênico Anchieta. Os recursos financeiros arrecadados foram usados exclusivamente para cobrir despesas de figurino, maquiagem, transporte e outras operações.</div>
+		</aside>
 
-        <aside>
-            <div>
-                <img id="zoomImage6" src="/espetaculos/2014/IMG/camaleao-6.jpg">
-            </div>
-        </aside>
-        <div id="overlay6" class="overlay">
-            <img id="largeImage6" src="/espetaculos/2014/IMG/camaleao-6.jpg">
-        </div>
-
-        <aside>
-            <div>
-                <img id="zoomImage7" src="/espetaculos/2014/IMG/camaleao-7.jpg">
-            </div>
-        </aside>
-        <div id="overlay7" class="overlay">
-            <img id="largeImage7" src="/espetaculos/2014/IMG/camaleao-7.jpg">
-        </div>
-
-        <aside>
-            <div>
-                <img id="zoomImage8" src="/espetaculos/2014/IMG/camaleao-8.jpg">
-            </div>
-        </aside>
-        <div id="overlay8" class="overlay">
-            <img id="largeImage8" src="/espetaculos/2014/IMG/camaleao-8.jpg">
-        </div>
-
-        <aside>
-            <div>
-                <img id="zoomImage9" src="/espetaculos/2014/IMG/camaleao-9.jpg">
-            </div>
-        </aside>
-        <div id="overlay9" class="overlay">
-            <img id="largeImage9" src="/espetaculos/2014/IMG/camaleao-9.jpg">
-        </div>
-    </section>
-    <div id="footer"></div>
+	</div>
 </body>
+<div id="footer"></div>
+<div id="imagem-modal"></div>
 
 </html>

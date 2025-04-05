@@ -10,267 +10,174 @@
     <meta property="og:title" content="A Cantora Careca" />
     <meta property="og:description" content="A.E.C.A" />
     <meta property="og:site_name" content="A Cantora Careca" />
-    <meta property="og:image" content="http://aeca.com.br/espetaculos/2019/IMG/careca-og.jpg" />
+    <meta property="og:image" content="http://aeca.com.br/espetaculos/2019/img/careca-og.jpg" />
 
     <title>A Cantora Careca</title>
 
-    <link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
+	<link rel="icon" href="/css/logos/favicon.webp" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/css/styles/style.css">
 
-    <script src="/js/zoom.js" defer></script>
+	<script defer>
+		fetch('/html/footer.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('footer').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/aside-padrao.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('aside-padrao').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/cabecalho.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('cabecalho').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/imagem-modal.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('imagem-modal').innerHTML = data;
+			});
+	</script>
+	<script src="/js/zoom.js" defer></script>
+	<script src="/js/scrollback.js"></script>
 
-    <script defer>
-        fetch('/HTML/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer').innerHTML = data;
-            });
-    </script>
-
-    <script defer>
-        fetch('/HTML/cabecalho.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('cabecalho').innerHTML = data;
-            });
-    </script>
 </head>
 
 <style>
-    :root {
-        --fundo-escuro: #cc2128;
-    }
+	:root {
+		--fundo-pagina: #F6CACC;
+		--header: #cc2128;
+	}
 </style>
 
 <body>
-    <header>
-        <nav id="cabecalho"></nav>
-    </header>
-    <section id="pageContent">
-        <main role="main">
+	<div id="cabecalho"></div>
 
+	<div class="container">
+		<main class="main-content">
             <h1>A Cantora Careca</h1>
-            <h2>Processo de pesquisa e montagem 2019/1<br></h2>
-            <article>
-                <p style="font-style: italic; text-indent: 0">Tic, tac... Tic, tac... Enquanto o relógio marca o tempo,
-                    a vida se desenrola. Nada além do esperado... Ou talvez, do inesperado? Tic, tac... Tic, tac... O
-                    relógio segue em frente enquanto a vida se esvai. É absurdo tentar controlar o tempo sem realmente
-                    tê-lo sob controle? É insensato buscar comunicação quando a verdadeira comunicação é impossível?
-                    Pode parecer razoável refletir sobre isso, mas... Tic, tac... Tic, tac... "Pode me emprestar o
-                    isqueiro?" "Claro! Fique à vontade. Tenho agulhas de sobra!" Assim se desenrola uma das principais
-                    peças de Èugene Ionesco, A Cantora Careca, que mescla dicotomia, ironia, solidão e a insignificância
-                    da existência humana, explorando como tema principal A IMPOSSIBILIDADE DE UMA VERDADEIRA
-                    COMUNICAÇÃO.</p>
-                <img src="/espetaculos/2019/IMG/careca-cartaz.webp">
-            </article>
-            <article>
-                <p style="text-align: center; text-indent: 0"><b>A Cantora Careca</b> teve 2 apresentações, na
-                    <a href="https://fundacaocultural.itajai.sc.gov.br/casa-da-cultura">Casa da Cultura Dide
-                        Brandão</a>, nos dias 16 e 17 de fevereiro de 2019.
-                </p>
-                <img src="/espetaculos/2019/IMG/careca-elenco.jpg">
-            </article>
-            <article>
-                <table id="elencosempersonagem">
-                    <tr>
-                        <th colspan="2" class="cabecalho-tabela">ELENCO</th>
-                    </tr>
-                    <tr>
-                        <td>Alisson Baemns</td>
-                    </tr>
-                    <tr>
-                        <td>Guilherme Artmann</td>
-                    </tr>
-                    <tr>
-                        <td>Luana Scarelli</td>
-                    </tr>
-                    <tr>
-                        <td>Marcio Barbarini</td>
-                    </tr>
-                    <tr>
-                        <td>Nádia Búrigo</td>
-                    </tr>
-                    <tr>
-                        <td>Sabrina Francez</td>
-                    </tr>
-                </table>
-                <br>
-                <table>
-                    <tr>
-                        <th colspan="2" class="cabecalho-tabela">FICHA TÉCNICA</th>
-                    </tr>
-                    <tr>
-                        <th>Direção,<br>Adaptação</th>
-                        <td>Paula Ramos</td>
-                    </tr>
-                    <tr>
-                        <th>Produção</th>
-                        <td>Maria Vitória Tiepo</td>
-                    </tr>
-                    <tr>
-                        <th>Elenco de apoio</th>
-                        <td>João Maia,<br>Lucas Aquino</td>
-                    </tr>
-                    <tr>
-                        <th>Fotografia</th>
-                        <td>Acervo Anchieta Arte Cênica</td>
-                    </tr>
-                    <tr>
-                        <th>Coordernação</th>
-                        <td>Valentim Schmoeler</td>
-                    </tr>
-                    <tr>
-                        <th>Obra original</th>
-                        <td>A Cantora Careca</td>
-                    </tr>
-                    <tr>
-                        <th>Autor original</th>
-                        <td>Eugène Ionesco</td>
-                    </tr>
-                </table>
-                <br>
-                <table id="elencosempersonagem">
-                    <tr>
-                        <th colspan="2" class="cabecalho-tabela">
-                            PATROCÍNIO</th>
-                    </tr>
-                    <tr>
-                        <td>APM Terminals</td>
-                    </tr>
-                    <tr>
-                        <td>BellyQuel Atelier de Costura</td>
-                    </tr>
-                    <tr>
-                        <td>Brazil Pizza & Steakhouse</td>
-                    </tr>
-                    <tr>
-                        <td>Empório Doces Finos</td>
-                    </tr>
-                    <tr>
-                        <td>Ioná Comin</td>
-                    </tr>
-                    <tr>
-                        <td>Ludgê Acessórios e Decorações</td>
-                    </tr>
-                    <tr>
-                        <td>Passport Marítima</td>
-                    </tr>
-                    <tr>
-                        <td>Prime Logística e Transportes</td>
-                    </tr>
-                </table>
-                <br>
-                <table id="elencosempersonagem">
-                    <tr>
-                        <th colspan="2" class="cabecalho-tabela">
-                            APOIO</th>
-                    </tr>
-                    <tr>
-                        <td>Tupã Contabilidade</td>
-                    </tr>
-                    <tr>
-                        <td>Prefeitura de Itajaí</td>
-                    </tr>
-                    <tr>
-                        <td>Fundação Cultural de Itajaí</td>
-                    </tr>
-                    <tr>
-                        <td>Casa da Cultura Dide Brandão</td>
-                    </tr>
-                </table>
-            </article>
-            <article>
-                <p style="text-indent: 0; font-size: small;">A obra <b>A Cantora Careca</b>
-                    foi livremente adaptada em um processo de pesquisa e montagem sem fins lucrativos, sob a orientação
-                    da coordenação dos Alunos do Exercício Cênico Anchieta. Os recursos financeiros arrecadados foram
-                    usados exclusivamente para cobrir despesas de figurino, maquiagem, transporte e outras operações.
-                </p>
-            </article>
+			<h3>Processo de pesquisa e montagem 2019/1</h3>
+			<hr>
+			
+			<p>Tic, tac... Tic, tac... Enquanto o relógio marca o tempo, a vida se desenrola. Nada além do esperado... Ou talvez, do inesperado? Tic, tac... Tic, tac... O relógio segue em frente enquanto a vida se esvai. É absurdo tentar controlar o tempo sem realmente tê-lo sob controle? É insensato buscar comunicação quando a verdadeira comunicação é impossível? Pode parecer razoável refletir sobre isso, mas... Tic, tac... Tic, tac... "Pode me emprestar o isqueiro?" "Claro! Fique à vontade. Tenho agulhas de sobra!" Assim se desenrola uma das principais peças de Èugene Ionesco, A Cantora Careca, que mescla dicotomia, ironia, solidão e a insignificância da existência humana, explorando como tema principal A IMPOSSIBILIDADE DE UMA VERDADEIRA COMUNICAÇÃO.</p>
 
-        </main>
+			<p><b>A Cantora Careca</b> teve 2 apresentações, na <a href="https://fundacaocultural.itajai.sc.gov.br/casa-da-cultura">Casa da Cultura Dide Brandão</a>, nos dias 16 e 17 de fevereiro de 2019.</p>
 
-        <aside>
-            <div>
-                <img id="zoomImage1" src="/espetaculos/2019/IMG/careca-1.jpg">
-            </div>
-        </aside>
-        <div id="overlay1" class="overlay">
-            <img id="largeImage1" src="/espetaculos/2019/IMG/careca-1.jpg">
-        </div>
+			<h2>Elenco</h2>
+			<hr>
+			<table>
+				<thead>
+					<tr>
+						<th>Ator / Atriz</th>
+					</tr>
+				</thead>
+				<tr>
+					<td>Alisson Baemns</td>
+				</tr>
+				<tr>
+					<td>Guilherme Artmann</td>
+				</tr>
+				<tr>
+					<td>Luana Scarelli</td>
+				</tr>
+				<tr>
+					<td>Marcio Barbarini</td>
+				</tr>
+				<tr>
+					<td>Nádia Búrigo</td>
+				</tr>
+				<tr>
+					<td>Sabrina Francez</td>
+				</tr>
+			</table>
 
-        <aside>
-            <div>
-                <img id="zoomImage2" src="/espetaculos/2019/IMG/careca-2.jpg">
-            </div>
-        </aside>
-        <div id="overlay2" class="overlay">
-            <img id="largeImage2" src="/espetaculos/2019/IMG/careca-2.jpg">
-        </div>
+			<h2>Ficha Técnica</h2>
+			<hr>
+			<table>
+				<tr>
+					<th>Direção,<br>Adaptação</th>
+					<td>Paula Ramos</td>
+				</tr>
+				<tr>
+					<th>Produção</th>
+					<td>Maria Vitória Tiepo</td>
+				</tr>
+				<tr>
+					<th>Elenco de apoio</th>
+					<td>João Maia,<br>Lucas Aquino</td>
+				</tr>
+				<tr>
+					<th>Fotografia</th>
+					<td>Acervo Anchieta Arte Cênica</td>
+				</tr>
+				<tr>
+					<th>Coordernação</th>
+					<td>Valentim Schmoeler</td>
+				</tr>
+				<tr>
+					<th>Obra original</th>
+					<td>A Cantora Careca</td>
+				</tr>
+				<tr>
+					<th>Autor original</th>
+					<td>Eugène Ionesco</td>
+				</tr>
+			</table>
 
-        <aside>
-            <div>
-                <img id="zoomImage3" src="/espetaculos/2019/IMG/careca-3.jpg">
-            </div>
-        </aside>
-        <div id="overlay3" class="overlay">
-            <img id="largeImage3" src="/espetaculos/2019/IMG/careca-3.jpg">
-        </div>
+			<h2>Patrocínio</h2>
+			<hr>
+			<p>APM Terminals</p>
+			<p>BellyQuel Atelier de Costura</p>
+			<p>Brazil Pizza & Steakhouse</p>
+			<p>Empório Doces Finos</p>
+			<p>Ioná Comin</p>
+			<p>Ludgê Acessórios e Decorações</p>
+			<p>Passport Marítima</p>
+			<p>Prime Logística e Transportes</p>
 
-        <aside>
-            <div>
-                <img id="zoomImage4" src="/espetaculos/2019/IMG/careca-4.jpg">
-            </div>
-        </aside>
-        <div id="overlay4" class="overlay">
-            <img id="largeImage4" src="/espetaculos/2019/IMG/careca-4.jpg">
-        </div>
+			<h2>Apoio</h2>
+			<hr>
+			<p>Tupã Contabilidade</p>
+			<p>Prefeitura de Itajaí</p>
+			<p>Fundação Cultural de Itajaí</p>
+			<p>Casa da Cultura Dide Brandão</p>
 
-        <aside>
-            <div>
-                <img id="zoomImage5" src="/espetaculos/2019/IMG/careca-5.jpg">
-            </div>
-        </aside>
-        <div id="overlay5" class="overlay">
-            <img id="largeImage5" src="/espetaculos/2019/IMG/careca-5.jpg">
-        </div>
+		</main>
 
-        <aside>
-            <div>
-                <img id="zoomImage6" src="/espetaculos/2019/IMG/careca-6.jpg">
-            </div>
-        </aside>
-        <div id="overlay6" class="overlay">
-            <img id="largeImage6" src="/espetaculos/2019/IMG/careca-6.jpg">
-        </div>
+		<aside class="sidebar">
+			<div class="sidebar-titulo">Cartaz do espetáculo</div>
+			<div><img src="/espetaculos/2019/img/careca-cartaz.webp"></div>
+			<hr>
+			<div class="sidebar-titulo">Elenco</div>
+			<div><img src="/espetaculos/2019/img/careca-elenco.webp"></div>
+			<hr>
+			<div class="sidebar-titulo">Galeria de fotos</div>
+			<div class="sidebar-texto">Clique para ampliar</div>
+			<div class="sidebar-galeria">
+				<img src="/espetaculos/2019/img/careca-1.webp">
+				<img src="/espetaculos/2019/img/careca-2.webp">
+				<img src="/espetaculos/2019/img/careca-3.webp">
+				<img src="/espetaculos/2019/img/careca-4.webp">
+				<img src="/espetaculos/2019/img/careca-5.webp">
+				<img src="/espetaculos/2019/img/careca-6.webp">
+				<img src="/espetaculos/2019/img/careca-7.webp">
+				<img src="/espetaculos/2019/img/careca-8.webp">
+				<img src="/espetaculos/2019/img/careca-9.webp">
+			</div>
+			<hr>
+			<div class="sidebar-texto" style="font-size: 0.8rem; text-align: justify;">A obra <b>A Cantora Careca</b> foi livremente adaptada em um processo de pesquisa e montagem sem fins lucrativos, sob a orientação da coordenação dos Alunos do Exercício Cênico Anchieta. Os recursos financeiros arrecadados foram usados exclusivamente para cobrir despesas de figurino, maquiagem, transporte e outras operações.</div>
+		</aside>
 
-        <aside>
-            <div>
-                <img id="zoomImage7" src="/espetaculos/2019/IMG/careca-7.jpg">
-            </div>
-        </aside>
-        <div id="overlay7" class="overlay">
-            <img id="largeImage7" src="/espetaculos/2019/IMG/careca-7.jpg">
-        </div>
-
-        <aside>
-            <div>
-                <img id="zoomImage8" src="/espetaculos/2019/IMG/careca-8.jpg">
-            </div>
-        </aside>
-        <div id="overlay8" class="overlay">
-            <img id="largeImage8" src="/espetaculos/2019/IMG/careca-8.jpg">
-        </div>
-
-        <aside>
-            <div>
-                <img id="zoomImage9" src="/espetaculos/2019/IMG/careca-9.jpg">
-            </div>
-        </aside>
-        <div id="overlay9" class="overlay">
-            <img id="largeImage9" src="/espetaculos/2019/IMG/careca-9.jpg">
-        </div>
-    </section>
-    <div id="footer"></div>
+	</div>
 </body>
+<div id="footer"></div>
+<div id="imagem-modal"></div>
 
 </html>

@@ -10,381 +10,274 @@
     <meta property="og:title" content="Incidente em Antares" />
     <meta property="og:description" content="A.E.C.A" />
     <meta property="og:site_name" content="Incidente em Antares" />
-    <meta property="og:image" content="http://aeca.com.br/espetaculos/2024/IMG/antares-og.jpg" />
+    <meta property="og:image" content="http://aeca.com.br/espetaculos/2024/img/incidente-og.jpg" />
 
     <title>Incidente em Antares</title>
 
-    <link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
+	<link rel="icon" href="/css/logos/favicon.webp" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/css/styles/style.css">
 
-    <script src="/js/zoom.js" defer></script>
+	<script defer>
+		fetch('/html/footer.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('footer').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/aside-padrao.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('aside-padrao').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/cabecalho.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('cabecalho').innerHTML = data;
+			});
+	</script>
+	<script defer>
+		fetch('/html/imagem-modal.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('imagem-modal').innerHTML = data;
+			});
+	</script>
+	<script src="/js/zoom.js" defer></script>
+	<script src="/js/scrollback.js"></script>
 
-    <script defer>
-        fetch('/HTML/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer').innerHTML = data;
-            });
-    </script>
-    <script defer>
-        fetch('/HTML/aside-padrao.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('aside-padrao').innerHTML = data;
-            });
-    </script>
-    <script defer>
-        fetch('/HTML/cabecalho.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('cabecalho').innerHTML = data;
-            });
-    </script>
 </head>
 
 <style>
-    :root {
-        --fundo-escuro: #cab0a4;
-        --texto-titulo: #8A492E;
-        --botao-piscante-1: #c79e8c;
-        --botao-piscante-2: #34241d;
-    }
+	:root {
+		--fundo-pagina: #D9C7BF;
+		--header: #8A492E;
+	}
 </style>
 
 <body>
-    <header>
-        <nav id="cabecalho"></nav>
-    </header>
-    <section id="pageContent">
-        <main role="main">
+	<div id="cabecalho"></div>
 
+	<div class="container">
+		<main class="main-content">
             <h1>Incidente em Antares</h1>
-            <h2>Processo de pesquisa e montagem 2024/2</h2>
-            <article>
-                <p>Na pequena cidade de Antares, tudo vira de cabeça para baixo quando uma greve dos coveiros impede o
-                    enterro de sete mortos. Sem descanso em suas sepulturas, os mortos retornam para assombrar a cidade,
-                    revelando os segredos mais obscuros e desmascarando as hipocrisias dos moradores. Enquanto os vivos
-                    tentam manter as aparências, os mortos expõem com ironia e clareza as injustiças sociais, os jogos
-                    de poder e as fraquezas humanas.</p>
-                <img src="/espetaculos/2024/IMG/antares-cartaz.jpg">
-            </article>
-            <article>
-                <p style="text-align: center; text-indent: 0"><b>Incidente em Antares</b> teve 4 apresentações, na <a
-                        href="https://fundacaocultural.itajai.sc.gov.br/casa-da-cultura">Casa da Cultura Dide
-                        Brandão</a>, nos dias 2, 3, 9 e 10 de novembro de 2024.</p>
-                <img src="/espetaculos/2024/IMG/antares-elenco.jpg">
-            </article>
-            <article>
-                <table>
-                    <tr>
-                        <th colspan="2" class="cabecalho-tabela" style="color: #FFF;">ELENCO
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>Lavinha,<br>Irmã Celina</th>
-                        <td>Alanis Mendes</td>
-                    </tr>
-                    <tr>
-                        <th>Prefeito Vivaldino</th>
-                        <td>Apollo Mueller</td>
-                    </tr>
-                    <tr>
-                        <th>Madre Rogéria</th>
-                        <td>Carla Baião</td>
-                    </tr>
-                    <tr>
-                        <th>Delegado Inocêncio Pigarço</th>
-                        <td>Dales Hoeckesfeld</td>
-                    </tr>
-                    <tr>
-                        <th>Erotildes</th>
-                        <td>Dayane Maia</td>
-                    </tr>
-                    <tr>
-                        <th>Assunzinho</th>
-                        <td>Dyonata</td>
-                    </tr>
-                    <tr>
-                        <th>Coveiro Geminiano</th>
-                        <td>Felipe Laurêncio</td>
-                    </tr>
-                    <tr>
-                        <th>Alambique</th>
-                        <td>Guilherme Medina</td>
-                    </tr>
-                    <tr>
-                        <th>Coronel Tibério Vacariano</th>
-                        <td>Kieffer Strelow</td>
-                    </tr>
-                    <tr>
-                        <th>Maestrina Olinda</th>
-                        <td>Louise Moreira</td>
-                    </tr>
-                    <tr>
-                        <th>Joana Paz</th>
-                        <td>Luanny Rodrigues</td>
-                    </tr>
-                    <tr>
-                        <th>Barcelona</th>
-                        <td>Lucas Scardone</td>
-                    </tr>
-                    <tr>
-                        <th>Cícera Branco</th>
-                        <td>Manuela Esteves</td>
-                    </tr>
-                    <tr>
-                        <th>Lanja Vacariano</th>
-                        <td>Maria Antônia</td>
-                    </tr>
-                    <tr>
-                        <th>Cecilinha,<br>Rosinha</th>
-                        <td>Marilú Müller</td>
-                    </tr>
-                    <tr>
-                        <th>Quitéria Campolargo</th>
-                        <td>Mayra Nadjara</td>
-                    </tr>
-                    <tr>
-                        <th>Padre Pedro</th>
-                        <td>Romeo Delmar</td>
-                    </tr>
-                    <tr>
-                        <th>Pudim de Cachaça</th>
-                        <td>Thiago Simões</td>
-                    </tr>
-                    <tr>
-                        <th>Grevistas</th>
-                        <td>Alexia Cardoso,
-                            <br>Ana De Tofol,
-                            <br>Célio Donato,
-                            <br>Julian Felix,
-                            <br>Leonardo Camargo,
-                            <br>Leonardo Crispim,
-                            <br>Maria Luiza da Luz,
-                            <br>Maria Nunes,
-                            <br>Mikazuki Raison,
-                            <br>Rui Junior,
-                            <br>Thainá Augustin,
-                            <br>Theodore Raison
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <table>
-                    <tr>
-                        <th colspan="2" class="cabecalho-tabela" style="color: #FFF;">FICHA TÉCNICA
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>Direção,<br>Adaptação</th>
-                        <td>Rafael Bueno</td>
-                    </tr>
-                    <tr>
-                        <th>Auxiliar de direção</th>
-                        <td>Letícia Santos</td>
-                    </tr>
-                    <tr>
-                        <th>Figurino,<br>Cenário,<br>Contrarregra</th>
-                        <td>Concepção coletiva</td>
-                    </tr>
-                    <tr>
-                        <th>Maquiagem</th>
-                        <td>Alanis Mendes,
-                            <br>Luana Xavier,
-                            <br>Lucas Scardone
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Iluminação</th>
-                        <td>Fernanda Lima</td>
-                    </tr>
-                    <tr>
-                        <th>Sonoplastia</th>
-                        <td>Idalicio Neto</td>
-                    </tr>
-                    <tr>
-                        <th>Fotografia</th>
-                        <td>Beatriz Serafim,<br>
-                            Dales Hoeckesfeld,<br>
-                            Victória Baixo Batista</td>
-                    </tr>
-                    <tr>
-                        <th>Arte Final</th>
-                        <td>Felipe Laurêncio,
-                            <br>Rui Junior
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Coordenação</th>
-                        <td>Paula Ramos
-                            <br>Francis Castela
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Coordenação Geral</th>
-                        <td>Valentim Schmoeler</td>
-                    </tr>
-                    <tr>
-                        <th>Obra original</th>
-                        <td>Incidente em Antares</td>
-                    </tr>
-                    <tr>
-                        <th>Autor original</th>
-                        <td>Érico Veríssimo (livro),<br>
-                            Charles Peixoto (série),<br>
-                            Nelson Nadotti (série)</td>
-                    </tr>
-                </table>
-                <br>
-                <table id="elencosempersonagem">
-                    <tr>
-                        <th colspan="2" class="cabecalho-tabela">
-                            PATROCÍNIO</th>
-                    </tr>
-                    <tr>
-                        <td>Atacadão do Compensado</td>
-                    </tr>
-                    <tr>
-                        <td>Crematório Vaticano</td>
-                    </tr>
-                    <tr>
-                        <td>Funerária São José</td>
-                    </tr>
-                    <tr>
-                        <td>Um Click</td>
-                    </tr>
-                </table>
-                <br>
-                <table id="elencosempersonagem">
-                    <tr>
-                        <th colspan="2" class="cabecalho-tabela">
-                            APOIO</th>
-                    </tr>
-                    <tr>
-                        <td>Cemin Advocacia</td>
-                    </tr>
-                    <tr>
-                        <td>Tupã Contabilidade</td>
-                    </tr>
-                    <tr>
-                        <td>Prefeitura de Itajaí</td>
-                    </tr>
-                    <tr>
-                        <td>Fundação Cultural de Itajaí</td>
-                    </tr>
-                    <tr>
-                        <td>Casa da Cultura Dide Brandão</td>
-                    </tr>
-                    <tr>
-                        <td>Colégio Nilton Kucker</td>
-                    </tr>
-                </table>
-            </article>
-            <article>
-                <p style="text-indent: 0; font-size: small;">A obra <b>Incidente em Antares</b>
-                    foi livremente adaptada em um processo de pesquisa e montagem sem fins lucrativos, sob a orientação
-                    da coordenação dos Alunos do Exercício Cênico Anchieta. Os recursos financeiros arrecadados foram
-                    usados exclusivamente para cobrir despesas de figurino, maquiagem, transporte e outras operações.
-                </p>
-            </article>
-        </main>
-        <a href="https://www.instagram.com/beatus.mm/">
-            <aside>
-                <div>FOTOGRAFIA<br>Beatriz Serafim</div>
-            </aside>
-        </a>
+			<h3>Processo de pesquisa e montagem 2024/2</h3>
+			<hr>
+			
+			<p>Na pequena cidade de Antares, tudo vira de cabeça para baixo quando uma greve dos coveiros impede o enterro de sete mortos. Sem descanso em suas sepulturas, os mortos retornam para assombrar a cidade, revelando os segredos mais obscuros e desmascarando as hipocrisias dos moradores. Enquanto os vivos tentam manter as aparências, os mortos expõem com ironia e clareza as injustiças sociais, os jogos de poder e as fraquezas humanas.</p>
 
-        <aside>
-            <div>
-                <img id="zoomImage1" src="/espetaculos/2024/IMG/incidente-1.jpg">
-            </div>
-        </aside>
-        <div id="overlay1" class="overlay">
-            <img id="largeImage1" src="/espetaculos/2024/IMG/incidente-1.jpg">
-        </div>
+			<p><b>Incidente em Antares</b> teve 4 apresentações, na <a href="https://fundacaocultural.itajai.sc.gov.br/casa-da-cultura">Casa da Cultura Dide Brandão</a>, nos dias 2, 3, 9 e 10 de novembro de 2024.</p>
 
-        <aside>
-            <div>
-                <img id="zoomImage2" src="/espetaculos/2024/IMG/incidente-2.jpg">
-            </div>
-        </aside>
-        <div id="overlay2" class="overlay">
-            <img id="largeImage2" src="/espetaculos/2024/IMG/incidente-2.jpg">
-        </div>
+			<h2>Elenco</h2>
+			<hr>
+			<table>
+				<thead>
+					<tr>
+						<th>Personagem</th>
+						<th>Ator / Atriz</th>
+					</tr>
+				</thead>
+				<tr>
+					<th>Lavinha,<br>Irmã Celina</th>
+					<td>Alanis Mendes</td>
+				</tr>
+				<tr>
+					<th>Prefeito Vivaldino</th>
+					<td>Apollo Mueller</td>
+				</tr>
+				<tr>
+					<th>Madre Rogéria</th>
+					<td>Carla Baião</td>
+				</tr>
+				<tr>
+					<th>Delegado Inocêncio Pigarço</th>
+					<td>Dales Hoeckesfeld</td>
+				</tr>
+				<tr>
+					<th>Erotildes</th>
+					<td>Dayane Maia</td>
+				</tr>
+				<tr>
+					<th>Assunzinho</th>
+					<td>Dyonata</td>
+				</tr>
+				<tr>
+					<th>Coveiro Geminiano</th>
+					<td>Felipe Laurêncio</td>
+				</tr>
+				<tr>
+					<th>Alambique</th>
+					<td>Guilherme Medina</td>
+				</tr>
+				<tr>
+					<th>Coronel Tibério Vacariano</th>
+					<td>Kieffer Strelow</td>
+				</tr>
+				<tr>
+					<th>Maestrina Olinda</th>
+					<td>Louise Moreira</td>
+				</tr>
+				<tr>
+					<th>Joana Paz</th>
+					<td>Luanny Rodrigues</td>
+				</tr>
+				<tr>
+					<th>Barcelona</th>
+					<td>Lucas Scardone</td>
+				</tr>
+				<tr>
+					<th>Cícera Branco</th>
+					<td>Manuela Esteves</td>
+				</tr>
+				<tr>
+					<th>Lanja Vacariano</th>
+					<td>Maria Antônia</td>
+				</tr>
+				<tr>
+					<th>Cecilinha,<br>Rosinha</th>
+					<td>Marilú Müller</td>
+				</tr>
+				<tr>
+					<th>Quitéria Campolargo</th>
+					<td>Mayra Nadjara</td>
+				</tr>
+				<tr>
+					<th>Padre Pedro</th>
+					<td>Romeo Delmar</td>
+				</tr>
+				<tr>
+					<th>Pudim de Cachaça</th>
+					<td>Thiago Simões</td>
+				</tr>
+				<tr>
+					<th>Grevistas</th>
+					<td>Alexia Cardoso,
+						<br>Ana De Tofol,
+						<br>Célio Donato,
+						<br>Julian Felix,
+						<br>Leonardo Camargo,
+						<br>Leonardo Crispim,
+						<br>Maria Luiza da Luz,
+						<br>Maria Nunes,
+						<br>Mikazuki Raison,
+						<br>Rui Junior,
+						<br>Thainá Augustin,
+						<br>Theodore Raison
+					</td>
+				</tr>
+			</table>
 
-        <aside>
-            <div>
-                <img id="zoomImage3" src="/espetaculos/2024/IMG/incidente-3.jpg">
-            </div>
-        </aside>
-        <div id="overlay3" class="overlay">
-            <img id="largeImage3" src="/espetaculos/2024/IMG/incidente-3.jpg">
-        </div>
+			<h2>Ficha Técnica</h2>
+			<hr>
+			<table>
+				<tr>
+					<th>Direção,<br>Adaptação</th>
+					<td>Rafael Bueno</td>
+				</tr>
+				<tr>
+					<th>Auxiliar de direção</th>
+					<td>Letícia Santos</td>
+				</tr>
+				<tr>
+					<th>Figurino,<br>Cenário,<br>Contrarregra</th>
+					<td>Concepção coletiva</td>
+				</tr>
+				<tr>
+					<th>Maquiagem</th>
+					<td>Alanis Mendes,
+						<br>Luana Xavier,
+						<br>Lucas Scardone
+					</td>
+				</tr>
+				<tr>
+					<th>Iluminação</th>
+					<td>Fernanda Lima</td>
+				</tr>
+				<tr>
+					<th>Sonoplastia</th>
+					<td>Idalicio Neto</td>
+				</tr>
+				<tr>
+					<th>Fotografia</th>
+					<td>Beatriz Serafim,<br>
+						Dales Hoeckesfeld,<br>
+						Victória Baixo Batista</td>
+				</tr>
+				<tr>
+					<th>Arte Final</th>
+					<td>Felipe Laurêncio,
+						<br>Rui Junior
+					</td>
+				</tr>
+				<tr>
+					<th>Coordenação</th>
+					<td>Paula Ramos
+						<br>Francis Castela
+					</td>
+				</tr>
+				<tr>
+					<th>Coordenação Geral</th>
+					<td>Valentim Schmoeler</td>
+				</tr>
+				<tr>
+					<th>Obra original</th>
+					<td>Incidente em Antares</td>
+				</tr>
+				<tr>
+					<th>Autor original</th>
+					<td>Érico Veríssimo (livro),<br>
+						Charles Peixoto (série),<br>
+						Nelson Nadotti (série)</td>
+				</tr>
+			</table>
 
-        <aside>
-            <div>
-                <img id="zoomImage4" src="/espetaculos/2024/IMG/incidente-4.jpg">
-            </div>
-        </aside>
-        <div id="overlay4" class="overlay">
-            <img id="largeImage4" src="/espetaculos/2024/IMG/incidente-4.jpg">
-        </div>
+			<h2>Patrocínio</h2>
+			<hr>
+			<p>Atacadão do Compensado</p>
+			<p>Crematório Vaticano</p>
+			<p>Funerária São José</p>
+			<p>Um Click</p>
 
-        <aside>
-            <div>
-                <img id="zoomImage5" src="/espetaculos/2024/IMG/incidente-5.jpg">
-            </div>
-        </aside>
-        <div id="overlay5" class="overlay">
-            <img id="largeImage5" src="/espetaculos/2024/IMG/incidente-5.jpg">
-        </div>
+			<h2>Apoio</h2>
+			<hr>
+			<p>Cemin Advocacia</p>
+			<p>Tupã Contabilidade</p>
+			<p>Prefeitura de Itajaí</p>
+			<p>Fundação Cultural de Itajaí</p>
+			<p>Casa da Cultura Dide Brandão</p>
+			<p>Colégio Nilton Kucker</p>
 
-        <aside>
-            <div>
-                <img id="zoomImage6" src="/espetaculos/2024/IMG/incidente-6.jpg">
-            </div>
-        </aside>
-        <div id="overlay6" class="overlay">
-            <img id="largeImage6" src="/espetaculos/2024/IMG/incidente-6.jpg">
-        </div>
+		</main>
 
-        <aside>
-            <div>
-                <img id="zoomImage7" src="/espetaculos/2024/IMG/incidente-7.jpg">
-            </div>
-        </aside>
-        <div id="overlay7" class="overlay">
-            <img id="largeImage7" src="/espetaculos/2024/IMG/incidente-7.jpg">
-        </div>
+		<aside class="sidebar">
+			<div class="sidebar-titulo">Cartaz do espetáculo</div>
+			<div><img src="/espetaculos/2024/img/incidente-cartaz.webp"></div>
+			<hr>
+			<div class="sidebar-titulo">Elenco</div>
+			<div><img src="/espetaculos/2024/img/incidente-elenco.webp"></div>
+			<hr>
+			<div class="sidebar-titulo">Galeria de fotos</div>
+			<div class="sidebar-texto">Clique para ampliar<a href="https://www.instagram.com/beatus.mm/">Fotógrafa: Beatriz Serafim</a></div>
+			<div class="sidebar-galeria">
+				<img src="/espetaculos/2024/img/incidente-1.webp">
+				<img src="/espetaculos/2024/img/incidente-2.webp">
+				<img src="/espetaculos/2024/img/incidente-3.webp">
+				<img src="/espetaculos/2024/img/incidente-4.webp">
+				<img src="/espetaculos/2024/img/incidente-5.webp">
+				<img src="/espetaculos/2024/img/incidente-6.webp">
+				<img src="/espetaculos/2024/img/incidente-7.webp">
+				<img src="/espetaculos/2024/img/incidente-8.webp">
+				<img src="/espetaculos/2024/img/incidente-9.webp">
+			</div>
+			<hr>
+			<div class="sidebar-texto" style="font-size: 0.8rem; text-align: justify;">A obra <b>Incidente em Antares</b> foi livremente adaptada em um processo de pesquisa e montagem sem fins lucrativos, sob a orientação da coordenação dos Alunos do Exercício Cênico Anchieta. Os recursos financeiros arrecadados foram usados exclusivamente para cobrir despesas de figurino, maquiagem, transporte e outras operações.</div>
+		</aside>
 
-        <aside>
-            <div>
-                <img id="zoomImage8" src="/espetaculos/2024/IMG/incidente-8.jpg">
-            </div>
-        </aside>
-        <div id="overlay8" class="overlay">
-            <img id="largeImage8" src="/espetaculos/2024/IMG/incidente-8.jpg">
-        </div>
-
-        <aside>
-            <div>
-                <img id="zoomImage9" src="/espetaculos/2024/IMG/incidente-9.jpg">
-            </div>
-        </aside>
-        <div id="overlay9" class="overlay">
-            <img id="largeImage9" src="/espetaculos/2024/IMG/incidente-9.jpg">
-        </div>
-
-        <aside>
-            <div>
-                <img id="zoomImage10" src="/espetaculos/2024/IMG/incidente-10.jpg">
-            </div>
-        </aside>
-        <div id="overlay10" class="overlay">
-            <img id="largeImage10" src="/espetaculos/2024/IMG/incidente-10.jpg">
-        </div>
-    </section>
-    <div id="footer"></div>
+	</div>
 </body>
+<div id="footer"></div>
+<div id="imagem-modal"></div>
 
 </html>
