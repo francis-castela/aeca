@@ -2,20 +2,36 @@
 <html>
 
 <head>
+	<!-- HTML Meta Tags -->
+	<title>Inscrição Realizada!</title>
+	<meta name="description" content="CBT - 25ª Edição de Inverno">
 	<meta charset="UTF-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:locale" content="pt_BR" />
+	<meta property="og:type" content="website">
+	<meta property="og:logo" content="http://www.aeca.com.br/css/logos/favicon.png">
 
-	<meta property="og:url" content="https://aeca.com.br/cbt/inscricao-realizada" />
-	<meta property="og:title" content="Inscrição realizada!" />
-	<meta property="og:description" content="Curso Básico de Teatro" />
-	<meta property="og:site_name" content="Inscrição realizada!" />
+	<!-- Facebook Meta Tags -->
+	<meta property="og:url" content="https://aeca.com.br/cbt" />
+	<meta property="og:title" content="Inscrição Realizada!" />
+	<meta property="og:site_name" content="Inscrição Realizada!" />
+	<meta property="og:description" content="CBT - 25ª Edição de Inverno" />
+	<meta property="og:image" content="http://aeca.com.br/cbt/img/cbt-foto-6.jpg">
 
-	<title>Inscrição realizada!</title>
+	<!-- Twitter Meta Tags -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta property="twitter:domain" content="aeca.com.br">
+	<meta property="twitter:url" content="https://www.aeca.com.br/cbt">
+	<meta name="twitter:title" content="Inscrição Realizada!">
+	<meta name="twitter:description" content="CBT - 25ª Edição de Inverno">
+	<meta name="twitter:image" content="http://aeca.com.br/cbt/img/cbt-foto-6.jpg">
 
-	<link rel="icon" href="/CSS/logos/favicon.webp" type="image/x-icon">
-	<link rel="stylesheet" type="text/css" href="/CSS/styles/style.css">
+	<!-- Estilos -->
+	<link rel="icon" href="/css/logos/favicon.webp" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/css/styles/style.css">
 
+	<!-- Scripts -->
 	<script defer>
 		fetch('/html/footer.html')
 			.then(response => response.text())
@@ -23,17 +39,29 @@
 				document.getElementById('footer').innerHTML = data;
 			});
 	</script>
-	<script defer>
-		fetch('/html/cabecalho.html')
-			.then(response => response.text())
-			.then(data => {
-				document.getElementById('cabecalho').innerHTML = data;
-			});
-	</script>
-
-	<script src="/js/scrollback.js"></script>
 
 </head>
+
+<style>
+	:root {
+		--fundo-pagina: #333;
+		--fundo-main: #111;
+		--texto-header: #FFF;
+		--texto-comum: #ffffff;
+		--texto-subtitulo: #c0c0c0;
+		--botao-piscante: #ff9193;
+	}
+	h1,h2 {
+		color: #FFF;
+	}
+	a,th {
+		color: #ff2229;
+	}
+	footer{
+		background: #333;
+	}
+
+</style>
 
 <body>
 	<div id="cabecalho"></div>
@@ -45,9 +73,9 @@
 			<p>Seu pagamento da inscrição do Curso Básico de Teatro foi processado e concluído. Agora basta aparecer no
 				início do curso e aproveitar!</p>
 
-			<h2>Data e hora</h2>
+			<h2>Data e hora de início</h2>
 			<hr>
-			<p>Data</p>
+			<p>14 de julho às 19:00</p>
 
 			<h2>Local</h2>
 			<hr>
