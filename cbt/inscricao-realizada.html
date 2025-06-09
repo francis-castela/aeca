@@ -24,20 +24,13 @@
 			});
 	</script>
 	<script defer>
-		fetch('/html/aside-padrao.html')
-			.then(response => response.text())
-			.then(data => {
-				document.getElementById('aside-padrao').innerHTML = data;
-			});
-	</script>
-	<script defer>
 		fetch('/html/cabecalho.html')
 			.then(response => response.text())
 			.then(data => {
 				document.getElementById('cabecalho').innerHTML = data;
 			});
 	</script>
-	
+
 	<script src="/js/scrollback.js"></script>
 
 </head>
@@ -49,8 +42,9 @@
 		<main class="main-content">
 			<h1>Pagamento concluído!</h1>
 			<hr>
-			<p>Seu pagamento da inscrição do Curso Básico de Teatro foi processado e concluído. Agora basta aparecer no início do curso e aproveitar!</p>
-			
+			<p>Seu pagamento da inscrição do Curso Básico de Teatro foi processado e concluído. Agora basta aparecer no
+				início do curso e aproveitar!</p>
+
 			<h2>Data e hora</h2>
 			<hr>
 			<p>Data</p>
@@ -68,13 +62,14 @@
 			<h2>Suporte</h2>
 			<hr>
 			<p>Dúvidas? Entre em contato com Francis via WhatsApp <a href="https://wa.me/5547997085692">(clique
-				aqui)</a>.</p>
+					aqui)</a>.</p>
 
 		</main>
 
-	<div id="imageModal" class="image-modal">
-		<span class="close-modal">&times;</span>
-		<img id="modalImage" class="modal-content">
+		<div id="imageModal" class="image-modal">
+			<span class="close-modal">&times;</span>
+			<img id="modalImage" class="modal-content">
+		</div>
 	</div>
 </body>
 <div id="footer"></div>
