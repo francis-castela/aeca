@@ -25,20 +25,12 @@
 			});
 	</script>
 	<script defer>
-		fetch('/html/aside-padrao.html')
-			.then(response => response.text())
-			.then(data => {
-				document.getElementById('aside-padrao').innerHTML = data;
-			});
-	</script>
-	<script defer>
 		fetch('/html/cabecalho.html')
 			.then(response => response.text())
 			.then(data => {
 				document.getElementById('cabecalho').innerHTML = data;
 			});
 	</script>
-	
 
 </head>
 
