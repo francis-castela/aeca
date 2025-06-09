@@ -38,13 +38,7 @@
 				document.getElementById('cabecalho').innerHTML = data;
 			});
 	</script>
-	<script defer>
-		fetch('/html/imagem-modal.html')
-			.then(response => response.text())
-			.then(data => {
-				document.getElementById('imagem-modal').innerHTML = data;
-			});
-	</script>
+	
 
 
 </head>
@@ -73,8 +67,12 @@
 			<p>O A.E.C.A oferece a Meia-Entrada Solidária em todos os espetáculos. Trazendo 1kg de alimento não perecível, qualquer pessoa paga meia e contribui para projetos que oferecem assistência a pessoas em situação de vulnerabilidade.</p>
 		</main>
 	</div>
+	<div id="imageModal" class="image-modal">
+		<span class="close-modal">&times;</span>
+		<img id="modalImage" class="modal-content">
+	</div>
 </body>
 <div id="footer"></div>
-<div id="imagem-modal"></div>
 <script src="/js/zoom.js" defer></script>
+
 </html>

@@ -38,13 +38,7 @@
 				document.getElementById('cabecalho').innerHTML = data;
 			});
 	</script>
-	<script defer>
-		fetch('/html/imagem-modal.html')
-			.then(response => response.text())
-			.then(data => {
-				document.getElementById('imagem-modal').innerHTML = data;
-			});
-	</script>
+	
 
 
 </head>
@@ -77,8 +71,12 @@
 			<p>Engajar-se ativamente na comunidade de Itajaí-SC e arredores, contribuindo para o enriquecimento cultural da região. Participar e promover eventos e projetos que proporcionem a apreciação e compreensão das artes cênicas.</p>
 		</main>
 	</div>
+	<div id="imageModal" class="image-modal">
+		<span class="close-modal">&times;</span>
+		<img id="modalImage" class="modal-content">
+	</div>
 </body>
 <div id="footer"></div>
-<div id="imagem-modal"></div>
 <script src="/js/zoom.js" defer></script>
+
 </html>
