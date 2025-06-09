@@ -212,6 +212,7 @@ h4 {
 .grade-espetaculos img {
     max-width: 100px;
     max-height: auto;
+    transition: transform 0.3s ease;
 }
 
 .grade-espetaculos img:hover {
@@ -260,6 +261,8 @@ h4 {
     width: 100%;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+    transition: all 0.3s ease;
+
 }
 
 .sidebar a:hover:not(:has(img:hover)) {
@@ -378,13 +381,13 @@ footer a {
     border-radius: 5px;
     font-family: "Nunito";
     font-weight: bold;
-    animation: backgroundBlink 3s infinite;
+    animation: backgroundBlink 1.5s infinite;
+    transition: 0.3s;
 }
 
 .botao-piscante:hover {
     cursor: pointer;
-    transition: 0.3s;
-    transform: scale(1.03);
+    transform: scale(1.06);
 }
 
 /* Classificação Indicativa */
