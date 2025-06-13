@@ -194,6 +194,9 @@ h4 {
 
 .main-content img {
     width: 100%;
+    box-shadow: 0 4px 12px #000;
+    border-radius: 3px;
+
 }
 
 .grade-espetaculos {
