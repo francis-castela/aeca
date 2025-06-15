@@ -405,6 +405,7 @@ footer a {
     width: 100px;
     height: auto;
     flex-shrink: 0;
+    box-shadow: 0 0px 0px #000;
 }
 
 /* Tabelas */
