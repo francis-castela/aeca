@@ -146,35 +146,65 @@ h4 {
 /* ===================== NAVEGAÇÃO ===================== */
 .nav {
     background-color: #ffffff;
-    padding: 1.3rem 1rem;
+    padding: 0.3rem;
     margin-bottom: 1rem;
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .nav-links {
     list-style: none;
-    display: inline-flex;
-    gap: 1rem;
-    justify-content: center;
+    display: flex;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0;
+    flex-wrap: nowrap;
+    gap: 0.4rem;
+}
+
+.nav-links li {
+    flex-shrink: 0;
 }
 
 .nav-links a {
     color: #000000;
     text-decoration: none;
-    padding: 0.5rem;
+    padding: 0.2rem 0.5rem;
     transition: all 0.3s ease;
     position: relative;
     font-weight: bold;
     background-color: #DDD;
+    white-space: nowrap;
+    display: inline-block;
 }
 
 .nav-links a:hover {
     background-color: var(--header);
     color: #ffffff;
-    transform: scale(1.1);
+    transform: scale(1.05);
     cursor: pointer;
+}
+
+/* Ajustes para telas médias */
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 0.3rem;
+
+    }
+    
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+}
+
+/* Ajustes para telas pequenas */
+@media (max-width: 480px) {
+    .nav-links {
+        gap: 0.1rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.8rem;
+    }
 }
 
 /* ===================== LAYOUT PRINCIPAL ===================== */
@@ -479,4 +509,10 @@ th {
     .classificacao-box img {
         width: 60px;
     }
+
+    .logo-main,
+    .logo-sub {
+    font-size: 6vw;
+}
+
 }
