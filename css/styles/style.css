@@ -73,7 +73,7 @@ h1 {
 
 h2 {
     font-size: 2rem;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
 }
 
 h3 {
@@ -416,6 +416,8 @@ footer a {
     font-weight: bold;
     animation: backgroundBlink 1.5s infinite;
     transition: 0.3s;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .botao-piscante:hover {
