@@ -394,7 +394,7 @@ footer a {
 }
 
 /* Botão piscante */
-@keyframes backgroundBlink {
+@keyframes backgroundBlink-1 {
     0%,
     100% {
         background: var(--header);
@@ -404,23 +404,45 @@ footer a {
     }
 }
 
+@keyframes backgroundBlink-2 {
+    0%,
+    100% {
+        background: #075E54;
+    }
+    50% {
+        background: #25D366;
+    }
+}
+
 .botao-piscante {
+    color: #EEE;
+    animation: backgroundBlink-1 1.5s infinite;
+    transition: 0.3s;
+}
+
+.botao-piscante-whats {
+    color: #000;
+    animation: backgroundBlink-2 1.5s infinite;
+    transition: 0.3s;
+}
+
+.botao-piscante,
+.botao-piscante-whats {
     justify-content: center;
     text-align: center;
     display: flex;
     padding: 0.5rem;
-    color: #EEE;
     text-decoration: none;
     border-radius: 5px;
     font-family: "Nunito";
     font-weight: bold;
-    animation: backgroundBlink 1.5s infinite;
-    transition: 0.3s;
+    
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
-.botao-piscante:hover {
+.botao-piscante:hover,
+.botao-piscante-whats:hover {
     cursor: pointer;
     transform: scale(1.06);
 }
