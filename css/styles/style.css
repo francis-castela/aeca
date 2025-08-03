@@ -115,17 +115,18 @@ h4 {
 
 .header-img-left,
 .header-img-right {
-    height: 3.8rem;
+    height: 4.4rem;
     width: auto;
     object-fit: contain;
     flex-shrink: 0;
+    margin-top: 0.5rem;
 }
 
 .logo-main {
     margin-top: 0.6rem;
     font-family: "Bebas";
-    font-size: 1.8rem;
-    line-height: 1;
+    font-size: 3.2rem;
+    line-height: 0.8;
     color: var(--texto-header);
 }
 
