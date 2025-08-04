@@ -263,9 +263,12 @@ h4 {
 }
 
 .sidebar-titulo {
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-size: 2rem;
+    font-weight: normal;
     text-align: left;
+    font-family: "Bebas";
+    margin: 0px;
+    color: var(--header);
 }
 
 .sidebar-texto {
@@ -311,6 +314,7 @@ h4 {
     height: auto;
     cursor: pointer;
     transition: transform 0.3s ease;
+    margin-bottom: 1rem;
 }
 
 .sidebar img:hover {
