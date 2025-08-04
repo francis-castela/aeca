@@ -8,6 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
             modalImg.src = img.src;
         });
     });
+    document.querySelectorAll('.main-galeria img').forEach(img => {
+        img.addEventListener('click', () => {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'flex';
+            modalImg.src = img.src;
+        });
+    });
 
     // Fechar modal
     const closeModal = document.querySelector('.close-modal');
