@@ -191,7 +191,7 @@ h4 {
         gap: 0.3rem;
 
     }
-    
+
     .nav-links a {
         font-size: 0.9rem;
     }
@@ -202,7 +202,7 @@ h4 {
     .nav-links {
         gap: 0.1rem;
     }
-    
+
     .nav-links a {
         font-size: 0.8rem;
     }
@@ -369,7 +369,7 @@ h4 {
 }
 
 .sidebar-galeria img:first-child:nth-last-child(odd) {
-    grid-column: 1 / -1; 
+    grid-column: 1 / -1;
     max-width: 100%;
     object-position: center;
 }
@@ -430,20 +430,24 @@ footer a {
 
 /* Botão piscante */
 @keyframes backgroundBlink-1 {
+
     0%,
     100% {
         background: var(--header);
     }
+
     50% {
         background: var(--botao-piscante);
     }
 }
 
 @keyframes backgroundBlink-2 {
+
     0%,
     100% {
         background: #075E54;
     }
+
     50% {
         background: #25D366;
     }
@@ -471,7 +475,7 @@ footer a {
     border-radius: 5px;
     font-family: "Nunito";
     font-weight: bold;
-    
+
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
@@ -523,6 +527,48 @@ th {
     color: var(--header);
 }
 
+/* ===================== CRONÔMETRO ESTILIZADO ===================== */
+.countdown-container {
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.countdown-display {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.countdown-value {
+    font-family: "Source";
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--fundo-main);
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--header);
+}
+
+.countdown-label {
+    font-size: 0.7rem;
+    color: var(--texto-subtitulo);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    width: 11ch;
+}
+
+
 /* ===================== RESPONSIVIDADE ===================== */
 
 @media (max-width: 768px) {
@@ -569,12 +615,24 @@ th {
         width: 60px;
     }
 
-     .logo-main {
-    font-size: 11vw;
-     }
+    .logo-main {
+        font-size: 11vw;
+    }
 
     .logo-sub {
-    font-size: 5.2vw;
+        font-size: 5.2vw;
+    }
+
 }
+
+@media (max-width: 480px) {
+
+    .countdown-value {
+        font-size: 8vw;
+    }
+
+    .countdown-label {
+        font-size: 2.5vw;
+    }
 
 }
