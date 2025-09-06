@@ -527,6 +527,16 @@ th {
     color: var(--header);
 }
 
+.tabela-centralizadogrande th {
+    font-size: 1.7rem;
+    line-height: 1;
+}
+
+.tabela-centralizadogrande th,
+.tabela-centralizadogrande td {
+    text-align: center;
+}
+
 /* ===================== CRONÔMETRO ESTILIZADO ===================== */
 .countdown-container {
     border-radius: 10px;
