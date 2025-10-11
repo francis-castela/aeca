@@ -324,10 +324,7 @@ h4 {
     color: var(--header);
     text-decoration: none;
     font-weight: bold;
-    display: block;
     width: 100%;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
     transition: all 0.3s ease;
 
 }
@@ -336,7 +333,6 @@ h4 {
     background-color: var(--header);
     color: #ffffff;
     transition: all 0.3s ease;
-
 }
 
 .sidebar img {
