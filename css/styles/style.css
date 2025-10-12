@@ -50,6 +50,10 @@ p {
     margin-bottom: 1rem;
 }
 
+li {
+    margin-left: 2ch;
+}
+
 a {
     color: var(--header);
 }
