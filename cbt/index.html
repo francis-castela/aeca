@@ -4,7 +4,7 @@
 <head>
 	<!-- HTML Meta Tags -->
 	<title>Curso Básico de Teatro</title>
-	<meta name="description" content="40ª Edição de Verão">
+	<meta name="description" content="Curso intensivo com edições de inverno e verão">
 	<meta charset="UTF-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,16 +16,16 @@
 	<meta property="og:url" content="https://aeca.com.br/cbt" />
 	<meta property="og:title" content="Curso Básico de Teatro" />
 	<meta property="og:site_name" content="Curso Básico de Teatro" />
-	<meta property="og:description" content="40ª Edição de Verão" />
-	<meta property="og:image" content="http://aeca.com.br/cbt/img/cbt-og.jpg">
+	<meta property="og:description" content="Curso intensivo com edições de inverno e verão" />
+	<meta property="og:image" content="http://aeca.com.br/cbt/img/cbt-og-padrao.jpg" />
 
 	<!-- Twitter Meta Tags -->
 	<meta name="twitter:card" content="summary_large_image">
 	<meta property="twitter:domain" content="aeca.com.br">
 	<meta property="twitter:url" content="https://www.aeca.com.br/cbt">
 	<meta name="twitter:title" content="Curso Básico de Teatro">
-	<meta name="twitter:description" content="40ª Edição de Verão">
-	<meta name="twitter:image" content="http://aeca.com.br/cbt/img/cbt-og.jpg">
+	<meta name="twitter:description" content="Curso intensivo com edições de inverno e verão">
+	<meta name="twitter:image" content="http://aeca.com.br/cbt/img/cbt-foto-6.jpg">
 
 	<!-- Estilos -->
 	<link rel="icon" href="/css/logos/favicon.webp" type="image/x-icon">
@@ -39,143 +39,48 @@
 				document.getElementById('footer').innerHTML = data;
 			});
 	</script>
+	<script defer>
+		fetch('/html/cabecalho.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('cabecalho').innerHTML = data;
+			});
+	</script>
 
 </head>
 
-<style>
-	:root {
-		--fundo-pagina: #333;
-		--fundo-main: #111;
-		--texto-header: #FFF;
-		--texto-comum: #ffffff;
-		--texto-subtitulo: #c0c0c0;
-	}
-
-	h1,
-	h2,
-	a,
-	.sidebar-titulo {
-		color: #F2A63C;
-	}
-
-	th {
-		color: #FFF;
-	}
-
-	footer {
-		background: #333;
-	}
-</style>
-
 <body>
+	<div id="cabecalho"></div>
 
 	<div class="container">
 		<main class="main-content">
-
 			<h1>Curso Básico de Teatro – CBT</h1>
-			<h3>40ª Edição de Verão</h3>
+			<h3>Curso intensivo com edições de inverno e verão</h3>
 			<hr>
-
-			<a href="https://forms.gle/HDtUAfFEBrEwrb6E9" class="botao-piscante" target="_blank">INSCREVA-SE AQUI</a>
-
-			<img src="/cbt/img/cartaz-cbt-40edicao.webp" />
-			<br>
-
-			<br>
-			<p>Desde janeiro de 1986, a Casa da Cultura de Itajaí recebe o Curso Básico de Teatro (CBT). Chegamos agora
-				à 40ª edição de Verão, evento que se tornou tradição na cidade.
-			</p>
-			<p>Tudo começou com o objetivo de fomentar o movimento teatral local, que, na época, encontrava-se muito
-				fragilizado. Com o passar dos anos, o projeto alcançou um resultado extraordinário: Itajaí passou a ter
-				o maior movimento teatral do estado, formado, em sua grande maioria, por ex-alunos do CBT.</p>
-			<p>Ao longo dessa trajetória, inúmeros alunos integraram
-				os elencos dos diversos espetáculos montados, apresentando-se para um público incontável. Os aplausos de
-				pé, sempre presentes, consagraram cada grupo de formandos em suas respectivas edições.</p>
-			<p>Um novo momento dessa história acontecerá em janeiro de 2026. Você está convidado a participar deste
-				encontro especial! Será um prazer recebê-lo em nossa nova turma. Venha fazer parte!</p>
-
+			<p>O Curso Básico de Teatro – CBT é um intensivo de duas semanas ideal para quem deseja mergulhar no
+				universo teatral e desenvolver habilidades artísticas. Nele, os alunos encontram um ambiente
+				propício para explorar e aprimorar diversas facetas da atuação, através de uma abordagem prática e
+				colaborativa.</p>
 			<p>Os principais componentes do CBT incluem:</p>
-			<p><b style="color: #F2A63C">Expressão corporal:</b> Os alunos aprendem a usar o corpo como um
+			<p><b style="color: var(--header)">Expressão corporal:</b> Os alunos aprendem a usar o corpo como um
 				instrumento de comunicação e expressão artística, explorando movimentos e posturas que ajudam a
 				transmitir emoções e contar histórias.</p>
-			<p><b style="color: #F2A63C">Articulação vocal:</b> Os alunos praticam exercícios específicos
+			<p><b style="color: var(--header)">Articulação vocal:</b> Os alunos praticam exercícios específicos
 				para melhorar a clareza, projeção e expressividade da voz, essenciais para uma performance teatral.</p>
-			<p><b style="color: #F2A63C">Concentração:</b> Os alunos trabalham sua capacidade de foco e
+			<p><b style="color: var(--header)">Concentração:</b> Os alunos trabalham sua capacidade de foco e
 				presença de palco, essenciais para qualquer ator.</p>
-			<p><b style="color: #F2A63C">Interação e dinâmica de grupo:</b> O curso enfatiza o trabalho em
+			<p><b style="color: var(--header)">Interação e dinâmica de grupo:</b> O curso enfatiza o trabalho em
 				equipe e a interação com outros alunos. Atividades colaborativas são projetadas para
 				fortalecer os laços entre os participantes, promovendo um ambiente de apoio e cooperação.</p>
-			<p><b style="color: #F2A63C">Jogos dramáticos e improvisação:</b> Desenvolver a criatividade e a
+			<p><b style="color: var(--header)">Jogos dramáticos e improvisação:</b> Desenvolver a criatividade e a
 				espontaneidade é crucial para o teatro. O curso inclui técnicas de improvisação e jogos teatrais que
 				desafiam os alunos a pensar rapidamente e a reagir de forma criativa às situações imprevistas.</p>
-			<a href="https://forms.gle/HDtUAfFEBrEwrb6E9" class="botao-piscante" target="_blank">INSCREVA-SE AQUI</a>
-
-			<h2>Informações</h2>
-			<hr>
-			<table>
-				<tr>
-					<th>Data</th>
-					<td>05 de janeiro a 01 de fevereiro de 2026, de segunda a sexta</td>
-				</tr>
-				<tr>
-					<th>Horário</th>
-					<td>Das 19:00 às 22:00</td>
-				</tr>
-				<tr>
-					<th>Local</th>
-					<td>📍<a href="https://maps.app.goo.gl/7K6gkpnrpFwBKKBm9"><b>Casa da Cultura Dide
-								Brandão</b></a><br>
-						R. Hercílio Luz, 655 - Centro, Itajaí - SC</a></td>
-				</tr>
-				<tr>
-					<th>Valor</th>
-					<td>R$400,00</td>
-				</tr>
-				<tr>
-					<th>Forma de pagamento</th>
-					<td>Online via link de pagamento. O link para pagamento estará disponível ao preencher a ficha de
-						inscrição. Aceitamos cartões de crédito, débito e PIX.</td>
-				</tr>
-				<tr>
-					<th>Ministrante</th>
-					<td><a href="/valentim">Valentim Schmoeler</a></td>
-				</tr>
-				<tr>
-					<th>Realização</th>
-					<td>Bagagem Cência CIA de Teatro</a></td>
-				</tr>
-				<tr>
-					<th>Apoio</th>
-					<td><a href="https://www.aeca.com.br/">Alunos do Exercício Cênico Anchieta – A.E.C.A</a></td>
-				</tr>
-			</table>
-
-			<h2>Equipe</h2>
-			<hr>
-			<table style="width: 100%; table-layout: fixed;">
-				<tr>
-					<td style="text-align: center;"><b>Ministrante</b><br>Valentim Schmoeler</td>
-					<td style="text-align: center;"><b>Suporte organizacional</b><br>Paula Ramos</td>
-					<td style="text-align: center;"><b>Suporte técnico</b><br>Francis Castela</td>
-				</tr>
-				<tr>
-					<td><img src="/css/img/valentim-marcoskonder.jpg"></td>
-					<td><img src="/css/img/paulinha.jpg"></td>
-					<td><img src="/css/img/francis-1.webp"></td>
-				</tr>
-				<tr>
-					<td style="font-size: small; text-align: center;">Vivendo de teatro desde 1974, Valentim criou o Curso Básico de Teatro - CBT em 1986, com edições anuais no verão e no Verão,
-				realizados na Casa da Cultura Dide Brandão.</td>
-				<td style="font-size: small; text-align: center;">Paula participa das atividades do Anchieta Arte Cênica e suas ramificações desde 2014. Em 2023 assumiu a presidência do grupo, atuando na coordenação geral das pesquisas e montagens.</td>
-					<td style="font-size: small; text-align: center;">Francis vem trabalhando com o Anchieta Arte Cênica e suas ramificações desde 2022, atuando na coordenação de projetos, webdesign, gestão financeira, e demais funções administrativas.</td>
-					
-				</tr>
-				</tr>
-			</table>
-			<a href="https://forms.gle/HDtUAfFEBrEwrb6E9" class="botao-piscante" target="_blank">INSCREVA-SE AQUI</a>
-			<br>
-			<p style="text-align: center;">Dúvidas? Entre em contato com Francis via WhatsApp:</p>
-			<a href="https://wa.me/5547997085692" class="botao-piscante-whats" target="_blank">SUPORTE VIA WHATSAPP</a>
+			<p>Ministrado desde 1986 por <a href="/valentim">Valentim Schmoeler</a>, o CBT tem uma longa tradição de
+				excelência na formação de novos atores. Desde 1995, o curso conta também com o apoio de vários alunos do
+				Alunos do Exercício Cênico Anchieta (A.E.C.A), que contribuem para a realização das atividades,
+				enriquecendo ainda mais a experiência dos participantes.</p>
+			<p>O CBT é realizado duas vezes por ano, com edições de verão (em janeiro) e inverno (em julho). A edição de
+				verão dura 4 semanas, enquanto a de inverno é um intensivo de 2 semanas.</p>
 		</main>
 
 		<aside class="sidebar">
@@ -197,6 +102,5 @@
 </body>
 <div id="footer"></div>
 <script src="/js/zoom.js" defer></script>
-
 
 </html>
