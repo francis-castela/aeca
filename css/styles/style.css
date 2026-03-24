@@ -230,7 +230,6 @@ h4 {
 
 .main-content img {
     width: 100%;
-    box-shadow: 0 4px 12px #000;
     border-radius: 3px;
 
 }
@@ -439,7 +438,7 @@ footer a {
     color: #bbb;
 }
 
-/* Botão piscante */
+/* Botões piscantes e estáticos */
 @keyframes backgroundBlink-1 {
 
     0%,
@@ -464,6 +463,18 @@ footer a {
     }
 }
 
+@keyframes backgroundBlink-3 {
+
+    0%,
+    100% {
+        background: #00568F;
+    }
+
+    50% {
+        background: #0097FF;
+    }
+}
+
 .botao-piscante {
     color: #EEE;
     animation: backgroundBlink-1 1.5s infinite;
@@ -471,13 +482,27 @@ footer a {
 }
 
 .botao-piscante-whats {
-    color: #000;
+    color: #ffffff;
     animation: backgroundBlink-2 1.5s infinite;
     transition: 0.3s;
 }
 
+.botao-piscante-sympla {
+    color: #EEE;
+    animation: backgroundBlink-3 1.5s infinite;
+    transition: 0.3s;
+}
+
+.botao-whats {
+    color: #ffffff;
+    background: #25D366;
+    transition: 0.3s;
+}
+
 .botao-piscante,
-.botao-piscante-whats {
+.botao-piscante-whats,
+.botao-whats,
+.botao-piscante-sympla {
     justify-content: center;
     text-align: center;
     display: flex;
@@ -492,7 +517,9 @@ footer a {
 }
 
 .botao-piscante:hover,
-.botao-piscante-whats:hover {
+.botao-piscante-whats:hover,
+.botao.whats:hover,
+.botao-piscante-sympla:hover {
     cursor: pointer;
     transform: scale(1.06);
 }
@@ -509,7 +536,6 @@ footer a {
     width: 100px;
     height: auto;
     flex-shrink: 0;
-    box-shadow: 0 0px 0px #000;
 }
 
 /* Tabelas */
