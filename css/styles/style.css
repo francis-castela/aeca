@@ -1,7 +1,13 @@
 /* Por Francis Castela, para o A.E.C.A */
 /* Redesign completo inspirado no Fluent 2 Design System */
 
-/* ===================== FONTES ===================== */
+/* ===================== FONTES =====================
+   Carregamento local das fontes do site.
+   · Bebas Neue       → h1, h2, títulos da sidebar (.sidebar-titulo)
+   · Nunito           → corpo do texto (fonte padrão do body)
+   · Source Code Pro  → categorias e rótulos monoespaçados
+   Arquivos .ttf ficam em /css/fonts/
+   ==================================================== */
 @font-face {
     font-family: "Bebas";
     src: url("/css/fonts/BebasNeue-Regular.ttf");
@@ -19,7 +25,13 @@
     src: url("/css/fonts/SourceCodePro.ttf");
 }
 
-/* ===================== BASE ===================== */
+/* ===================== BASE =====================
+   Reset de margens/padding (box-sizing: border-box em tudo).
+   :root define todos os tokens de design: paleta de cores, sombras,
+   raios de borda, gradientes e durações de animação.
+   :root[data-theme="dark"] sobrescreve apenas as variáveis de cor;
+   tokens estruturais (raio, duração, curva) são compartilhados.
+   ==================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -139,6 +151,13 @@
 
     --link-texto-dark: #82bfff;
     --link-texto-dark-hover: #b8dcff;
+
+    /* Aliases para variáveis usadas nos estilos de galeria histórica.
+       Sem essas definições, color-mix() retorna transparent nessas páginas. */
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04);
+    --surface-primary: var(--surface-1);
+    --surface-secondary: var(--surface-2);
+    --brand-muted: var(--brand-soft);
 }
 
 :root[data-theme="dark"] {
@@ -327,7 +346,13 @@ h4 {
     text-align: left;
 }
 
-/* ===================== CABECALHO ===================== */
+/* ===================== CABECALHO =====================
+   Barra superior com logo AECA, menu de navegação e toggle de tema.
+   Estrutura: .header > .header-brand + .nav-actions
+              .header-brand > .header-img-left + .logo-container + .header-img-right
+   O HTML do cabeçalho é injetado via JS (html/cabecalho.html).
+   O foco visível é definido aqui para nav-links e botões globais.
+   ==================================================== */
 .header {
     width: calc(100% - 1.2rem);
     max-width: 1200px;
@@ -437,7 +462,15 @@ h4 {
     outline-offset: 2px;
 }
 
-/* ===================== LINKS INTERATIVOS ===================== */
+/* ===================== LINKS INTERATIVOS =====================
+   Dois estilos de link coexistem no site:
+   1. Pill-button (nav, sidebar): fundo gradiente + borda + hover colorido.
+      Aplica-se a: .nav-links a, .sidebar-titulo[href], .sidebar-texto a…
+   2. Link inline (parágrafos e tabelas do .main-content): sublinhado
+      + cor da marca, sem fundo nem borda.
+   A classe .apoio-card-link é excluída via :not() de ambos os estilos
+   pois usa o formato visual de card, não de link de texto.
+   ==================================================== */
 .nav-links a,
 .sidebar .sidebar-titulo[href],
 .sidebar .sidebar-titulo-menor[href],
@@ -466,8 +499,8 @@ h4 {
     transform: var(--interacao-escala);
 }
 
-.main-content p a:not(.botao-piscante):not(.botao-piscante-whats):not(.botao-whats):not(.botao-piscante-sympla),
-.main-content :is(li, td, h4) a:not(.botao-piscante, .botao-piscante-whats, .botao-whats, .botao-piscante-sympla) {
+.main-content p a:not(.botao-piscante):not(.botao-piscante-whats):not(.botao-whats):not(.botao-piscante-sympla):not(.apoio-card-link),
+.main-content :is(li, td, h4) a:not(.botao-piscante, .botao-piscante-whats, .botao-whats, .botao-piscante-sympla, .apoio-card-link) {
     color: var(--link);
     text-decoration: underline;
     text-underline-offset: 0.15em;
@@ -479,12 +512,16 @@ h4 {
     padding: 0;
 }
 
-.main-content p a:not(.botao-piscante):not(.botao-piscante-whats):not(.botao-whats):not(.botao-piscante-sympla):hover,
-.main-content :is(li, td, h4) a:not(.botao-piscante, .botao-piscante-whats, .botao-whats, .botao-piscante-sympla):hover {
+.main-content p a:not(.botao-piscante):not(.botao-piscante-whats):not(.botao-whats):not(.botao-piscante-sympla):not(.apoio-card-link):hover,
+.main-content :is(li, td, h4) a:not(.botao-piscante, .botao-piscante-whats, .botao-whats, .botao-piscante-sympla, .apoio-card-link):hover {
     color: var(--link-hover);
 }
 
-/* ===================== NAVEGACAO ===================== */
+/* ===================== NAVEGACAO =====================
+   Menu horizontal em desktop. Em ≤ 990px colapsa em dropdown
+   acionado pelo botão .nav-menu-toggle (ícone hambúrguer).
+   O menu abre/fecha pela classe .nav-links.open, controlada via JS.
+   ==================================================== */
 .nav {
     display: flex;
     align-items: center;
@@ -527,7 +564,13 @@ h4 {
     box-shadow: var(--interacao-sombra-nav);
 }
 
-/* ===================== LAYOUT ===================== */
+/* ===================== LAYOUT =====================
+   .container: flexbox de dois painéis (main + sidebar).
+   Em mobile (≤ 768px) vira coluna única; a sidebar desce.
+   Os painéis principais (.main-content, .sidebar, footer, table)
+   compartilham o estilo glass-morphism via backdrop-filter e gradientes
+   definidos nas variáveis --painel-* do :root.
+   ==================================================== */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -562,7 +605,14 @@ table,
     border-radius: var(--radius-s);
 }
 
-/* ===================== CARDS ===================== */
+/* ===================== CARDS =====================
+   Sistema visual compartilhado por todos os cards do site.
+   Classes afetadas: .apoio-card, .sidebar-card, .classificacao-box,
+   .curriculo-item, .curriculo-resumo, .curriculo-tags li
+   e todos os componentes .cbt-* com aparência de card.
+   O hover genérico eleva o card; cards com link (<a>) também
+   mudam de fundo para o gradiente da marca (regra logo abaixo).
+   ==================================================== */
 .classificacao-box,
 .apoio-card,
 .cbt-hero,
@@ -586,23 +636,6 @@ table,
     box-shadow: var(--card-sombra);
     backdrop-filter: var(--vidro-desfoque);
     -webkit-backdrop-filter: var(--vidro-desfoque);
-}
-
-.classificacao-box,
-.apoio-card,
-.cbt-hero,
-.cbt-cartaz,
-.cbt-pilar,
-.cbt-transforma-bloco,
-.cbt-faq-item,
-.cbt-equipe-card,
-.cbt-fechamento,
-.sidebar-card,
-.curriculo-resumo,
-.curriculo-tags li,
-.cbt-highlights li,
-.cbt-urgencia,
-.curriculo-item {
     will-change: transform, box-shadow, border-color;
     transform: translateY(0) scale(1);
     transition: transform var(--interacao-duracao) var(--interacao-curva), box-shadow var(--interacao-duracao) var(--interacao-curva), border-color calc(var(--interacao-duracao) * 0.82) var(--interacao-curva), background-position var(--interacao-duracao) var(--interacao-curva);
@@ -695,7 +728,12 @@ div.grade-espetaculos a:focus-visible {
     height: auto;
 }
 
-/* ===================== CARTAZES ===================== */
+/* ===================== CARTAZES =====================
+   Layout das páginas de índice de espetáculos.
+   · div.grade-espetaculos: grade de thumbnails de cartazes por ano
+   · table.grade-espetaculos (.cartaz-row): linha com poster à esquerda
+     e título/descrição à direita (espetáculos/index.html).
+   ==================================================== */
 table.grade-espetaculos {
     width: 100%;
     margin: 0.35rem 0 1.1rem;
@@ -909,7 +947,12 @@ table.grade-espetaculos tr + tr td {
     background: color-mix(in srgb, var(--brand-muted) 20%, var(--surface-secondary) 80%);
 }
 
-/* ===================== SIDEBAR ===================== */
+/* ===================== SIDEBAR =====================
+   Coluna lateral direita (300px no desktop).
+   Conteúdo típico: cartaz do espetáculo, foto do elenco,
+   galeria de fotos (.sidebar-galeria) e nota de produção.
+   Em mobile (≤ 768px) aparece abaixo do conteúdo principal.
+   ==================================================== */
 .sidebar {
     width: 300px;
     padding: 1rem;
@@ -1049,7 +1092,10 @@ table.grade-espetaculos tr + tr td {
     object-position: center;
 }
 
-/* ===================== RODAPE ===================== */
+/* ===================== RODAPÉ =====================
+   Faixa inferior escura com créditos e informações do site.
+   O HTML do rodapé é injetado via JS (html/footer.html).
+   ==================================================== */
 footer {
     width: calc(100% - 1.2rem);
     max-width: 1200px;
@@ -1070,7 +1116,11 @@ footer a {
     text-decoration: none;
 }
 
-/* ===================== MODAL ===================== */
+/* ===================== MODAL =====================
+   Lightbox para ampliar fotos da galeria da sidebar.
+   Ativado via JS (app.js) ao clicar em qualquer imagem
+   dentro de .sidebar-galeria ou .main-galeria.
+   ==================================================== */
 .image-modal {
     display: none;
     position: fixed;
@@ -1103,7 +1153,15 @@ footer a {
     color: #bbbbbb;
 }
 
-/* ===================== BOTOES ===================== */
+/* ===================== BOTÕES =====================
+   CTAs de destaque com fundo sólido colorido.
+   · .botao-piscante        → vermelho (ação genérica)
+   · .botao-piscante-whats  → verde (WhatsApp)
+   · .botao-piscante-sympla → azul (Sympla)
+   · .botao-venda-ingresso  → variante maior com CTA em duas linhas
+   Os !important nos bacgrounds dos botões evitam sobrescrita pelo
+   :root[data-theme="dark"] que altera variáveis de cor globalmente.
+   ==================================================== */
 .botao-piscante {
     --botao-fundo-solido: var(--brand);
     --botao-fundo-solido-hover: var(--brand-strong);
@@ -1225,7 +1283,14 @@ footer a {
     box-shadow: 0 12px 26px rgba(0, 0, 0, 0.42), 0 8px 24px var(--botao-sombra);
 }
 
-/* ===================== CLASSIFICACAO ===================== */
+/* ===================== CLASSIFICAÇÃO INDICATIVA =====================
+   Caixa de autoclassificação etária do espetáculo.
+   Imagens de ícone em /css/classificacao/:
+     classificacao-livre.webp  → Livre
+     classificacao-10/12/14/16/18.webp → faixas etárias
+   .valentim-indicadores: grade de indicadores usada
+   na página de perfil artístico (valentim.html).
+   ==================================================== */
 .classificacao-box {
     display: flex;
     align-items: center;
@@ -1271,7 +1336,17 @@ footer a {
     margin-top: 0.5rem;
 }
 
-/* ===================== TABELAS ===================== */
+/* ===================== TABELAS =====================
+   Dois estilos de tabela coexistem no site:
+   · Tabela simples (sem classe): usada nos registros históricos
+     mais antigos (elenco e ficha técnica básicos).
+   · .tabela-vitrine: estilo moderno — cabeçalho colorido, bordas
+     suaves e hover por linha. Classes auxiliares:
+       .tabela-elenco / .tabela-ficha → largura da coluna th (42%)
+       .tabela-precos                 → valores em destaque (preco-valor)
+       .tabela-agenda                 → horário em negrito
+       .tabela-centralizadogrande     → células centralizadas
+   ==================================================== */
 table {
     border-collapse: collapse;
     width: auto;
@@ -1390,7 +1465,13 @@ tbody tr:nth-child(even) {
     width: 42%;
 }
 
-/* ===================== OBRA DE REFERENCIA ===================== */
+/* ===================== OBRA DE REFERÊNCIA =====================
+   Card em blockquote com a obra teatral/literária que inspirou
+   a montagem (removido quando o espetáculo for autoral).
+   Usa .apoio-card como base visual — o padding, o flex e o
+   min-height definidos aqui se aplicam a TODOS os .apoio-card,
+   incluindo os cards de apoiadores da seção seguinte.
+   ==================================================== */
 blockquote.apoio-card {
     margin: 0.3rem 0 1.45rem;
 }
@@ -1430,7 +1511,11 @@ blockquote.apoio-card {
     color: var(--text-secondary);
 }
 
-/* ===================== COUNTDOWN ===================== */
+/* ===================== COUNTDOWN =====================
+   Contador regressivo até a estreia do espetáculo.
+   Renderizado via JS (app.js) quando a página tem o atributo
+   data-estreia="YYYY-MM-DD" no elemento .countdown-container.
+   ==================================================== */
 .countdown-container {
     width: 100%;
     text-align: center;
@@ -1474,7 +1559,11 @@ blockquote.apoio-card {
     text-transform: uppercase;
 }
 
-/* ===================== SCROLL TOP ===================== */
+/* ===================== SCROLL TOP =====================
+   Botão flutuante para voltar ao topo da página.
+   Aparece com a classe .visivel (opacity 1, transform normal)
+   após o usuário rolar a página, via JS (app.js).
+   ==================================================== */
 #scroll-topo {
     position: fixed;
     right: 1.5rem;
@@ -1509,7 +1598,22 @@ blockquote.apoio-card {
     filter: brightness(1.08);
 }
 
-/* ===================== APOIADORES ===================== */
+/* ===================== APOIADORES =====================
+   Grade de apoiadores do espetáculo (.apoio-grid).
+   Dois tipos de card — ambos usam .apoio-card como base visual:
+   · Card simples:  <li class="apoio-card">
+                      <span class="apoio-categoria">CATEGORIA</span>
+                      <span>Nome</span>
+                    </li>
+   · Card-link:     <li>
+                      <a class="apoio-card apoio-card-link" href="...">
+                        <span class="apoio-categoria">CATEGORIA</span>
+                        <strong>Nome</strong>
+                      </a>
+                    </li>
+   Ordem recomendada: Patrocinador → Institucional
+                      → Espaço cultural → Parceria local.
+   ==================================================== */
 .apoio-descricao {
     margin-bottom: 0.75rem;
     color: var(--text-secondary);
@@ -1532,6 +1636,16 @@ blockquote.apoio-card {
     margin: 0;
 }
 
+.apoio-card-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    width: 100%;
+    min-height: 84px;
+    color: inherit;
+    text-decoration: none;
+}
+
 .apoio-categoria {
     font-family: "Source", monospace;
     font-size: 0.74rem;
@@ -1541,13 +1655,21 @@ blockquote.apoio-card {
     color: var(--brand);
 }
 
+/* Texto do nome do apoiador nos card-links (usa <strong> como elemento de nome).
+   font-weight: normal evita que fique em negrito diferente dos cards sem link. */
 .apoio-card strong {
     font-size: 0.98rem;
+    font-weight: normal;
     line-height: 1.3;
     color: var(--texto-principal);
 }
 
-/* ===================== CBT ===================== */
+/* ===================== CBT =====================
+   Estilos exclusivos da página cbt/index.html
+   (página de divulgação do Curso Base Teatral).
+   Todos os seletores usam o prefixo .cbt- para isolamento.
+   A página usa a classe .cbt-page no <body> para escopo.
+   ==================================================== */
 .cbt-page .main-content {
     padding: clamp(1rem, 1vw + 0.8rem, 1.5rem);
 }
@@ -1752,7 +1874,12 @@ blockquote.apoio-card {
     display: none;
 }
 
-/* ===================== CURRICULO ===================== */
+/* ===================== CURRÍCULO =====================
+   Estilos exclusivos da página valentim.html
+   (perfil artístico/currículo de Valentim Schmoeler).
+   Todos os seletores usam o prefixo .curriculo-.
+   A página usa a classe .curriculo-page no <body> para escopo.
+   ==================================================== */
 .curriculo-page .main-content > h3:first-of-type {
     margin-top: 0;
     margin-bottom: 0.75rem;
@@ -1850,7 +1977,13 @@ blockquote.apoio-card {
     font-size: 0.94rem;
 }
 
-/* ===================== AJUSTES TEMA ESCURO ===================== */
+/* ===================== AJUSTES TEMA ESCURO =====================
+   Sobrescritas específicas para o tema escuro que não podem
+   ser resolvidas apenas por variáveis CSS — como mudanças de cor
+   em estados de hover dependentes de seletores compostos.
+   O tema é aplicado via JS (app.js) adicionando data-theme="dark"
+   ao elemento :root quando o usuário alterna pelo .theme-toggle.
+   ==================================================== */
 :root[data-theme="dark"] h1,
 :root[data-theme="dark"] h2,
 :root[data-theme="dark"] h3,
@@ -1909,7 +2042,14 @@ blockquote.apoio-card {
     color: #ffd7db;
 }
 
-/* ===================== RESPONSIVIDADE ===================== */
+/* ===================== RESPONSIVIDADE =====================
+   Breakpoints:
+   · ≤ 990px  → header/nav compactos, menu mobile dropdown
+   · ≤ 900px  → ajustes de galeria e tabela de cartazes
+   · ≤ 768px  → layout de coluna única (sidebar sob o main)
+   · ≤ 650px e ≤ 535px → ajustes de cartaz e logos
+   · ≤ 480px  → layouts mínimos para telas muito pequenas
+   ==================================================== */
 @media (max-width: 990px) {
     .header {
         width: calc(100% - 0.9rem);
