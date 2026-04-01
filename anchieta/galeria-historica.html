@@ -3,8 +3,7 @@
 
 <head>
 	<!-- HTML Meta Tags -->
-	<title>Galeria histórica</title>
-	<meta name="description" content="Galeria histórica Galeria histórica no acervo do AECA, com registros visuais, contexto de produção e memória cultural do projeto.">
+	<meta name="description" content="Galeria histórica com registros visuais, contexto de produção e memória cultural do Anchieta Arte Cênica.">
 	<meta charset="UTF-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +15,7 @@
 	<meta property="og:url" content="https://aeca.com.br/anchieta/galeria-historica.html">
 	<meta property="og:title" content="Galeria histórica">
 	<meta property="og:site_name" content="Galeria histórica" />
-	<meta property="og:description" content="Galeria histórica Galeria histórica no acervo do AECA, com registros visuais, contexto de produção e memória cultural do projeto.">
+	<meta property="og:description" content="Galeria histórica com registros visuais, contexto de produção e memória cultural do Anchieta Arte Cênica.">
 	<meta property="og:image" content="http://aeca.com.br/anchieta/img/galeria-og.jpg">
 
 	<!-- Twitter Meta Tags -->
@@ -24,7 +23,7 @@
 	<meta property="twitter:domain" content="aeca.com.br">
 	<meta property="twitter:url" content="https://aeca.com.br/anchieta/galeria-historica.html">
 	<meta name="twitter:title" content="Galeria histórica">
-	<meta name="twitter:description" content="Galeria histórica Galeria histórica no acervo do AECA, com registros visuais, contexto de produção e memória cultural do projeto.">
+	<meta name="twitter:description" content="Galeria histórica com registros visuais, contexto de produção e memória cultural do Anchieta Arte Cênica.">
 	<meta name="twitter:image" content="http://aeca.com.br/anchieta/img/galeria-og.jpg">
 
 	<title>Galeria histórica</title>
@@ -39,7 +38,7 @@
 	<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Galeria histórica","description":"Galeria histórica Galeria histórica no acervo do AECA, com registros visuais, contexto de produção e memória cultural do projeto.","url":"https://aeca.com.br/anchieta/galeria-historica.html"}</script>
 </head>
 
-<body>
+<body class="anchieta-galeria-page">
 	<div id="cabecalho"></div>
 
 	<div class="container">
@@ -47,9 +46,28 @@
 			<h1>Galeria histórica</h1>
 			<h3>Anchieta Arte Cênica</h3>
 			<hr>
-			<p>Em comemoração aos 40 anos do Anchieta Arte Cênica, preparamos uma galeria online com mais de 200 imagens para exibir diversos registros das quatro décadas de história do grupo!</p>
-			<p><b>Clique nas imagens para visualizar em tela cheia</b></p>
-			<h2>O Castelo da Bruxolândia</h2>
+			<section class="galeria-intro" aria-label="Introdução da galeria histórica">
+				<p>Em comemoração aos 40 anos do Anchieta Arte Cênica, preparamos uma galeria online com mais de 200 imagens para exibir diversos registros das quatro décadas de história do grupo.</p>
+				<div class="galeria-intro-cards" aria-label="Resumo da galeria">
+					<article class="galeria-intro-card">
+						<h3>Acervo visual</h3>
+						<p>Mais de 200 imagens entre cartazes, cenas, bastidores e memória documental.</p>
+					</article>
+					<article class="galeria-intro-card">
+						<h3>Como explorar</h3>
+						<p>Clique nas imagens para ver em tela cheia e use os filtros por década para navegar rápido.</p>
+					</article>
+				</div>
+			</section>
+
+			<nav class="galeria-nav" aria-label="Navegação por década">
+				<a href="#decada-1980">Anos 80</a>
+				<a href="#decada-1990">Anos 90</a>
+				<a href="#decada-1995">Meados dos 90</a>
+				<a href="#reposicionamento-1999">1999 e transição</a>
+			</nav>
+
+			<h2 id="decada-1980">O Castelo da Bruxolândia</h2>
 			<h3>1985</h3>
 			<hr>
 			<div class="main-galeria">
@@ -136,7 +154,7 @@
 			<div class="main-galeria">
 				<img src="/anchieta/img/anchieta-1989-diabo-1.webp">
 			</div>
-			<h2>Cavaleiro Negro contra Gumercindo Tavares</h2>
+			<h2 id="decada-1990">Cavaleiro Negro contra Gumercindo Tavares</h2>
 			<h3>1990</h3>
 			<hr>
 			<div class="main-galeria">
@@ -292,7 +310,7 @@
 				<img src="/anchieta/img/anchieta-1993-cavaleiro-7.webp">
 				<img src="/anchieta/img/anchieta-1993-cavaleiro-8.webp">
 			</div>
-			<h2>O Menino Sonhador</h2>
+			<h2 id="decada-1995">O Menino Sonhador</h2>
 			<h3>1995</h3>
 			<hr>
 			<div class="main-galeria">
@@ -376,20 +394,21 @@
 				<img src="/anchieta/img/anchieta-1998-brincando-5.webp">
 				<img src="/anchieta/img/anchieta-1998-brincando-7.webp">
 			</div>
-			<h2>Reposicionamento Institucional (1999)</h2>
+			<h2 id="reposicionamento-1999">Reposicionamento Institucional (1999)</h2>
 			<hr>
 			<p>Em 1999, o Anchieta Teatral Produções (denominação vigente até sua reformulação em 2004) iniciou uma reestruturação estratégica, reposicionando-se exclusivamente como entidade matriz responsável pela gestão administrativa e artística de três núcleos fundamentais: o grupo itinerante profissional Bagagem Cênica, o Curso Básico de Teatro (CBT), e o núcleo de formação continuada Alunos do Exercício Cênico Anchieta – A.E.C.A (ainda registrado sob o nome Anchieta Júnior). O legado artístico desses projetos encontra-se documentado em acervos dedicados: a trajetória do Bagagem Cênica na <a href="/bagagem/galeria-historica">Galeria Histórica do Bagagem Cênica</a>, enquanto o inventário de montagens realizadas pelo A.E.C.A pode ser consultado em <a href="/espetaculos/">Espetáculos</a>.</p>
+			<p><a class="galeria-topo-link" href="#decada-1980">Voltar ao início da galeria</a></p>
 
 		</main>
 		<div id="imageModal" class="image-modal">
 			<span class="close-modal">&times;</span>
 			<img id="modalImage" class="modal-content">
 		</div>
+		<div id="footer"></div>
 	</div>
 
+	<script src="/js/app.js" defer></script>
 </body>
-<div id="footer"></div>
-<script src="/js/app.js" defer></script>
 
 </html>
 
