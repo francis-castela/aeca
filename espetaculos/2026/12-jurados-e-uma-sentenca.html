@@ -64,7 +64,7 @@
 			<h2>Venda de ingressos</h2>
 			<hr>
 			<a href="https://www.sympla.com.br/evento/12-jurados-e-uma-sentenca/3359971"
-				class="btn-cta-sympla btn-cta-ticket" target="_blank">
+				class="btn-cta-sympla btn-cta-ticket" target="_blank" rel="noopener noreferrer">
 				<span class="cta-titulo">Comprar ingresso agora</span>
 				<span class="cta-subtitulo">Pagamento seguro via Sympla</span>
 			</a>
@@ -73,13 +73,6 @@
 				qualquer pessoa que leve 1kg de alimento não perecível, que será doado a organizações de caridade e
 				apoio.</p>
 
-			<p>Os ingressos para este espetáculo são comercializados através de um sistema de venda por lotes. Um
-				primeiro lote, com valor menor, estará disponível até uma data limite. Após essa data, um segundo lote
-				com novo valor entrará em vigor, e depois um terceiro seguindo a mesma lógica.</p>
-			<p><b>1º LOTE:</b> De 26/04 a 16/05/2026
-				<br><b>2º LOTE:</b> De 17/05 a 13/06/2026
-				<br><b>3º LOTE:</b> De 14/06/2026 em diante
-			</p>
 			<table class="tabela-vitrine tabela-precos tabela-centralizadogrande">
 				<thead>
 					<tr>
@@ -90,7 +83,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<th scope="row">1º LOTE</th>
+						<th scope="row">1º LOTE<br><span class="lote-vigencia">26/04 a 16/05/2026</span></th>
 						<td data-label="Inteira">
 							<span class="preco-valor">R$ 30,00</span>
 							<span class="preco-taxa">+ R$ 3,99 taxa</span>
@@ -101,7 +94,7 @@
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">2º LOTE</th>
+						<th scope="row">2º LOTE<br><span class="lote-vigencia">17/05 a 13/06/2026</span></th>
 						<td data-label="Inteira">
 							<span class="preco-valor">R$ 40,00</span>
 							<span class="preco-taxa">+ R$ 4,00 taxa</span>
@@ -112,7 +105,7 @@
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">3º LOTE</th>
+						<th scope="row">3º LOTE<br><span class="lote-vigencia">A partir de 14/06/2026</span></th>
 						<td data-label="Inteira">
 							<span class="preco-valor">R$ 50,00</span>
 							<span class="preco-taxa">+ R$ 5,00 taxa</span>
@@ -124,9 +117,17 @@
 					</tr>
 				</tbody>
 			</table>
+			<details class="lotes-spoiler">
+				<summary>Entenda como funcionam os lotes</summary>
+				<ol>
+					<li>Quanto antes você compra, menor é o valor do ingresso.</li>
+					<li>Cada lote tem um período de datas específico.</li>
+					<li>Quando o período termina, entra automaticamente o lote seguinte.</li>
+				</ol>
+			</details>
 
 			<p style="text-align: center;">Dúvidas? Entre em contato com Francis via WhatsApp:</p>
-			<a href="https://wa.me/5547997085692" class="btn-cta-whatsapp" target="_blank">SUPORTE VIA WHATSAPP</a>
+			<a href="https://wa.me/5547997085692" class="btn-cta-whatsapp" target="_blank" rel="noopener noreferrer">SUPORTE VIA WHATSAPP</a>
 
 			<h2>Autoclassificação indicativa</h2>
 			<hr>
@@ -337,8 +338,8 @@
 			<img id="modalImage" class="modal-content">
 		</div>
 	</div>
-</body>
 <div id="footer"></div>
+</body>
 <script src="/js/app.js" defer></script>
 
 </html>

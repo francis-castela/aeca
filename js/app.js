@@ -664,6 +664,79 @@
         }
     }
 
+    function setupShowsSearchFilter() {
+        const searchInput = document.getElementById("acervo-busca");
+        const status = document.getElementById("acervo-status");
+        if (!searchInput || !status) {
+            return;
+        }
+
+        const sections = [];
+        document.querySelectorAll("main.main-content h2[id]").forEach(function (heading) {
+            const table = heading.nextElementSibling && heading.nextElementSibling.nextElementSibling;
+            if (!table || !table.classList.contains("grade-espetaculos")) {
+                return;
+            }
+
+            const rows = Array.from(table.querySelectorAll(".cartaz-row"));
+            if (rows.length === 0) {
+                return;
+            }
+
+            sections.push({
+                heading: heading,
+                separator: heading.nextElementSibling,
+                table: table,
+                rows: rows
+            });
+        });
+
+        if (sections.length === 0) {
+            return;
+        }
+
+        function applyFilter() {
+            const query = normalizeText(searchInput.value);
+            let visibleRows = 0;
+
+            sections.forEach(function (section) {
+                let sectionVisible = 0;
+
+                section.rows.forEach(function (row) {
+                    const title = normalizeText(row.querySelector(".cartaz-link") ? row.querySelector(".cartaz-link").textContent : "");
+                    const summary = normalizeText(row.querySelector(".cartaz-resumo") ? row.querySelector(".cartaz-resumo").textContent : "");
+                    const match = query === "" || title.includes(query) || summary.includes(query);
+
+                    row.style.display = match ? "" : "none";
+                    if (match) {
+                        sectionVisible++;
+                    }
+                });
+
+                section.heading.style.display = sectionVisible > 0 ? "" : "none";
+                section.separator.style.display = sectionVisible > 0 ? "" : "none";
+                section.table.style.display = sectionVisible > 0 ? "" : "none";
+
+                visibleRows += sectionVisible;
+            });
+
+            if (query === "") {
+                status.textContent = "Mostrando todo o acervo.";
+                return;
+            }
+
+            if (visibleRows === 0) {
+                status.textContent = "Nenhum espetáculo encontrado para esta busca.";
+                return;
+            }
+
+            status.textContent = `${visibleRows} espetáculo(s) encontrado(s).`;
+        }
+
+        searchInput.addEventListener("input", applyFilter);
+        applyFilter();
+    }
+
     function setupScrollPersistence() {
         window.addEventListener("beforeunload", function () {
             sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
@@ -741,6 +814,141 @@
         observer.observe(cabecalho);
     }
 
+    function ensureMediaPerformanceHints() {
+        const images = Array.from(document.querySelectorAll("img"));
+        if (images.length === 0) {
+            return;
+        }
+
+        images.forEach(function (img) {
+            if (!img.hasAttribute("decoding")) {
+                img.setAttribute("decoding", "async");
+            }
+
+            const isHeaderLogo = Boolean(img.closest(".header-brand"));
+            const isLikelyHero = Boolean(img.closest(".cbt-cartaz"));
+            const isModalImage = img.id === "modalImage";
+
+            if (!img.hasAttribute("loading") && !isHeaderLogo && !isLikelyHero && !isModalImage) {
+                img.setAttribute("loading", "lazy");
+            }
+
+            if (img.getAttribute("loading") === "lazy" && !img.hasAttribute("fetchpriority")) {
+                img.setAttribute("fetchpriority", "low");
+            }
+        });
+    }
+
+    function setupQuickConversionBar() {
+        if (document.body && document.body.dataset.disableQuickCta === "true") {
+            return;
+        }
+
+        const ticketCta = document.querySelector("a.btn-cta-ticket[href]");
+        const whatsappCta = document.querySelector("a.btn-cta-whatsapp[href]");
+
+        if (!ticketCta && !whatsappCta) {
+            return;
+        }
+
+        if (document.querySelector(".quick-cta-bar")) {
+            return;
+        }
+
+        const bar = document.createElement("div");
+        bar.className = "quick-cta-bar";
+        bar.setAttribute("role", "region");
+        bar.setAttribute("aria-label", "Acoes rapidas de conversao");
+
+        if (ticketCta) {
+            const ticketLink = document.createElement("a");
+            ticketLink.className = "quick-cta quick-cta-ticket";
+            ticketLink.href = ticketCta.href;
+            ticketLink.target = "_blank";
+            ticketLink.rel = "noopener noreferrer";
+            ticketLink.textContent = "Comprar ingresso";
+            bar.appendChild(ticketLink);
+        }
+
+        if (whatsappCta) {
+            const whatsappLink = document.createElement("a");
+            whatsappLink.className = "quick-cta quick-cta-whatsapp";
+            whatsappLink.href = whatsappCta.href;
+            whatsappLink.target = "_blank";
+            whatsappLink.rel = "noopener noreferrer";
+            whatsappLink.textContent = "Suporte";
+            bar.appendChild(whatsappLink);
+        }
+
+        document.body.appendChild(bar);
+        document.body.classList.add("has-quick-cta");
+    }
+
+    function setupEngagementTracking() {
+        function classifyLink(href) {
+            const normalizedHref = (href || "").toLowerCase();
+
+            if (normalizedHref.includes("sympla.com.br")) {
+                return "ticket_click";
+            }
+
+            if (normalizedHref.includes("wa.me") || normalizedHref.includes("whatsapp")) {
+                return "whatsapp_click";
+            }
+
+            if (normalizedHref.includes("forms.gle") || normalizedHref.includes("docs.google.com/forms")) {
+                return "form_click";
+            }
+
+            return "outbound_click";
+        }
+
+        function pushTrackingEvent(eventName, href) {
+            const payload = {
+                event: eventName,
+                href: href,
+                page: window.location.pathname,
+                ts: new Date().toISOString()
+            };
+
+            if (Array.isArray(window.dataLayer)) {
+                window.dataLayer.push(payload);
+            }
+
+            if (typeof window.gtag === "function") {
+                window.gtag("event", eventName, {
+                    link_url: href,
+                    page_path: window.location.pathname
+                });
+            }
+
+            try {
+                const key = "aeca-engagement-events";
+                const items = JSON.parse(localStorage.getItem(key) || "[]");
+                items.push(payload);
+                const trimmed = items.slice(-150);
+                localStorage.setItem(key, JSON.stringify(trimmed));
+            } catch (error) {
+                // Evita quebrar navegacao se localStorage estiver indisponivel.
+            }
+        }
+
+        document.addEventListener("click", function (event) {
+            const link = event.target.closest("a[href]");
+            if (!link) {
+                return;
+            }
+
+            const href = link.getAttribute("href") || "";
+            if (!href) {
+                return;
+            }
+
+            const eventName = classifyLink(href);
+            pushTrackingEvent(eventName, href);
+        });
+    }
+
     async function bootstrap() {
         applyTheme(getPreferredTheme());
 
@@ -755,10 +963,14 @@
         ensureMainContentTarget();
         ensureFooterInsideBody();
         await buildShowsAsTables();
+        setupShowsSearchFilter();
         normalizeLegacyShowTables();
         ensureImageAltAttributes();
         ensureTableCaptions();
         ensureBlankTargetSafety();
+        ensureMediaPerformanceHints();
+        setupQuickConversionBar();
+        setupEngagementTracking();
         setupImageModalZoom();
         setupScrollToTop();
     }

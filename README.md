@@ -93,6 +93,20 @@ Checklist mínimo antes de publicar:
 - Ordem dos apoiadores correta.
 - Layout aceitável em desktop e mobile.
 
+### Validação técnica rápida
+
+Antes de publicar, execute no PowerShell dentro da raiz do projeto:
+
+```powershell
+./scripts/validate-site.ps1
+```
+
+O script valida os principais pontos críticos:
+- Links externos com `target="_blank"` sem `rel="noopener noreferrer"`.
+- Estrutura com `<div id="footer"></div>` fora do `<body>`.
+- Páginas públicas sem `meta description`, `canonical` ou `h1`.
+- Presença de barra invertida no `sitemap.xml`.
+
 ## Contato e contexto
 
 Projeto mantido pelo grupo A.E.C.A com foco em memória, circulação e formação teatral em Itajaí. Contato: https://www.instagram.com/direct/t/119143752809428
