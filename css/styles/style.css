@@ -48,7 +48,6 @@
 
     /* Compatibilidade com páginas antigas que sobrescrevem variáveis */
     --header: var(--vermelho);
-    --botao-piscante: #e13a42;
 
     /* Tokens Fluent-like (Light) */
     --bg-canvas: #f5f6f8;
@@ -113,11 +112,14 @@
     --countdown-fundo: linear-gradient(138deg, #111216, #6a1e24 54%, var(--brand));
     --hr-color: rgba(0, 0, 0, 0.24);
 
-    --interacao-duracao: 0.34s;
-    --interacao-curva: cubic-bezier(0.16, 1, 0.3, 1);
-    --interacao-escala: scale(1.03);
-    --interacao-elevacao: translateY(-3px) scale(1.006);
+    --interacao-duracao: 0.68s;
+    --interacao-curva: cubic-bezier(0.19, 0.72, 0.3, 1);
+    --interacao-escala: scale(1.015);
+    --interacao-elevacao: translateY(-2px) scale(1.003);
     --interacao-sombra: 0 6px 22px rgba(205, 33, 41, 0.32);
+    --interacao-opacidade-base: 0.9;
+    --interacao-opacidade-hover: 1;
+    --interacao-fade-duracao: calc(var(--interacao-duracao) * 1.45);
     --interacao-sombra-nav: 0 8px 24px rgba(205, 33, 41, 0.38);
 
     --texto-comum: var(--text-primary);
@@ -441,7 +443,8 @@ h4 {
     font-size: 1.24rem;
     cursor: pointer;
     box-shadow: var(--link-sombra-base);
-    transition: transform var(--interacao-duracao) var(--interacao-curva), box-shadow var(--interacao-duracao) var(--interacao-curva), background var(--interacao-duracao) var(--interacao-curva), color var(--interacao-duracao) var(--interacao-curva);
+    opacity: var(--interacao-opacidade-base);
+    transition: transform var(--interacao-duracao) var(--interacao-curva), box-shadow var(--interacao-duracao) var(--interacao-curva), background var(--interacao-duracao) var(--interacao-curva), color var(--interacao-duracao) var(--interacao-curva), opacity var(--interacao-duracao) var(--interacao-curva), filter var(--interacao-duracao) var(--interacao-curva);
 }
 
 .theme-toggle:hover {
@@ -449,14 +452,15 @@ h4 {
     background: var(--link-fundo-hover);
     color: #ffffff;
     box-shadow: var(--interacao-sombra-nav);
+    opacity: var(--interacao-opacidade-hover);
+    filter: saturate(1.03);
 }
 
 .theme-toggle:focus-visible,
 .nav-links a:focus-visible,
-.botao-piscante:focus-visible,
-.botao-piscante-whats:focus-visible,
-.botao-whats:focus-visible,
-.botao-piscante-sympla:focus-visible,
+.btn-cta:focus-visible,
+.btn-cta-whatsapp:focus-visible,
+.btn-cta-sympla:focus-visible,
 #scroll-topo:focus-visible {
     outline: 2px solid #ffffff;
     outline-offset: 2px;
@@ -485,7 +489,39 @@ h4 {
     text-decoration: none;
     font-weight: 700;
     color: var(--brand);
-    transition: transform var(--interacao-duracao) var(--interacao-curva), box-shadow var(--interacao-duracao) var(--interacao-curva), background var(--interacao-duracao) var(--interacao-curva), color var(--interacao-duracao) var(--interacao-curva);
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    opacity: var(--interacao-opacidade-base);
+    transition: transform var(--interacao-duracao) var(--interacao-curva), box-shadow var(--interacao-duracao) var(--interacao-curva), background var(--interacao-duracao) var(--interacao-curva), color var(--interacao-duracao) var(--interacao-curva), opacity var(--interacao-duracao) var(--interacao-curva), filter var(--interacao-duracao) var(--interacao-curva);
+}
+
+.nav-links a {
+    overflow: visible;
+    isolation: auto;
+}
+
+.sidebar .sidebar-titulo[href]::before,
+.sidebar .sidebar-titulo-menor[href]::before,
+.sidebar-texto a::before,
+.sidebar li a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--link-fundo-hover);
+    opacity: 0;
+    transition: opacity var(--interacao-fade-duracao) var(--interacao-curva);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.sidebar .sidebar-titulo[href] > *,
+.sidebar .sidebar-titulo-menor[href] > *,
+.sidebar-texto a > *,
+.sidebar li a > * {
+    position: relative;
+    z-index: 1;
 }
 
 .nav-links a:hover,
@@ -497,10 +533,23 @@ h4 {
     color: #ffffff;
     box-shadow: var(--interacao-sombra);
     transform: var(--interacao-escala);
+    opacity: var(--interacao-opacidade-hover);
+    filter: saturate(1.03);
 }
 
-.main-content p a:not(.botao-piscante):not(.botao-piscante-whats):not(.botao-whats):not(.botao-piscante-sympla):not(.apoio-card-link),
-.main-content :is(li, td, h4) a:not(.botao-piscante, .botao-piscante-whats, .botao-whats, .botao-piscante-sympla, .apoio-card-link) {
+.sidebar .sidebar-titulo[href]:hover::before,
+.sidebar .sidebar-titulo[href]:focus-visible::before,
+.sidebar .sidebar-titulo-menor[href]:hover::before,
+.sidebar .sidebar-titulo-menor[href]:focus-visible::before,
+.sidebar-texto a:hover::before,
+.sidebar-texto a:focus-visible::before,
+.sidebar li a:hover::before,
+.sidebar li a:focus-visible::before {
+    opacity: 1;
+}
+
+.main-content p a:not(.btn-cta):not(.btn-cta-whatsapp):not(.btn-cta-sympla):not(.apoio-card-link),
+.main-content :is(li, td, h4) a:not(.btn-cta, .btn-cta-whatsapp, .btn-cta-sympla, .apoio-card-link) {
     color: var(--link);
     text-decoration: underline;
     text-underline-offset: 0.15em;
@@ -512,8 +561,8 @@ h4 {
     padding: 0;
 }
 
-.main-content p a:not(.botao-piscante):not(.botao-piscante-whats):not(.botao-whats):not(.botao-piscante-sympla):not(.apoio-card-link):hover,
-.main-content :is(li, td, h4) a:not(.botao-piscante, .botao-piscante-whats, .botao-whats, .botao-piscante-sympla, .apoio-card-link):hover {
+.main-content p a:not(.btn-cta):not(.btn-cta-whatsapp):not(.btn-cta-sympla):not(.apoio-card-link):hover,
+.main-content :is(li, td, h4) a:not(.btn-cta, .btn-cta-whatsapp, .btn-cta-sympla, .apoio-card-link):hover {
     color: var(--link-hover);
 }
 
@@ -638,7 +687,8 @@ table,
     -webkit-backdrop-filter: var(--vidro-desfoque);
     will-change: transform, box-shadow, border-color;
     transform: translateY(0) scale(1);
-    transition: transform var(--interacao-duracao) var(--interacao-curva), box-shadow var(--interacao-duracao) var(--interacao-curva), border-color calc(var(--interacao-duracao) * 0.82) var(--interacao-curva), background-position var(--interacao-duracao) var(--interacao-curva);
+    opacity: var(--interacao-opacidade-base);
+    transition: transform var(--interacao-duracao) var(--interacao-curva), box-shadow var(--interacao-duracao) var(--interacao-curva), border-color calc(var(--interacao-duracao) * 0.82) var(--interacao-curva), background-position var(--interacao-duracao) var(--interacao-curva), opacity var(--interacao-duracao) var(--interacao-curva), filter var(--interacao-duracao) var(--interacao-curva);
 }
 
 .classificacao-box:hover,
@@ -674,6 +724,8 @@ a.apoio-card:hover,
     transform: var(--interacao-elevacao);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12), 0 14px 28px rgba(0, 0, 0, 0.12);
     border-color: var(--surface-border-strong);
+    opacity: var(--interacao-opacidade-hover);
+    filter: saturate(1.02);
 }
 
 a.apoio-card:hover,
@@ -692,7 +744,7 @@ a.sidebar-card-link:focus-visible,
 .grade-espetaculos img,
 .main-galeria img,
 .sidebar img {
-    transition: transform 0.33s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: transform calc(var(--interacao-duracao) * 1.15) var(--interacao-curva);
     backface-visibility: hidden;
     transform: translateZ(0);
 }
@@ -700,7 +752,7 @@ a.sidebar-card-link:focus-visible,
 .grade-espetaculos img:hover,
 .main-galeria img:hover,
 .sidebar img:hover {
-    transform: scale(1.08);
+    transform: scale(1.04);
 }
 
 div.grade-espetaculos {
@@ -715,12 +767,14 @@ div.grade-espetaculos a {
     font-size: 0.95rem;
     font-weight: 800;
     text-align: center;
-    transition: opacity var(--interacao-duracao) var(--interacao-curva);
+    opacity: var(--interacao-opacidade-base);
+    transition: opacity var(--interacao-duracao) var(--interacao-curva), filter var(--interacao-duracao) var(--interacao-curva);
 }
 
 div.grade-espetaculos a:hover,
 div.grade-espetaculos a:focus-visible {
-    opacity: 0.82;
+    opacity: var(--interacao-opacidade-hover);
+    filter: saturate(1.03);
 }
 
 .grade-espetaculos img {
@@ -743,13 +797,15 @@ table.grade-espetaculos {
 
 table.grade-espetaculos .cartaz-row {
     cursor: pointer;
-    transition: background-color var(--interacao-duracao) var(--interacao-curva), transform var(--interacao-duracao) var(--interacao-curva), box-shadow var(--interacao-duracao) var(--interacao-curva);
+    opacity: var(--interacao-opacidade-base);
+    transition: background-color var(--interacao-duracao) var(--interacao-curva), transform var(--interacao-duracao) var(--interacao-curva), box-shadow var(--interacao-duracao) var(--interacao-curva), opacity var(--interacao-duracao) var(--interacao-curva);
 }
 
 table.grade-espetaculos .cartaz-row:hover {
     background: rgba(205, 33, 41, 0.08);
     transform: translateY(-1px);
     box-shadow: var(--shadow-2);
+    opacity: var(--interacao-opacidade-hover);
 }
 
 table.grade-espetaculos .cartaz-row:focus-visible {
@@ -1155,36 +1211,34 @@ footer a {
 
 /* ===================== BOTÕES =====================
    CTAs de destaque com fundo sólido colorido.
-   · .botao-piscante        → vermelho (ação genérica)
-   · .botao-piscante-whats  → verde (WhatsApp)
-   · .botao-piscante-sympla → azul (Sympla)
-   · .botao-venda-ingresso  → variante maior com CTA em duas linhas
+   · .btn-cta        → vermelho (ação genérica)
+   · .btn-cta-whatsapp  → verde (WhatsApp)
+   · .btn-cta-sympla → azul (Sympla)
+   · .btn-cta-ticket  → variante maior com CTA em duas linhas
    Os !important nos bacgrounds dos botões evitam sobrescrita pelo
    :root[data-theme="dark"] que altera variáveis de cor globalmente.
    ==================================================== */
-.botao-piscante {
+.btn-cta {
     --botao-fundo-solido: var(--brand);
     --botao-fundo-solido-hover: var(--brand-strong);
     --botao-sombra: rgba(205, 33, 41, 0.36);
 }
 
-.botao-piscante-whats,
-.botao-whats {
+.btn-cta-whatsapp {
     --botao-fundo-solido: var(--success);
     --botao-fundo-solido-hover: var(--success-strong);
     --botao-sombra: rgba(18, 129, 70, 0.35);
 }
 
-.botao-piscante-sympla {
+.btn-cta-sympla {
     --botao-fundo-solido: var(--info);
     --botao-fundo-solido-hover: var(--info-strong);
     --botao-sombra: rgba(12, 98, 172, 0.35);
 }
 
-.botao-piscante,
-.botao-piscante-whats,
-.botao-whats,
-.botao-piscante-sympla {
+.btn-cta,
+.btn-cta-whatsapp,
+.btn-cta-sympla {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1203,33 +1257,76 @@ footer a {
     text-align: center;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.36);
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18), 0 4px 14px var(--botao-sombra);
-    transition: transform var(--interacao-duracao) var(--interacao-curva), filter var(--interacao-duracao) var(--interacao-curva), box-shadow var(--interacao-duracao) var(--interacao-curva), background var(--interacao-duracao) var(--interacao-curva);
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    opacity: var(--interacao-opacidade-base);
+    transition: transform var(--interacao-duracao) var(--interacao-curva), filter var(--interacao-duracao) var(--interacao-curva), box-shadow var(--interacao-duracao) var(--interacao-curva), opacity var(--interacao-duracao) var(--interacao-curva);
 }
 
-.botao-piscante span,
-.botao-piscante-whats span,
-.botao-whats span,
-.botao-piscante-sympla span,
-.botao-piscante strong,
-.botao-piscante-whats strong,
-.botao-whats strong,
-.botao-piscante-sympla strong {
+.btn-cta::before,
+.btn-cta-whatsapp::before,
+.btn-cta-sympla::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0) 62%),
+        var(--botao-fundo-solido-hover);
+    opacity: 0;
+    transition: opacity var(--interacao-fade-duracao) var(--interacao-curva);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.btn-cta-whatsapp::before {
+    display: none;
+}
+
+.btn-cta > *,
+.btn-cta-whatsapp > *,
+.btn-cta-sympla > * {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-cta span,
+.btn-cta-whatsapp span,
+.btn-cta-sympla span,
+.btn-cta strong,
+.btn-cta-whatsapp strong,
+.btn-cta-sympla strong {
     color: inherit;
 }
 
-.botao-piscante:hover,
-.botao-piscante-whats:hover,
-.botao-whats:hover,
-.botao-piscante-sympla:hover {
+.btn-cta:hover,
+.btn-cta-whatsapp:hover,
+.btn-cta-sympla:hover {
     transform: var(--interacao-elevacao);
     filter: saturate(1.08) brightness(1.04);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25), 0 8px 22px var(--botao-sombra);
+    opacity: var(--interacao-opacidade-hover);
+}
+
+.btn-cta-whatsapp:hover,
+.btn-cta-whatsapp:focus-visible {
     background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0) 62%),
         var(--botao-fundo-solido-hover) !important;
+    color: #ffffff !important;
 }
 
-.botao-venda-ingresso {
+.btn-cta:hover::before,
+.btn-cta:focus-visible::before,
+.btn-cta-whatsapp:hover::before,
+.btn-cta-whatsapp:focus-visible::before,
+.btn-cta-sympla:hover::before,
+.btn-cta-sympla:focus-visible::before {
+    opacity: 1;
+}
+
+.btn-cta-ticket {
     position: relative;
     gap: 0.28rem;
     min-height: 4.2rem;
@@ -1245,23 +1342,23 @@ footer a {
     box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2), 0 6px 18px var(--botao-sombra);
 }
 
-.botao-venda-ingresso::after {
+.btn-cta-ticket::after {
     content: "";
     position: absolute;
     inset: 0;
     background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.22) 48%, transparent 76%);
     transform: translateX(-140%);
-    transition: transform 0.85s ease;
+    transition: transform calc(var(--interacao-duracao) * 2.5) var(--interacao-curva);
     pointer-events: none;
     z-index: -1;
 }
 
-.botao-venda-ingresso:hover::after,
-.botao-venda-ingresso:focus-visible::after {
+.btn-cta-ticket:hover::after,
+.btn-cta-ticket:focus-visible::after {
     transform: translateX(140%);
 }
 
-.botao-venda-ingresso .cta-titulo {
+.btn-cta-ticket .cta-titulo {
     display: block;
     font-size: clamp(0.98rem, 0.9rem + 0.35vw, 1.16rem);
     font-weight: 900;
@@ -1270,7 +1367,7 @@ footer a {
     line-height: 1.15;
 }
 
-.botao-venda-ingresso .cta-subtitulo {
+.btn-cta-ticket .cta-subtitulo {
     display: block;
     font-size: 0.78rem;
     font-weight: 700;
@@ -1278,7 +1375,7 @@ footer a {
     opacity: 0.96;
 }
 
-:root[data-theme="dark"] .botao-venda-ingresso {
+:root[data-theme="dark"] .btn-cta-ticket {
     border-color: rgba(255, 255, 255, 0.26);
     box-shadow: 0 12px 26px rgba(0, 0, 0, 0.42), 0 8px 24px var(--botao-sombra);
 }
@@ -1298,6 +1395,11 @@ footer a {
     gap: 1rem;
     padding: 0.86rem 1rem;
     margin-bottom: 1.5rem;
+}
+
+.classificacao-box .classificacao-texto,
+.classificacao-box .classificacao-texto p {
+    text-align: left;
 }
 
 .classificacao-box img {
@@ -1726,7 +1828,7 @@ blockquote.apoio-card {
     margin: 0.25rem 0 0.9rem;
 }
 
-.cbt-cta-wrap .botao-piscante {
+.cbt-cta-wrap .btn-cta {
     min-width: min(100%, 17.5rem);
     padding-inline: 1.25rem;
 }
@@ -2010,20 +2112,19 @@ blockquote.apoio-card {
     color: #ffffff;
 }
 
-:root[data-theme="dark"] .main-content p a:not(.botao-piscante):not(.botao-piscante-whats):not(.botao-whats):not(.botao-piscante-sympla):not(.apoio-card-link),
-:root[data-theme="dark"] .main-content :is(li, td, h4) a:not(.botao-piscante, .botao-piscante-whats, .botao-whats, .botao-piscante-sympla, .apoio-card-link) {
+:root[data-theme="dark"] .main-content p a:not(.btn-cta):not(.btn-cta-whatsapp):not(.btn-cta-sympla):not(.apoio-card-link),
+:root[data-theme="dark"] .main-content :is(li, td, h4) a:not(.btn-cta, .btn-cta-whatsapp, .btn-cta-sympla, .apoio-card-link) {
     color: var(--link-texto-dark);
 }
 
-:root[data-theme="dark"] .main-content p a:not(.botao-piscante):not(.botao-piscante-whats):not(.botao-whats):not(.botao-piscante-sympla):not(.apoio-card-link):hover,
-:root[data-theme="dark"] .main-content :is(li, td, h4) a:not(.botao-piscante, .botao-piscante-whats, .botao-whats, .botao-piscante-sympla, .apoio-card-link):hover {
+:root[data-theme="dark"] .main-content p a:not(.btn-cta):not(.btn-cta-whatsapp):not(.btn-cta-sympla):not(.apoio-card-link):hover,
+:root[data-theme="dark"] .main-content :is(li, td, h4) a:not(.btn-cta, .btn-cta-whatsapp, .btn-cta-sympla, .apoio-card-link):hover {
     color: var(--link-texto-dark-hover);
 }
 
-:root[data-theme="dark"] .botao-piscante,
-:root[data-theme="dark"] .botao-piscante-whats,
-:root[data-theme="dark"] .botao-whats,
-:root[data-theme="dark"] .botao-piscante-sympla,
+:root[data-theme="dark"] .btn-cta,
+:root[data-theme="dark"] .btn-cta-whatsapp,
+:root[data-theme="dark"] .btn-cta-sympla,
 :root[data-theme="dark"] .theme-toggle {
     color: #ffffff !important;
 }
@@ -2097,7 +2198,7 @@ blockquote.apoio-card {
     .nav-menu-toggle:hover {
         background: var(--link-fundo-hover);
         color: #ffffff;
-        transform: scale(1.02);
+        transform: scale(1.01);
     }
 
     .nav-links {
@@ -2306,3 +2407,5 @@ blockquote.apoio-card {
         font-size: 0.8rem;
     }
 }
+
+
