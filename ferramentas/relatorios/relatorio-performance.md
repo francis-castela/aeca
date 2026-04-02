@@ -1,6 +1,6 @@
 # Auditoria de performance
 
-Gerado em: 2026-04-02 17:20:27
+Gerado em: 2026-04-02 19:21:06
 
 ## Resumo
 
@@ -13,19 +13,19 @@ Gerado em: 2026-04-02 17:20:27
 
 | Arquivo | KB | MB |
 | --- | ---: | ---: |
-| anchieta/img/anchieta-1991-patetica-3.webp | 614.7 | 0.6 |
-| anchieta/img/anchieta-1996-asas-cartaz.webp | 600.8 | 0.59 |
+| anchieta/img/anchieta-1991-patetica-3.webp | 613.3 | 0.6 |
+| anchieta/img/anchieta-1996-asas-cartaz.webp | 597.6 | 0.58 |
 | espetaculos/1998/img/pessoa-cartaz.webp | 583.5 | 0.57 |
-| anchieta/img/anchieta-1991-patetica-2.webp | 491.2 | 0.48 |
+| anchieta/img/anchieta-1991-patetica-2.webp | 490.6 | 0.48 |
 | espetaculos/2007/img/almas-cartaz.webp | 467.6 | 0.46 |
-| anchieta/img/anchieta-1989-cinderela-cartaz.webp | 434.6 | 0.42 |
+| anchieta/img/anchieta-1989-cinderela-cartaz.webp | 430.4 | 0.42 |
 | espetaculos/2018/img/bailei-cartaz.webp | 425.6 | 0.42 |
 | espetaculos/2011/img/rapto-cartaz.webp | 414.7 | 0.4 |
 | espetaculos/2015/img/irmaos-cartaz.webp | 362.7 | 0.35 |
 | espetaculos/2011/img/bailei-cartaz.webp | 359.6 | 0.35 |
-| anchieta/img/anchieta-1987-aboboras-cartaz-1.webp | 359.4 | 0.35 |
+| anchieta/img/anchieta-1987-aboboras-cartaz-1.webp | 355.9 | 0.35 |
 | espetaculos/2007/img/rapto-cartaz.webp | 353.4 | 0.35 |
-| anchieta/img/anchieta-1992-gigolo-7.webp | 325.8 | 0.32 |
+| anchieta/img/anchieta-1992-gigolo-7.webp | 322.2 | 0.31 |
 | espetaculos/2009/img/7-maratona-cartaz.webp | 316.5 | 0.31 |
 | espetaculos/2010/img/auto-cartaz.webp | 316.3 | 0.31 |
 | espetaculos/2006/img/trem-cartaz.webp | 296.2 | 0.29 |
@@ -35,10 +35,10 @@ Gerado em: 2026-04-02 17:20:27
 | espetaculos/2006/img/lambreta-cartaz.webp | 277.9 | 0.27 |
 | espetaculos/2025/img/paraiso-cartaz.webp | 277.6 | 0.27 |
 | espetaculos/2005/img/amor-cartaz.webp | 273.4 | 0.27 |
-| anchieta/img/anchieta-1997-society-1.webp | 272.1 | 0.27 |
 | espetaculos/2016/img/rapto-cartaz.webp | 267.2 | 0.26 |
-| anchieta/img/anchieta-1995-menino-4.webp | 266.4 | 0.26 |
 | espetaculos/2004/img/novico-cartaz.webp | 266.2 | 0.26 |
+| anchieta/img/anchieta-1995-menino-4.webp | 258.1 | 0.25 |
+| anchieta/img/anchieta-1997-society-1.webp | 256 | 0.25 |
 | espetaculos/2001/img/pluft-cartaz.webp | 255.4 | 0.25 |
 | espetaculos/2014/img/revolta-7.webp | 249.5 | 0.24 |
 | espetaculos/2019/img/inspetor-elenco.webp | 249.1 | 0.24 |
@@ -48,19 +48,19 @@ Gerado em: 2026-04-02 17:20:27
 
 | Arquivo | KB |
 | --- | ---: |
-| anchieta/img/anchieta-1991-patetica-3.webp | 614.7 |
-| anchieta/img/anchieta-1996-asas-cartaz.webp | 600.8 |
+| anchieta/img/anchieta-1991-patetica-3.webp | 613.3 |
+| anchieta/img/anchieta-1996-asas-cartaz.webp | 597.6 |
 | espetaculos/1998/img/pessoa-cartaz.webp | 583.5 |
-| anchieta/img/anchieta-1991-patetica-2.webp | 491.2 |
+| anchieta/img/anchieta-1991-patetica-2.webp | 490.6 |
 | espetaculos/2007/img/almas-cartaz.webp | 467.6 |
-| anchieta/img/anchieta-1989-cinderela-cartaz.webp | 434.6 |
+| anchieta/img/anchieta-1989-cinderela-cartaz.webp | 430.4 |
 | espetaculos/2018/img/bailei-cartaz.webp | 425.6 |
 | espetaculos/2011/img/rapto-cartaz.webp | 414.7 |
 | espetaculos/2015/img/irmaos-cartaz.webp | 362.7 |
 | espetaculos/2011/img/bailei-cartaz.webp | 359.6 |
-| anchieta/img/anchieta-1987-aboboras-cartaz-1.webp | 359.4 |
+| anchieta/img/anchieta-1987-aboboras-cartaz-1.webp | 355.9 |
 | espetaculos/2007/img/rapto-cartaz.webp | 353.4 |
-| anchieta/img/anchieta-1992-gigolo-7.webp | 325.8 |
+| anchieta/img/anchieta-1992-gigolo-7.webp | 322.2 |
 | espetaculos/2009/img/7-maratona-cartaz.webp | 316.5 |
 | espetaculos/2010/img/auto-cartaz.webp | 316.3 |
 | espetaculos/2006/img/trem-cartaz.webp | 296.2 |
@@ -70,10 +70,10 @@ Gerado em: 2026-04-02 17:20:27
 | espetaculos/2006/img/lambreta-cartaz.webp | 277.9 |
 | espetaculos/2025/img/paraiso-cartaz.webp | 277.6 |
 | espetaculos/2005/img/amor-cartaz.webp | 273.4 |
-| anchieta/img/anchieta-1997-society-1.webp | 272.1 |
 | espetaculos/2016/img/rapto-cartaz.webp | 267.2 |
-| anchieta/img/anchieta-1995-menino-4.webp | 266.4 |
 | espetaculos/2004/img/novico-cartaz.webp | 266.2 |
+| anchieta/img/anchieta-1995-menino-4.webp | 258.1 |
+| anchieta/img/anchieta-1997-society-1.webp | 256 |
 | espetaculos/2001/img/pluft-cartaz.webp | 255.4 |
 
 ## Possiveis assets orfaos
