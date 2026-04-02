@@ -1490,7 +1490,6 @@ blockquote.apoio-card {
     font-size: 0.73rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--brand);
     font-weight: 700;
 }
 
@@ -1652,6 +1651,10 @@ blockquote.apoio-card {
     letter-spacing: 0.05em;
     text-transform: uppercase;
     font-weight: 700;
+}
+
+.obra-referencia-kicker,
+.apoio-categoria {
     color: var(--brand);
 }
 
@@ -2007,13 +2010,13 @@ blockquote.apoio-card {
     color: #ffffff;
 }
 
-:root[data-theme="dark"] .main-content p a:not(.botao-piscante):not(.botao-piscante-whats):not(.botao-whats):not(.botao-piscante-sympla),
-:root[data-theme="dark"] .main-content :is(li, td, h4) a:not(.botao-piscante, .botao-piscante-whats, .botao-whats, .botao-piscante-sympla) {
+:root[data-theme="dark"] .main-content p a:not(.botao-piscante):not(.botao-piscante-whats):not(.botao-whats):not(.botao-piscante-sympla):not(.apoio-card-link),
+:root[data-theme="dark"] .main-content :is(li, td, h4) a:not(.botao-piscante, .botao-piscante-whats, .botao-whats, .botao-piscante-sympla, .apoio-card-link) {
     color: var(--link-texto-dark);
 }
 
-:root[data-theme="dark"] .main-content p a:not(.botao-piscante):not(.botao-piscante-whats):not(.botao-whats):not(.botao-piscante-sympla):hover,
-:root[data-theme="dark"] .main-content :is(li, td, h4) a:not(.botao-piscante, .botao-piscante-whats, .botao-whats, .botao-piscante-sympla):hover {
+:root[data-theme="dark"] .main-content p a:not(.botao-piscante):not(.botao-piscante-whats):not(.botao-whats):not(.botao-piscante-sympla):not(.apoio-card-link):hover,
+:root[data-theme="dark"] .main-content :is(li, td, h4) a:not(.botao-piscante, .botao-piscante-whats, .botao-whats, .botao-piscante-sympla, .apoio-card-link):hover {
     color: var(--link-texto-dark-hover);
 }
 
@@ -2035,7 +2038,6 @@ blockquote.apoio-card {
 }
 
 :root[data-theme="dark"] .tabela-precos .preco-valor,
-:root[data-theme="dark"] .apoio-categoria,
 :root[data-theme="dark"] .cbt-promessa,
 :root[data-theme="dark"] .cbt-valor-destaque,
 :root[data-theme="dark"] .cbt-equipe-nome {
