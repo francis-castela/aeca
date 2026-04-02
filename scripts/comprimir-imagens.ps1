@@ -7,7 +7,7 @@ $QualityJpeg = 82
 $ThresholdKB = 250
 $DryRun      = $false
 
-$root = Split-Path -Parent $PSScriptRoot
+$root = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 $skipDirPattern = "\\.git\\"
 $thresholdBytes = $ThresholdKB * 1024
 

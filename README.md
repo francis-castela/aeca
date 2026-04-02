@@ -98,7 +98,7 @@ Checklist mínimo antes de publicar:
 Antes de publicar, execute no PowerShell dentro da raiz do projeto:
 
 ```powershell
-./scripts/validate-site.ps1
+./ferramentas/scripts/validar-site.ps1
 ```
 
 O script valida os principais pontos críticos:
@@ -112,16 +112,26 @@ O script valida os principais pontos críticos:
 Para manter o site saudável ao longo do tempo, execute também:
 
 ```powershell
-./scripts/audit-performance.ps1
+./ferramentas/scripts/auditar-performance.ps1
 ```
 
-Esse script gera o relatório em `docs/governance/latest-performance-audit.md` com:
+Esse script gera o relatório em `ferramentas/relatorios/relatorio-performance.md` com:
 - Imagens mais pesadas do repositório.
 - Imagens acima do limite de alerta.
 - Possíveis assets órfãos sem referência estática.
 - Checklist de revisão manual de Core Web Vitals.
 
-O processo completo está documentado em `docs/governance/performance-routine.md`.
+### Verificações complementares
+
+Scripts adicionais disponíveis em `ferramentas/scripts/`:
+
+- `./ferramentas/scripts/verificar-links.ps1`: encontra links internos quebrados e âncoras sem `id` correspondente.
+- `./ferramentas/scripts/verificar-seo-basico.ps1`: valida `title`, `meta description`, `canonical`, `h1` e presença em `sitemap.xml`.
+- `./ferramentas/scripts/verificar-acessibilidade.ps1`: checa pontos básicos de acessibilidade (lang, alt, labels e nome acessível).
+- `./ferramentas/scripts/verificar-assets-referenciados.ps1`: detecta referências para assets inexistentes e possíveis órfãos.
+- `./ferramentas/scripts/verificar-ortografia.ps1`: roda corretor ortográfico com foco em pt-BR (via `cspell` ou `npx cspell`).
+
+O processo completo está documentado em `ferramentas/relatorios/performance-routine.md`.
 
 ### Ciclo de governança
 
@@ -131,7 +141,7 @@ Antes de publicar páginas novas ou atualizar páginas em cartaz, adote este flu
 2. Revisão editorial.
 3. Revisão de acessibilidade.
 
-O checklist detalhado está em `docs/governance/review-cycle.md`.
+O checklist detalhado está em `ferramentas/relatorios/review-cycle.md`.
 
 ## Contato e contexto
 

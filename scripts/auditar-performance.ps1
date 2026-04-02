@@ -1,13 +1,13 @@
 param(
     [int]$TopImages = 30,
     [int]$ImageWarningKB = 250,
-    [string]$ReportPath = "docs/governance/latest-performance-audit.md"
+    [string]$ReportPath = "ferramentas/relatorios/relatorio-performance.md"
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-$root = Split-Path -Parent $PSScriptRoot
+$root = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 Set-Location $root
 
 $imageExtensions = @(".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg", ".avif")

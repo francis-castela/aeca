@@ -1,7 +1,7 @@
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-$root = Split-Path -Parent $PSScriptRoot
+$root = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 Set-Location $root
 
 $htmlFiles = Get-ChildItem -Recurse -File -Filter *.html | Where-Object { $_.FullName -notmatch "\\html\\" }
