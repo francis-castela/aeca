@@ -376,6 +376,28 @@ h4 {
     z-index: 120;
 }
 
+.skip-link {
+    position: absolute;
+    top: -120px;
+    left: 0.9rem;
+    z-index: 1001;
+    padding: 0.55rem 0.8rem;
+    border-radius: 10px;
+    border: 1px solid var(--surface-border-strong);
+    background: var(--surface-1);
+    color: var(--text-primary);
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: var(--shadow-2);
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus-visible {
+    top: 0.9rem;
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+}
+
 .header-brand {
     display: flex;
     align-items: center;
@@ -1207,6 +1229,24 @@ footer a {
 
 .close-modal:hover {
     color: #bbbbbb;
+}
+
+.close-modal:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 4px;
+    color: #ffffff;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 /* ===================== BOTÕES =====================

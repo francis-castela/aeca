@@ -96,6 +96,116 @@
         }
     }
 
+    function ensureMainContentTarget() {
+        const mainContent = document.querySelector("main.main-content") || document.querySelector("main");
+        if (!mainContent) {
+            return;
+        }
+
+        if (!mainContent.id) {
+            mainContent.id = "conteudo-principal";
+        }
+
+        if (!mainContent.hasAttribute("tabindex")) {
+            mainContent.setAttribute("tabindex", "-1");
+        }
+
+        const skipLink = document.querySelector(".skip-link");
+        if (skipLink) {
+            skipLink.setAttribute("href", `#${mainContent.id}`);
+        }
+    }
+
+    function ensureFooterInsideBody() {
+        const footerContainer = document.getElementById("footer");
+        if (!footerContainer || footerContainer.parentElement === document.body) {
+            return;
+        }
+
+        document.body.appendChild(footerContainer);
+    }
+
+    function getPreviousHeadingText(element) {
+        let sibling = element.previousElementSibling;
+
+        while (sibling) {
+            if (/^H[1-6]$/.test(sibling.tagName)) {
+                return sibling.textContent.replace(/\s+/g, " ").trim();
+            }
+
+            sibling = sibling.previousElementSibling;
+        }
+
+        return "";
+    }
+
+    function ensureTableCaptions() {
+        const tables = document.querySelectorAll("main table.tabela-vitrine");
+        if (tables.length === 0) {
+            return;
+        }
+
+        tables.forEach(function (table, index) {
+            if (table.querySelector(":scope > caption")) {
+                return;
+            }
+
+            const headingText = getPreviousHeadingText(table);
+            const caption = document.createElement("caption");
+            caption.className = "sr-only";
+            caption.textContent = headingText || `Tabela ${index + 1}`;
+            table.insertBefore(caption, table.firstChild);
+        });
+    }
+
+    function ensureBlankTargetSafety() {
+        document.querySelectorAll('a[target="_blank"]').forEach(function (link) {
+            const relParts = (link.getAttribute("rel") || "")
+                .split(/\s+/)
+                .map(function (part) {
+                    return part.trim().toLowerCase();
+                })
+                .filter(Boolean);
+
+            if (!relParts.includes("noopener")) {
+                relParts.push("noopener");
+            }
+
+            if (!relParts.includes("noreferrer")) {
+                relParts.push("noreferrer");
+            }
+
+            link.setAttribute("rel", relParts.join(" "));
+        });
+    }
+
+    function ensureImageAltAttributes() {
+        document.querySelectorAll("img:not([alt])").forEach(function (img) {
+            if (img.id === "modalImage") {
+                img.setAttribute("alt", "Imagem ampliada");
+                return;
+            }
+
+            const src = (img.getAttribute("src") || "").toLowerCase();
+            if (src.includes("/classificacao/")) {
+                img.setAttribute("alt", "Classificacao indicativa");
+                return;
+            }
+
+            if (img.closest(".header-brand")) {
+                img.setAttribute("alt", "Logotipo");
+                return;
+            }
+
+            if (img.closest(".sidebar-galeria") || img.closest(".main-galeria")) {
+                img.setAttribute("alt", "Foto da galeria");
+                return;
+            }
+
+            img.setAttribute("alt", "");
+        });
+    }
+
     function setupImageModalZoom() {
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("modalImage");
@@ -104,23 +214,91 @@
             return;
         }
 
+        modal.setAttribute("role", "dialog");
+        modal.setAttribute("aria-modal", "true");
+        modal.setAttribute("aria-label", "Visualizacao ampliada da imagem");
+        modal.setAttribute("aria-hidden", "true");
+
+        let lastFocusedElement = null;
+
+        function openModal(sourceImg) {
+            lastFocusedElement = document.activeElement;
+            modal.style.display = "flex";
+            modal.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+            modalImg.src = sourceImg.src;
+            modalImg.alt = sourceImg.alt ? sourceImg.alt : "Imagem ampliada";
+
+            const closeModalButton = document.querySelector(".close-modal");
+            if (closeModalButton) {
+                closeModalButton.focus();
+            }
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+            modal.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+            if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+                lastFocusedElement.focus();
+            }
+        }
+
         document.querySelectorAll(".sidebar img, .main-galeria img").forEach(function (img) {
             if (img.dataset.zoomBound === "true") {
                 return;
             }
 
             img.dataset.zoomBound = "true";
+            const hasNativeInteractiveParent = Boolean(img.closest("a, button"));
+
+            if (!hasNativeInteractiveParent) {
+                if (!img.hasAttribute("tabindex")) {
+                    img.setAttribute("tabindex", "0");
+                }
+
+                if (!img.hasAttribute("role")) {
+                    img.setAttribute("role", "button");
+                }
+
+                if (!img.hasAttribute("aria-label")) {
+                    const baseAlt = (img.getAttribute("alt") || "imagem").trim();
+                    img.setAttribute("aria-label", `Ampliar ${baseAlt}`);
+                }
+            }
+
             img.addEventListener("click", function () {
-                modal.style.display = "flex";
-                modalImg.src = img.src;
+                openModal(img);
+            });
+
+            img.addEventListener("keydown", function (event) {
+                if (hasNativeInteractiveParent) {
+                    return;
+                }
+
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    openModal(img);
+                }
             });
         });
 
-        const closeModal = document.querySelector(".close-modal");
-        if (closeModal && closeModal.dataset.modalBound !== "true") {
-            closeModal.dataset.modalBound = "true";
-            closeModal.addEventListener("click", function () {
-                modal.style.display = "none";
+        const closeModalControl = document.querySelector(".close-modal");
+        if (closeModalControl && closeModalControl.dataset.modalBound !== "true") {
+            closeModalControl.dataset.modalBound = "true";
+            closeModalControl.setAttribute("role", "button");
+            closeModalControl.setAttribute("tabindex", "0");
+            closeModalControl.setAttribute("aria-label", "Fechar visualizacao ampliada");
+
+            closeModalControl.addEventListener("click", function () {
+                closeModal();
+            });
+
+            closeModalControl.addEventListener("keydown", function (event) {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    closeModal();
+                }
             });
         }
 
@@ -128,7 +306,13 @@
             modal.dataset.modalBound = "true";
             modal.addEventListener("click", function (event) {
                 if (event.target === modal) {
-                    modal.style.display = "none";
+                    closeModal();
+                }
+            });
+
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape" && modal.style.display === "flex") {
+                    closeModal();
                 }
             });
         }
@@ -568,8 +752,13 @@
 
         setupThemeToggle();
         setupNavMenu();
+        ensureMainContentTarget();
+        ensureFooterInsideBody();
         await buildShowsAsTables();
         normalizeLegacyShowTables();
+        ensureImageAltAttributes();
+        ensureTableCaptions();
+        ensureBlankTargetSafety();
         setupImageModalZoom();
         setupScrollToTop();
     }
