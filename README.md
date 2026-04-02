@@ -16,7 +16,7 @@ Há dois cenários:
 - Página focada em venda e comunicação.
 - Pode incluir: venda de ingressos, lotes, sessões, local, classificação indicativa.
 
-1. Registro histórico (espetáculo encerrado)
+2. Registro histórico (espetáculo encerrado)
 - Página focada em memória do processo e da montagem.
 - Pode incluir: texto de contexto, ficha técnica final, elenco final, galeria de fotos e cartaz.
 
@@ -106,6 +106,32 @@ O script valida os principais pontos críticos:
 - Estrutura com `<div id="footer"></div>` fora do `<body>`.
 - Páginas públicas sem `meta description`, `canonical` ou `h1`.
 - Presença de barra invertida no `sitemap.xml`.
+
+### Rotina contínua de performance
+
+Para manter o site saudável ao longo do tempo, execute também:
+
+```powershell
+./scripts/audit-performance.ps1
+```
+
+Esse script gera o relatório em `docs/governance/latest-performance-audit.md` com:
+- Imagens mais pesadas do repositório.
+- Imagens acima do limite de alerta.
+- Possíveis assets órfãos sem referência estática.
+- Checklist de revisão manual de Core Web Vitals.
+
+O processo completo está documentado em `docs/governance/performance-routine.md`.
+
+### Ciclo de governança
+
+Antes de publicar páginas novas ou atualizar páginas em cartaz, adote este fluxo:
+
+1. Revisão técnica.
+2. Revisão editorial.
+3. Revisão de acessibilidade.
+
+O checklist detalhado está em `docs/governance/review-cycle.md`.
 
 ## Contato e contexto
 
