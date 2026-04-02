@@ -844,7 +844,17 @@
             return;
         }
 
-        const ticketCta = document.querySelector("a.btn-cta-ticket[href]");
+        let ticketCta = document.querySelector("a.btn-cta-ticket[href]");
+        let ticketLabel = "Comprar ingresso";
+
+        if (!ticketCta) {
+            ticketCta = document.querySelector("a.btn-cta[href*='forms.gle'], a.btn-cta[href*='docs.google.com/forms']");
+
+            if (ticketCta) {
+                ticketLabel = "Garantir vaga";
+            }
+        }
+
         const whatsappCta = document.querySelector("a.btn-cta-whatsapp[href]");
 
         if (!ticketCta && !whatsappCta) {
@@ -866,7 +876,7 @@
             ticketLink.href = ticketCta.href;
             ticketLink.target = "_blank";
             ticketLink.rel = "noopener noreferrer";
-            ticketLink.textContent = "Comprar ingresso";
+            ticketLink.textContent = ticketLabel;
             bar.appendChild(ticketLink);
         }
 

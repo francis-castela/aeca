@@ -1,0 +1,3 @@
+# Um termo por linha.
+# Adicione sobrenomes, nomes proprios e siglas aceitas pelo projeto.
+# Linhas em branco e linhas iniciadas com # sao ignoradas.

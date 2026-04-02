@@ -129,7 +129,7 @@ Scripts adicionais disponíveis em `ferramentas/scripts/`:
 - `./ferramentas/scripts/verificar-seo-basico.ps1`: valida `title`, `meta description`, `canonical`, `h1` e presença em `sitemap.xml`.
 - `./ferramentas/scripts/verificar-acessibilidade.ps1`: checa pontos básicos de acessibilidade (lang, alt, labels e nome acessível).
 - `./ferramentas/scripts/verificar-assets-referenciados.ps1`: detecta referências para assets inexistentes e possíveis órfãos.
-- `./ferramentas/scripts/verificar-ortografia.ps1`: roda corretor ortográfico com foco em pt-BR (via `cspell` ou `npx cspell`).
+- `./ferramentas/scripts/verificar-ortografia.ps1`: roda corretor ortográfico com foco em pt-BR apenas nos arquivos HTML, gera `ferramentas/relatorios/relatorio-ortografia.md` e aceita termos personalizados em `ferramentas/scripts/verificar-ortografia.ignore.txt`. Em Windows com bloqueio de `ExecutionPolicy`, prefira `./ferramentas/scripts/verificar-ortografia.cmd`.
 
 O processo completo está documentado em `ferramentas/relatorios/performance-routine.md`.
 

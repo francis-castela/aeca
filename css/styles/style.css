@@ -671,7 +671,7 @@ table,
 /* ===================== CARDS =====================
    Sistema visual compartilhado por todos os cards do site.
    Classes afetadas: .apoio-card, .sidebar-card, .classificacao-box,
-   .curriculo-item, .curriculo-resumo, .curriculo-tags li
+   .curriculo-item, .curriculo-resumo, .info-grid li
    e todos os componentes .cbt-* com aparência de card.
    O hover genérico eleva o card; cards com link (<a>) também
    mudam de fundo para o gradiente da marca (regra logo abaixo).
@@ -687,8 +687,7 @@ table,
 .cbt-fechamento,
 .sidebar-card,
 .curriculo-resumo,
-.curriculo-tags li,
-.cbt-highlights li,
+.info-grid li,
 .cbt-urgencia,
 .curriculo-item {
     border: 1px solid var(--card-borda);
@@ -716,8 +715,7 @@ a.apoio-card:hover,
 .cbt-fechamento:hover,
 .sidebar-card:hover,
 .curriculo-resumo:hover,
-.curriculo-tags li:hover,
-.cbt-highlights li:hover,
+.info-grid li:hover,
 .cbt-urgencia:hover,
 .curriculo-item:hover,
 .classificacao-box:focus-within,
@@ -731,8 +729,7 @@ a.apoio-card:hover,
 .cbt-fechamento:focus-within,
 .sidebar-card:focus-within,
 .curriculo-resumo:focus-within,
-.curriculo-tags li:focus-within,
-.cbt-highlights li:focus-within,
+.info-grid li:focus-within,
 .cbt-urgencia:focus-within,
 .curriculo-item:focus-within {
     transform: var(--interacao-elevacao);
@@ -1899,6 +1896,10 @@ body.has-quick-cta #scroll-topo {
     gap: 0.65rem;
 }
 
+main.main-content ul.apoio-grid {
+    margin: 0.65rem 0 1.35rem;
+}
+
 .apoio-grid li {
     margin: 0;
 }
@@ -1952,8 +1953,7 @@ body.has-quick-cta #scroll-topo {
 .cbt-hero,
 .cbt-cartaz,
 .cbt-fechamento,
-.curriculo-tags li,
-.cbt-highlights li,
+.info-grid li,
 .cbt-urgencia {
     border-color: var(--card-borda);
 }
@@ -2003,17 +2003,28 @@ body.has-quick-cta #scroll-topo {
     padding-inline: 1.25rem;
 }
 
-.cbt-highlights {
+.info-grid {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cbt-hero .info-grid {
     gap: 0.5rem;
 }
 
-.cbt-highlights li {
+main.main-content ul.info-grid {
     margin: 0;
+}
+
+.info-grid li {
+    margin: 0;
+    margin-left: 0;
+}
+
+.cbt-hero .info-grid li {
     padding: 0.55rem 0.65rem;
     font-size: 0.94rem;
 }
@@ -2145,7 +2156,7 @@ body.has-quick-cta #scroll-topo {
     margin-bottom: 0.6rem;
 }
 
-.cbt-cta-flutuante {
+body.cbt-page > a.btn-cta[href*="forms.gle"] {
     display: none;
 }
 
@@ -2191,24 +2202,13 @@ body.has-quick-cta #scroll-topo {
     margin-bottom: 0.6rem;
 }
 
-.curriculo-tags {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.45rem;
-}
-
-main.main-content ul.curriculo-tags {
-    margin: 0;
-}
-
-.curriculo-tags li {
-    margin: 0;
-    margin-left: 0;
+.info-grid li {
     padding: 0.42rem 0.55rem;
     font-size: 0.88rem;
+}
+
+.info-grid {
+    gap: 0.45rem;
 }
 
 .curriculo-linha-tempo > h2 {
@@ -2486,12 +2486,11 @@ main.main-content ul.curriculo-tags {
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     }
 
-    .cbt-highlights,
     .cbt-pilares,
     .cbt-transforma,
     .cbt-faq-lista,
     .cbt-equipe-grid,
-    .curriculo-tags {
+    .info-grid {
         grid-template-columns: 1fr;
     }
 
@@ -2500,12 +2499,13 @@ main.main-content ul.curriculo-tags {
         min-width: 0;
     }
 
-    .cbt-cta-flutuante {
+    body.cbt-page > a.btn-cta[href*="forms.gle"] {
         display: inline-flex;
         position: fixed;
         left: 0.7rem;
         right: 0.7rem;
         bottom: 0.7rem;
+        margin: 0;
         z-index: 999;
         justify-content: center;
         box-shadow: var(--shadow-4);
