@@ -11,6 +11,13 @@ $root = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 $skipDirPattern = "\\.git\\"
 $thresholdBytes = $ThresholdKB * 1024
 
+$blacklistPath = Join-Path $PSScriptRoot "comprimir-imagens-blacklist.txt"
+$blacklist = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
+if (Test-Path $blacklistPath) {
+    Get-Content $blacklistPath -Encoding UTF8 | Where-Object { $_.Trim() -ne "" } | ForEach-Object { [void]$blacklist.Add($_.Trim()) }
+    Write-Host "Blacklist carregada: $($blacklist.Count) entrada(s) ignorada(s)." -ForegroundColor DarkGray
+}
+
 if (-not (Get-Command magick -ErrorAction SilentlyContinue)) {
     Write-Host "[ERRO] ImageMagick nao encontrado." -ForegroundColor Red
     Write-Host "Instale com: winget install ImageMagick.ImageMagick" -ForegroundColor Yellow
@@ -42,6 +49,12 @@ foreach ($img in ($allImages | Sort-Object Length -Descending)) {
     $beforeKB = [math]::Round($img.Length / 1024.0, 1)
     $quality  = if ($ext -eq ".webp") { $QualityWebP } else { $QualityJpeg }
 
+    if ($blacklist.Contains($relPath)) {
+        Write-Host ("[SKIP] {0}  {1} KB (blacklist)" -f $relPath, $beforeKB) -ForegroundColor DarkYellow
+        $skipped++
+        continue
+    }
+
     if ($DryRun) {
         Write-Host "[DRY] $relPath ($beforeKB KB)" -ForegroundColor DarkGray
         $processed++
@@ -66,7 +79,9 @@ foreach ($img in ($allImages | Sort-Object Length -Descending)) {
         if ($deltaKB -gt 0) {
             Write-Host ("[OK] {0}  {1} KB -> {2} KB  (-{3} KB)" -f $relPath, $beforeKB, $afterKB, [math]::Round($deltaKB, 1)) -ForegroundColor Green
         } else {
-            Write-Host ("[=] {0}  {1} KB" -f $relPath, $beforeKB) -ForegroundColor DarkGray
+            Write-Host ("[=] {0}  {1} KB (adicionado a blacklist)" -f $relPath, $beforeKB) -ForegroundColor DarkGray
+            [void]$blacklist.Add($relPath)
+            Add-Content -Path $blacklistPath -Value $relPath -Encoding UTF8
         }
         $processed++
     } catch {

@@ -784,11 +784,8 @@
         return window.matchMedia("(max-width: 768px)").matches ? 160 : null;
     }
 
-    function extractFirstSummary(htmlText) {
+    function extractFirstSummary(main) {
         try {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(htmlText, "text/html");
-            const main = doc.querySelector("main.main-content") || doc.body;
             const firstParagraph = main ? main.querySelector("p") : null;
             if (!firstParagraph) {
                 return "Resumo indisponivel.";
@@ -811,6 +808,62 @@
         }
     }
 
+    function extractPeopleSearchText(main) {
+        if (!main) {
+            return "";
+        }
+
+        const peopleFragments = [];
+
+        main.querySelectorAll("h2, h3").forEach(function (heading) {
+            const headingText = normalizeText(heading.textContent);
+            const isPeopleSection = headingText.includes("elenco") || headingText.includes("ficha tecnica");
+            if (!isPeopleSection) {
+                return;
+            }
+
+            let cursor = heading.nextElementSibling;
+            while (cursor && !/^H[1-6]$/.test(cursor.tagName)) {
+                if (cursor.tagName === "TABLE") {
+                    cursor.querySelectorAll("td, th").forEach(function (cell) {
+                        const value = cell.textContent.replace(/\s+/g, " ").trim();
+                        if (value) {
+                            peopleFragments.push(value);
+                        }
+                    });
+                }
+
+                cursor = cursor.nextElementSibling;
+            }
+        });
+
+        if (peopleFragments.length === 0) {
+            return "";
+        }
+
+        return Array.from(new Set(peopleFragments)).join(" ");
+    }
+
+    function extractShowSearchDetails(htmlText) {
+        try {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(htmlText, "text/html");
+            const main = doc.querySelector("main.main-content") || doc.body;
+            const summary = extractFirstSummary(main);
+            const peopleText = extractPeopleSearchText(main);
+
+            return {
+                summary: summary,
+                peopleText: peopleText
+            };
+        } catch (error) {
+            return {
+                summary: "Resumo indisponivel.",
+                peopleText: ""
+            };
+        }
+    }
+
     async function buildShowsAsTables() {
         const showGrids = Array.from(document.querySelectorAll(".grade-espetaculos"));
         if (showGrids.length === 0) {
@@ -818,6 +871,7 @@
         }
 
         const summaryCache = new Map();
+        let pendingFetches = 0;
 
         for (const grid of showGrids) {
             const showLinks = Array.from(grid.querySelectorAll("a[href]"));
@@ -887,38 +941,61 @@
                 row.appendChild(infoCell);
                 tbody.appendChild(row);
 
+                row.dataset.searchPeople = "";
+
                 if (!summaryUrl) {
                     summaryEl.textContent = "Resumo indisponivel.";
                     continue;
                 }
 
                 if (summaryCache.has(summaryUrl)) {
-                    summaryEl.textContent = summaryCache.get(summaryUrl);
+                    const cachedData = summaryCache.get(summaryUrl);
+                    summaryEl.textContent = cachedData.summary;
+                    row.dataset.searchPeople = cachedData.peopleText;
                     continue;
                 }
 
+                pendingFetches++;
                 (async function () {
                     try {
                         const response = await fetch(summaryUrl);
                         if (!response.ok) {
-                            summaryCache.set(summaryUrl, "Resumo indisponivel.");
+                            summaryCache.set(summaryUrl, {
+                                summary: "Resumo indisponivel.",
+                                peopleText: ""
+                            });
                             summaryEl.textContent = "Resumo indisponivel.";
+                            row.dataset.searchPeople = "";
                             return;
                         }
 
                         const htmlText = await response.text();
-                        const summary = extractFirstSummary(htmlText);
-                        summaryCache.set(summaryUrl, summary);
-                        summaryEl.textContent = summary;
+                        const searchDetails = extractShowSearchDetails(htmlText);
+                        summaryCache.set(summaryUrl, searchDetails);
+                        summaryEl.textContent = searchDetails.summary;
+                        row.dataset.searchPeople = searchDetails.peopleText;
                     } catch (error) {
-                        summaryCache.set(summaryUrl, "Resumo indisponivel.");
+                        summaryCache.set(summaryUrl, {
+                            summary: "Resumo indisponivel.",
+                            peopleText: ""
+                        });
                         summaryEl.textContent = "Resumo indisponivel.";
+                        row.dataset.searchPeople = "";
+                    } finally {
+                        pendingFetches--;
+                        if (pendingFetches === 0) {
+                            document.dispatchEvent(new CustomEvent("acervo-indexing-complete"));
+                        }
                     }
                 })();
             }
 
             table.appendChild(tbody);
             grid.replaceWith(table);
+        }
+
+        if (pendingFetches === 0) {
+            document.dispatchEvent(new CustomEvent("acervo-indexing-complete"));
         }
     }
 
@@ -930,28 +1007,86 @@
         }
 
         const sections = [];
-        document.querySelectorAll("main.main-content h2[id]").forEach(function (heading) {
-            const table = heading.nextElementSibling && heading.nextElementSibling.nextElementSibling;
-            if (!table || !table.classList.contains("grade-espetaculos")) {
+        document.querySelectorAll("main.main-content h2[id], main.main-content h3[id]").forEach(function (heading) {
+            let separator = null;
+            let container = null;
+            let cursor = heading.nextElementSibling;
+
+            while (cursor) {
+                if (/^H[1-6]$/.test(cursor.tagName)) {
+                    break;
+                }
+
+                if (!separator && cursor.tagName === "HR") {
+                    separator = cursor;
+                }
+
+                if (cursor.classList.contains("grade-espetaculos")) {
+                    container = cursor;
+                    break;
+                }
+
+                cursor = cursor.nextElementSibling;
+            }
+
+            if (!container) {
                 return;
             }
 
-            const rows = Array.from(table.querySelectorAll(".cartaz-row"));
-            if (rows.length === 0) {
+            const rows = Array.from(container.querySelectorAll(".cartaz-row"));
+            const legacyLinks = rows.length === 0 ? Array.from(container.querySelectorAll(":scope > a[href]")) : [];
+            const filterTargets = rows.length > 0 ? rows : legacyLinks;
+
+            if (filterTargets.length === 0) {
+                return;
+            }
+
+            const isLegacyGrid = rows.length === 0;
+            const rowType = isLegacyGrid ? "legacy-link" : "table-row";
+
+            const normalizedTargets = filterTargets.map(function (target) {
+                return {
+                    element: target,
+                    rowType: rowType
+                };
+            });
+
+            if (normalizedTargets.length === 0) {
                 return;
             }
 
             sections.push({
                 heading: heading,
-                separator: heading.nextElementSibling,
-                table: table,
-                rows: rows
+                separator: separator,
+                container: container,
+                rows: normalizedTargets
             });
         });
 
         if (sections.length === 0) {
             return;
         }
+
+        let indexingComplete = false;
+
+        const indexHint = document.createElement("p");
+        indexHint.className = "acervo-filtros-indexing";
+        indexHint.setAttribute("aria-live", "polite");
+        indexHint.textContent = "Indexando elenco e fichas t\u00e9cnicas\u2026";
+        status.insertAdjacentElement("afterend", indexHint);
+
+        searchInput.disabled = true;
+        searchInput.classList.add("acervo-filtros-input--indexing");
+
+        document.addEventListener("acervo-indexing-complete", function onIndexingComplete() {
+            document.removeEventListener("acervo-indexing-complete", onIndexingComplete);
+            indexingComplete = true;
+            searchInput.disabled = false;
+            searchInput.classList.remove("acervo-filtros-input--indexing");
+            searchInput.placeholder = "Espet\u00e1culo, ator ou atriz\u2026";
+            indexHint.remove();
+            applyFilter();
+        });
 
         function applyFilter() {
             const query = normalizeText(searchInput.value);
@@ -961,19 +1096,29 @@
                 let sectionVisible = 0;
 
                 section.rows.forEach(function (row) {
-                    const title = normalizeText(row.querySelector(".cartaz-link") ? row.querySelector(".cartaz-link").textContent : "");
-                    const summary = normalizeText(row.querySelector(".cartaz-resumo") ? row.querySelector(".cartaz-resumo").textContent : "");
-                    const match = query === "" || title.includes(query) || summary.includes(query);
+                    const element = row.element;
+                    const title = row.rowType === "legacy-link"
+                        ? normalizeText(element.textContent)
+                        : normalizeText(element.querySelector(".cartaz-link") ? element.querySelector(".cartaz-link").textContent : "");
+                    const summary = row.rowType === "legacy-link"
+                        ? ""
+                        : normalizeText(element.querySelector(".cartaz-resumo") ? element.querySelector(".cartaz-resumo").textContent : "");
+                    const people = row.rowType === "legacy-link"
+                        ? ""
+                        : normalizeText(element.dataset.searchPeople || "");
+                    const match = query === "" || title.includes(query) || summary.includes(query) || people.includes(query);
 
-                    row.style.display = match ? "" : "none";
+                    element.style.display = match ? "" : "none";
                     if (match) {
                         sectionVisible++;
                     }
                 });
 
                 section.heading.style.display = sectionVisible > 0 ? "" : "none";
-                section.separator.style.display = sectionVisible > 0 ? "" : "none";
-                section.table.style.display = sectionVisible > 0 ? "" : "none";
+                if (section.separator) {
+                    section.separator.style.display = sectionVisible > 0 ? "" : "none";
+                }
+                section.container.style.display = sectionVisible > 0 ? "" : "none";
 
                 visibleRows += sectionVisible;
             });
@@ -985,6 +1130,9 @@
 
             if (visibleRows === 0) {
                 status.textContent = "Nenhum espetáculo encontrado para esta busca.";
+                if (!indexingComplete) {
+                    status.textContent += " Indexando elenco e fichas técnicas\u2026";
+                }
                 return;
             }
 

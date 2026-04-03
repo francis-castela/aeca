@@ -14,6 +14,12 @@ $imageExtensions = @(".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg", ".avif")
 $assetExtensions = $imageExtensions + @(".ico", ".mp4", ".webm", ".woff", ".woff2", ".ttf", ".otf")
 $skipDirPattern = "\\.git\\"
 
+$blacklistPath = Join-Path $PSScriptRoot "comprimir-imagens-blacklist.txt"
+$blacklist = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
+if (Test-Path $blacklistPath) {
+    Get-Content $blacklistPath -Encoding UTF8 | Where-Object { $_.Trim() -ne "" } | ForEach-Object { [void]$blacklist.Add($_.Trim()) }
+}
+
 function Get-RelativePath {
     param([string]$fullPath)
 
@@ -111,6 +117,7 @@ foreach ($sourceFile in $sourceFiles) {
 }
 
 $largestImages = $images |
+    Where-Object { -not $blacklist.Contains((Get-RelativePath $_.FullName)) } |
     Sort-Object Length -Descending |
     Select-Object -First $TopImages |
     ForEach-Object {
@@ -122,6 +129,7 @@ $largestImages = $images |
     }
 
 $heavyImages = $images |
+    Where-Object { -not $blacklist.Contains((Get-RelativePath $_.FullName)) } |
     Where-Object { $_.Length -ge ($ImageWarningKB * 1KB) } |
     Sort-Object Length -Descending |
     ForEach-Object {

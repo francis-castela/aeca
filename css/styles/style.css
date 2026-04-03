@@ -829,6 +829,13 @@ div.grade-espetaculos a:focus-visible {
     font-family: "Nunito", sans-serif;
     font-size: 0.98rem;
     padding: 0.62rem 0.72rem;
+    transition: opacity 0.3s, background 0.3s;
+}
+
+.acervo-filtros-input--indexing {
+    opacity: 0.45;
+    cursor: not-allowed;
+    background: var(--surface-3);
 }
 
 .acervo-filtros-input:focus-visible {
@@ -840,6 +847,37 @@ div.grade-espetaculos a:focus-visible {
     margin: 0.5rem 0 0;
     font-size: 0.88rem;
     color: var(--text-secondary);
+}
+
+.acervo-filtros-indexing {
+    margin: 0.4rem 0 0;
+    font-size: 0.82rem;
+    color: var(--text-tertiary);
+    display: flex;
+    align-items: center;
+    gap: 0.45em;
+    animation: acervo-pulse 1.4s ease-in-out infinite;
+}
+
+.acervo-filtros-indexing::before {
+    content: "";
+    display: inline-block;
+    width: 0.7em;
+    height: 0.7em;
+    border-radius: 50%;
+    border: 2px solid var(--brand);
+    border-top-color: transparent;
+    animation: acervo-spin 0.75s linear infinite;
+    flex-shrink: 0;
+}
+
+@keyframes acervo-spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes acervo-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
 }
 
 .quick-cta-bar {
