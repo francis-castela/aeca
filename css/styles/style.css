@@ -1730,7 +1730,7 @@ tbody tr:nth-child(even) {
     width: 42%;
 }
 
-.tabela-vitrine td.credits-person-cell-button {
+.tabela-vitrine :is(td, th).credits-person-cell-button {
     cursor: pointer;
     font-weight: 800;
     color: var(--brand);
@@ -1739,14 +1739,14 @@ tbody tr:nth-child(even) {
     transition: background-color var(--interacao-duracao) var(--interacao-curva), color var(--interacao-duracao) var(--interacao-curva), box-shadow var(--interacao-duracao) var(--interacao-curva), transform var(--interacao-duracao) var(--interacao-curva);
 }
 
-.tabela-vitrine td.credits-person-cell-button:hover {
+.tabela-vitrine :is(td, th).credits-person-cell-button:hover {
     color: var(--link-hover);
     background: linear-gradient(145deg, rgba(205, 33, 41, 0.2), rgba(205, 33, 41, 0.06));
     box-shadow: inset 0 0 0 1px rgba(205, 33, 41, 0.34), var(--shadow-1);
     transform: translateY(-1px);
 }
 
-.tabela-vitrine td.credits-person-cell-button:focus-visible {
+.tabela-vitrine :is(td, th).credits-person-cell-button:focus-visible {
     outline: 2px solid var(--brand);
     outline-offset: -2px;
     color: var(--link-hover);
@@ -1754,11 +1754,11 @@ tbody tr:nth-child(even) {
     box-shadow: inset 0 0 0 1px rgba(205, 33, 41, 0.38), var(--shadow-2);
 }
 
-.tabela-vitrine td.credits-person-cell-multi {
+.tabela-vitrine :is(td, th).credits-person-cell-multi {
     padding: 0.42rem 0.5rem;
 }
 
-.tabela-vitrine td.credits-person-cell-multi .credits-person-inline-button {
+.tabela-vitrine :is(td, th).credits-person-cell-multi .credits-person-inline-button {
     display: block;
     width: 100%;
     border: 0;
@@ -1776,7 +1776,7 @@ tbody tr:nth-child(even) {
     transition: background-color var(--interacao-duracao) var(--interacao-curva), color var(--interacao-duracao) var(--interacao-curva), box-shadow var(--interacao-duracao) var(--interacao-curva), transform var(--interacao-duracao) var(--interacao-curva);
 }
 
-.tabela-vitrine td.credits-person-cell-multi .credits-person-inline-text {
+.tabela-vitrine :is(td, th).credits-person-cell-multi .credits-person-inline-text {
     display: block;
     width: 100%;
     padding: 0.28rem 0.1rem;
@@ -1785,18 +1785,18 @@ tbody tr:nth-child(even) {
     color: var(--text-secondary);
 }
 
-.tabela-vitrine td.credits-person-cell-multi :is(.credits-person-inline-button, .credits-person-inline-text) + :is(.credits-person-inline-button, .credits-person-inline-text) {
+.tabela-vitrine :is(td, th).credits-person-cell-multi :is(.credits-person-inline-button, .credits-person-inline-text) + :is(.credits-person-inline-button, .credits-person-inline-text) {
     margin-top: 0.36rem;
 }
 
-.tabela-vitrine td.credits-person-cell-multi .credits-person-inline-button:hover {
+.tabela-vitrine :is(td, th).credits-person-cell-multi .credits-person-inline-button:hover {
     color: var(--link-hover);
     background: linear-gradient(145deg, rgba(205, 33, 41, 0.24), rgba(205, 33, 41, 0.08));
     box-shadow: inset 0 0 0 1px rgba(205, 33, 41, 0.34), var(--shadow-1);
     transform: translateY(-1px);
 }
 
-.tabela-vitrine td.credits-person-cell-multi .credits-person-inline-button:focus-visible {
+.tabela-vitrine :is(td, th).credits-person-cell-multi .credits-person-inline-button:focus-visible {
     outline: 2px solid var(--brand);
     outline-offset: 1px;
     color: var(--link-hover);
@@ -2404,33 +2404,33 @@ body.cbt-page > a.btn-cta[href*="forms.gle"] {
     background: rgba(222, 58, 66, 0.16);
 }
 
-:root[data-theme="dark"] .tabela-vitrine td.credits-person-cell-button {
+:root[data-theme="dark"] .tabela-vitrine :is(td, th).credits-person-cell-button {
     color: #ffd7db;
     background: linear-gradient(145deg, rgba(222, 58, 66, 0.28), rgba(222, 58, 66, 0.09));
     box-shadow: inset 0 0 0 1px rgba(255, 163, 169, 0.35);
 }
 
-:root[data-theme="dark"] .tabela-vitrine td.credits-person-cell-button:hover,
-:root[data-theme="dark"] .tabela-vitrine td.credits-person-cell-button:focus-visible {
+:root[data-theme="dark"] .tabela-vitrine :is(td, th).credits-person-cell-button:hover,
+:root[data-theme="dark"] .tabela-vitrine :is(td, th).credits-person-cell-button:focus-visible {
     color: #ffffff;
     background: linear-gradient(145deg, rgba(222, 58, 66, 0.36), rgba(222, 58, 66, 0.16));
     box-shadow: inset 0 0 0 1px rgba(255, 194, 198, 0.55), var(--shadow-2);
 }
 
-:root[data-theme="dark"] .tabela-vitrine td.credits-person-cell-multi .credits-person-inline-button {
+:root[data-theme="dark"] .tabela-vitrine :is(td, th).credits-person-cell-multi .credits-person-inline-button {
     color: #ffd7db;
     background: linear-gradient(145deg, rgba(222, 58, 66, 0.3), rgba(222, 58, 66, 0.11));
     box-shadow: inset 0 0 0 1px rgba(255, 163, 169, 0.36);
 }
 
-:root[data-theme="dark"] .tabela-vitrine td.credits-person-cell-multi .credits-person-inline-button:hover,
-:root[data-theme="dark"] .tabela-vitrine td.credits-person-cell-multi .credits-person-inline-button:focus-visible {
+:root[data-theme="dark"] .tabela-vitrine :is(td, th).credits-person-cell-multi .credits-person-inline-button:hover,
+:root[data-theme="dark"] .tabela-vitrine :is(td, th).credits-person-cell-multi .credits-person-inline-button:focus-visible {
     color: #ffffff;
     background: linear-gradient(145deg, rgba(222, 58, 66, 0.4), rgba(222, 58, 66, 0.2));
     box-shadow: inset 0 0 0 1px rgba(255, 194, 198, 0.55), var(--shadow-2);
 }
 
-:root[data-theme="dark"] .tabela-vitrine td.credits-person-cell-multi .credits-person-inline-text {
+:root[data-theme="dark"] .tabela-vitrine :is(td, th).credits-person-cell-multi .credits-person-inline-text {
     color: #d8dbe3;
 }
 

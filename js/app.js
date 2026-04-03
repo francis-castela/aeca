@@ -724,7 +724,7 @@
                 return;
             }
 
-            table.querySelectorAll("td").forEach(function (cell) {
+            table.querySelectorAll("tbody td, tbody th[scope='row']").forEach(function (cell) {
                 if (cell.dataset.personLinkBound === "true") {
                     return;
                 }
