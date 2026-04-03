@@ -522,6 +522,264 @@
         return `${href}.html`;
     }
 
+    function normalizePersonName(value) {
+        return (value || "").replace(/\s+/g, " ").trim();
+    }
+
+    function splitCsvLine(line, delimiter) {
+        const values = [];
+        let current = "";
+        let insideQuotes = false;
+
+        for (let index = 0; index < line.length; index += 1) {
+            const char = line[index];
+
+            if (char === '"') {
+                const nextChar = line[index + 1];
+
+                if (insideQuotes && nextChar === '"') {
+                    current += '"';
+                    index += 1;
+                    continue;
+                }
+
+                insideQuotes = !insideQuotes;
+                continue;
+            }
+
+            if (char === delimiter && !insideQuotes) {
+                values.push(current);
+                current = "";
+                continue;
+            }
+
+            current += char;
+        }
+
+        values.push(current);
+        return values;
+    }
+
+    function detectCsvDelimiter(line) {
+        const commaCount = (line.match(/,/g) || []).length;
+        const semicolonCount = (line.match(/;/g) || []).length;
+
+        if (semicolonCount > commaCount) {
+            return ";";
+        }
+
+        return ",";
+    }
+
+    async function loadPeopleLinksMap(csvUrl) {
+        const peopleLinks = new Map();
+
+        try {
+            const response = await fetch(csvUrl, { cache: "no-store" });
+            if (!response.ok) {
+                return peopleLinks;
+            }
+
+            const csvText = await response.text();
+            const lines = csvText.split(/\r?\n/).filter(function (line) {
+                return line.trim() !== "";
+            });
+
+            lines.forEach(function (rawLine) {
+                const line = rawLine.trim();
+                if (!line || line.startsWith("#")) {
+                    return;
+                }
+
+                const delimiter = detectCsvDelimiter(line);
+                const columns = splitCsvLine(line, delimiter).map(function (part) {
+                    return part.trim();
+                });
+
+                if (columns.length < 2) {
+                    return;
+                }
+
+                const name = normalizePersonName(columns[0]);
+                const link = columns[1];
+                if (!name || !link) {
+                    return;
+                }
+
+                const isHeader = normalizeText(name) === "nome" && normalizeText(link) === "link";
+                if (isHeader) {
+                    return;
+                }
+
+                peopleLinks.set(name, link);
+            });
+        } catch (error) {
+            console.error("Falha ao carregar CSV de pessoas:", error);
+        }
+
+        return peopleLinks;
+    }
+
+    function isCreditsTable(table) {
+        if (table.classList.contains("tabela-elenco") || table.classList.contains("tabela-ficha")) {
+            return true;
+        }
+
+        const heading = normalizeText(getPreviousHeadingText(table));
+        if (heading.includes("elenco") || heading.includes("ficha tecnica")) {
+            return true;
+        }
+
+        const headers = Array.from(table.querySelectorAll("th")).map(function (th) {
+            return normalizeText(th.textContent);
+        });
+
+        return headers.some(function (value) {
+            return value.includes("ator") || value.includes("atriz") || value.includes("personagem") || value.includes("responsavel");
+        });
+    }
+
+    function sanitizeCandidatePersonName(value) {
+        return normalizePersonName((value || "").replace(/[;,]+$/g, ""));
+    }
+
+    function extractMultiplePeopleFromCell(cell) {
+        const cellText = (cell.textContent || "").replace(/\u00a0/g, " ").trim();
+        const hasLineBreak = Boolean(cell.querySelector("br"));
+        const hasComma = cellText.includes(",");
+
+        if (!hasLineBreak && !hasComma) {
+            return [];
+        }
+
+        const candidates = cellText
+            .split(/\n|,/)
+            .map(function (value) {
+                return sanitizeCandidatePersonName(value);
+            })
+            .filter(Boolean);
+
+        const uniqueNames = [];
+        candidates.forEach(function (name) {
+            if (!uniqueNames.includes(name)) {
+                uniqueNames.push(name);
+            }
+        });
+
+        return uniqueNames.length > 1 ? uniqueNames : [];
+    }
+
+    function buildInlinePersonButtons(cell, personNames, peopleLinks) {
+        const fragment = document.createDocumentFragment();
+        let hasLinkedPerson = false;
+
+        personNames.forEach(function (name) {
+            const personLink = peopleLinks.get(name);
+            if (!personLink) {
+                const text = document.createElement("span");
+                text.className = "credits-person-inline-text";
+                text.textContent = name;
+                fragment.appendChild(text);
+                return;
+            }
+
+            hasLinkedPerson = true;
+
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "credits-person-inline-button";
+            button.textContent = name;
+            button.setAttribute("aria-label", `Abrir site de ${name}`);
+            button.setAttribute("title", `Abrir site de ${name}`);
+
+            button.addEventListener("click", function () {
+                window.open(personLink, "_blank", "noopener,noreferrer");
+            });
+
+            fragment.appendChild(button);
+        });
+
+        if (!hasLinkedPerson) {
+            return false;
+        }
+
+        cell.textContent = "";
+        cell.classList.add("credits-person-cell-multi");
+        cell.appendChild(fragment);
+        return true;
+    }
+
+    function linkCreditsPeopleCells(peopleLinks) {
+        if (peopleLinks.size === 0) {
+            return;
+        }
+
+        const content = document.querySelector("main.main-content") || document.querySelector("main");
+        if (!content) {
+            return;
+        }
+
+        content.querySelectorAll("table").forEach(function (table) {
+            if (!isCreditsTable(table)) {
+                return;
+            }
+
+            table.querySelectorAll("td").forEach(function (cell) {
+                if (cell.dataset.personLinkBound === "true") {
+                    return;
+                }
+
+                const multiplePeople = extractMultiplePeopleFromCell(cell);
+                if (multiplePeople.length > 1) {
+                    const hasRenderedButtons = buildInlinePersonButtons(cell, multiplePeople, peopleLinks);
+                    if (hasRenderedButtons) {
+                        cell.dataset.personLinkBound = "true";
+                        return;
+                    }
+                }
+
+                const cellValue = normalizePersonName(cell.textContent);
+                if (!cellValue) {
+                    return;
+                }
+
+                const personLink = peopleLinks.get(cellValue);
+                if (!personLink) {
+                    return;
+                }
+
+                const openPersonWebsite = function () {
+                    window.open(personLink, "_blank", "noopener,noreferrer");
+                };
+
+                cell.classList.add("credits-person-cell-button");
+                cell.setAttribute("role", "button");
+                cell.setAttribute("tabindex", "0");
+                cell.setAttribute("aria-label", `Abrir site de ${cellValue}`);
+                cell.setAttribute("title", `Abrir site de ${cellValue}`);
+
+                cell.addEventListener("click", openPersonWebsite);
+                cell.addEventListener("keydown", function (event) {
+                    if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        openPersonWebsite();
+                    }
+                });
+
+                cell.dataset.personLinkBound = "true";
+            });
+        });
+    }
+
+    async function applyPeopleLinksFromCsv() {
+        if (!/\/espetaculos(\/|$)/.test(window.location.pathname)) {
+            return;
+        }
+
+        const peopleLinks = await loadPeopleLinksMap("/espetaculos/pessoas-links.csv");
+        linkCreditsPeopleCells(peopleLinks);
+    }
+
     function getSummaryCharacterLimit() {
         return window.matchMedia("(max-width: 768px)").matches ? 160 : null;
     }
@@ -975,6 +1233,7 @@
         await buildShowsAsTables();
         setupShowsSearchFilter();
         normalizeLegacyShowTables();
+        await applyPeopleLinksFromCsv();
         ensureImageAltAttributes();
         ensureTableCaptions();
         ensureBlankTargetSafety();

@@ -1730,6 +1730,80 @@ tbody tr:nth-child(even) {
     width: 42%;
 }
 
+.tabela-vitrine td.credits-person-cell-button {
+    cursor: pointer;
+    font-weight: 800;
+    color: var(--brand);
+    background: linear-gradient(145deg, rgba(205, 33, 41, 0.12), rgba(205, 33, 41, 0.03));
+    box-shadow: inset 0 0 0 1px rgba(205, 33, 41, 0.22);
+    transition: background-color var(--interacao-duracao) var(--interacao-curva), color var(--interacao-duracao) var(--interacao-curva), box-shadow var(--interacao-duracao) var(--interacao-curva), transform var(--interacao-duracao) var(--interacao-curva);
+}
+
+.tabela-vitrine td.credits-person-cell-button:hover {
+    color: var(--link-hover);
+    background: linear-gradient(145deg, rgba(205, 33, 41, 0.2), rgba(205, 33, 41, 0.06));
+    box-shadow: inset 0 0 0 1px rgba(205, 33, 41, 0.34), var(--shadow-1);
+    transform: translateY(-1px);
+}
+
+.tabela-vitrine td.credits-person-cell-button:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: -2px;
+    color: var(--link-hover);
+    background: linear-gradient(145deg, rgba(205, 33, 41, 0.22), rgba(205, 33, 41, 0.08));
+    box-shadow: inset 0 0 0 1px rgba(205, 33, 41, 0.38), var(--shadow-2);
+}
+
+.tabela-vitrine td.credits-person-cell-multi {
+    padding: 0.42rem 0.5rem;
+}
+
+.tabela-vitrine td.credits-person-cell-multi .credits-person-inline-button {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-radius: var(--radius-s);
+    padding: 0.4rem 0.55rem;
+    margin: 0;
+    text-align: left;
+    font-family: inherit;
+    font-size: 0.96rem;
+    font-weight: 800;
+    color: var(--brand);
+    cursor: pointer;
+    background: linear-gradient(145deg, rgba(205, 33, 41, 0.14), rgba(205, 33, 41, 0.05));
+    box-shadow: inset 0 0 0 1px rgba(205, 33, 41, 0.24);
+    transition: background-color var(--interacao-duracao) var(--interacao-curva), color var(--interacao-duracao) var(--interacao-curva), box-shadow var(--interacao-duracao) var(--interacao-curva), transform var(--interacao-duracao) var(--interacao-curva);
+}
+
+.tabela-vitrine td.credits-person-cell-multi .credits-person-inline-text {
+    display: block;
+    width: 100%;
+    padding: 0.28rem 0.1rem;
+    font-size: 0.96rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.tabela-vitrine td.credits-person-cell-multi :is(.credits-person-inline-button, .credits-person-inline-text) + :is(.credits-person-inline-button, .credits-person-inline-text) {
+    margin-top: 0.36rem;
+}
+
+.tabela-vitrine td.credits-person-cell-multi .credits-person-inline-button:hover {
+    color: var(--link-hover);
+    background: linear-gradient(145deg, rgba(205, 33, 41, 0.24), rgba(205, 33, 41, 0.08));
+    box-shadow: inset 0 0 0 1px rgba(205, 33, 41, 0.34), var(--shadow-1);
+    transform: translateY(-1px);
+}
+
+.tabela-vitrine td.credits-person-cell-multi .credits-person-inline-button:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 1px;
+    color: var(--link-hover);
+    background: linear-gradient(145deg, rgba(205, 33, 41, 0.28), rgba(205, 33, 41, 0.1));
+    box-shadow: inset 0 0 0 1px rgba(205, 33, 41, 0.4), var(--shadow-2);
+}
+
 /* ===================== OBRA DE REFERÊNCIA =====================
    Card em blockquote com a obra teatral/literária que inspirou
    a montagem (removido quando o espetáculo for autoral).
@@ -2291,6 +2365,21 @@ body.cbt-page > a.btn-cta[href*="forms.gle"] {
     color: #ffffff;
 }
 
+:root[data-theme="dark"] .nav-links a:is(:hover, :focus-visible),
+:root[data-theme="dark"] .sidebar :is(.sidebar-titulo[href], .sidebar-titulo-menor[href], .sidebar-texto a:not(.sidebar-card-link):not(.apoio-card-link), li a:not(.sidebar-card-link):not(.apoio-card-link)):is(:hover, :focus-visible) {
+    /* Reduz a saturação do hover no tema escuro e fixa contraste do texto. */
+    background: linear-gradient(145deg, #464d58, #2f343d);
+    color: #ffffff !important;
+}
+
+:root[data-theme="dark"] .sidebar :is(.sidebar-titulo[href], .sidebar-titulo-menor[href], .sidebar-texto a:not(.sidebar-card-link):not(.apoio-card-link), li a:not(.sidebar-card-link):not(.apoio-card-link))::before {
+    background: linear-gradient(145deg, #464d58, #2f343d);
+}
+
+:root[data-theme="dark"] .sidebar :is(.sidebar-titulo[href], .sidebar-titulo-menor[href], .sidebar-texto a:not(.sidebar-card-link):not(.apoio-card-link), li a:not(.sidebar-card-link):not(.apoio-card-link)):is(:hover, :focus-visible)::before {
+    opacity: 0;
+}
+
 :root[data-theme="dark"] .main-content :is(p, li, td, h4) a:not(.btn-cta, .btn-cta-whatsapp, .btn-cta-sympla, .apoio-card-link) {
     color: var(--link-texto-dark);
 }
@@ -2313,6 +2402,36 @@ body.cbt-page > a.btn-cta[href*="forms.gle"] {
 
 :root[data-theme="dark"] .tabela-vitrine tbody tr:hover {
     background: rgba(222, 58, 66, 0.16);
+}
+
+:root[data-theme="dark"] .tabela-vitrine td.credits-person-cell-button {
+    color: #ffd7db;
+    background: linear-gradient(145deg, rgba(222, 58, 66, 0.28), rgba(222, 58, 66, 0.09));
+    box-shadow: inset 0 0 0 1px rgba(255, 163, 169, 0.35);
+}
+
+:root[data-theme="dark"] .tabela-vitrine td.credits-person-cell-button:hover,
+:root[data-theme="dark"] .tabela-vitrine td.credits-person-cell-button:focus-visible {
+    color: #ffffff;
+    background: linear-gradient(145deg, rgba(222, 58, 66, 0.36), rgba(222, 58, 66, 0.16));
+    box-shadow: inset 0 0 0 1px rgba(255, 194, 198, 0.55), var(--shadow-2);
+}
+
+:root[data-theme="dark"] .tabela-vitrine td.credits-person-cell-multi .credits-person-inline-button {
+    color: #ffd7db;
+    background: linear-gradient(145deg, rgba(222, 58, 66, 0.3), rgba(222, 58, 66, 0.11));
+    box-shadow: inset 0 0 0 1px rgba(255, 163, 169, 0.36);
+}
+
+:root[data-theme="dark"] .tabela-vitrine td.credits-person-cell-multi .credits-person-inline-button:hover,
+:root[data-theme="dark"] .tabela-vitrine td.credits-person-cell-multi .credits-person-inline-button:focus-visible {
+    color: #ffffff;
+    background: linear-gradient(145deg, rgba(222, 58, 66, 0.4), rgba(222, 58, 66, 0.2));
+    box-shadow: inset 0 0 0 1px rgba(255, 194, 198, 0.55), var(--shadow-2);
+}
+
+:root[data-theme="dark"] .tabela-vitrine td.credits-person-cell-multi .credits-person-inline-text {
+    color: #d8dbe3;
 }
 
 :root[data-theme="dark"] .tabela-precos .preco-valor,
