@@ -40,6 +40,7 @@ Links institucionais frequentes:
 - Casa da Cultura Dide Brandão: https://fundacaocultural.itajai.sc.gov.br/casa-da-cultura/
 - UNIVALI: https://portal.univali.br/
 - Tupã Contabilidade: https://www.instagram.com/tupa_contabilidadeitajai/
+- Casarão 83: https://www.instagram.com/casakonder83/
 
 ## CSS global (style.css)
 
