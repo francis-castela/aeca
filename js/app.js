@@ -244,7 +244,7 @@
             }
         }
 
-        document.querySelectorAll(".sidebar img, .main-galeria img").forEach(function (img) {
+        document.querySelectorAll(".sidebar img, .main-galeria img, .show-appendix img, .show-infobox img").forEach(function (img) {
             if (img.dataset.zoomBound === "true") {
                 return;
             }
@@ -508,6 +508,553 @@
                 });
             });
         });
+    }
+
+    function isShowDetailPage() {
+        return /^\/espetaculos\/\d{4}\/[^/]+\.html$/i.test(window.location.pathname);
+    }
+
+    function getShowYearFromPath() {
+        const match = window.location.pathname.match(/\/espetaculos\/(\d{4})\//);
+        return match ? match[1] : "";
+    }
+
+    function ensureDateHasYear(value, year) {
+        if (!value || !year) {
+            return value;
+        }
+
+        return value.replace(/\b(\d{2}\/\d{2})(?!\/\d{4})\b/g, `$1/${year}`);
+    }
+
+    function getSectionBoundaryContent(startHeading) {
+        const nodes = [];
+        let cursor = startHeading ? startHeading.nextElementSibling : null;
+
+        while (cursor && !/^H[1-6]$/.test(cursor.tagName)) {
+            nodes.push(cursor);
+            cursor = cursor.nextElementSibling;
+        }
+
+        return nodes;
+    }
+
+    function collectDatesFromTable(table) {
+        if (!table) {
+            return [];
+        }
+
+        const showYear = getShowYearFromPath();
+
+        const rows = Array.from(table.querySelectorAll("tbody tr")).slice(0, 8);
+        const values = rows
+            .map(function (row) {
+                const cells = Array.from(row.querySelectorAll("th, td"))
+                    .map(function (cell) {
+                        const value = cell.textContent.replace(/\s+/g, " ").trim();
+                        return ensureDateHasYear(value, showYear);
+                    })
+                    .filter(Boolean);
+
+                return cells.join(" - ");
+            })
+            .filter(Boolean);
+
+        return Array.from(new Set(values));
+    }
+
+    function splitParagraphByBreaks(paragraph) {
+        const segments = [];
+        let buffer = [];
+
+        Array.from(paragraph.childNodes).forEach(function (node) {
+            if (node.nodeName === "BR") {
+                if (buffer.length > 0) {
+                    segments.push(buffer);
+                    buffer = [];
+                }
+                return;
+            }
+
+            buffer.push(node);
+        });
+
+        if (buffer.length > 0) {
+            segments.push(buffer);
+        }
+
+        return segments;
+    }
+
+    function extractLegacyPresentationEntries(mainContent) {
+        const showYear = getShowYearFromPath();
+        const paragraphs = Array.from(mainContent.querySelectorAll("p"));
+
+        function extractInlineLegacyData(paragraph) {
+            const paragraphText = paragraph.textContent.replace(/\s+/g, " ").trim();
+            if (!paragraphText) {
+                return { dates: [], locations: [] };
+            }
+
+            const locationLink = paragraph.querySelector("a[href]");
+            const locationNameRaw = locationLink ? locationLink.textContent.replace(/\s+/g, " ").trim() : "";
+            const locationName = normalizeLocationText(locationNameRaw);
+            if (!locationName) {
+                return { dates: [], locations: [] };
+            }
+
+            const datesMatch = paragraphText.match(/(?:nos dias?|no dia|em)\s+([^.]*)/i);
+            const rawDates = datesMatch && datesMatch[1] ? datesMatch[1].trim() : "";
+            const dateText = rawDates ? ensureDateHasYear(rawDates, showYear) : "Datas em atualização";
+
+            return {
+                dates: [`${locationName}: ${dateText}`],
+                locations: [{
+                    text: locationName,
+                    name: locationName,
+                    address: "",
+                    url: locationLink ? locationLink.href : ""
+                }]
+            };
+        }
+
+        for (const paragraph of paragraphs) {
+            const paragraphText = paragraph.textContent.replace(/\s+/g, " ").trim();
+            const normalizedParagraphText = normalizeText(paragraphText);
+            const hasPresentationHint = normalizedParagraphText.includes("apresenta") || normalizedParagraphText.includes("teve ");
+            const hasLineBreaks = paragraph.querySelector("br") !== null;
+            const hasLink = paragraph.querySelector("a[href]") !== null;
+
+            if (!hasPresentationHint || !hasLink) {
+                continue;
+            }
+
+            const dates = [];
+            const locations = [];
+
+            if (hasLineBreaks) {
+                const segments = splitParagraphByBreaks(paragraph);
+
+                segments.forEach(function (segmentNodes) {
+                    const wrapper = document.createElement("div");
+                    segmentNodes.forEach(function (node) {
+                        wrapper.appendChild(node.cloneNode(true));
+                    });
+
+                    const rawText = wrapper.textContent.replace(/\s+/g, " ").trim();
+                    if (!rawText || !rawText.includes(":")) {
+                        return;
+                    }
+
+                    const splitIndex = rawText.indexOf(":");
+                    const rawLocation = rawText.slice(0, splitIndex).trim();
+                    const rawDates = rawText.slice(splitIndex + 1).trim();
+                    if (!rawLocation || !rawDates) {
+                        return;
+                    }
+
+                    const locationName = normalizeLocationText(rawLocation);
+                    const dateText = ensureDateHasYear(rawDates, showYear);
+                    const locationLink = wrapper.querySelector("a[href]");
+
+                    dates.push(`${locationName}: ${dateText}`);
+                    locations.push({
+                        text: locationName,
+                        name: locationName,
+                        address: "",
+                        url: locationLink ? locationLink.href : ""
+                    });
+                });
+            }
+
+            if (dates.length === 0 && locations.length === 0) {
+                const inlineData = extractInlineLegacyData(paragraph);
+                dates.push.apply(dates, inlineData.dates);
+                locations.push.apply(locations, inlineData.locations);
+            }
+
+            if (dates.length > 0 || locations.length > 0) {
+                return {
+                    dates: dates,
+                    locations: locations
+                };
+            }
+        }
+
+        return {
+            dates: [],
+            locations: []
+        };
+    }
+
+    function extractShowDates(mainContent) {
+        const explicitAgenda = mainContent.querySelector("table.tabela-agenda");
+        const fromClass = collectDatesFromTable(explicitAgenda);
+        if (fromClass.length > 0) {
+            return fromClass;
+        }
+
+        const headings = Array.from(mainContent.querySelectorAll("h2, h3"));
+        for (const heading of headings) {
+            const headingText = normalizeText(heading.textContent);
+            if (!headingText.includes("sess") && !headingText.includes("data") && !headingText.includes("agenda")) {
+                continue;
+            }
+
+            const boundaryNodes = getSectionBoundaryContent(heading);
+            const table = boundaryNodes.find(function (node) {
+                return node.tagName === "TABLE";
+            });
+
+            const fromHeading = collectDatesFromTable(table);
+            if (fromHeading.length > 0) {
+                return fromHeading;
+            }
+        }
+
+        const fromLegacyParagraph = extractLegacyPresentationEntries(mainContent).dates;
+        if (fromLegacyParagraph.length > 0) {
+            return fromLegacyParagraph;
+        }
+
+        return ["Datas em atualização"];
+    }
+
+    function extractShowLocations(mainContent) {
+        function readLocationFromListItem(item) {
+            const text = item.textContent.replace(/\s+/g, " ").trim();
+            if (!text) {
+                return null;
+            }
+
+            const link = item.querySelector("a[href]");
+            const nameNode = item.querySelector("strong");
+            const spanTexts = Array.from(item.querySelectorAll("span"))
+                .map(function (span) {
+                    return span.textContent.replace(/\s+/g, " ").trim();
+                })
+                .filter(Boolean);
+
+            const name = nameNode ? nameNode.textContent.replace(/\s+/g, " ").trim() : "";
+            const address = spanTexts.length >= 2 ? spanTexts[spanTexts.length - 1] : "";
+
+            return {
+                text: text,
+                name: name,
+                address: address,
+                url: link ? link.href : ""
+            };
+        }
+
+        const headings = Array.from(mainContent.querySelectorAll("h2, h3"));
+        for (const heading of headings) {
+            const headingText = normalizeText(heading.textContent);
+            if (!headingText.includes("local") && !headingText.includes("locais") && !headingText.includes("onde")) {
+                continue;
+            }
+
+            const values = [];
+            const boundaryNodes = getSectionBoundaryContent(heading);
+
+            boundaryNodes.forEach(function (node) {
+                if (node.tagName === "UL" || node.tagName === "OL") {
+                    node.querySelectorAll("li").forEach(function (li) {
+                        const locationData = readLocationFromListItem(li);
+                        if (locationData) {
+                            values.push(locationData);
+                        }
+                    });
+                } else if (node.classList.contains("apoio-grid")) {
+                    node.querySelectorAll("li").forEach(function (item) {
+                        const locationData = readLocationFromListItem(item);
+                        if (locationData) {
+                            values.push(locationData);
+                        }
+                    });
+                } else {
+                    const text = node.textContent.replace(/\s+/g, " ").trim();
+                    if (text && text.length <= 180) {
+                        values.push({
+                            text: text,
+                            name: "",
+                            address: "",
+                            url: ""
+                        });
+                    }
+                }
+            });
+
+            const uniqueValues = [];
+            const seenKeys = new Set();
+
+            values.forEach(function (value) {
+                const key = normalizeText(`${value.name || ""} ${value.address || ""} ${value.text || ""}`);
+                if (!key || seenKeys.has(key)) {
+                    return;
+                }
+
+                seenKeys.add(key);
+                uniqueValues.push(value);
+            });
+
+            uniqueValues.splice(6);
+            if (uniqueValues.length > 0) {
+                return uniqueValues;
+            }
+        }
+
+        const fromLegacyParagraph = extractLegacyPresentationEntries(mainContent).locations;
+        if (fromLegacyParagraph.length > 0) {
+            return fromLegacyParagraph;
+        }
+
+        return [{ text: "Locais em atualização", name: "", address: "", url: "" }];
+    }
+
+    function normalizeLocationText(value) {
+        if (!value) {
+            return "";
+        }
+
+        const compactValue = value.replace(/\s+/g, " ").trim();
+        const prefixPattern = /^local do espet[aá]culo\s+/i;
+        return compactValue.replace(prefixPattern, "").trim();
+    }
+
+    function createInfoboxLocationElement(locationData) {
+        const mapsUrl = "https://maps.app.goo.gl/WRdvvke5ZT163xP79";
+        const rawText = typeof locationData === "string"
+            ? locationData
+            : (locationData && locationData.text ? locationData.text : "");
+        const normalizedText = normalizeLocationText(rawText);
+
+        let locationName = typeof locationData === "string"
+            ? ""
+            : normalizeLocationText((locationData && locationData.name) || "");
+        let locationAddress = typeof locationData === "string"
+            ? ""
+            : ((locationData && locationData.address) || "").trim();
+        let locationUrl = typeof locationData === "string"
+            ? ""
+            : ((locationData && locationData.url) || "").trim();
+
+        if (!locationName) {
+            const addressStartMatch = normalizedText.match(/\b(R\.|Rua|Av\.|Avenida|Rod\.|Pra[cç]a|Trav\.|Al\.)\b/i);
+            if (addressStartMatch && typeof addressStartMatch.index === "number" && addressStartMatch.index > 0) {
+                locationName = normalizedText.slice(0, addressStartMatch.index).trim();
+                locationAddress = normalizedText.slice(addressStartMatch.index).trim();
+            } else {
+                locationName = normalizedText;
+            }
+        }
+
+        const comparableName = normalizeText(locationName);
+        if (!locationUrl && comparableName.includes("casa da cultura dide brandao")) {
+            locationUrl = mapsUrl;
+        }
+
+        const locationWrapper = document.createElement("div");
+        locationWrapper.className = "show-infobox-location";
+
+        if (locationUrl) {
+            const link = document.createElement("a");
+            link.href = locationUrl;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.className = "show-infobox-location-link";
+            link.textContent = locationName;
+            link.setAttribute("aria-label", "Abrir local no mapa");
+            locationWrapper.appendChild(link);
+        } else {
+            const nameSpan = document.createElement("span");
+            nameSpan.textContent = locationName;
+            locationWrapper.appendChild(nameSpan);
+        }
+
+        if (locationAddress) {
+            const address = document.createElement("span");
+            address.className = "show-infobox-location-address";
+            address.textContent = locationAddress;
+            locationWrapper.appendChild(address);
+        }
+
+        return locationWrapper;
+    }
+
+    function findShowPosterImage(mainContent, legacySidebar) {
+        if (legacySidebar) {
+            const sidebarImages = Array.from(legacySidebar.querySelectorAll("img"));
+            const posterFromSidebar = sidebarImages.find(function (img) {
+                return !img.closest(".sidebar-galeria");
+            });
+
+            if (posterFromSidebar) {
+                return posterFromSidebar;
+            }
+        }
+
+        const mainImage = mainContent.querySelector("img");
+        return mainImage || null;
+    }
+
+    function createShowInfobox(mainContent, legacySidebar) {
+        const title = mainContent.querySelector("h1") ? mainContent.querySelector("h1").textContent.replace(/\s+/g, " ").trim() : "Espetáculo";
+        const dates = extractShowDates(mainContent);
+        const locations = extractShowLocations(mainContent);
+        const poster = findShowPosterImage(mainContent, legacySidebar);
+
+        const infobox = document.createElement("aside");
+        infobox.className = "show-infobox";
+        infobox.setAttribute("aria-label", `Infobox de ${title}`);
+
+        const posterBlock = document.createElement("figure");
+        posterBlock.className = "show-infobox-poster";
+
+        const posterImage = document.createElement("img");
+        if (poster) {
+            posterImage.src = poster.getAttribute("src") || "";
+            posterImage.alt = poster.getAttribute("alt") || `Cartaz de ${title}`;
+        } else {
+            posterImage.alt = `Cartaz de ${title}`;
+        }
+        posterBlock.appendChild(posterImage);
+
+        const caption = document.createElement("figcaption");
+        caption.textContent = "Cartaz do espetáculo";
+        posterBlock.appendChild(caption);
+        infobox.appendChild(posterBlock);
+
+        const metadataTable = document.createElement("table");
+        metadataTable.className = "show-infobox-meta";
+
+        const metadataBody = document.createElement("tbody");
+
+        function appendMetaRow(label, items) {
+            const row = document.createElement("tr");
+
+            const th = document.createElement("th");
+            th.setAttribute("scope", "row");
+            th.textContent = label;
+
+            const td = document.createElement("td");
+            items.forEach(function (item, index) {
+                const element = label === "Locais"
+                    ? createInfoboxLocationElement(item)
+                    : document.createElement("span");
+
+                if (label !== "Locais") {
+                    element.textContent = item;
+                }
+
+                td.appendChild(element);
+
+                if (index < items.length - 1) {
+                    td.appendChild(document.createElement("br"));
+                }
+            });
+
+            row.appendChild(th);
+            row.appendChild(td);
+            metadataBody.appendChild(row);
+        }
+
+        appendMetaRow("Apresentações", dates);
+        appendMetaRow("Locais", locations);
+
+        metadataTable.appendChild(metadataBody);
+        infobox.appendChild(metadataTable);
+
+        return infobox;
+    }
+
+    function createShowAppendixFromSidebar(mainContent, legacySidebar) {
+        if (!legacySidebar) {
+            return null;
+        }
+
+        const appendix = document.createElement("section");
+        appendix.className = "show-appendix";
+        appendix.innerHTML = "<h2>Galeria e materiais complementares</h2>";
+
+        const content = document.createElement("div");
+        content.className = "show-appendix-content";
+
+        const posterImage = findShowPosterImage(mainContent, legacySidebar);
+        let posterBlockFinished = false;
+
+        Array.from(legacySidebar.children).forEach(function (child) {
+            const childText = normalizeText(child.textContent || "");
+            const childHasPoster = Boolean(posterImage && (child === posterImage || child.contains(posterImage)));
+
+            if (!posterBlockFinished) {
+                if (child.tagName === "HR" || childHasPoster || childText.includes("cartaz")) {
+                    return;
+                }
+
+                posterBlockFinished = true;
+            }
+
+            content.appendChild(child.cloneNode(true));
+        });
+
+        if (content.children.length === 0) {
+            return null;
+        }
+
+        appendix.appendChild(content);
+        return appendix;
+    }
+
+    function restructureShowLayout() {
+        if (!isShowDetailPage()) {
+            return;
+        }
+
+        const container = document.querySelector(".container");
+        const mainContent = document.querySelector("main.main-content");
+        const legacySidebar = container ? container.querySelector(":scope > aside.sidebar") : null;
+
+        if (!container || !mainContent || mainContent.querySelector(".show-infobox")) {
+            return;
+        }
+
+        const infobox = createShowInfobox(mainContent, legacySidebar);
+        const firstParagraph = mainContent.querySelector("p");
+
+        if (firstParagraph && firstParagraph.parentElement === mainContent) {
+            firstParagraph.insertAdjacentElement("afterend", infobox);
+        } else {
+            const firstHr = mainContent.querySelector("hr");
+            if (firstHr) {
+                firstHr.insertAdjacentElement("afterend", infobox);
+            } else {
+                mainContent.prepend(infobox);
+            }
+        }
+
+        // Remove o cartaz duplicado no fluxo principal quando ele ja aparece na infobox.
+        const infoboxPoster = infobox.querySelector(".show-infobox-poster img");
+        const infoboxPosterSrc = infoboxPoster ? (infoboxPoster.getAttribute("src") || "") : "";
+        if (infoboxPosterSrc) {
+            const duplicateCandidates = Array.from(mainContent.querySelectorAll(":scope > img"));
+            duplicateCandidates.forEach(function (img) {
+                const isInsideInfobox = Boolean(img.closest(".show-infobox"));
+                const sameSource = (img.getAttribute("src") || "") === infoboxPosterSrc;
+
+                if (!isInsideInfobox && sameSource) {
+                    img.remove();
+                }
+            });
+        }
+
+        const appendix = createShowAppendixFromSidebar(mainContent, legacySidebar);
+        if (appendix) {
+            mainContent.appendChild(appendix);
+        }
+
+        if (legacySidebar) {
+            legacySidebar.remove();
+        }
     }
 
     function normalizeShowHref(href) {

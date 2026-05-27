@@ -1,0 +1,252 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Migrar infobox estatica",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"ferramentas/scripts/migrar-infobox-estatica.ps1"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "Migrar infobox estatica",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"ferramentas/scripts/migrar-infobox-estatica.ps1"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "Saneamento infobox estatica",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"ferramentas/scripts/saneamento-infobox-estatica.ps1"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "Saneamento infobox acentos UTF8",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"ferramentas/scripts/saneamento-infobox-estatica.ps1"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "Saneamento infobox acentos robusto",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"ferramentas/scripts/saneamento-infobox-estatica.ps1"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "Migrar aside para secoes",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"ferramentas/scripts/migrar-aside-para-secoes.ps1"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "Migrar aside para secoes",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"ferramentas/scripts/migrar-aside-para-secoes.ps1"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "Migrar aside para secoes - ajuste cartaz",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"ferramentas/scripts/migrar-aside-para-secoes.ps1"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "Padronizar secoes e cartaz infobox",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"ferramentas/scripts/padronizar-secoes-e-cartaz.ps1"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "Padronizar secoes e cartaz infobox - pasta img",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"ferramentas/scripts/padronizar-secoes-e-cartaz.ps1"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "Auditar cartaz infobox",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"ferramentas/scripts/auditar-cartaz-infobox.ps1"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "Padronizar secoes e cartaz infobox - fallback erro",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"ferramentas/scripts/padronizar-secoes-e-cartaz.ps1"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "Padronizar secoes e cartaz infobox - fallback erro",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"ferramentas/scripts/padronizar-secoes-e-cartaz.ps1"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "Padronizar secoes e cartaz infobox - cleanup final",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"ferramentas/scripts/padronizar-secoes-e-cartaz.ps1"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "Auditar cartaz infobox",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"ferramentas/scripts/auditar-cartaz-infobox.ps1"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "Padronizar secoes e cartaz infobox - dedupe",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"ferramentas/scripts/padronizar-secoes-e-cartaz.ps1"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "Remover cabecalho conteudo complementar",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"ferramentas/scripts/padronizar-secoes-e-cartaz.ps1"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "Migrar obra para infobox",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"ferramentas/scripts/migrar-obra-para-infobox.ps1"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "Migrar obra para infobox",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"ferramentas/scripts/migrar-obra-para-infobox.ps1"
+			],
+			"isBackground": false
+		}
+	]
+}
