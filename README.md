@@ -53,7 +53,7 @@ A folha de estilo está organizada por seções temáticas, com comentários des
 - Layout
 - Sistema de cards
 - Cartazes e galerias
-- Sidebar
+- Infobox
 - Rodapé
 - Modal de imagens
 - Botões
@@ -93,46 +93,6 @@ Checklist mínimo antes de publicar:
 - Imagens carregando corretamente.
 - Ordem dos apoiadores correta.
 - Layout aceitável em desktop e mobile.
-
-### Validação técnica rápida
-
-Antes de publicar, execute no PowerShell dentro da raiz do projeto:
-
-```powershell
-./ferramentas/scripts/validar-site.ps1
-```
-
-O script valida os principais pontos críticos:
-- Links externos com `target="_blank"` sem `rel="noopener noreferrer"`.
-- Estrutura com `<div id="footer"></div>` fora do `<body>`.
-- Páginas públicas sem `meta description`, `canonical` ou `h1`.
-- Presença de barra invertida no `sitemap.xml`.
-
-### Rotina contínua de performance
-
-Para manter o site saudável ao longo do tempo, execute também:
-
-```powershell
-./ferramentas/scripts/auditar-performance.ps1
-```
-
-Esse script gera o relatório em `ferramentas/relatorios/relatorio-performance.md` com:
-- Imagens mais pesadas do repositório.
-- Imagens acima do limite de alerta.
-- Possíveis assets órfãos sem referência estática.
-- Checklist de revisão manual de Core Web Vitals.
-
-### Verificações complementares
-
-Scripts adicionais disponíveis em `ferramentas/scripts/`:
-
-- `./ferramentas/scripts/verificar-links.ps1`: encontra links internos quebrados e âncoras sem `id` correspondente.
-- `./ferramentas/scripts/verificar-seo-basico.ps1`: valida `title`, `meta description`, `canonical`, `h1` e presença em `sitemap.xml`.
-- `./ferramentas/scripts/verificar-acessibilidade.ps1`: checa pontos básicos de acessibilidade (lang, alt, labels e nome acessível).
-- `./ferramentas/scripts/verificar-assets-referenciados.ps1`: detecta referências para assets inexistentes e possíveis órfãos.
-- `./ferramentas/scripts/verificar-ortografia.ps1`: roda corretor ortográfico com foco em pt-BR apenas nos arquivos HTML, gera `ferramentas/relatorios/relatorio-ortografia.md` e aceita termos personalizados em `ferramentas/scripts/verificar-ortografia.ignore.txt`. Em Windows com bloqueio de `ExecutionPolicy`, prefira `./ferramentas/scripts/verificar-ortografia.cmd`.
-
-O processo completo está documentado em `ferramentas/relatorios/performance-routine.md`.
 
 ### Ciclo de governança
 
