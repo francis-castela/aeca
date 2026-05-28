@@ -5,6 +5,14 @@
 - change(): a partir desta data, a mensagem de commit passa a ser a versão de lançamento.
 - add(): criado o arquivo CHANGELOG.md na raiz do projeto.
 - change(): padronizadas seções iniciais do changelog.
+- change(): reorganizado css/styles/style.css por seções documentadas (fontes, tema, base, layout, componentes e responsividade).
+- change(): padronizada a ordem de propriedades CSS em todo o arquivo, seguindo a convenção Wikifluent.
+- add(): formalizado no CSS o nome do sistema visual como Design System Wikifluent.
+- add(): incluídas orientações de manutenção do CSS no topo do arquivo (boas práticas, especificidade e uso de breakpoints).
+- change(): saneamento em lote do HTML de páginas de espetáculos (1995-2026), com padronização de marcação em blocos complementares e parágrafos de apêndice.
+- change(): ajustes estruturais em páginas institucionais para alinhamento com o padrão de conteúdo complementar (francis-castela e valentim).
+- change(): revisão de marcação e formatação de trechos da home (metadados/grade de espetáculos) para consistência de layout.
+- change(): atualização de mídia do espetáculo "12 Jurados e Uma Sentença" (cartaz e imagem OG) e inclusão de novas imagens de galeria.
 
 ## [2026-05-27]
 - change(): rodada de modernização visual e estrutural (Wikifluent).

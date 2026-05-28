@@ -1,3 +1,38 @@
+/*
+ * AECA - Design System Wikifluent (arquivo principal)
+ *
+ * Organizacao deste arquivo:
+ * 01) Fontes e tokens de tema
+ * 02) Base global e tipografia
+ * 03) Estrutura de cabecalho e navegacao
+ * 04) Layout principal e infobox
+ * 05) Midia, galerias e zoom
+ * 06) Tabelas, lotes e interacoes de creditos
+ * 07) Grades e componentes de apoio
+ * 08) CTAs, barra rapida e utilitarios flutuantes
+ * 09) Modal, rodape e utilitarios de acessibilidade
+ * 10) Responsividade por breakpoints
+ *
+ * Convencao:
+ * - Preferir variaveis de :root para cores, raios e sombras.
+ * - Evitar sobrescritas fora da secao responsavel pelo componente.
+ * - Em ajustes futuros, manter a ordem das secoes para facilitar diff/review.
+ * - Ordem de propriedades (Wikifluent):
+ *   posicionamento > layout > box model > visual > tipografia > animacao/transicao.
+ *
+ * Orientacoes de manutencao (Wikifluent):
+ * 1) Nao criar regras duplicadas para o mesmo seletor em secoes diferentes.
+ * 2) Sempre editar primeiro tokens em :root antes de ajustar valores fixos em componentes.
+ * 3) Novos componentes devem entrar na secao tematica correspondente;
+ *    se nao existir, criar nova secao numerada antes dos breakpoints.
+ * 4) Em responsividade, alterar apenas dentro dos breakpoints existentes
+ *    (1100px, 930px, 700px), salvo necessidade real de novo ponto de corte.
+ * 5) Manter comentarios curtos e funcionais, explicando intencao e nao obviedades.
+ * 6) Evitar seletores muito especificos (cadeias longas); priorizar classes reutilizaveis.
+ * 7) Antes de mudar visual global, validar impacto em header, infobox, tabelas e CTAs.
+ */
+
+/* 01) Fontes */
 @font-face {
     font-family: "Bebas";
     src: url("/css/fonts/BebasNeue-Regular.ttf");
@@ -12,6 +47,7 @@
     font-weight: 200 900;
 }
 
+/* 01) Tokens de tema - claro (padrao) */
 :root {
     --bg: #eeeeee;
     --bg-soft: #dbdbdb;
@@ -40,6 +76,7 @@
     --shadow-card: 0 8px 22px rgba(36, 36, 36, 0.08);
 }
 
+/* 01) Tokens de tema - escuro */
 :root[data-theme="dark"] {
     --bg: #141414;
     --bg-soft: #222222;
@@ -64,10 +101,11 @@
     --shadow-card: 0 8px 22px rgba(0, 0, 0, 0.34);
 }
 
+/* 02) Reset e base global */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 html {
@@ -75,21 +113,21 @@ html {
 }
 
 body {
-    font-family: "Nunito", sans-serif;
-    color: var(--text);
+    min-height: 100vh;
     background:
         radial-gradient(circle at 12% 5%, var(--accent-soft), transparent 35%),
         radial-gradient(circle at 90% 0%, rgba(31, 31, 31, 0.05), transparent 25%),
         linear-gradient(160deg, var(--bg), var(--bg-soft));
+    color: var(--text);
+    font-family: "Nunito", sans-serif;
     line-height: 1.72;
-    min-height: 100vh;
 }
 
 a {
     color: var(--brand);
     text-decoration-thickness: 1.7px;
     text-underline-offset: 2px;
-    transition: color 0.18s ease, background-color 0.18s ease;
+    transition: background-color 0.18s ease, color 0.18s ease;
 }
 
 a:hover,
@@ -103,10 +141,10 @@ a:focus-visible {
 }
 
 img {
-    max-width: 100%;
     display: block;
-    border-radius: var(--radius-s);
+    max-width: 100%;
     border: 1px solid var(--line);
+    border-radius: var(--radius-s);
 }
 
 .header-brand img,
@@ -145,6 +183,7 @@ hr {
     margin-bottom: 0.95rem;
 }
 
+/* 02) Tipografia base */
 h1,
 h2,
 h3,
@@ -155,11 +194,11 @@ h6,
 .infobox-titulo,
 .show-infobox h3,
 .footer {
-    font-family: "Bebas", sans-serif;
-    letter-spacing: 0.03em;
     color: var(--title);
-    line-height: 1.1;
+    font-family: "Bebas", sans-serif;
     font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0.03em;
 }
 
 h1 {
@@ -168,22 +207,22 @@ h1 {
 }
 
 h2 {
-    font-size: clamp(1.48rem, 3.2vw, 2.08rem);
     margin-top: 1.7rem;
     margin-bottom: 0.2rem;
-    letter-spacing: 0.02em;
     color: color-mix(in srgb, var(--title) 86%, var(--text-soft));
+    font-size: clamp(1.48rem, 3.2vw, 2.08rem);
+    letter-spacing: 0.02em;
 }
 
 .page-subtitle {
+    margin-top: 1.7rem;
+    margin-bottom: 0.2rem;
+    color: var(--text-soft);
     font-family: "Nunito", sans-serif;
     font-size: clamp(1.22rem, 2.3vw, 1.5rem);
     font-weight: 700;
     line-height: 1.35;
     letter-spacing: 0.005em;
-    color: var(--text-soft);
-    margin-top: 1.7rem;
-    margin-bottom: 0.2rem;
 }
 
 h1 + .page-subtitle {
@@ -203,8 +242,8 @@ h3 {
 
 .curriculo-item + .curriculo-item h4 {
     margin-top: 0.75rem;
-    padding-top: 0;
     border-top: 0;
+    padding-top: 0;
 }
 
 .curriculo-item + .curriculo-item h4::before {
@@ -220,15 +259,16 @@ li {
     margin-left: 1.35rem;
 }
 
+/* 02) Acessibilidade: atalho para pular navegacao */
 .skip-link {
-    position: absolute;
     left: 1rem;
+    position: absolute;
     top: -100px;
-    background: var(--surface-solid);
-    color: var(--brand);
     border: 1px solid var(--line-strong);
     border-radius: var(--radius-s);
     padding: 0.5rem 0.8rem;
+    background: var(--surface-solid);
+    color: var(--brand);
     z-index: 100;
 }
 
@@ -236,6 +276,7 @@ li {
     top: 1rem;
 }
 
+/* 03) Cabecalho e navegacao principal */
 .header {
     position: sticky;
     top: 0;
@@ -247,14 +288,14 @@ li {
 }
 
 .header-brand {
-    width: 100%;
-    max-width: none;
-    margin: 0 auto;
-    padding: 0.5rem 0.65rem 0.42rem;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.45rem;
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    padding: 0.5rem 0.65rem 0.42rem;
 }
 
 .header-brand > a {
@@ -264,17 +305,17 @@ li {
 }
 
 .header-brand > .logo-container {
+    align-items: center;
     flex: 0 0 430px;
     min-width: 430px;
-    align-items: center;
 }
 
 .header-img-left,
 .header-img-right {
+    flex: 0 0 auto;
     width: 96px;
     height: 96px;
     object-fit: contain;
-    flex: 0 0 auto;
 }
 
 .logo-container {
@@ -282,43 +323,43 @@ li {
     flex-direction: column;
     justify-content: center;
     gap: 0.08rem;
-    text-align: center;
     width: 430px;
     min-width: 430px;
     max-width: 430px;
+    text-align: center;
 }
 
 .logo-main {
+    width: 430px;
     font-size: 56px;
     line-height: 0.97;
-    width: 430px;
 }
 
 .logo-main a,
 .logo-sub a {
-    color: inherit;
-    text-decoration: none;
     display: block;
     width: 430px;
+    color: inherit;
+    text-decoration: none;
 }
 
 .logo-sub {
+    width: 430px;
+    color: var(--text-soft);
     font-family: "Bebas", sans-serif;
     font-size: 26px;
-    letter-spacing: 0.03em;
     line-height: 1.05;
-    color: var(--text-soft);
-    width: 430px;
+    letter-spacing: 0.03em;
 }
 
 .nav {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0.5rem 1rem 0.85rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0.5rem 1rem 0.85rem;
 }
 
 @media (min-width: 931px) {
@@ -336,10 +377,10 @@ li {
 }
 
 .nav-links {
-    list-style: none;
     display: flex;
-    gap: 0.35rem;
     flex-wrap: wrap;
+    gap: 0.35rem;
+    list-style: none;
 }
 
 .nav-links li {
@@ -348,10 +389,10 @@ li {
 
 .nav-links a {
     display: inline-block;
-    text-decoration: none;
-    color: var(--text-soft);
     border-radius: var(--radius-s);
     padding: 0.45rem 0.75rem;
+    color: var(--text-soft);
+    text-decoration: none;
 }
 
 .nav-links a:hover,
@@ -367,12 +408,12 @@ li {
 
 .theme-toggle,
 .nav-menu-toggle {
-    border: 1px solid var(--line);
-    background: var(--surface-solid);
-    color: var(--text-soft);
     width: 2.25rem;
     height: 2.25rem;
+    border: 1px solid var(--line);
     border-radius: var(--radius-s);
+    background: var(--surface-solid);
+    color: var(--text-soft);
     cursor: pointer;
 }
 
@@ -380,13 +421,14 @@ li {
     display: none;
 }
 
+/* 04) Layout estrutural: conteudo e coluna complementar */
 .container {
-    width: min(1280px, 94vw);
-    margin: 1.15rem auto 2rem;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 1.25rem;
     align-items: start;
+    width: min(1280px, 94vw);
+    margin: 1.15rem auto 2rem;
 }
 
 .container:has(> .infobox) {
@@ -395,9 +437,9 @@ li {
 
 .main-content,
 .infobox {
-    background: var(--surface);
     border: 1px solid var(--line);
     border-radius: var(--radius-l);
+    background: var(--surface);
     box-shadow: var(--shadow-soft);
 }
 
@@ -423,9 +465,9 @@ li {
 }
 
 .infobox {
-    padding: 0.9rem;
     position: sticky;
     top: 6.9rem;
+    padding: 0.9rem;
 }
 
 .infobox > div,
@@ -441,6 +483,7 @@ li {
     margin-bottom: 0.35rem;
 }
 
+/* 05) Midia e galerias */
 .infobox img,
 .infobox-galeria img,
 .main-galeria img {
@@ -461,6 +504,7 @@ li {
     border-radius: var(--radius-s);
 }
 
+/* 05) Interacao de zoom para imagens vinculadas por JS */
 img[data-zoom-bound="true"] {
     cursor: zoom-in;
     transition: transform 300ms cubic-bezier(0.2, 0, 0, 1),
@@ -485,38 +529,39 @@ img[data-zoom-bound="true"]:focus-visible {
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
 }
 
+/* 05) Infobox de obra inserida no fluxo do conteudo */
 .show-infobox {
-    width: min(330px, 100%);
     float: right;
+    overflow: hidden;
+    width: min(330px, 100%);
     margin: 0.2rem 0 1.15rem 1.2rem;
     border: 1px solid var(--line-strong);
     border-radius: var(--radius-m);
     background: color-mix(in srgb, var(--surface-solid) 88%, transparent);
     box-shadow: var(--shadow-soft);
-    overflow: hidden;
 }
 
 .show-infobox-poster {
-    padding: 0.75rem;
     border-bottom: 1px solid var(--line);
+    padding: 0.75rem;
 }
 
 .show-infobox-poster figcaption {
-    font-size: 0.92rem;
     margin-top: 0.5rem;
-    color: var(--text-soft);
     text-align: center;
+    color: var(--text-soft);
+    font-size: 0.92rem;
 }
 
 .show-infobox .show-infobox-meta {
-    margin: 0;
     width: 100%;
+    margin: 0;
     border: 0;
     border-collapse: separate;
     border-spacing: 0;
+    border-radius: 0;
     background: transparent;
     box-shadow: none;
-    border-radius: 0;
 }
 
 .show-infobox .show-infobox-meta th,
@@ -535,12 +580,12 @@ img[data-zoom-bound="true"]:focus-visible {
 
 .show-infobox .show-infobox-meta th {
     width: 39%;
+    text-align: right;
+    color: var(--title);
     font-size: 0.9rem;
     font-weight: 800;
-    color: var(--title);
-    text-transform: none;
     letter-spacing: 0;
-    text-align: right;
+    text-transform: none;
 }
 
 .show-infobox .show-infobox-meta td {
@@ -585,53 +630,15 @@ img[data-zoom-bound="true"]:focus-visible {
     line-height: 1.45;
 }
 
-.show-appendix {
-    margin-top: 2rem;
-    padding: 1rem;
-    border-top: 1px solid var(--line);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-m);
-    background: color-mix(in srgb, var(--surface-solid) 92%, transparent);
-    clear: both;
-}
-
-.show-appendix h2,
-.show-appendix h3 {
-    margin-top: 0;
-    margin-bottom: 0.35rem;
-}
-
-.show-appendix h3 {
-    font-size: clamp(1.45rem, 2.8vw, 1.95rem);
-}
-
-.show-appendix-content {
-    display: grid;
-    gap: 0.75rem;
-}
-
-.show-appendix-note {
-    font-size: 0.94rem;
-    color: var(--text-soft);
-    margin-bottom: 0.5rem;
-}
-
-.show-appendix-text {
-    color: var(--text-soft);
-}
-
-.show-appendix .main-galeria {
-    margin-bottom: 0.8rem;
-}
-
+/* 06) Tabelas padrao e vitrines */
 table,
 .tabela-vitrine {
     width: 100%;
+    margin: 0.9rem 0 1.4rem;
+    overflow: hidden;
     border-collapse: collapse;
     border: 1px solid var(--line);
     border-radius: var(--radius-m);
-    overflow: hidden;
-    margin: 0.9rem 0 1.4rem;
     background: var(--surface-solid);
     box-shadow: var(--shadow-soft);
 }
@@ -663,13 +670,13 @@ table,
 }
 
 thead th {
-    font-family: "Nunito", sans-serif;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    font-size: 0.86rem;
     color: var(--text-soft);
     background: color-mix(in srgb, var(--brand-soft) 46%, transparent);
+    font-family: "Nunito", sans-serif;
+    font-size: 0.86rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
 }
 
 th,
@@ -711,6 +718,7 @@ th[scope="row"] {
     text-align: right;
 }
 
+/* 06) Interacoes de creditos (botao em celula e inline) */
 .main-content td.credits-person-cell-button,
 .main-content .credits-person-inline-button {
     cursor: pointer;
@@ -737,16 +745,16 @@ th[scope="row"] {
 }
 
 .main-content .credits-person-inline-button {
-    border: 0;
-    background: transparent;
+    display: block;
     font-family: inherit;
     font-size: inherit;
-    line-height: inherit;
     font-weight: 800;
-    padding: 0;
-    text-align: left;
-    display: block;
+    line-height: inherit;
     width: 100%;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    text-align: left;
 }
 
 .main-content .credits-person-cell-multi {
@@ -769,17 +777,17 @@ th:last-child {
 .tabela-precos .lote-vigencia {
     display: block;
     margin-top: 0.14rem;
-    font-size: 0.83rem;
     color: var(--text-soft);
+    font-size: 0.83rem;
     font-weight: 700;
 }
 
 .tabela-precos .preco-valor {
     display: inline-block;
-    font-size: 1.03rem;
-    line-height: 1.15;
-    font-weight: 900;
     color: var(--title);
+    font-size: 1.03rem;
+    font-weight: 900;
+    line-height: 1.15;
 }
 
 .tabela-precos .preco-taxa {
@@ -790,6 +798,7 @@ th:last-child {
     font-weight: 700;
 }
 
+/* 06) Bloco de lotes e regras auxiliares */
 .lotes-spoiler {
     margin: 0;
     padding: 0.7rem 0.78rem;
@@ -800,11 +809,11 @@ th:last-child {
 }
 
 .lotes-layout {
-    margin: 0.9rem 0 0.9rem;
     display: grid;
     grid-template-columns: minmax(0, 1fr) 240px;
     gap: 0.75rem;
     align-items: start;
+    margin: 0.9rem 0 0.9rem;
 }
 
 .lotes-layout .tabela-precos {
@@ -818,14 +827,14 @@ th:last-child {
 }
 
 .lotes-spoiler summary {
-    cursor: pointer;
-    font-weight: 800;
-    color: var(--title);
-    list-style: none;
-    line-height: 1.35;
     display: flex;
     align-items: center;
     gap: 0.45rem;
+    list-style: none;
+    color: var(--title);
+    font-weight: 800;
+    line-height: 1.35;
+    cursor: pointer;
 }
 
 .lotes-spoiler summary::-webkit-details-marker {
@@ -834,6 +843,7 @@ th:last-child {
 
 .lotes-spoiler summary::before {
     content: "";
+    flex: 0 0 auto;
     width: 0.45rem;
     height: 0.45rem;
     border-right: 2px solid currentColor;
@@ -841,7 +851,6 @@ th:last-child {
     transform: rotate(-45deg);
     transform-origin: 50% 50%;
     transition: transform 0.16s ease;
-    flex: 0 0 auto;
 }
 
 .lotes-spoiler[open] summary::before {
@@ -875,6 +884,7 @@ th:last-child {
     font-weight: 700;
 }
 
+/* 07) Grade de espetaculos e cartazes */
 .grade-espetaculos {
     width: 100%;
 }
@@ -886,13 +896,13 @@ div.grade-espetaculos {
 }
 
 div.grade-espetaculos > a {
-    text-decoration: none;
-    color: var(--text);
     border: 1px solid var(--line);
     border-radius: var(--radius-m);
-    background: var(--surface-solid);
     padding: 0.55rem;
+    background: var(--surface-solid);
     box-shadow: var(--shadow-soft);
+    color: var(--text);
+    text-decoration: none;
 }
 
 div.grade-espetaculos > a:hover {
@@ -917,16 +927,17 @@ div.grade-espetaculos > a:hover {
 }
 
 .cartaz-link {
-    font-weight: 800;
-    color: var(--title);
     margin-bottom: 0.3rem;
+    color: var(--title);
+    font-weight: 800;
 }
 
 .cartaz-resumo {
-    font-size: 0.96rem;
     color: var(--text-soft);
+    font-size: 0.96rem;
 }
 
+/* 07) Filtros de acervo */
 .acervo-filtros {
     margin: 1rem 0;
     border: 1px solid var(--line);
@@ -945,10 +956,10 @@ div.grade-espetaculos > a:hover {
 .acervo-filtros-input {
     width: 100%;
     border: 1px solid var(--line-strong);
-    background: var(--surface-solid);
-    color: var(--text);
     border-radius: var(--radius-s);
     padding: 0.62rem 0.72rem;
+    background: var(--surface-solid);
+    color: var(--text);
     font: inherit;
 }
 
@@ -959,6 +970,7 @@ div.grade-espetaculos > a:hover {
     color: var(--text-soft);
 }
 
+/* 07) Cards de apoio/parcerias */
 .apoio-grid {
     margin: 0;
     list-style: none;
@@ -981,25 +993,26 @@ div.grade-espetaculos > a:hover {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.18rem;
-    border: 1px solid var(--line);
-    border-radius: var(--radius-m);
-    background: var(--surface-solid);
-    padding: 0.7rem;
-    box-shadow: var(--shadow-soft);
     width: 100%;
     min-height: 100%;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    padding: 0.7rem;
+    background: var(--surface-solid);
+    box-shadow: var(--shadow-soft);
     transition: border-color 180ms ease;
 }
 
 .apoio-card-link {
-    text-decoration: none;
     color: var(--text);
+    text-decoration: none;
 }
 
 .apoio-card-link:hover {
     border-color: var(--line-strong);
 }
 
+/* 07) Efeito de brilho para foco/hover em elementos interativos */
 @keyframes focus-sheen-pass {
     0% {
         transform: translateX(-140%);
@@ -1092,18 +1105,18 @@ div.grade-espetaculos > a:hover {
 
 .apoio-categoria {
     display: block;
-    font-size: 0.8rem;
-    color: var(--text-soft);
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
     margin-bottom: 0.18rem;
+    color: var(--text-soft);
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
 }
 
 .obra-referencia-kicker {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
     color: var(--text-soft);
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
 }
 
 .obra-referencia-citacao {
@@ -1111,17 +1124,18 @@ div.grade-espetaculos > a:hover {
     font-weight: 800;
 }
 
+/* 07) Box de classificacao indicativa */
 .classificacao-box {
     display: grid;
     grid-template-columns: 88px 1fr;
     gap: 0.75rem;
     align-items: start;
-    padding: 0.75rem;
+    margin: 0.8rem 0 1.2rem;
     border: 1px solid var(--line);
     border-radius: var(--radius-m);
+    padding: 0.75rem;
     background: var(--surface-solid);
     box-shadow: var(--shadow-soft);
-    margin: 0.8rem 0 1.2rem;
 }
 
 .classificacao-texto {
@@ -1140,8 +1154,7 @@ div.grade-espetaculos > a:hover {
 /* Base visual compartilhada para tabelas e cards */
 table,
 .tabela-vitrine,
-.classificacao-box,
-.show-appendix {
+.classificacao-box {
     border-color: var(--line);
     border-radius: var(--radius-m);
     background: var(--surface-solid);
@@ -1153,6 +1166,7 @@ table,
     border-radius: var(--radius-s);
 }
 
+/* 08) CTAs principais (ticket/sympla/whatsapp) */
 .btn-cta,
 .btn-cta-sympla,
 .btn-cta-ticket,
@@ -1161,12 +1175,12 @@ table,
     align-items: center;
     justify-content: center;
     gap: 0.25rem;
-    text-decoration: none;
-    border-radius: var(--radius-s);
     border: 1px solid transparent;
+    border-radius: var(--radius-s);
+    margin: 0.45rem 0;
     padding: 0.64rem 0.9rem;
     font-weight: 800;
-    margin: 0.45rem 0;
+    text-decoration: none;
 }
 
 .btn-cta-sympla,
@@ -1176,13 +1190,12 @@ table,
     align-items: center;
     justify-content: center;
     gap: 0.1rem;
-    width: 100%;
     max-width: 100%;
     min-width: 0;
-    padding: 0.78rem 0.98rem;
-    text-align: center;
+    width: 100%;
     border: 1px solid color-mix(in srgb, var(--accent) 64%, #3b1a1d 36%);
     border-radius: 10px;
+    padding: 0.78rem 0.98rem;
     background: linear-gradient(
         140deg,
         color-mix(in srgb, var(--accent) 82%, #ffffff 18%) 0%,
@@ -1190,6 +1203,7 @@ table,
         color-mix(in srgb, var(--accent-strong) 86%, #241215 14%) 100%
     );
     color: #ffffff;
+    text-align: center;
     box-shadow: 0 8px 18px rgba(45, 18, 20, 0.26);
     transition: transform 0.15s ease, box-shadow 0.18s ease, filter 0.18s ease;
 }
@@ -1236,13 +1250,12 @@ table,
     align-items: center;
     justify-content: center;
     gap: 0.1rem;
-    width: 100%;
     max-width: 100%;
     min-width: 0;
-    padding: 0.78rem 0.98rem;
-    text-align: center;
+    width: 100%;
     border: 1px solid color-mix(in srgb, var(--ok) 60%, #203127 40%);
     border-radius: 10px;
+    padding: 0.78rem 0.98rem;
     background: linear-gradient(
         140deg,
         color-mix(in srgb, var(--ok) 78%, #ffffff 22%) 0%,
@@ -1250,6 +1263,7 @@ table,
         color-mix(in srgb, var(--ok) 84%, #132118 16%) 100%
     );
     color: #ffffff;
+    text-align: center;
     box-shadow: 0 8px 18px rgba(17, 41, 29, 0.26);
     transition: transform 0.15s ease, box-shadow 0.18s ease, filter 0.18s ease;
 }
@@ -1272,21 +1286,22 @@ table,
     outline-offset: 2px;
 }
 
+/* 08) Barra fixa de acoes rapidas */
 .quick-cta-bar {
-    position: fixed;
-    left: 50%;
     bottom: 0.8rem;
-    transform: translateX(-50%);
+    left: 50%;
     display: flex;
     gap: 0.45rem;
-    z-index: 55;
-    background: color-mix(in srgb, var(--surface-solid) 94%, transparent);
+    transform: translateX(-50%);
     border: 1px solid var(--line);
     border-radius: 999px;
     padding: 0.4rem;
+    background: color-mix(in srgb, var(--surface-solid) 94%, transparent);
     box-shadow: var(--shadow-card);
     opacity: 1;
+    position: fixed;
     transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 55;
 }
 
 .quick-cta-bar.is-hidden-near-footer {
@@ -1296,14 +1311,14 @@ table,
 }
 
 .quick-cta {
-    text-decoration: none;
+    border: 1px solid var(--line);
     border-radius: 999px;
     padding: 0.5rem 0.9rem;
+    background: var(--surface-solid);
+    color: var(--text);
     font-size: 0.92rem;
     font-weight: 800;
-    border: 1px solid var(--line);
-    color: var(--text);
-    background: var(--surface-solid);
+    text-decoration: none;
 }
 
 .quick-cta-ticket {
@@ -1314,19 +1329,20 @@ table,
     border-color: color-mix(in srgb, var(--ok) 45%, var(--line));
 }
 
+/* 08) Botao flutuante de retorno ao topo */
 #scroll-topo {
-    position: fixed;
-    right: 0.9rem;
     bottom: 0.9rem;
+    right: 0.9rem;
     width: 2.4rem;
     height: 2.4rem;
-    border-radius: 999px;
     border: 1px solid var(--line-strong);
+    border-radius: 999px;
     background: var(--surface-solid);
     color: var(--text-soft);
     box-shadow: var(--shadow-soft);
     opacity: 0;
     pointer-events: none;
+    position: fixed;
     transition: opacity 0.18s ease;
     z-index: 70;
 }
@@ -1340,6 +1356,7 @@ body.has-quick-cta #scroll-topo {
     pointer-events: auto;
 }
 
+/* 09) Modal de imagem ampliada */
 .image-modal {
     display: none;
     position: fixed;
@@ -1352,8 +1369,8 @@ body.has-quick-cta #scroll-topo {
 }
 
 .modal-content {
-    max-height: 90vh;
     max-width: min(92vw, 1080px);
+    max-height: 90vh;
     border-radius: var(--radius-m);
 }
 
@@ -1361,24 +1378,25 @@ body.has-quick-cta #scroll-topo {
     position: absolute;
     top: 0.8rem;
     right: 1rem;
-    font-size: 2rem;
-    color: #ffffff;
     cursor: pointer;
+    color: #ffffff;
+    font-size: 2rem;
     line-height: 1;
 }
 
+/* 09) Rodape institucional */
 .footer {
-    margin: 1.2rem auto 1.5rem;
     width: min(1280px, 94vw);
-    text-align: center;
-    color: var(--text-soft);
+    margin: 1.2rem auto 1.5rem;
     border: 1px solid var(--line);
     border-radius: var(--radius-m);
-    background: var(--surface);
     padding: 0.9rem 1rem;
+    background: var(--surface);
+    color: var(--text-soft);
     font-family: "Nunito", sans-serif;
     letter-spacing: normal;
     line-height: 1.45;
+    text-align: center;
 }
 
 .footer a {
@@ -1392,11 +1410,11 @@ body.has-quick-cta #scroll-topo {
 }
 
 .footer .footer-brand {
-    font-family: "Bebas", sans-serif;
-    letter-spacing: 0.03em;
-    color: var(--title);
-    font-size: 1.35rem;
     margin-bottom: 0.2rem;
+    color: var(--title);
+    font-family: "Bebas", sans-serif;
+    font-size: 1.35rem;
+    letter-spacing: 0.03em;
 }
 
 .footer .footer-rights {
@@ -1411,9 +1429,9 @@ body.has-quick-cta #scroll-topo {
 
 .footer .footer-links {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
     gap: 0.2rem 0.8rem;
+    justify-content: center;
     font-size: 0.93rem;
 }
 
@@ -1421,6 +1439,7 @@ body.has-quick-cta #scroll-topo {
     text-underline-offset: 2px;
 }
 
+/* 09) Utilitario de acessibilidade: somente leitor de tela */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -1432,12 +1451,14 @@ body.has-quick-cta #scroll-topo {
     border: 0;
 }
 
+/* 10) Responsividade: ajuste de duas colunas para telas medias */
 @media (max-width: 1100px) {
     .container:has(> .infobox) {
         grid-template-columns: minmax(0, 1fr) 300px;
     }
 }
 
+/* 10) Responsividade: navegacao mobile e empilhamento de layout */
 @media (max-width: 930px) {
     .lotes-layout {
         grid-template-columns: 1fr;
@@ -1461,9 +1482,9 @@ body.has-quick-cta #scroll-topo {
     }
 
     .nav-actions {
+        margin: 0 auto;
         position: static;
         transform: none;
-        margin: 0 auto;
     }
 
     .nav-menu-toggle {
@@ -1513,14 +1534,14 @@ body.has-quick-cta #scroll-topo {
     }
 
     .show-infobox .show-infobox-poster img {
+        display: block;
         width: min(100%, 260px);
         margin-inline: auto;
-        display: block;
     }
 
     .quick-cta-bar {
-        width: calc(100vw - 1rem);
         justify-content: center;
+        width: calc(100vw - 1rem);
         border-radius: var(--radius-l);
     }
 
@@ -1530,14 +1551,15 @@ body.has-quick-cta #scroll-topo {
     }
 }
 
+/* 10) Responsividade: compactacao para telas pequenas */
 @media (max-width: 700px) {
     body {
         line-height: 1.65;
     }
 
     .header-brand {
-        padding: 0.44rem 0.5rem 0.36rem;
         gap: 0.28rem;
+        padding: 0.44rem 0.5rem 0.36rem;
     }
 
     .header-img-left,
@@ -1548,10 +1570,10 @@ body.has-quick-cta #scroll-topo {
 
     .header-brand > .logo-container,
     .logo-container {
+        flex-basis: 268px;
         width: 268px;
         min-width: 268px;
         max-width: 268px;
-        flex-basis: 268px;
     }
 
     .logo-main,
@@ -1573,8 +1595,8 @@ body.has-quick-cta #scroll-topo {
     }
 
     .classificacao-box {
-        grid-template-columns: 76px minmax(0, 1fr);
         align-items: start;
+        grid-template-columns: 76px minmax(0, 1fr);
     }
 
     .classificacao-box img {
@@ -1606,7 +1628,7 @@ body.has-quick-cta #scroll-topo {
     .tabela-vitrine th,
     .tabela-vitrine td {
         padding: 0.5rem 0.54rem;
-        word-break: break-word;
         overflow-wrap: anywhere;
+        word-break: break-word;
     }
 }
