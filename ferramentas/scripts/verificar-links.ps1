@@ -3,6 +3,10 @@ param()
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+$PSDefaultParameterValues['Get-Content:Encoding'] = 'utf8'
+$PSDefaultParameterValues['Set-Content:Encoding'] = 'utf8'
+$PSDefaultParameterValues['Add-Content:Encoding'] = 'utf8'
+$PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
 
 $scriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $ferramentasRoot = Split-Path -Parent $scriptRoot
@@ -129,7 +133,7 @@ $broken = New-Object System.Collections.Generic.List[object]
 $pattern = '(?is)<a\b[^>]*\bhref\s*=\s*"([^"]+)"|<a\b[^>]*\bhref\s*=\s*''([^'']+)''' 
 
 foreach ($file in $htmlFiles) {
-    $content = Get-Content -LiteralPath $file.FullName -Raw
+    $content = Get-Content -LiteralPath $file.FullName -Raw -Encoding UTF8
     $relative = $file.FullName.Substring($repoRoot.Length + 1).Replace([IO.Path]::DirectorySeparatorChar, '/')
 
     $allMatches = [regex]::Matches($content, $pattern)

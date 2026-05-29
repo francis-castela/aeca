@@ -6,6 +6,10 @@ param(
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+$PSDefaultParameterValues['Get-Content:Encoding'] = 'utf8'
+$PSDefaultParameterValues['Set-Content:Encoding'] = 'utf8'
+$PSDefaultParameterValues['Add-Content:Encoding'] = 'utf8'
+$PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
 
 $scriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $ferramentasRoot = Split-Path -Parent $scriptRoot
@@ -124,7 +128,7 @@ $sourceFiles = Get-ChildItem -Path $repoRoot -Recurse -File | Where-Object {
 }
 
 foreach ($source in $sourceFiles) {
-    $content = Get-Content -LiteralPath $source.FullName -Raw
+    $content = Get-Content -LiteralPath $source.FullName -Raw -Encoding UTF8
     $baseDir = Split-Path -Parent $source.FullName
     $baseRel = $baseDir.Substring($repoRoot.Length).TrimStart([IO.Path]::DirectorySeparatorChar).Replace([IO.Path]::DirectorySeparatorChar, '/')
     $found = Get-AssetRefsFromContent -Content $content -BaseDirRelative $baseRel -Extensions $imageExtensions

@@ -3,6 +3,10 @@ param()
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+$PSDefaultParameterValues['Get-Content:Encoding'] = 'utf8'
+$PSDefaultParameterValues['Set-Content:Encoding'] = 'utf8'
+$PSDefaultParameterValues['Add-Content:Encoding'] = 'utf8'
+$PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
 
 $scriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $repoRoot = Split-Path -Parent (Split-Path -Parent $scriptRoot)
@@ -57,7 +61,7 @@ $htmlFiles = $allHtmlFiles | Where-Object {
 }
 
 foreach ($file in $htmlFiles) {
-    $content = Get-Content -LiteralPath $file.FullName -Raw
+    $content = Get-Content -LiteralPath $file.FullName -Raw -Encoding UTF8
     $relative = $file.FullName.Substring($repoRoot.Length + 1).Replace([IO.Path]::DirectorySeparatorChar, '/')
 
     if ($content -notmatch '(?i)<!DOCTYPE\s+html>') {

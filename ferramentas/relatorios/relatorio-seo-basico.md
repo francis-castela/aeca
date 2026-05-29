@@ -1,6 +1,6 @@
 ﻿# Relatorio SEO basico
 
-Data da analise: 2026-05-29 16:50:52
+Data da analise: 2026-05-29 16:58:40
 
 | Pagina | Title | Meta description | Canonical | H1 | Status |
 |---|---|---|---|---|---|

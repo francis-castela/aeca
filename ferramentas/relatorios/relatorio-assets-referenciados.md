@@ -1,6 +1,6 @@
 ﻿# Relatorio de assets referenciados
 
-Data da analise: 2026-05-29 16:50:53
+Data da analise: 2026-05-29 16:58:41
 
 Total de assets mapeados: 866
 Total de assets referenciados estaticamente: 797
