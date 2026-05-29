@@ -2,12 +2,6 @@
 
 Esta rotina transforma performance em processo recorrente, nao em correcao eventual antes de publicar.
 
-## Frequencia recomendada
-
-- Antes de cada publicacao: executar a validacao tecnica e a auditoria de performance.
-- Semanalmente durante periodos de campanha: revisar paginas de maior conversao e ingresso.
-- Mensalmente: revisar imagens pesadas, ativos orfaos e historico de Core Web Vitals.
-
 ## Comandos da rotina
 
 Na raiz do projeto, execute:

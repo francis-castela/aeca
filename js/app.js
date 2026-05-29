@@ -597,7 +597,16 @@
         linkCreditsPeopleCells(peopleLinks);
     }
 
+    function isShowsIndexPage() {
+        const pathname = window.location.pathname || "";
+        return pathname === "/espetaculos" || pathname === "/espetaculos/" || pathname === "/espetaculos/index.html";
+    }
+
     function setupScrollPersistence() {
+        if (!isShowsIndexPage()) {
+            return;
+        }
+
         window.addEventListener("beforeunload", function () {
             sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
         });

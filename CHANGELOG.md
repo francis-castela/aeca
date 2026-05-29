@@ -1,5 +1,17 @@
 # Changelog
 
+## [v1.0.1] - [2026-05-29]
+- add(): criada a automacao da rotina continua de performance em [ferramentas/rotina-performance.ps1](ferramentas/rotina-performance.ps1), com log por execucao, controle de falhas e orquestracao por etapas.
+- add(): implementados os scripts de base da rotina em [ferramentas/scripts](ferramentas/scripts): validar-site.ps1, auditar-performance.ps1, verificar-links.ps1, verificar-seo-basico.ps1 e verificar-assets-referenciados.ps1.
+- add(): adicionados relatorios tecnicos gerados pela rotina em [ferramentas/relatorios](ferramentas/relatorios), incluindo performance, links, SEO basico e assets referenciados.
+- change(): atualizada a documentacao operacional da rotina de performance em [ferramentas/relatorios/performance-routine.md](ferramentas/relatorios/performance-routine.md).
+- change(): removidas copias de governanca em docs/governance (performance-routine.md e review-cycle.md), consolidando o fluxo em [ferramentas/relatorios](ferramentas/relatorios).
+- change(): restringida a persistencia de scroll do script global para funcionar somente na index de espetaculos ([espetaculos/index.html](espetaculos/index.html)) via ajuste em [js/app.js](js/app.js).
+- fix(): corrigidos links internos e padronizados caminhos para .html/.rota correta em paginas institucionais e navegacao global (cabecalho, rodape, quem-somos, valentim, CBT e galeria Anchieta).
+- fix(): ajustada hierarquia semantica de headings em paginas com h1 duplicado (quem-somos e espetaculos especificos), eliminando falhas criticas de SEO basico.
+- fix(): corrigidos slugs/URLs de espetaculos no indice quando divergiam do nome real de arquivo.
+- fix(): aplicado saneamento de acessibilidade em lote com insercao de atributo alt em imagens sem descricao em paginas do acervo e institucionais, zerando os avisos da etapa validar-site.
+
 ## [v1.0.0] - [2026-05-28]
 - change(): versão oficial do site nomeada como v1.0.0.
 - change(): a partir desta data, a mensagem de commit passa a ser a versão de lançamento.
