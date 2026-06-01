@@ -1,5 +1,13 @@
 # Changelog
 
+## [v1.0.2] - [2026-06-01]
+- change(): reformulada a landing do CBT em [cbt/index.html](cbt/index.html), com foco na 26ª edição de inverno, nova hierarquia de seções e CTA de inscrição em destaque.
+- add(): incluídas novas seções de conteúdo no CBT (infobox estruturada, dúvidas rápidas, equipe e suporte), mantendo a galeria de fotos com textos alternativos mais descritivos.
+- add(): implementado carrossel automático de cartazes na infobox em [cbt/index.html](cbt/index.html), com preload das imagens e transição suave entre peças.
+- change(): atualizados metadados sociais/SEO do CBT (Open Graph, Twitter, canonical e JSON-LD) para uso da imagem [cbt/img/cbt-og.jpg](cbt/img/cbt-og.jpg).
+- change(): substituído o cartaz antigo [cbt/img/cartaz-cbt-40edicao.webp](cbt/img/cartaz-cbt-40edicao.webp) por uma nova sequência de cartazes da 26ª edição em [cbt/img](cbt/img).
+- change(): preservada a versão anterior da página do curso em [cbt/old-index.html](cbt/old-index.html), com remoção do arquivo legado [cbt/new-index.html](cbt/new-index.html).
+
 ## [v1.0.1] - [2026-05-29]
 - add(): criada a automacao da rotina continua de performance em [ferramentas/rotina-performance.ps1](ferramentas/rotina-performance.ps1), com log por execucao, controle de falhas e orquestracao por etapas.
 - add(): implementados os scripts de base da rotina em [ferramentas/scripts](ferramentas/scripts): validar-site.ps1, auditar-performance.ps1, verificar-links.ps1, verificar-seo-basico.ps1 e verificar-assets-referenciados.ps1.

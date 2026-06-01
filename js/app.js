@@ -713,9 +713,9 @@
             return;
         }
 
-        const isCbtNewIndex = window.location.pathname.endsWith("/cbt/new-index.html");
+        const isCbtLanding = window.location.pathname.endsWith("/cbt/index.html");
         let ticketCta = document.querySelector("a.btn-cta-ticket[href]");
-        let ticketLabel = isCbtNewIndex ? "Inscrição" : "Comprar ingresso";
+        let ticketLabel = isCbtLanding ? "Inscreva-se" : "Comprar ingresso";
 
         if (!ticketCta) {
             ticketCta = document.querySelector("a.btn-cta[href*='forms.gle'], a.btn-cta[href*='docs.google.com/forms']");

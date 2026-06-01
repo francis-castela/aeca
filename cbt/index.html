@@ -14,21 +14,21 @@
 	<meta property="og:logo" content="http://www.aeca.com.br/css/logos/favicon.png">
 
 	<!-- Facebook Meta Tags -->
-	<meta property="og:url" content="https://aeca.com.br/cbt/">
+	<meta property="og:url" content="https://aeca.com.br/cbt/new-index.html">
 	<meta property="og:title" content="Curso Básico de Teatro">
 	<meta property="og:site_name" content="Curso Básico de Teatro" />
 	<meta property="og:description"
 		content="Curso Básico de Teatro do AECA: programa do CBT, informações da turma, equipe responsável, investimento e inscrição.">
-	<meta property="og:image" content="http://aeca.com.br/cbt/img/cbt-og-padrao.jpg" />
+	<meta property="og:image" content="http://aeca.com.br/cbt/img/cbt-og.jpg">
 
 	<!-- Twitter Meta Tags -->
 	<meta name="twitter:card" content="summary_large_image">
 	<meta property="twitter:domain" content="aeca.com.br">
-	<meta property="twitter:url" content="https://aeca.com.br/cbt/">
+	<meta property="twitter:url" content="https://aeca.com.br/cbt/new-index.html">
 	<meta name="twitter:title" content="Curso Básico de Teatro">
 	<meta name="twitter:description"
 		content="Curso Básico de Teatro do AECA: programa do CBT, informações da turma, equipe responsável, investimento e inscrição.">
-	<meta name="twitter:image" content="http://aeca.com.br/cbt/img/cbt-foto-6.jpg">
+	<meta name="twitter:image" content="http://aeca.com.br/cbt/img/cbt-og.jpg">
 
 	<!-- Estilos -->
 	<link rel="icon" href="/css/logos/favicon.webp" type="image/x-icon">
@@ -38,65 +38,300 @@
 
 	<meta name="robots" content="index,follow,max-image-preview:large">
 
-	<link rel="canonical" href="https://aeca.com.br/cbt/">
+	<link rel="canonical" href="https://aeca.com.br/cbt/new-index.html">
+
+	<script>
+		if (window.location.pathname.endsWith("/cbt/new-index.html")) {
+			document.documentElement.setAttribute("data-theme", "dark");
+			try {
+				localStorage.setItem("aeca-theme", "dark");
+			} catch (error) {
+				/* Ignora se o armazenamento estiver indisponível. */
+			}
+		}
+	</script>
+
+	<style>
+		.cbt-clear-right {
+			clear: both;
+			width: 100%;
+		}
+
+		.cbt-clear-right table,
+		.cbt-clear-right .btn-cta-whatsapp {
+			width: 100% !important;
+			max-width: 100% !important;
+		}
+
+		.main-content:has(.show-infobox) .cbt-top-cta {
+			width: 100% !important;
+			max-width: 100% !important;
+			margin-right: 0 !important;
+		}
+
+		#theme-toggle {
+			display: none !important;
+		}
+
+		.show-infobox .show-infobox-poster img.cbt-poster-carousel {
+			transition: opacity 260ms ease,
+				transform 300ms cubic-bezier(0.2, 0, 0, 1),
+				box-shadow 300ms cubic-bezier(0.2, 0, 0, 1),
+				filter 300ms cubic-bezier(0.2, 0, 0, 1);
+		}
+
+		.show-infobox .show-infobox-poster img.cbt-poster-carousel.is-switching {
+			opacity: 0.2;
+		}
+	</style>
 
 	<script
-		type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Curso Básico de Teatro","description":"Curso Básico de Teatro do AECA: programa do CBT, informações da turma, equipe responsável, investimento e inscrição.","url":"https://aeca.com.br/cbt/"}</script>
+		type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Curso Básico de Teatro","description":"Curso Básico de Teatro do AECA: programa do CBT, informações da turma, equipe responsável, investimento e inscrição.","url":"https://aeca.com.br/cbt/new-index.html"}</script>
 </head>
 
 <body>
-	<div id="cabecalho"></div>
-
 	<div class="container">
 		<main class="main-content">
-			<h1>Curso Básico de Teatro – CBT</h1>
-			<h2 class="page-subtitle">Curso intensivo com edições de inverno e verão</h2>
-			<hr>
-			<p>O Curso Básico de Teatro – CBT é um intensivo de duas semanas ideal para quem deseja mergulhar no
-				universo teatral e desenvolver habilidades artísticas. Nele, os alunos encontram um ambiente
-				propício para explorar e aprimorar diversas facetas da atuação, através de uma abordagem prática e
-				colaborativa.</p>
-			<p>Os principais componentes do CBT incluem:</p>
-			<p><b style="color: var(--header)">Expressão corporal:</b> Os alunos aprendem a usar o corpo como um
-				instrumento de comunicação e expressão artística, explorando movimentos e posturas que ajudam a
-				transmitir emoções e contar histórias.</p>
-			<p><b style="color: var(--header)">Articulação vocal:</b> Os alunos praticam exercícios específicos
-				para melhorar a clareza, projeção e expressividade da voz, essenciais para uma performance teatral.</p>
-			<p><b style="color: var(--header)">Concentração:</b> Os alunos trabalham sua capacidade de foco e
-				presença de palco, essenciais para qualquer ator.</p>
-			<p><b style="color: var(--header)">Interação e dinâmica de grupo:</b> O curso enfatiza o trabalho em
-				equipe e a interação com outros alunos. Atividades colaborativas são projetadas para
-				fortalecer os laços entre os participantes, promovendo um ambiente de apoio e cooperação.</p>
-			<p><b style="color: var(--header)">Jogos dramáticos e improvisação:</b> Desenvolver a criatividade e a
-				espontaneidade é crucial para o teatro. O curso inclui técnicas de improvisação e jogos teatrais que
-				desafiam os alunos a pensar rapidamente e a reagir de forma criativa às situações imprevistas.</p>
-			<p>Ministrado desde 1986 por <a href="/valentim.html">Valentim Schmoeler</a>, o CBT tem uma longa tradição de
-				excelência na formação de novos atores. Desde 1995, o curso conta também com o apoio de vários alunos do
-				Alunos do Exercício Cênico Anchieta (A.E.C.A), que contribuem para a realização das atividades,
-				enriquecendo ainda mais a experiência dos participantes.</p>
-			<p>O CBT é realizado duas vezes por ano, com edições de verão (em janeiro) e inverno (em julho). A edição de
-				verão dura 4 semanas, enquanto a de inverno é um intensivo de 2 semanas.</p>
+			<section>
+				<h1>Curso Básico de Teatro - CBT</h1>
+				<h2 class="page-subtitle">26ª Edição de Inverno</h2>
+				<hr>
+				<a href="https://forms.gle/1V3JN8S7Ewn7FYjq8" class="btn-cta-sympla btn-cta-ticket cbt-top-cta" target="_blank"
+					rel="noopener noreferrer">
+					<span class="cta-titulo">INSCREVA-SE AQUI</span>
+					<span class="cta-subtitulo">Pagamento seguro via Mercado Pago</span>
+				</a>
+				<p>Desde janeiro de 1986, a Casa da Cultura de Itajaí recebe o Curso Básico de Teatro (CBT). Chegamos
+					agora à 26ª edição de Inverno, evento que se tornou tradição na cidade.</p>
+				<p>Tudo começou com o objetivo de fomentar o movimento teatral local, que, na época, encontrava-se muito
+					fragilizado. Com o passar dos anos, o projeto alcançou um resultado extraordinário: Itajaí passou a
+					ter o maior movimento teatral do estado, formado, em sua grande maioria, por ex-alunos do CBT.</p>
+				<p>Ao longo dessa trajetória, inúmeros alunos integraram os elencos dos diversos espetáculos montados,
+					apresentando-se para um público incontável. Os aplausos de pé, sempre presentes, consagraram cada
+					grupo de formandos em suas respectivas edições.</p>
+				<p>Um novo momento dessa história acontecerá em julho de 2026. Você está convidado a participar deste
+					encontro especial. Será um prazer recebê-lo em nossa nova turma. Venha fazer parte!</p>
+			</section>
+
+			<section class="show-infobox" aria-label="Infobox do Curso Básico de Teatro">
+				<figure class="show-infobox-poster">
+					<img class="cbt-poster-carousel" src="/cbt/img/cartaz-cbt-26edicao-1.webp"
+						alt="Cartaz da 26ª edição de Inverno do Curso Básico de Teatro" />
+					<figcaption>Cartazes do curso</figcaption>
+				</figure>
+				<table class="show-infobox-meta">
+					<tbody>
+						<tr>
+							<th scope="row">Data</th>
+							<td>20 a 31 de julho de 2026, de segunda a sexta</td>
+						</tr>
+						<tr>
+							<th scope="row">Horário</th>
+							<td>Das 19:00 às 22:00</td>
+						</tr>
+						<tr>
+							<th scope="row">Local</th>
+							<td><a href="https://maps.app.goo.gl/7K6gkpnrpFwBKKBm9"><strong>Casa da Cultura Dide
+										Brandão</strong></a><span>R. Hercílio Luz, 655 - Centro, Itajaí - SC</span></td>
+						</tr>
+						<tr>
+							<th scope="row">Valor</th>
+							<td><strong>R$300,00</strong>
+						</tr>
+						<tr>
+							<th scope="row">Forma de pagamento</th>
+							<td>Online via link de pagamento. O link para pagamento estará disponível ao preencher a
+								ficha de inscrição. Aceitamos cartões de crédito, débito e PIX.</td>
+						</tr>
+						<tr>
+							<th scope="row">Ministrante</th>
+							<td><a href="/valentim.html">Valentim Schmoeler</a></td>
+						</tr>
+						<tr>
+							<th scope="row">Realização</th>
+							<td>Bagagem Cênica CIA de Teatro</td>
+						</tr>
+						<tr>
+							<th scope="row">Apoio</th>
+							<td><a href="https://www.aeca.com.br/">Anchieta Arte Cênica<br>Alunos do Exercício Cênico
+									Anchieta - A.E.C.A</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section>
+				<h3>O que você vai desenvolver</h3>
+				<hr>
+				<p><strong>Expressão corporal:</strong> os alunos aprendem a usar o corpo como um instrumento de comunicação e expressão artística, explorando movimentos e posturas que ajudam a transmitir emoções e contar histórias.</p>
+				<p><strong>Articulação vocal:</strong> os alunos praticam exercícios específicos para melhorar a clareza, projeção e expressividade da voz, essenciais para uma performance teatral.</p>
+				<p><strong>Concentração:</strong> os alunos trabalham sua capacidade de foco e presença de palco, essenciais para qualquer ator.</p>
+				<p><strong>Interação e dinâmica de grupo:</strong> o curso enfatiza o trabalho em equipe e a interação com outros alunos. Atividades colaborativas são projetadas para fortalecer os laços entre os participantes, promovendo um ambiente de apoio e cooperação.</p>
+				<p><strong>Jogos dramáticos e improvisação:</strong> o curso inclui técnicas de improvisação e jogos teatrais que desafiam os alunos a pensar rapidamente e a reagir de forma criativa às situações imprevistas.</p>
+				<table>
+					<thead>
+						<tr>
+							<th>Você chega com</th>
+							<th>Você sai com</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<ul>
+									<li>Timidez para se expressar em público</li>
+									<li>Dificuldade de projeção vocal</li>
+									<li>Pouca vivência de palco</li>
+								</ul>
+							</td>
+							<td>
+								<ul>
+									<li>Mais presença cênica e confiança</li>
+									<li>Ferramentas de expressão corporal e vocal</li>
+									<li>Experiência prática em criação coletiva</li>
+								</ul>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section aria-label="Dúvidas frequentes sobre o curso">
+				<h3>Dúvidas rápidas</h3>
+				<hr>
+				<table>
+					<tbody>
+						<tr>
+							<th>Precisa ter experiência em teatro?</th>
+							<td>Não. O CBT foi pensado para quem está começando e também para quem quer retomar a prática cênica com base técnica.</td>
+						</tr>
+						<tr>
+							<th>Como funciona o pagamento?</th>
+							<td>Após preencher a inscrição, você recebe o link de pagamento online. São aceitos crédito, débito e PIX.</td>
+						</tr>
+						<tr>
+							<th>Onde acontecem as aulas?</th>
+							<td>Na Casa da Cultura Dide Brandão, no centro de Itajaí, em dias úteis no período noturno.</td>
+						</tr>
+						<tr>
+							<th>O que preciso levar e como devo me vestir?</th>
+							<td>Leve uma garrafa d'água, use desodorante e venha com roupas confortáveis que permitam movimento. Jeans, por exemplo, pode atrapalhar os exercícios.</td>
+						</tr>
+						<tr>
+							<th>As vagas são limitadas?</th>
+							<td>Sim. A confirmação é feita por ordem de inscrição e pagamento, então vale garantir sua vaga com antecedência.</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section class="cbt-clear-right">
+				<h3>Equipe</h3>
+				<hr>
+				<table>
+					<tbody>
+						<tr>
+							<th><img src="/css/img/valentim-marcoskonder.jpg" alt="Valentim Schmoeler" style="max-width: 120px; margin-top: 0.55rem;"></th>
+							<td><strong>Ministrante - Valentim Schmoeler</strong><br>Vivendo de teatro desde 1974, Valentim criou o Curso Básico de Teatro - CBT em 1986, com edições anuais no verão e no inverno, realizados na Casa da Cultura Dide Brandão.</td>
+						</tr>
+						<tr>
+							<th><img src="/css/img/paulinha.jpg" alt="Paula Ramos" style="max-width: 120px; margin-top: 0.55rem;"></th>
+							<td><strong>Suporte organizacional - Paula Ramos</strong><br>Paula participa das atividades do Anchieta Arte Cênica e suas ramificações desde 2014. Em 2023 assumiu a presidência do grupo, atuando na coordenação geral das pesquisas e montagens.</td>
+						</tr>
+						<tr>
+							<th><img src="/css/img/francis-1.webp" alt="Francis Castela" style="max-width: 120px; margin-top: 0.55rem;"></th>
+							<td><strong>Suporte técnico - Francis Castela</strong><br>Francis vem trabalhando com o Anchieta Arte Cênica e suas ramificações desde 2022, atuando na coordenação de projetos, webdesign, gestão financeira e demais funções administrativas.</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section class="cbt-clear-right">
+				<p style="text-align: center;">Dúvidas? Entre em contato com Francis via WhatsApp:</p>
+				<a href="https://wa.me/5547997085692" class="btn-cta-whatsapp" target="_blank"
+					rel="noopener noreferrer">SUPORTE VIA WHATSAPP</a>
+			</section>
 
 			<h3>Galeria de fotos</h3>
-			<hr>
-			<div class="infobox-galeria">
-				<img src="/cbt/img/cbt-foto-1.webp" alt="Imagem de cbt foto">
-				<img src="/cbt/img/cbt-foto-2.webp" alt="Imagem de cbt foto">
-				<img src="/cbt/img/cbt-foto-3.webp" alt="Imagem de cbt foto">
-				<img src="/cbt/img/cbt-foto-4.webp" alt="Imagem de cbt foto">
-				<img src="/cbt/img/cbt-foto-5.webp" alt="Imagem de cbt foto">
-				<img src="/cbt/img/cbt-foto-6.webp" alt="Imagem de cbt foto">
-				<img src="/cbt/img/cbt-foto-7.webp" alt="Imagem de cbt foto">
-			</div>
+				<hr>
+				<div class="infobox-galeria">
+					<img src="/cbt/img/cbt-foto-1.webp" alt="Registro fotográfico do Curso Básico de Teatro" />
+					<img src="/cbt/img/cbt-foto-2.webp" alt="Registro fotográfico do Curso Básico de Teatro" />
+					<img src="/cbt/img/cbt-foto-3.webp" alt="Registro fotográfico do Curso Básico de Teatro" />
+					<img src="/cbt/img/cbt-foto-4.webp" alt="Registro fotográfico do Curso Básico de Teatro" />
+					<img src="/cbt/img/cbt-foto-5.webp" alt="Registro fotográfico do Curso Básico de Teatro" />
+					<img src="/cbt/img/cbt-foto-6.webp" alt="Registro fotográfico do Curso Básico de Teatro" />
+					<img src="/cbt/img/cbt-foto-7.webp" alt="Registro fotográfico do Curso Básico de Teatro" />
+				</div>
 		</main>
 	</div>
 	<div id="imageModal" class="image-modal">
 		<span class="close-modal">&times;</span>
 		<img id="modalImage" class="modal-content" alt="Imagem ampliada da galeria">
 	</div>
-	</div>
 	<div id="footer"></div>
 </body>
+<script>
+	(() => {
+		const poster = document.querySelector(".show-infobox-poster .cbt-poster-carousel");
+		if (!poster) {
+			return;
+		}
+
+		const posters = [
+			{
+				src: "/cbt/img/cartaz-cbt-26edicao-1.webp",
+				alt: "Cartaz 1 da 26ª edição de Inverno do Curso Básico de Teatro"
+			},
+			{
+				src: "/cbt/img/cartaz-cbt-26edicao-2.webp",
+				alt: "Cartaz 2 da 26ª edição de Inverno do Curso Básico de Teatro"
+			},
+			{
+				src: "/cbt/img/cartaz-cbt-26edicao-3.webp",
+				alt: "Cartaz 3 da 26ª edição de Inverno do Curso Básico de Teatro"
+			},
+			{
+				src: "/cbt/img/cartaz-cbt-26edicao-4.webp",
+				alt: "Cartaz 4 da 26ª edição de Inverno do Curso Básico de Teatro"
+			},
+			{
+				src: "/cbt/img/cartaz-cbt-26edicao-5.webp",
+				alt: "Cartaz 5 da 26ª edição de Inverno do Curso Básico de Teatro"
+			},
+			{
+				src: "/cbt/img/cartaz-cbt-26edicao-6.webp",
+				alt: "Cartaz 6 da 26ª edição de Inverno do Curso Básico de Teatro"
+			}
+		];
+
+		posters.forEach((item) => {
+			const image = new Image();
+			image.src = item.src;
+		});
+
+		let currentIndex = 0;
+		const transitionMs = 100;
+		const intervalMs = 4000;
+
+		const showPoster = (nextIndex) => {
+			poster.classList.add("is-switching");
+
+			window.setTimeout(() => {
+				currentIndex = nextIndex;
+				const nextPoster = posters[currentIndex];
+				poster.src = nextPoster.src;
+				poster.alt = nextPoster.alt;
+				poster.classList.remove("is-switching");
+			}, transitionMs);
+		};
+
+		window.setInterval(() => {
+			const nextIndex = (currentIndex + 1) % posters.length;
+			showPoster(nextIndex);
+		}, intervalMs);
+	})();
+</script>
 <script src="/js/app.js" defer></script>
 
 </html>
