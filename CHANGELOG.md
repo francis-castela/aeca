@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.0.3] - [2026-06-14]
+- fix(): corrigida a grafia do título "As Bruxas de Salém" para "As Bruxas de Salem" (sem acento) em todas as ocorrências: [espetaculos/2026/as-bruxas-de-salem.html](espetaculos/2026/as-bruxas-de-salem.html), [espetaculos/2016/as-bruxas-de-salem.html](espetaculos/2016/as-bruxas-de-salem.html), [espetaculos/index.html](espetaculos/index.html) e [index.html](index.html).
+- change(): reescrita a sinopse do espetáculo em [espetaculos/2026/as-bruxas-de-salem.html](espetaculos/2026/as-bruxas-de-salem.html), com nova contextualização histórica da montagem.
+- change(): ajustada a autoclassificação indicativa de 16 para 14 anos, com atualização da descrição de conteúdo em [espetaculos/2026/as-bruxas-de-salem.html](espetaculos/2026/as-bruxas-de-salem.html).
+- add(): adicionada galeria de fotos com 5 imagens promocionais (bruxas-1 a bruxas-5.webp) em [espetaculos/2026/img](espetaculos/2026/img), substituindo o aviso de registros indisponíveis.
+
 ## [v1.0.2] - [2026-06-01]
 - change(): reformulada a landing do CBT em [cbt/index.html](cbt/index.html), com foco na 26ª edição de inverno, nova hierarquia de seções e CTA de inscrição em destaque.
 - add(): incluídas novas seções de conteúdo no CBT (infobox estruturada, dúvidas rápidas, equipe e suporte), mantendo a galeria de fotos com textos alternativos mais descritivos.
