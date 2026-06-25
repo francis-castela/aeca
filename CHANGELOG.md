@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.0.4] - [2026-06-25]
+- add(): incluídas novas formações complementares no perfil de Francis Castela em [francis-castela.html](francis-castela.html), com os cursos "Economia Cultural e Criativa, Indicadores e Patrimônio Cultural" e "Video Mapping: Vídeo Projeção, Palco e Artes".
+- fix(): padronizado o link do curso "Trilha Sonora para as Artes ao Vivo" em [francis-castela.html](francis-castela.html), removendo o parâmetro de compartilhamento da URL.
+
 ## [v1.0.3] - [2026-06-14]
 - fix(): corrigida a grafia do título "As Bruxas de Salém" para "As Bruxas de Salem" (sem acento) em todas as ocorrências: [espetaculos/2026/as-bruxas-de-salem.html](espetaculos/2026/as-bruxas-de-salem.html), [espetaculos/2016/as-bruxas-de-salem.html](espetaculos/2016/as-bruxas-de-salem.html), [espetaculos/index.html](espetaculos/index.html) e [index.html](index.html).
 - change(): reescrita a sinopse do espetáculo em [espetaculos/2026/as-bruxas-de-salem.html](espetaculos/2026/as-bruxas-de-salem.html), com nova contextualização histórica da montagem.
