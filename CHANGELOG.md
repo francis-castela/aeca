@@ -1,5 +1,13 @@
 # Changelog
 
+## [v1.0.5] - [2026-06-30]
+- change(): atualizada a página do espetáculo [espetaculos/2026/quando-voce-nao-estiver-mais-aqui.html](espetaculos/2026/quando-voce-nao-estiver-mais-aqui.html) com novo bloco de elenco, crédito de fotografia e ampliação da galeria.
+- change(): migrada a galeria de "Quando Você Não Estiver Mais Aqui" de PNG para WEBP, com remoção dos arquivos antigos [espetaculos/2026/img/quando-1.png](espetaculos/2026/img/quando-1.png) a [espetaculos/2026/img/quando-7.png](espetaculos/2026/img/quando-7.png) e inclusão de novos arquivos em [espetaculos/2026/img](espetaculos/2026/img) (quando-1.webp a quando-9.webp e quando-elenco.webp).
+- change(): padronizados os blocos de "Apresentações e locais" e "Apoiadores" em páginas de 2025 ([espetaculos/2025/a-mulher-sem-pecado.html](espetaculos/2025/a-mulher-sem-pecado.html), [espetaculos/2025/album-de-familia.html](espetaculos/2025/album-de-familia.html), [espetaculos/2025/o-bem-do-mar.html](espetaculos/2025/o-bem-do-mar.html) e [espetaculos/2025/paraiso-perdido.html](espetaculos/2025/paraiso-perdido.html)), com ajuste de marcação e links institucionais.
+- fix(): removida duplicidade de texto descritivo em [espetaculos/2025/o-bem-do-mar.html](espetaculos/2025/o-bem-do-mar.html), consolidando as informações de apresentação na infobox.
+- change(): atualizado o comportamento do CTA rápido em [js/app.js](js/app.js) para reconhecer também a rota /cbt/ sem index explícito e manter o rótulo "Inscreva-se" na landing do CBT.
+- change(): incluído link clicável para o parceiro "Casarão 83" na seção de apoiadores de [espetaculos/2026/as-bruxas-de-salem.html](espetaculos/2026/as-bruxas-de-salem.html).
+
 ## [v1.0.4] - [2026-06-25]
 - add(): incluídas novas formações complementares no perfil de Francis Castela em [francis-castela.html](francis-castela.html), com os cursos "Economia Cultural e Criativa, Indicadores e Patrimônio Cultural" e "Video Mapping: Vídeo Projeção, Palco e Artes".
 - fix(): padronizado o link do curso "Trilha Sonora para as Artes ao Vivo" em [francis-castela.html](francis-castela.html), removendo o parâmetro de compartilhamento da URL.
