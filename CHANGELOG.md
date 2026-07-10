@@ -1,5 +1,8 @@
 # Changelog
 
+## [v1.0.6] - [2026-07-09]
+- change(): atualizada a página [index.html] com link para o CBT.
+
 ## [v1.0.5] - [2026-06-30]
 - change(): atualizada a página do espetáculo [espetaculos/2026/quando-voce-nao-estiver-mais-aqui.html](espetaculos/2026/quando-voce-nao-estiver-mais-aqui.html) com novo bloco de elenco, crédito de fotografia e ampliação da galeria.
 - change(): migrada a galeria de "Quando Você Não Estiver Mais Aqui" de PNG para WEBP, com remoção dos arquivos antigos [espetaculos/2026/img/quando-1.png](espetaculos/2026/img/quando-1.png) a [espetaculos/2026/img/quando-7.png](espetaculos/2026/img/quando-7.png) e inclusão de novos arquivos em [espetaculos/2026/img](espetaculos/2026/img) (quando-1.webp a quando-9.webp e quando-elenco.webp).
