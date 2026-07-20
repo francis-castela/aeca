@@ -1,6 +1,8 @@
 # Changelog
 
-Registro simples das principais mudanças do site, da mais recente para a mais antiga.
+## [v1.0.9] - [2026-07-20]
+- Home atualizada com remoção do espetáculo 12 Jurados e Uma Sentença.
+- Página de 12 Jurados e Uma Sentença teve remoção de link de pagamento e de informações de compra.
 
 ## [v1.0.8] - [2026-07-17]
 - Atualizado o perfil de Francis Castela com dois novos trabalhos de 2026: Curso Básico de Teatro 26ª Edição de Inverno e espetáculo de dança Alcançando o Amanhã.
