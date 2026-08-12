@@ -1,7 +1,6 @@
-/*
- * AECA - global stylesheet
- * Base nova: editorial, teatral e legivel.
- */
+/* ================================================================
+   01. TOKENS E FONTES
+   ================================================================ */
 
 @font-face {
     font-family: "Nunito";
@@ -11,25 +10,40 @@
 }
 
 :root {
-    --bg: #f5eee6;
-    --bg-2: #e8dbca;
-    --surface: rgba(255, 250, 244, 0.92);
-    --surface-2: rgba(255, 247, 237, 0.86);
-    --panel: rgba(255, 255, 255, 0.88);
-    --panel-solid: #fff9f2;
-    --line: rgba(79, 49, 32, 0.16);
-    --line-strong: rgba(79, 49, 32, 0.32);
-    --text: #2b1c15;
-    --text-soft: #614a3b;
-    --title: #1d130f;
-    --brand: #9d4428;
-    --brand-strong: #7d311a;
-    --brand-soft: rgba(157, 68, 40, 0.15);
-    --accent-soft: rgba(202, 90, 61, 0.22);
-    --ok: #3f7d52;
-    --warn: #b07c24;
-    --info: #516f95;
+    --bg: #F4EFE8;
+    --bg-2: #E9E1D7;
+    --surface: rgba(255, 252, 247, 0.94);
+    --surface-2: rgba(250, 246, 240, 0.90);
+    --panel: rgba(255, 253, 249, 0.92);
+    --panel-solid: #FFFDF9;
 
+    --line: rgba(67, 39, 31, 0.16);
+    --line-strong: rgba(67, 39, 31, 0.30);
+
+    --text: #241A17;
+    --text-soft: #66544B;
+    --title: #17100E;
+
+    --brand: #7D2630;
+    --brand-strong: #5F1C25;
+    --brand-soft: rgba(125, 38, 48, 0.13);
+
+    --accent: #7D2630;
+    --accent-strong: #5F1C25;
+    --accent-soft: rgba(125, 38, 48, 0.16);
+
+    --ok: #477654;
+    --warn: #A87824;
+    --info: #526F91;
+
+    --border-soft: color-mix(in srgb, var(--line) 72%, transparent);
+    --border: color-mix(in srgb, var(--line-strong) 74%, transparent);
+    --border-strong: color-mix(in srgb, var(--line-strong) 90%, transparent);
+    --surface-gradient: linear-gradient(180deg, color-mix(in srgb, var(--surface) 96%, transparent) 0%, color-mix(in srgb, var(--surface-2) 84%, transparent) 100%);
+    --panel-gradient: linear-gradient(180deg, color-mix(in srgb, var(--panel-solid) 96%, transparent) 0%, color-mix(in srgb, var(--panel-solid) 90%, transparent) 100%);
+    --panel-gradient-soft: linear-gradient(180deg, color-mix(in srgb, var(--panel-solid) 96%, transparent) 0%, color-mix(in srgb, var(--panel-solid) 84%, transparent) 100%);
+    --focus-ring: color-mix(in srgb, var(--brand) 72%, #ffffff 28%);
+    --radius-0: 0;
     --radius-s: 10px;
     --radius-m: 16px;
     --radius-l: 22px;
@@ -41,31 +55,40 @@
 }
 
 :root[data-theme="dark"] {
-    --bg: #151516;
-    --bg-2: #20181a;
-    --surface: rgba(22, 16, 16, 0.92);
-    --surface-2: rgba(34, 25, 24, 0.94);
-    --panel: rgba(31, 23, 23, 0.94);
-    --panel-solid: #201616;
-    --line: rgba(210, 160, 96, 0.18);
-    --line-strong: rgba(210, 160, 96, 0.34);
-    --text: #f3ebe0;
-    --text-soft: #cbb7a2;
-    --title: #fff1de;
-    --brand: #d4af37;
-    --brand-strong: #f2cb6c;
-    --brand-soft: rgba(212, 175, 55, 0.16);
-    --accent: #8b2433;
-    --accent-strong: #b13d4b;
-    --accent-soft: rgba(139, 36, 51, 0.22);
-    --ok: #5aa170;
-    --warn: #d3a246;
-    --info: #8daed2;
+    --bg: #0C0E0F;
+  --bg-2: #1D1211;
+  --surface: rgba(18, 16, 16, 0.94);
+  --surface-2: rgba(29, 18, 17, 0.96);
+  --panel: rgba(24, 20, 19, 0.96);
+  --panel-solid: #1D1211;
+
+  --line: rgba(196, 185, 168, 0.18);
+  --line-strong: rgba(196, 185, 168, 0.34);
+
+  --text: #F5F0E9;
+  --text-soft: #C4B9A8;
+  --title: #FFF8EC;
+
+  --brand: #D4AF5A;
+  --brand-strong: #E5C77A;
+  --brand-soft: rgba(212, 175, 90, 0.15);
+
+  --accent: #8B2635;
+  --accent-strong: #B13D4C;
+  --accent-soft: rgba(139, 38, 53, 0.22);
+
+  --ok: #5A986A;
+  --warn: #D0A34D;
+  --info: #8EACCC;
 
     --shadow-soft: 0 3px 12px rgba(0, 0, 0, 0.34);
     --shadow-card: 0 18px 46px rgba(0, 0, 0, 0.44);
     --shadow-strong: 0 28px 72px rgba(0, 0, 0, 0.5);
 }
+
+/* ================================================================
+   02. RESET E ELEMENTOS BASE
+   ================================================================ */
 
 * {
     box-sizing: border-box;
@@ -82,7 +105,7 @@ body {
     overflow-x: hidden;
     color: var(--text);
     font-family: "Nunito", sans-serif;
-    line-height: 1.72;
+    line-height: 1.5;
     background:
         radial-gradient(circle at 12% 5%, var(--accent-soft), transparent 35%),
         radial-gradient(circle at 90% 0%, rgba(31, 31, 31, 0.05), transparent 25%),
@@ -102,20 +125,13 @@ a:focus-visible {
 }
 
 :where(a, button, summary, input, textarea, select, [tabindex]):focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--brand) 72%, #ffffff 28%);
+    outline: 2px solid var(--focus-ring);
     outline-offset: 2px;
 }
 
 img {
     display: block;
     max-width: 100%;
-    border: 0;
-    border-radius: var(--radius-s);
-}
-
-.header-brand img,
-.classificacao-box img,
-img[src*="/classificacao/"] {
     border: 0;
 }
 
@@ -227,21 +243,24 @@ h3 {
     width: 46px;
     height: 1px;
     margin-bottom: 0.55rem;
-    background: color-mix(in srgb, var(--line) 45%, transparent);
+    background: color-mix(in srgb, var(--line) 52%, transparent);
 }
 
 li {
     margin-left: 1.35rem;
 }
 
+/* ================================================================
+   03. ACESSIBILIDADE E NAVEGACAO GLOBAL
+   ================================================================ */
+
 .skip-link {
     left: 1rem;
     position: absolute;
     top: -100px;
     border: 1px solid var(--line-strong);
-    border-radius: var(--radius-s);
     padding: 0.5rem 0.8rem;
-    background: var(--surface-solid);
+    background: var(--panel-solid);
     color: var(--brand);
     z-index: 100;
 }
@@ -256,12 +275,10 @@ li {
     z-index: 40;
     width: min(1360px, calc(100% - 1rem));
     margin: 0.65rem auto 0;
-    border: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
-    border-radius: var(--radius-xl);
+    border: none;
     padding: 0.35rem 0.55rem 0.5rem;
     backdrop-filter: blur(18px);
-    background:
-        linear-gradient(180deg, color-mix(in srgb, var(--surface) 98%, transparent) 0%, color-mix(in srgb, var(--surface-2) 82%, transparent) 100%);
+    background: var(--surface-gradient);
     box-shadow: var(--shadow-card);
 }
 
@@ -334,6 +351,7 @@ li {
     padding: 0.55rem 0.35rem 0.1rem;
 }
 
+/* Desktop: posicionamento das acoes da navegacao. */
 @media (min-width: 931px) {
     .nav {
         position: relative;
@@ -364,7 +382,6 @@ li {
     align-items: center;
     justify-content: center;
     border: 1px solid transparent;
-    border-radius: 999px;
     padding: 0.48rem 0.88rem;
     background: color-mix(in srgb, var(--panel-solid) 58%, transparent);
     color: var(--text-soft);
@@ -388,7 +405,6 @@ li {
     width: 2.3rem;
     height: 2.3rem;
     border: 1px solid color-mix(in srgb, var(--line-strong) 72%, transparent);
-    border-radius: 999px;
     background: color-mix(in srgb, var(--panel-solid) 80%, transparent);
     color: var(--text-soft);
     cursor: pointer;
@@ -397,6 +413,10 @@ li {
 .nav-menu-toggle {
     display: none;
 }
+
+/* ================================================================
+   04. LAYOUT PRINCIPAL
+   ================================================================ */
 
 .container {
     display: grid;
@@ -414,10 +434,9 @@ li {
 .main-content,
 .infobox {
     min-width: 0;
-    border: 1px solid color-mix(in srgb, var(--line) 82%, transparent);
-    border-radius: var(--radius-l);
+    border: none;
     background:
-        linear-gradient(180deg, color-mix(in srgb, var(--surface) 96%, transparent) 0%, color-mix(in srgb, var(--surface-2) 84%, transparent) 100%);
+        var(--surface-gradient);
     box-shadow: var(--shadow-card);
 }
 
@@ -478,7 +497,6 @@ li {
 .main-galeria img {
     aspect-ratio: 4 / 5;
     object-fit: cover;
-    border-radius: var(--radius-s);
 }
 
 img[data-zoom-bound="true"] {
@@ -502,15 +520,18 @@ img[data-zoom-bound="true"]:focus-visible {
     transform: translateY(-2px) scale(1.015);
 }
 
+/* ================================================================
+   05. INFOBOX DE ESPETACULO
+   ================================================================ */
+
 .show-infobox {
     float: right;
     overflow: hidden;
     width: min(340px, 100%);
     max-width: 100%;
     margin: 0.2rem 0 1.15rem 1.2rem;
-    border: 1px solid color-mix(in srgb, var(--line-strong) 90%, transparent);
-    border-radius: var(--radius-m);
-    background: linear-gradient(180deg, color-mix(in srgb, var(--panel-solid) 94%, transparent) 0%, color-mix(in srgb, var(--panel-solid) 82%, transparent) 100%);
+    border: none;
+    background: var(--panel-gradient);
     box-shadow: var(--shadow-card);
 }
 
@@ -590,7 +611,7 @@ img[data-zoom-bound="true"]:focus-visible {
 .show-infobox .show-infobox-meta td > span:not(:first-of-type) {
     margin-top: 0.35rem;
     padding-top: 0.35rem;
-    border-top: 1px dashed color-mix(in srgb, var(--line-strong) 74%, transparent);
+    border-top: 1px dashed var(--border);
 }
 
 .show-infobox-location {
@@ -609,15 +630,18 @@ img[data-zoom-bound="true"]:focus-visible {
     line-height: 1.45;
 }
 
+/* ================================================================
+   06. TABELAS E INFORMACOES ESTRUTURADAS
+   ================================================================ */
+
 table,
 .tabela-vitrine,
 .classificacao-box {
     width: 100%;
     margin: 0.9rem 0 1.35rem;
-    border: 1px solid color-mix(in srgb, var(--line-strong) 72%, transparent);
+    border: none;
     border-collapse: collapse;
-    border-radius: var(--radius-m);
-    background: linear-gradient(180deg, color-mix(in srgb, var(--panel-solid) 96%, transparent) 0%, color-mix(in srgb, var(--panel-solid) 90%, transparent) 100%);
+    background: var(--panel-gradient);
     box-shadow: var(--shadow-card);
     overflow: hidden;
 }
@@ -718,12 +742,15 @@ th[scope="row"] {
     align-content: start;
 }
 
+/* ================================================================
+   07. LOTES E PRECOS
+   ================================================================ */
+
 .lotes-spoiler {
     margin: 0;
     padding: 0.7rem 0.78rem;
-    border: 1px solid color-mix(in srgb, var(--line-strong) 76%, transparent);
-    border-radius: var(--radius-m);
-    background: linear-gradient(180deg, color-mix(in srgb, var(--panel-solid) 95%, transparent) 0%, color-mix(in srgb, var(--panel-solid) 89%, transparent) 100%);
+    border: none;
+    background: var(--panel-gradient);
     box-shadow: var(--shadow-card);
 }
 
@@ -779,7 +806,6 @@ th[scope="row"] {
 .lotes-spoiler summary:focus-visible {
     outline: 2px solid color-mix(in srgb, var(--brand) 68%, #ffffff 32%);
     outline-offset: 2px;
-    border-radius: 4px;
 }
 
 .lotes-spoiler[open] summary {
@@ -803,6 +829,10 @@ th[scope="row"] {
     font-weight: 700;
 }
 
+/* ================================================================
+   08. ACERVO, ESPETACULOS E GALERIAS
+   ================================================================ */
+
 .grade-espetaculos {
     width: 100%;
 }
@@ -814,10 +844,9 @@ div.grade-espetaculos {
 }
 
 div.grade-espetaculos > a {
-    border: 1px solid var(--line);
-    border-radius: var(--radius-m);
+    border: none;
     padding: 0.65rem;
-    background: linear-gradient(180deg, color-mix(in srgb, var(--panel-solid) 96%, transparent) 0%, color-mix(in srgb, var(--panel-solid) 84%, transparent) 100%);
+    background: var(--panel-gradient-soft);
     box-shadow: var(--shadow-card);
     color: var(--text);
     text-decoration: none;
@@ -857,8 +886,7 @@ div.grade-espetaculos > a:hover {
 
 .acervo-filtros {
     margin: 1rem 0;
-    border: 1px solid var(--line);
-    border-radius: var(--radius-m);
+    border: none;
     background: color-mix(in srgb, var(--panel-solid) 92%, transparent);
     padding: 0.85rem;
 }
@@ -873,7 +901,6 @@ div.grade-espetaculos > a:hover {
 .acervo-filtros-input {
     width: 100%;
     border: 1px solid var(--line-strong);
-    border-radius: var(--radius-s);
     padding: 0.62rem 0.72rem;
     background: var(--panel-solid);
     color: var(--text);
@@ -921,11 +948,9 @@ div.grade-espetaculos > a:hover {
     min-width: 0;
     height: 100%;
     min-height: 0;
-    box-sizing: border-box;
-    border: 1px solid color-mix(in srgb, var(--line-strong) 78%, transparent);
-    border-radius: var(--radius-m);
+    border: none;
     padding: 0.75rem;
-    background: linear-gradient(180deg, color-mix(in srgb, var(--panel-solid) 96%, transparent) 0%, color-mix(in srgb, var(--panel-solid) 88%, transparent) 100%);
+    background: var(--panel-gradient);
     box-shadow: var(--shadow-card);
 }
 
@@ -935,7 +960,6 @@ div.grade-espetaculos > a:hover {
     max-width: 100%;
     height: auto;
     margin: 0 auto;
-    border-radius: var(--radius-m);
     box-shadow: var(--shadow-card);
 }
 
@@ -957,6 +981,10 @@ div.grade-espetaculos > a:hover {
     text-transform: uppercase;
 }
 
+/* ================================================================
+   09. CURRICULO E PAGINAS EDITORIAIS
+   ================================================================ */
+
 .curriculo-page .curriculo-resumo,
 .curriculo-page .curriculo-linha-tempo,
 .curriculo-page .curriculo-item,
@@ -967,19 +995,17 @@ div.grade-espetaculos > a:hover {
 
 .curriculo-secao-cabecalho,
 .curriculo-ano {
-    border: 1px solid color-mix(in srgb, var(--line-strong) 74%, transparent);
-    border-radius: var(--radius-m);
+    border: none;
     padding: 0.9rem;
-    background: linear-gradient(180deg, color-mix(in srgb, var(--panel-solid) 95%, transparent) 0%, color-mix(in srgb, var(--panel-solid) 90%, transparent) 100%);
+    background: var(--panel-gradient);
     box-shadow: var(--shadow-card);
 }
 
 .curriculo-resumo,
 .galeria-intro {
-    border: 1px solid color-mix(in srgb, var(--line-strong) 74%, transparent);
-    border-radius: var(--radius-m);
+    border: none;
     padding: 0.9rem;
-    background: linear-gradient(180deg, color-mix(in srgb, var(--panel-solid) 95%, transparent) 0%, color-mix(in srgb, var(--panel-solid) 90%, transparent) 100%);
+    background: var(--panel-gradient);
 }
 
 .info-grid {
@@ -992,9 +1018,8 @@ div.grade-espetaculos > a:hover {
 .info-grid li {
     margin: 0;
     border: 1px solid color-mix(in srgb, var(--line-strong) 70%, transparent);
-    border-radius: var(--radius-s);
     padding: 0.75rem 0.8rem;
-    background: linear-gradient(180deg, color-mix(in srgb, var(--panel-solid) 96%, transparent) 0%, color-mix(in srgb, var(--panel-solid) 91%, transparent) 100%);
+    background: var(--panel-gradient);
 }
 
 .curriculo-linha-tempo {
@@ -1038,24 +1063,11 @@ div.grade-espetaculos > a:hover {
 }
 
 .curriculo-item {
-    border: 1px solid color-mix(in srgb, var(--line-strong) 74%, transparent);
-    border-radius: var(--radius-m);
+    border: 1px solid var(--border);
     padding: 0.85rem 0.9rem;
-    background: linear-gradient(180deg, color-mix(in srgb, var(--panel-solid) 96%, transparent) 0%, color-mix(in srgb, var(--panel-solid) 90%, transparent) 100%);
+    background: var(--panel-gradient);
 }
 
-.curriculo-item h4 {
-    margin-bottom: 0.2rem;
-}
-
-.curriculo-item + .curriculo-item h4::before {
-    content: "";
-    display: block;
-    width: 46px;
-    height: 1px;
-    margin-bottom: 0.55rem;
-    background: color-mix(in srgb, var(--line) 52%, transparent);
-}
 
 .curriculo-ano-itens .curriculo-item {
     margin: 0;
@@ -1073,12 +1085,15 @@ div.grade-espetaculos > a:hover {
     margin-bottom: 0;
 }
 
+/* ================================================================
+   10. COUNTDOWN E CHAMADAS PARA ACAO
+   ================================================================ */
+
 .countdown-container {
     margin: 1rem 0;
     padding: 1rem;
     border: 1px solid color-mix(in srgb, var(--line-strong) 76%, transparent);
-    border-radius: var(--radius-l);
-    background: linear-gradient(180deg, color-mix(in srgb, var(--panel-solid) 96%, transparent) 0%, color-mix(in srgb, var(--panel-solid) 90%, transparent) 100%);
+    background: var(--panel-gradient);
     box-shadow: var(--shadow-card);
 }
 
@@ -1091,7 +1106,6 @@ div.grade-espetaculos > a:hover {
 .countdown-unit {
     padding: 0.85rem 0.7rem;
     border: 1px solid color-mix(in srgb, var(--line-strong) 68%, transparent);
-    border-radius: var(--radius-m);
     background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 92%, transparent) 0%, color-mix(in srgb, var(--surface-2) 88%, transparent) 100%);
     text-align: center;
 }
@@ -1119,7 +1133,6 @@ div.grade-espetaculos > a:hover {
     justify-content: center;
     gap: 0.25rem;
     border: 1px solid transparent;
-    border-radius: var(--radius-s);
     margin: 0.45rem 0;
     padding: 0.64rem 0.9rem;
     font-weight: 800;
@@ -1183,7 +1196,6 @@ div.grade-espetaculos > a:hover {
 
 .btn-cta-whatsapp {
     border: 1px solid color-mix(in srgb, var(--ok) 60%, #203127 40%);
-    border-radius: 10px;
     padding: 0.78rem 0.98rem;
     background: linear-gradient(
         140deg,
@@ -1215,6 +1227,10 @@ div.grade-espetaculos > a:hover {
     outline-offset: 2px;
 }
 
+/* ================================================================
+   11. ACOES FLUTUANTES E CONTROLES AUXILIARES
+   ================================================================ */
+
 .quick-cta-bar {
     position: fixed;
     left: 50%;
@@ -1224,7 +1240,6 @@ div.grade-espetaculos > a:hover {
     gap: 0.45rem;
     transform: translateX(-50%);
     border: 1px solid var(--line);
-    border-radius: 999px;
     padding: 0.4rem;
     background: color-mix(in srgb, var(--panel-solid) 94%, transparent);
     box-shadow: var(--shadow-card);
@@ -1240,7 +1255,6 @@ div.grade-espetaculos > a:hover {
 
 .quick-cta {
     border: 1px solid var(--line);
-    border-radius: 999px;
     padding: 0.5rem 0.9rem;
     background: var(--panel-solid);
     color: var(--text);
@@ -1266,7 +1280,7 @@ div.grade-espetaculos > a:hover {
     height: 2.45rem;
     border: 1px solid color-mix(in srgb, var(--line-strong) 76%, transparent);
     border-radius: 999px;
-    background: color-mix(in srgb, var(--panel-solid) 96%, transparent);
+    background: var(--panel-solid);
     color: var(--text-soft);
     box-shadow: var(--shadow-soft);
     opacity: 0;
@@ -1283,6 +1297,10 @@ body.has-quick-cta #scroll-topo {
     pointer-events: auto;
 }
 
+/* ================================================================
+   12. MODAL DE IMAGENS E RODAPE
+   ================================================================ */
+
 .image-modal {
     position: fixed;
     inset: 0;
@@ -1297,7 +1315,6 @@ body.has-quick-cta #scroll-topo {
 .modal-content {
     max-width: min(92vw, 1080px);
     max-height: 90vh;
-    border-radius: var(--radius-m);
 }
 
 .close-modal {
@@ -1313,11 +1330,9 @@ body.has-quick-cta #scroll-topo {
 .footer {
     width: min(1360px, calc(100% - 1rem));
     margin: 0 auto 1.5rem;
-    border: 1px solid color-mix(in srgb, var(--line-strong) 74%, transparent);
-    border-radius: var(--radius-l);
+    border: none;
     padding: 1rem 1.1rem 1.05rem;
-    background:
-        linear-gradient(180deg, color-mix(in srgb, var(--surface) 97%, transparent) 0%, color-mix(in srgb, var(--surface-2) 88%, transparent) 100%);
+    background: var(--surface-gradient);
     color: var(--text-soft);
     line-height: 1.45;
     text-align: center;
@@ -1373,6 +1388,10 @@ body.has-quick-cta #scroll-topo {
     border: 0;
 }
 
+/* ================================================================
+   13. COMPONENTES ESPECIFICOS DE PAGINA
+   ================================================================ */
+
 .obra-referencia-kicker {
     color: var(--text-soft);
     font-size: 0.8rem;
@@ -1391,25 +1410,21 @@ body.has-quick-cta #scroll-topo {
     gap: 0.75rem;
     align-items: start;
     padding: 0.75rem;
+    border: none;
+    background: var(--panel-gradient);
 }
 
 .classificacao-box img {
     width: 80px;
-    border-radius: var(--radius-s);
-}
-
-.classificacao-box {
-    border: 1px solid color-mix(in srgb, var(--line-strong) 74%, transparent);
-    background: linear-gradient(180deg, color-mix(in srgb, var(--panel-solid) 96%, transparent) 0%, color-mix(in srgb, var(--panel-solid) 90%, transparent) 100%);
 }
 
 .classificacao-texto {
     min-width: 0;
-    line-height: 1.5;
 }
 
 .classificacao-texto p {
     margin-bottom: 0.5rem;
+    text-align: left;
 }
 
 .classificacao-texto p:last-child {
@@ -1426,6 +1441,10 @@ body.has-quick-cta #scroll-topo {
     width: 100%;
     max-width: 100%;
 }
+
+/* ================================================================
+   14. COMPOSICAO DE PAGINAS DE ESPETACULO
+   ================================================================ */
 
 .main-content:has(.show-infobox) table:not(.show-infobox-meta):not(.tabela-precos),
 .main-content:has(.show-infobox) .tabela-vitrine:not(.tabela-precos),
@@ -1449,6 +1468,10 @@ body.has-quick-cta #scroll-topo {
     margin: 0.85rem 0 1.35rem;
     background: linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--line-strong) 80%, transparent) 12%, color-mix(in srgb, var(--line-strong) 60%, transparent) 88%, transparent 100%);
 }
+
+/* ================================================================
+   15. RESPONSIVIDADE
+   ================================================================ */
 
 @media (min-width: 931px) {
     .main-content:has(.show-infobox) {
@@ -1474,13 +1497,15 @@ body.has-quick-cta #scroll-topo {
         margin: 0;
     }
 
-    .main-content:has(.show-infobox) table:not(.show-infobox-meta):not(.tabela-precos),
-    .main-content:has(.show-infobox) .tabela-vitrine:not(.tabela-precos),
-    .main-content:has(.show-infobox) .btn-cta-sympla,
-    .main-content:has(.show-infobox) .btn-cta-ticket,
-    .main-content:has(.show-infobox) .btn-cta-whatsapp,
-    .main-content:has(.show-infobox) .lotes-layout,
-    .main-content:has(.show-infobox) .lotes-layout + p[style*="text-align: center"] {
+    .main-content:has(.show-infobox) :is(
+        table:not(.show-infobox-meta):not(.tabela-precos),
+        .tabela-vitrine:not(.tabela-precos),
+        .btn-cta-sympla,
+        .btn-cta-ticket,
+        .btn-cta-whatsapp,
+        .lotes-layout,
+        .lotes-layout + p[style*="text-align: center"]
+    ) {
         width: 100%;
     }
 }
@@ -1502,7 +1527,6 @@ body.has-quick-cta #scroll-topo {
         width: calc(100% - 0.6rem);
         top: 0.35rem;
         margin-top: 0.35rem;
-        border-radius: 20px;
     }
 
     .header-brand {
@@ -1553,10 +1577,6 @@ body.has-quick-cta #scroll-topo {
         width: calc(100% - 0.6rem);
     }
 
-    .container:has(> .infobox) {
-        grid-template-columns: 1fr;
-    }
-
     .infobox {
         position: static;
     }
@@ -1568,7 +1588,6 @@ body.has-quick-cta #scroll-topo {
     }
 
     .show-infobox .show-infobox-poster img {
-        display: block;
         width: min(100%, 260px);
         margin-inline: auto;
     }
@@ -1578,16 +1597,13 @@ body.has-quick-cta #scroll-topo {
         gap: 0.55rem;
     }
 
-    .main-content .lotes-layout,
-    .main-content:has(.show-infobox) .lotes-layout,
-    .main-content .lotes-layout + p[style*="text-align: center"],
-    .main-content:has(.show-infobox) .lotes-layout + p[style*="text-align: center"] {
+    .lotes-layout,
+    .lotes-layout + p[style*="text-align: center"] {
         width: 100%;
     }
 
     .quick-cta-bar {
         width: calc(100vw - 1rem);
-        border-radius: var(--radius-l);
         justify-content: center;
     }
 
@@ -1599,7 +1615,6 @@ body.has-quick-cta #scroll-topo {
     .footer {
         width: calc(100% - 0.6rem);
         margin: 0 auto 1.25rem;
-        border-radius: 20px;
     }
 
     .countdown-display {
@@ -1608,9 +1623,6 @@ body.has-quick-cta #scroll-topo {
 }
 
 @media (max-width: 700px) {
-    body {
-        line-height: 1.65;
-    }
 
     .header-brand {
         gap: 0.28rem;
@@ -1692,6 +1704,11 @@ body.has-quick-cta #scroll-topo {
     }
 }
 
+/* ================================================================
+   16. ACESSIBILIDADE DE MOVIMENTO
+   ================================================================ */
+
+/* Respect user motion preferences. */
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
