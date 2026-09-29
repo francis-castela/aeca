@@ -1,0 +1,101 @@
+{
+  "siteBaseUrl": "https://aeca.com.br",
+  "templates": [
+    {
+      "id": "espetaculo",
+      "label": "Espetáculo",
+      "description": "Ficha de espetáculo em divulgação ou registro histórico.",
+      "file": "espetaculo.html",
+      "defaultDirectory": "espetaculos/{year}",
+      "fields": [
+        {"id":"title","label":"Título do espetáculo","type":"text","required":true,"placeholder":"Ex.: A Menina e o Vento"},
+        {"id":"description","label":"Descrição para buscadores","type":"textarea","required":true,"rows":3,"placeholder":"Resumo breve para resultados e compartilhamento"},
+        {"id":"year","label":"Ano da montagem","type":"number","required":true,"default":"currentYear","min":1900,"max":2100},
+        {"id":"status","label":"Etapa","type":"select","options":[{"value":"divulgacao","label":"Divulgação"},{"value":"historico","label":"Registro histórico"}],"default":"divulgacao"},
+        {"id":"subtitle","label":"Subtítulo ou temporada","type":"text","placeholder":"Ex.: Processo de pesquisa e montagem 2026/1"},
+        {"id":"synopsis","label":"Sinopse / apresentação","type":"textarea","required":true,"rows":5},
+        {"id":"poster","label":"Cartaz (imagem do projeto)","type":"image","required":true,"placeholder":"Selecione uma imagem existente"},
+        {"id":"socialImage","label":"Imagem de compartilhamento (opcional)","type":"image","placeholder":"Selecione uma imagem existente"},
+        {"id":"sessions","label":"Apresentações (uma por linha)","type":"textarea","rows":3,"placeholder":"25/07 - Sábado - 20:00"},
+        {"id":"venue","label":"Local","type":"text"},
+        {"id":"address","label":"Endereço","type":"text"},
+        {"id":"mapUrl","label":"Link do mapa","type":"url","placeholder":"https://..."},
+        {"id":"work","label":"Obra de referência","type":"text"},
+        {"id":"author","label":"Autor(es)","type":"text"},
+        {"id":"ticketUrl","label":"Link de ingressos (opcional)","type":"url","placeholder":"https://..."},
+        {"id":"cast","label":"Elenco (uma linha Personagem | Ator/Atriz)","type":"textarea","rows":5,"placeholder":"Personagem | Nome"},
+        {"id":"crew","label":"Ficha técnica (uma linha Função | Responsável)","type":"textarea","rows":5,"placeholder":"Direção | Nome"},
+        {"id":"gallery","label":"Fotos da galeria (selecione imagens do projeto)","type":"imageList","rows":4,"placeholder":"Uma imagem por linha"},
+        {"id":"photographer","label":"Crédito fotográfico (opcional)","type":"text"}
+      ]
+    },
+    {
+      "id": "institucional",
+      "label": "Institucional / artigo",
+      "description": "Página editorial simples com parágrafos, subtítulos e listas.",
+      "file": "institucional.html",
+      "defaultDirectory": ".",
+      "fields": [
+        {"id":"title","label":"Título","type":"text","required":true},
+        {"id":"description","label":"Descrição para buscadores","type":"textarea","required":true,"rows":3},
+        {"id":"subtitle","label":"Subtítulo (opcional)","type":"text"},
+        {"id":"content","label":"Conteúdo","type":"textarea","required":true,"rows":12,"placeholder":"Escreva texto simples. Separe parágrafos com uma linha vazia. Use ## para subtítulos e - para itens de lista."},
+        {"id":"socialImage","label":"Imagem de compartilhamento (opcional)","type":"image"}
+      ]
+    },
+    {
+      "id": "perfil",
+      "label": "Perfil / currículo",
+      "description": "Perfil biográfico com foto, apresentação e trajetória cronológica.",
+      "file": "perfil.html",
+      "defaultDirectory": ".",
+      "fields": [
+        {"id":"title","label":"Nome da pessoa","type":"text","required":true},
+        {"id":"description","label":"Descrição para buscadores","type":"textarea","required":true,"rows":3},
+        {"id":"role","label":"Atuação / função","type":"text","placeholder":"Ex.: Ator, diretor e professor"},
+        {"id":"portrait","label":"Retrato (imagem do projeto)","type":"image","required":true},
+        {"id":"socialImage","label":"Imagem de compartilhamento (opcional)","type":"image"},
+        {"id":"biography","label":"Apresentação biográfica","type":"textarea","required":true,"rows":7},
+        {"id":"timeline","label":"Trajetória (uma linha Ano | Atividade)","type":"textarea","rows":8,"placeholder":"2020 | Participação no espetáculo..."},
+        {"id":"gallery","label":"Imagens adicionais (opcional)","type":"imageList","rows":4}
+      ]
+    },
+    {
+      "id": "galeria",
+      "label": "Galeria histórica",
+      "description": "Galeria de imagens agrupada por título e período, semelhante às galerias existentes.",
+      "file": "galeria.html",
+      "defaultDirectory": "anchieta",
+      "fields": [
+        {"id":"title","label":"Título da página","type":"text","required":true,"default":"Galeria histórica"},
+        {"id":"description","label":"Descrição para buscadores","type":"textarea","required":true,"rows":3},
+        {"id":"subtitle","label":"Grupo / projeto","type":"text","required":true,"placeholder":"Ex.: Anchieta Arte Cênica"},
+        {"id":"intro","label":"Texto de introdução","type":"textarea","rows":5},
+        {"id":"groups","label":"Grupos de imagens (uma linha: Período | Título | caminhos de imagens separados por vírgula)","type":"textarea","rows":10,"placeholder":"1985 | O Castelo da Bruxolândia | /anchieta/img/cartaz.webp, /anchieta/img/foto-1.webp"},
+        {"id":"socialImage","label":"Imagem de compartilhamento (opcional)","type":"image"}
+      ]
+    },
+    {
+      "id": "evento",
+      "label": "Evento / curso",
+      "description": "Página de divulgação de evento ou curso com dados de inscrição e perguntas frequentes.",
+      "file": "evento.html",
+      "defaultDirectory": "cbt",
+      "fields": [
+        {"id":"title","label":"Título do evento/curso","type":"text","required":true},
+        {"id":"description","label":"Descrição para buscadores","type":"textarea","required":true,"rows":3},
+        {"id":"subtitle","label":"Subtítulo / edição","type":"text"},
+        {"id":"image","label":"Imagem principal (imagem do projeto)","type":"image"},
+        {"id":"socialImage","label":"Imagem de compartilhamento (opcional)","type":"image"},
+        {"id":"content","label":"Apresentação","type":"textarea","rows":7,"placeholder":"Texto simples. Parágrafos separados por linha vazia; ## cria subtítulo; - cria lista."},
+        {"id":"dates","label":"Datas e horários","type":"textarea","rows":3,"placeholder":"20 de julho de 2026, das 19h às 22h"},
+        {"id":"venue","label":"Local","type":"text"},
+        {"id":"address","label":"Endereço","type":"text"},
+        {"id":"mapUrl","label":"Link do mapa","type":"url","placeholder":"https://..."},
+        {"id":"price","label":"Investimento / valores","type":"text"},
+        {"id":"registrationUrl","label":"Link de inscrição (opcional)","type":"url","placeholder":"https://..."},
+        {"id":"faq","label":"Perguntas frequentes (uma linha: Pergunta | Resposta)","type":"textarea","rows":6}
+      ]
+    }
+  ]
+}

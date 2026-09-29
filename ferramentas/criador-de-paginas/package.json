@@ -1,0 +1,27 @@
+{
+  "name": "aeca-criador-de-paginas",
+  "displayName": "AECA — Criador de páginas",
+  "description": "Extensão local do VS Code para gerar páginas HTML no padrão do site AECA.",
+  "version": "1.0.0",
+  "publisher": "aeca-local",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "main": "./extension.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "aeca.criadorDePaginas.abrir",
+        "title": "AECA: Criar página HTML"
+      },
+      {
+        "command": "aeca.criadorDePaginas.editar",
+        "title": "AECA: Editar página HTML existente"
+      }
+    ]
+  }
+}
