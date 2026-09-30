@@ -73,12 +73,18 @@ function activate(context) {
           const relativeFile = generator.destinationPath(relativeDirectory, slug);
           const target = path.resolve(root, ...relativeFile.split('/'));
           if (target !== root && !target.startsWith(root + path.sep)) throw new Error('O caminho calculado sai da pasta do site.');
-          if (fs.existsSync(target)) throw new Error(`A página já existe e não será sobrescrita: ${relativeFile}`);
+          const targetExists = fs.existsSync(target);
+          if (targetExists) {
+            if (message.sourcePath !== relativeFile) throw new Error(`A página já existe e não será sobrescrita: ${relativeFile}`);
+            const confirmation = await vscode.window.showWarningMessage(`Substituir a página importada ${relativeFile}?`, 'Substituir página');
+            if (confirmation !== 'Substituir página') { panel.webview.postMessage({ command: 'cancelled' }); return; }
+          }
           for (const field of definition.fields) {
             const value = fields[field.id];
             if (field.required && !String(value || '').trim()) throw new Error(`Preencha o campo obrigatório: ${field.label}.`);
           }
           const imagePlan = planImageImports(root, definition.id, relativeDirectory, slug, message.imageSources || {});
+          const blocks = resolveBlockImages(message.blocks, imagePlan);
           for (const item of imagePlan) {
             for (const source of item.sourceEntries) {
               if (source.dataUrl) continue;
@@ -97,7 +103,7 @@ function activate(context) {
             }
           }
           const template = fs.readFileSync(path.join(extensionRoot, 'templates', definition.file), 'utf8');
-          const html = generator.generatePage({ templateId: definition.id, template, fields, slug, pagePath: relativeFile, siteBaseUrl: catalog.siteBaseUrl });
+          const html = generator.generatePage({ templateId: definition.id, template, fields, blocks, slug, pagePath: relativeFile, siteBaseUrl: catalog.siteBaseUrl });
           await copyImageImports(imagePlan);
           const imageReferences = [...html.matchAll(/<img\b[^>]*\bsrc="(\/[^"\s]+)"/gi)].map(match => match[1]);
           for (const reference of imageReferences) {
@@ -105,8 +111,11 @@ function activate(context) {
             if (!imageFile.startsWith(root + path.sep) || !fs.existsSync(imageFile) || !fs.statSync(imageFile).isFile()) throw new Error(`A página referencia uma imagem inexistente: ${reference}`);
           }
           await fs.promises.mkdir(path.dirname(target), { recursive: true });
-          const handle = await fs.promises.open(target, 'wx');
-          try { await handle.writeFile(html, 'utf8'); } finally { await handle.close(); }
+          if (targetExists) await fs.promises.writeFile(target, html, 'utf8');
+          else {
+            const handle = await fs.promises.open(target, 'wx');
+            try { await handle.writeFile(html, 'utf8'); } finally { await handle.close(); }
+          }
           const document = await vscode.workspace.openTextDocument(vscode.Uri.file(target));
           await vscode.window.showTextDocument(document, vscode.ViewColumn.One);
           panel.webview.postMessage({ command: 'created', path: relativeFile });
@@ -119,12 +128,13 @@ function activate(context) {
           const previewSlug = generator.slugify(fields.title || 'preview') || 'preview';
           const relativeDirectory = generator.resolveDestination(message.directory || definition.defaultDirectory.replace('{year}', String(new Date().getFullYear())));
           const imagePlan = planImageImports(root, definition.id, relativeDirectory, previewSlug, message.imageSources || {});
+          const blocks = resolveBlockImages(message.blocks, imagePlan);
           for (const item of imagePlan) {
             for (const source of item.sourceEntries) if (!source.dataUrl && !source.sourcePath) throw new Error(`Os dados da imagem ${source.label || 'selecionada'} ainda não foram carregados.`);
             fields[item.fieldId] = item.publicPaths.join('\n');
           }
           const template = fs.readFileSync(path.join(extensionRoot, 'templates', definition.file), 'utf8');
-          let html = generator.generatePage({ templateId: definition.id, template, fields, slug: previewSlug, pagePath: path.posix.join(relativeDirectory, `${previewSlug}.html`), siteBaseUrl: catalog.siteBaseUrl });
+          let html = generator.generatePage({ templateId: definition.id, template, fields, blocks, slug: previewSlug, pagePath: path.posix.join(relativeDirectory, `${previewSlug}.html`), siteBaseUrl: catalog.siteBaseUrl });
           for (const item of imagePlan) {
             item.publicPaths.forEach((publicPath, index) => {
               const source = item.sourceEntries[index];
@@ -133,10 +143,11 @@ function activate(context) {
               html = html.split(`src="${publicPath}"`).join(`src="${dataUri}"`);
             });
           }
+          html = embedPreviewImages(html, root);
           let siteCss = fs.readFileSync(path.join(root, 'css', 'styles', 'style.css'), 'utf8');
           const fontPath = path.join(root, 'css', 'fonts', 'Nunito.ttf');
           if (fs.existsSync(fontPath)) siteCss = siteCss.replace(/url\(["']?\/css\/fonts\/Nunito\.ttf["']?\)/gi, `url(data:font/ttf;base64,${fs.readFileSync(fontPath).toString('base64')})`);
-          siteCss += '\n.header { position: sticky !important; top: 0 !important; z-index: 1000 !important; }';
+          siteCss += '\n.header { position: sticky !important; top: 0 !important; z-index: 1000 !important; width: 100% !important; max-width: none !important; margin: 0 !important; }';
           siteCss = siteCss.replace(/<\/style/gi, '<\\/style');
           const headerHtml = embedPreviewImages(fs.readFileSync(path.join(root, 'html', 'cabecalho.html'), 'utf8'), root);
           const footerHtml = embedPreviewImages(fs.readFileSync(path.join(root, 'html', 'footer.html'), 'utf8'), root);
@@ -174,29 +185,29 @@ async function openExistingPage(context, knownRoot, panel) {
     return;
   }
   if (panel) {
-    const content = await fs.promises.readFile(files[0], 'utf8');
-    const templateId = content.includes('show-infobox') ? 'espetaculo' : content.includes('galeria') || content.includes('main-galeria') ? 'galeria' : content.includes('tabela-ficha') ? 'perfil' : 'institucional';
-    const imageSources = extractImportedImages(content, root);
-    await panel.webview.postMessage({ command: 'pageImported', templateId, path: relative.replace(/\\/g, '/'), content, imageSources });
+    const content = await fs.promises.readFile(selected, 'utf8');
+    await panel.webview.postMessage({ command: 'pageImported', templateId: 'geral', path: relative.replace(/\\/g, '/'), content, imageSources: {} });
     return;
   }
   const document = await vscode.workspace.openTextDocument(files[0]);
   await vscode.window.showTextDocument(document, vscode.ViewColumn.One);
 }
 
-function extractImportedImages(content, root) {
-  const poster = content.match(/<figure[^>]*class="[^"]*show-infobox-poster[^"]*"[^>]*>[\s\S]*?<img\b[^>]*\bsrc="(\/[^"\s]+)"/i)?.[1];
-  const galleryBlock = content.match(/<div[^>]*class="[^"]*main-galeria[^"]*"[^>]*>([\s\S]*?)<\/div>/i)?.[1] || '';
-  const gallery = [...galleryBlock.matchAll(/<img\b[^>]*\bsrc="(\/[^"\s]+)"/gi)].map(match => match[1]);
-  const selected = {};
-  if (poster) selected.poster = [{ token: `@imported-${crypto.randomUUID()}`, label: path.basename(poster), sourcePath: path.resolve(root, ...poster.slice(1).split('/')) }];
-  if (gallery.length) selected.gallery = gallery.map(image => ({ token: `@imported-${crypto.randomUUID()}`, label: path.basename(image), sourcePath: path.resolve(root, ...image.slice(1).split('/')) }));
-  return selected;
-}
-
 function imageTargetDirectory(templateId, relativeDirectory) {
   if (templateId === 'perfil' || templateId === 'institucional') return 'css/img';
   return path.posix.join(relativeDirectory || '.', 'img');
+}
+
+function resolveBlockImages(blocks, imagePlan) {
+  const media = imagePlan.find(item => item.fieldId === 'media');
+  if (!media) return blocks;
+  const paths = new Map(media.sourceEntries.map((source, index) => [source.token, media.publicPaths[index]]));
+  const resolveImage = image => ({ ...image, src: paths.get(image.src) || image.src });
+  return (Array.isArray(blocks) ? blocks : []).map(block => {
+    if (block.type === 'image') return { ...block, ...resolveImage(block) };
+    if (block.type === 'gallery') return { ...block, images: (block.images || []).map(resolveImage) };
+    return block;
+  });
 }
 
 function imageBaseName(fieldId, slug, index) {
@@ -212,11 +223,7 @@ function mimeType(extension) {
 }
 
 function embedPreviewImages(markup, root) {
-  return markup.replace(/src="(\/[^"]+)"/gi, (match, publicPath) => {
-    const assetPath = path.resolve(root, ...publicPath.slice(1).split('/'));
-    if (!assetPath.startsWith(root + path.sep) || !fs.existsSync(assetPath)) return match;
-    return `src="data:${mimeType(path.extname(assetPath))};base64,${fs.readFileSync(assetPath).toString('base64')}"`;
-  });
+  return generator.embedLocalImages(markup, root);
 }
 
 function planImageImports(root, templateId, relativeDirectory, slug, imageSources) {
@@ -258,7 +265,7 @@ function getWebviewHtml(webview, extensionRoot, root, catalog) {
   const safeCatalog = JSON.stringify(catalog).replace(/</g, '\\u003c').replace(/-->/g, '--\\u003e');
   const siteCssUri = webview.asWebviewUri(vscode.Uri.file(path.join(root, 'css', 'styles', 'style.css')));
   return `<!DOCTYPE html>
-<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource} 'unsafe-inline'; font-src ${webview.cspSource} data:; script-src 'nonce-${nonce}'; img-src ${webview.cspSource} data:; frame-src ${webview.cspSource};"><link rel="stylesheet" href="${cssUri}"><title>Criar página do AECA</title></head>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource} 'unsafe-inline'; font-src ${webview.cspSource} data:; script-src 'nonce-${nonce}'; img-src ${webview.cspSource} data:; frame-src ${webview.cspSource} https://www.youtube.com https://www.youtube-nocookie.com https://player.vimeo.com;"><link rel="stylesheet" href="${cssUri}"><title>Criar página do AECA</title></head>
 <body><main class="workspace"><aside class="sidebar"><div class="brand"><span class="brand-mark">A</span><div><strong>AECA</strong><small>Criador de páginas</small></div></div><nav class="steps" aria-label="Etapas da página"><button class="step active" data-section="basicos"><span>1</span>Dados básicos</button><button class="step" data-section="conteudo"><span>2</span>Conteúdo</button><button class="step" data-section="midia"><span>3</span>Mídia</button><button class="step" data-section="publicacao"><span>4</span>Publicação</button></nav><div class="sidebar-bottom"><span class="status-dot"></span>Workspace AECA</div></aside><section class="editor"><header class="editor-header"><div><p class="eyebrow">EDITOR DE PÁGINA</p><h1>Criar página</h1><p id="template-description">Escolha um modelo para começar.</p></div><div class="header-actions"><button type="button" class="secondary" id="preview-button">Pré-visualizar</button><button type="submit" form="page-form" id="create-button">Publicar página</button></div></header><div id="notice" role="status" aria-live="polite"></div><div class="editor-layout"><form id="page-form" novalidate><section class="form-card" data-form-section="basicos"><div class="card-heading"><div><h2>Estrutura da página</h2><p>Defina o modelo e a identificação pública.</p></div></div><label class="field"><span>Modelo de página</span><select id="template" required></select></label><div class="grid"><label class="field"><span>Título</span><input id="title" name="title" required maxlength="120" autocomplete="off"></label><label class="field"><span>Slug / nome do arquivo</span><input id="slug" autocomplete="off" required pattern="[a-z0-9]+(?:-[a-z0-9]+)*"><small>Gerado automaticamente em kebab-case.</small></label></div><label class="field"><span>Pasta de destino</span><div class="inline"><input id="directory" autocomplete="off" required><button type="button" class="secondary" id="browse-directory">Escolher</button></div><small>A página será criada em <strong id="path-preview"></strong></small></label></section><section id="dynamic-fields" class="dynamic-fields"></section><aside class="notice-info"><strong>Antes de publicar:</strong> revise a prévia, confira os caminhos de imagens e atualize manualmente índices e sitemap quando a página precisar aparecer neles.</aside></form><aside class="preview-pane"><div class="preview-toolbar"><strong>Pré-visualização</strong><span id="preview-status">Ainda não gerada</span></div><iframe id="preview-frame" title="Pré-visualização da página" sandbox="allow-same-origin"></iframe></aside></div></section></main><script nonce="${nonce}">window.AECA_TEMPLATES=${safeCatalog};</script><script nonce="${nonce}" src="${scriptUri}"></script></body></html>`;
 }
 

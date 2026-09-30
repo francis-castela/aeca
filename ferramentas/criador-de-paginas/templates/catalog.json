@@ -2,6 +2,18 @@
   "siteBaseUrl": "https://aeca.com.br",
   "templates": [
     {
+      "id": "geral",
+      "label": "Página geral",
+      "description": "Página livre composta por blocos de texto, seções, tabelas, listas e imagens.",
+      "file": "geral.html",
+      "defaultDirectory": ".",
+      "fields": [
+        {"id":"title","label":"Título","type":"text","required":true},
+        {"id":"description","label":"Descrição para buscadores","type":"textarea","required":true,"rows":3},
+        {"id":"subtitle","label":"Subtítulo (opcional)","type":"text"}
+      ]
+    },
+    {
       "id": "espetaculo",
       "label": "Espetáculo",
       "description": "Ficha de espetáculo em divulgação ou registro histórico.",

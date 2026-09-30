@@ -1,4 +1,5 @@
 const path = require('node:path');
+const fs = require('node:fs');
 
 function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, character => ({
@@ -80,6 +81,17 @@ function imagePath(value) {
   return trimmed;
 }
 
+function embedLocalImages(markup, root) {
+  const siteRoot = path.resolve(root);
+  return String(markup ?? '').replace(/src="(\/[^"\s]+)"/gi, (match, publicPath) => {
+    let assetPath;
+    try { assetPath = path.resolve(siteRoot, ...publicPath.slice(1).split('/').map(decodeURIComponent)); } catch { return match; }
+    if (!assetPath.startsWith(siteRoot + path.sep) || !fs.existsSync(assetPath) || !fs.statSync(assetPath).isFile()) return match;
+    const mime = ({ '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.gif': 'image/gif', '.svg': 'image/svg+xml', '.webp': 'image/webp' })[path.extname(assetPath).toLowerCase()] || 'application/octet-stream';
+    return `src="data:${mime};base64,${fs.readFileSync(assetPath).toString('base64')}"`;
+  });
+}
+
 function absoluteImageUrl(value, baseUrl) {
   const image = imagePath(value);
   return image ? `${baseUrl}${image}` : `${baseUrl}/css/logos/logo-AECA-preto.png`;
@@ -100,12 +112,158 @@ function tableBlock(title, className, firstHeading, secondHeading, rows) {
   return `<h3>${escapeHtml(title)}</h3>\n<hr>\n<table class="tabela-vitrine ${className}"><thead><tr><th scope="col">${escapeHtml(firstHeading)}</th><th scope="col">${escapeHtml(secondHeading)}</th></tr></thead><tbody>${body}</tbody></table>`;
 }
 
-function generatePage({ templateId, template, fields, slug, pagePath, siteBaseUrl }) {
+function safeContentUrl(value) {
+  const trimmed = String(value ?? '').trim();
+  if (!trimmed) return '';
+  if (/^#[a-zA-Z0-9_.:-]+$/.test(trimmed)) return trimmed;
+  if (trimmed.startsWith('/') && !trimmed.startsWith('//') && !trimmed.includes('..') && !/[\r\n"<>]/.test(trimmed)) return trimmed;
+  try {
+    const parsed = new URL(trimmed);
+    return ['http:', 'https:', 'mailto:'].includes(parsed.protocol) ? parsed.href : '';
+  } catch {
+    return '';
+  }
+}
+
+function safeVideoUrl(value) {
+  const url = safeContentUrl(value);
+  if (!url) return '';
+  try {
+    const parsed = new URL(url);
+    if (!['www.youtube.com', 'www.youtube-nocookie.com', 'player.vimeo.com'].includes(parsed.hostname)) return '';
+    return /^\/(embed|video)\/[a-zA-Z0-9_-]+$/.test(parsed.pathname) ? parsed.href : '';
+  } catch {
+    return '';
+  }
+}
+
+function renderInlineText(value) {
+  const text = String(value ?? '')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, label, url) => {
+      const href = safeContentUrl(url);
+      return href ? `<a href="${href}">${label}</a>` : label;
+    })
+    .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+    .replace(/(^|[^*])\*([^*\n]+)\*(?!\*)/g, '$1<i>$2</i>')
+    .replace(/~~(.+?)~~/g, '<del>$1</del>');
+  const pattern = /<\/?(?:b|i|u|s|del|strong|em|ul|ol|li)\s*>|<a\s+href\s*=\s*(?:"([^"]*)"|'([^']*)')\s*>|<\/a>/gi;
+  const tagNames = { b: 'b', strong: 'b', i: 'i', em: 'i', u: 'u', s: 'del', del: 'del', ul: 'ul', ol: 'ol', li: 'li' };
+  let output = '';
+  let cursor = 0;
+  let match;
+  while ((match = pattern.exec(text))) {
+    output += escapeHtml(text.slice(cursor, match.index));
+    if (/^<a\s/i.test(match[0])) {
+      const href = safeContentUrl(match[1] ?? match[2]);
+      if (href) output += `<a href="${escapeHtml(href)}">`;
+    } else if (/^<\/a/i.test(match[0])) output += '</a>';
+    else {
+      const name = match[0].match(/^<\/?([a-z]+)/i)?.[1]?.toLowerCase();
+      const safeName = tagNames[name];
+      if (safeName) output += match[0].startsWith('</') ? `</${safeName}>` : `<${safeName}>`;
+    }
+    cursor = pattern.lastIndex;
+  }
+  return (output + escapeHtml(text.slice(cursor))).replace(/\r?\n/g, '<br>');
+}
+
+function safeClassNames(value, fallback = '') {
+  const classes = String(value ?? '').split(/\s+/).filter(name => /^[a-zA-Z_][a-zA-Z0-9_-]*$/.test(name));
+  return classes.length ? classes.join(' ') : fallback;
+}
+
+function renderBlocks(blocks) {
+  return (Array.isArray(blocks) ? blocks : []).map(block => {
+    if (!block || typeof block !== 'object') return '';
+    if (block.type === 'heading') {
+      const level = Math.min(6, Math.max(2, Number(block.level) || 2));
+      return `<h${level}>${escapeHtml(block.text)}</h${level}>`;
+    }
+    if (block.type === 'paragraph') {
+      const text = renderInlineText(block.text);
+      if (!text.trim()) return '<p><br></p>';
+      const className = safeClassNames(block.className, '');
+      return text.split(/(<(?:ul|ol)>[\s\S]*?<\/(?:ul|ol)>)/gi).map(part => {
+        if (!part) return '';
+        return /^<(?:ul|ol)>/i.test(part) ? part : part.trim() ? `<p${className ? ` class="${escapeHtml(className)}"` : ''}>${part}</p>` : '';
+      }).filter(Boolean).join('\n');
+    }
+    if (block.type === 'infobox') {
+      const poster = block.poster?.src ? `<figure class="show-infobox-poster"><img src="${escapeHtml(imagePath(block.poster.src))}" alt="${escapeHtml(block.poster.alt || '')}">${block.poster.caption ? `<figcaption>${escapeHtml(block.poster.caption)}</figcaption>` : ''}</figure>` : '';
+      const rows = (Array.isArray(block.rows) ? block.rows : []).map(row => `<tr><th scope="row">${escapeHtml(row.label)}</th><td>${renderInlineText(row.value)}</td></tr>`).join('');
+      return `<section class="show-infobox" aria-label="${escapeHtml(block.label || 'Informações da página')}">${poster}${rows ? `<table class="show-infobox-meta"><tbody>${rows}</tbody></table>` : ''}</section>`;
+    }
+    if (block.type === 'quote') return `<blockquote><p>${escapeHtml(block.text)}</p>${block.cite ? `<cite>${escapeHtml(block.cite)}</cite>` : ''}</blockquote>`;
+    if (block.type === 'details') return `<details><summary>${escapeHtml(block.summary || 'Mais informações')}</summary>${renderRichText(block.text)}</details>`;
+    if (block.type === 'video') {
+      const src = safeVideoUrl(block.src);
+      return src ? `<div class="video-embed"><iframe src="${escapeHtml(src)}" title="${escapeHtml(block.title || 'Vídeo incorporado')}" style="width:100%;aspect-ratio:16/9;border:0;border-radius:8px" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>` : '';
+    }
+    if (block.type === 'list') {
+      const tag = block.ordered ? 'ol' : 'ul';
+      const items = (Array.isArray(block.items) ? block.items : []).map(item => {
+        const text = typeof item === 'string' ? item : item?.text;
+        const href = typeof item === 'object' ? safeContentUrl(item.href) : '';
+        const content = href ? `<a href="${escapeHtml(href)}">${renderInlineText(text)}</a>` : renderInlineText(text);
+        return `<li>${content || '<br>'}</li>`;
+      }).join('');
+      const className = safeClassNames(block.className, '');
+      return items ? `<${tag}${className ? ` class="${escapeHtml(className)}"` : ''}>${items}</${tag}>` : `<${tag}${className ? ` class="${escapeHtml(className)}"` : ''}><li><br></li></${tag}>`;
+    }
+    if (block.type === 'supporters') {
+      const items = (Array.isArray(block.items) ? block.items : []).map(item => {
+        const name = escapeHtml(item.name || '');
+        const category = item.category ? `<span class="apoio-categoria">${escapeHtml(item.category)}</span>` : '';
+        const href = safeContentUrl(item.url);
+        const content = `${category}<strong>${name}</strong>`;
+        return name ? `<li>${href ? `<a class="apoio-card apoio-card-link" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${content}</a>` : `<div class="apoio-card">${content}</div>`}</li>` : '';
+      }).filter(Boolean).join('');
+      return `<ul class="apoio-grid" aria-label="${escapeHtml(block.label || 'Apoiadores')}">${items}</ul>`;
+    }
+    if (block.type === 'table') {
+      const headers = Array.isArray(block.headers) ? block.headers : [];
+      const rows = Array.isArray(block.rows) ? block.rows : [];
+      if (!rows.length) return '';
+      const head = headers.length ? `<thead><tr>${headers.map(value => `<th scope="col">${escapeHtml(value)}</th>`).join('')}</tr></thead>` : '';
+      const body = rows.map(row => `<tr>${(Array.isArray(row) ? row : []).map((value, index) => {
+        if (index === 0 && (headers.length || block.rowHeaders)) return `<th scope="row">${renderInlineText(value)}</th>`;
+        const label = headers[index] || (block.rowHeaders && index > 0 ? row[0] : '');
+        return `<td${label ? ` data-label="${escapeHtml(label)}"` : ''}>${renderInlineText(value)}</td>`;
+      }).join('')}</tr>`).join('');
+      const className = safeClassNames(block.className, 'tabela-vitrine');
+      return `${block.caption ? `<h3>${escapeHtml(block.caption)}</h3>` : ''}<table class="${escapeHtml(className)}">${head}<tbody>${body}</tbody></table>`;
+    }
+    if (block.type === 'image') {
+      const src = String(block.src || '').startsWith('/') ? imagePath(block.src) : safeContentUrl(block.src);
+      if (src && !src.startsWith('/') && !/^https?:/i.test(src)) return '';
+      const className = safeClassNames(block.className, '');
+      const imageClass = safeClassNames(block.imageClassName, '');
+      return src ? `<figure${className ? ` class="${escapeHtml(className)}"` : ''}><img${imageClass ? ` class="${escapeHtml(imageClass)}"` : ''} src="${escapeHtml(src)}" alt="${escapeHtml(block.alt || '')}">${block.caption ? `<figcaption>${escapeHtml(block.caption)}</figcaption>` : ''}</figure>` : '';
+    }
+    if (block.type === 'gallery') {
+      const images = (Array.isArray(block.images) ? block.images : []).map(image => {
+        const src = String(image.src || '').startsWith('/') ? imagePath(image.src) : safeContentUrl(image.src);
+        if (src && !src.startsWith('/') && !/^https?:/i.test(src)) return '';
+        return src ? `<img src="${escapeHtml(src)}" alt="${escapeHtml(image.alt || '')}">` : '';
+      }).filter(Boolean);
+      return images.length ? `${block.caption ? `<h3>${escapeHtml(block.caption)}</h3>` : ''}<div class="main-galeria">${images.join('')}</div>` : '';
+    }
+    if (block.type === 'link') {
+      const href = safeContentUrl(block.url);
+      return href && block.label ? `<p><a href="${escapeHtml(href)}">${escapeHtml(block.label)}</a></p>` : '';
+    }
+    if (block.type === 'divider') return '<hr>';
+    return '';
+  }).filter(Boolean).join('\n');
+}
+
+function generatePage({ templateId, template, fields, blocks, slug, pagePath, siteBaseUrl }) {
   const values = { ...fields };
   const title = escapeHtml(values.title);
   const description = escapeHtml(values.description);
   const canonicalUrl = `${siteBaseUrl}/${pagePath.replace(/\\/g, '/')}`;
-  const socialImage = values.socialImage || values.poster || values.portrait || values.image;
+  const contentImage = (Array.isArray(blocks) ? blocks : []).flatMap(block => block.type === 'gallery' ? block.images || [] : block.type === 'image' ? [block] : block.type === 'infobox' && block.poster ? [block.poster] : []).find(image => String(image.src || '').startsWith('/'))?.src;
+  const socialImage = values.socialImage || values.poster || values.portrait || values.image || contentImage;
   const replacements = {
     title,
     description,
@@ -115,7 +273,7 @@ function generatePage({ templateId, template, fields, slug, pagePath, siteBaseUr
     subtitle: escapeHtml(values.subtitle),
     subtitleBlock: values.subtitle ? `<h2 class="page-subtitle">${escapeHtml(values.subtitle)}</h2>` : '',
     synopsisHtml: renderRichText(values.synopsis),
-    contentHtml: renderRichText(values.content),
+    contentHtml: Array.isArray(blocks) ? renderBlocks(blocks) : renderRichText(values.content),
     biographyHtml: renderRichText(values.biography),
     poster: escapeHtml(imagePath(values.poster)),
     portrait: escapeHtml(imagePath(values.portrait)),
@@ -193,4 +351,4 @@ function destinationPath(directory, slug) {
   return path.posix.join(safeDirectory, `${slug}.html`);
 }
 
-module.exports = { escapeHtml, slugify, validateSlug, resolveDestination, renderRichText, parseRows, imagePath, safeHttpUrl, generatePage, destinationPath };
+module.exports = { escapeHtml, slugify, validateSlug, resolveDestination, renderRichText, renderBlocks, parseRows, imagePath, embedLocalImages, safeHttpUrl, safeVideoUrl, generatePage, destinationPath };
