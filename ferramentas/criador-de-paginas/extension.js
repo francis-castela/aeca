@@ -44,8 +44,8 @@ function activate(context) {
             await fs.promises.copyFile(file.fsPath, previewPath);
             return { token, sourcePath: file.fsPath, label: path.basename(file.fsPath), thumbnail: panel.webview.asWebviewUri(vscode.Uri.file(previewPath)).toString() };
           }));
-          await panel.webview.postMessage({ command: 'imagesSelected', fieldId: message.fieldId, multiple: Boolean(message.multiple), images: selected.map(({ token, sourcePath, label }) => ({ token, sourcePath, label })) });
-          await panel.webview.postMessage({ command: 'imageThumbnailsReady', fieldId: message.fieldId, thumbnails: selected.map(({ token, thumbnail }) => ({ token, thumbnail })) });
+          await panel.webview.postMessage({ command: 'imagesSelected', targetMode: message.targetMode, fieldId: message.fieldId, multiple: Boolean(message.multiple), images: selected.map(({ token, sourcePath, label }) => ({ token, sourcePath, label })) });
+          await panel.webview.postMessage({ command: 'imageThumbnailsReady', targetMode: message.targetMode, fieldId: message.fieldId, thumbnails: selected.map(({ token, thumbnail }) => ({ token, thumbnail })) });
           return;
         }
         if (message.command === 'pickDirectory') {
@@ -147,11 +147,10 @@ function activate(context) {
           let siteCss = fs.readFileSync(path.join(root, 'css', 'styles', 'style.css'), 'utf8');
           const fontPath = path.join(root, 'css', 'fonts', 'Nunito.ttf');
           if (fs.existsSync(fontPath)) siteCss = siteCss.replace(/url\(["']?\/css\/fonts\/Nunito\.ttf["']?\)/gi, `url(data:font/ttf;base64,${fs.readFileSync(fontPath).toString('base64')})`);
-          siteCss += '\n.header { position: sticky !important; top: 0 !important; z-index: 1000 !important; width: 100% !important; max-width: none !important; margin: 0 !important; }';
           siteCss = siteCss.replace(/<\/style/gi, '<\\/style');
           const headerHtml = embedPreviewImages(fs.readFileSync(path.join(root, 'html', 'cabecalho.html'), 'utf8'), root);
           const footerHtml = embedPreviewImages(fs.readFileSync(path.join(root, 'html', 'footer.html'), 'utf8'), root);
-          html = html.replace(/<link[^>]+href="\/css\/styles\/style\.css"[^>]*>/i, `<style>${siteCss}</style>`).replace('<div id="cabecalho"></div>', headerHtml).replace('<div id="footer"></div>', footerHtml).replace(/<script[\s\S]*?<\/script>/gi, '');
+          html = html.replace(/<link[^>]+href="\/css\/styles\/style\.css"[^>]*>/i, `<style>${siteCss}</style>`).replace('<div id="cabecalho"></div>', `<div id="cabecalho">${headerHtml}</div>`).replace('<div id="footer"></div>', `<div id="footer">${footerHtml}</div>`).replace(/<script[\s\S]*?<\/script>/gi, '');
           panel.webview.postMessage({ command: 'previewReady', html });
         }
       } catch (error) {
@@ -206,6 +205,7 @@ function resolveBlockImages(blocks, imagePlan) {
   return (Array.isArray(blocks) ? blocks : []).map(block => {
     if (block.type === 'image') return { ...block, ...resolveImage(block) };
     if (block.type === 'gallery') return { ...block, images: (block.images || []).map(resolveImage) };
+    if (block.type === 'infobox' && block.poster) return { ...block, poster: resolveImage(block.poster) };
     return block;
   });
 }
@@ -257,16 +257,39 @@ async function copyImageImports(imagePlan) {
   }
 }
 
+function getClassificationImages(root) {
+  const dir = path.join(root, 'css', 'classificacao');
+  const result = {};
+  if (fs.existsSync(dir)) {
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+      if (file.endsWith('.png')) {
+        const match = file.match(/classificacao-([a-z0-9]+)\.png/i);
+        if (match) {
+          const key = match[1].toLowerCase();
+          const base64 = fs.readFileSync(path.join(dir, file)).toString('base64');
+          const dataUri = `data:image/png;base64,${base64}`;
+          result[key] = dataUri;
+          result[file] = dataUri;
+          result[`/css/classificacao/${file}`] = dataUri;
+        }
+      }
+    }
+  }
+  return result;
+}
+
 function getWebviewHtml(webview, extensionRoot, root, catalog) {
   const uiRoot = path.join(extensionRoot, 'ui');
   const cssUri = webview.asWebviewUri(vscode.Uri.file(path.join(uiRoot, 'style.css')));
   const scriptUri = webview.asWebviewUri(vscode.Uri.file(path.join(uiRoot, 'app.js')));
   const nonce = crypto.randomBytes(16).toString('base64');
   const safeCatalog = JSON.stringify(catalog).replace(/</g, '\\u003c').replace(/-->/g, '--\\u003e');
+  const safeClassifications = JSON.stringify(getClassificationImages(root)).replace(/</g, '\\u003c').replace(/-->/g, '--\\u003e');
   const siteCssUri = webview.asWebviewUri(vscode.Uri.file(path.join(root, 'css', 'styles', 'style.css')));
   return `<!DOCTYPE html>
 <html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource} 'unsafe-inline'; font-src ${webview.cspSource} data:; script-src 'nonce-${nonce}'; img-src ${webview.cspSource} data:; frame-src ${webview.cspSource} https://www.youtube.com https://www.youtube-nocookie.com https://player.vimeo.com;"><link rel="stylesheet" href="${cssUri}"><title>Criar página do AECA</title></head>
-<body><main class="workspace"><aside class="sidebar"><div class="brand"><span class="brand-mark">A</span><div><strong>AECA</strong><small>Criador de páginas</small></div></div><nav class="steps" aria-label="Etapas da página"><button class="step active" data-section="basicos"><span>1</span>Dados básicos</button><button class="step" data-section="conteudo"><span>2</span>Conteúdo</button><button class="step" data-section="midia"><span>3</span>Mídia</button><button class="step" data-section="publicacao"><span>4</span>Publicação</button></nav><div class="sidebar-bottom"><span class="status-dot"></span>Workspace AECA</div></aside><section class="editor"><header class="editor-header"><div><p class="eyebrow">EDITOR DE PÁGINA</p><h1>Criar página</h1><p id="template-description">Escolha um modelo para começar.</p></div><div class="header-actions"><button type="button" class="secondary" id="preview-button">Pré-visualizar</button><button type="submit" form="page-form" id="create-button">Publicar página</button></div></header><div id="notice" role="status" aria-live="polite"></div><div class="editor-layout"><form id="page-form" novalidate><section class="form-card" data-form-section="basicos"><div class="card-heading"><div><h2>Estrutura da página</h2><p>Defina o modelo e a identificação pública.</p></div></div><label class="field"><span>Modelo de página</span><select id="template" required></select></label><div class="grid"><label class="field"><span>Título</span><input id="title" name="title" required maxlength="120" autocomplete="off"></label><label class="field"><span>Slug / nome do arquivo</span><input id="slug" autocomplete="off" required pattern="[a-z0-9]+(?:-[a-z0-9]+)*"><small>Gerado automaticamente em kebab-case.</small></label></div><label class="field"><span>Pasta de destino</span><div class="inline"><input id="directory" autocomplete="off" required><button type="button" class="secondary" id="browse-directory">Escolher</button></div><small>A página será criada em <strong id="path-preview"></strong></small></label></section><section id="dynamic-fields" class="dynamic-fields"></section><aside class="notice-info"><strong>Antes de publicar:</strong> revise a prévia, confira os caminhos de imagens e atualize manualmente índices e sitemap quando a página precisar aparecer neles.</aside></form><aside class="preview-pane"><div class="preview-toolbar"><strong>Pré-visualização</strong><span id="preview-status">Ainda não gerada</span></div><iframe id="preview-frame" title="Pré-visualização da página" sandbox="allow-same-origin"></iframe></aside></div></section></main><script nonce="${nonce}">window.AECA_TEMPLATES=${safeCatalog};</script><script nonce="${nonce}" src="${scriptUri}"></script></body></html>`;
+<body><main class="workspace"><aside class="sidebar"><div class="brand"><span class="brand-mark">A</span><div><strong>AECA</strong><small>Criador de páginas</small></div></div><nav class="steps" aria-label="Etapas da página" style="display:none"><button class="step active" data-section="basicos"><span>1</span>Dados básicos</button><button class="step" data-section="conteudo"><span>2</span>Conteúdo</button><button class="step" data-section="midia"><span>3</span>Mídia</button><button class="step" data-section="publicacao"><span>4</span>Publicação</button></nav><div class="sidebar-bottom"><span class="status-dot"></span>Workspace AECA</div></aside><section class="editor"><header class="editor-header" style="display:none"><div><p class="eyebrow">EDITOR DE PÁGINA</p><h1>Criar página</h1><p id="template-description">Escolha um modelo para começar.</p></div><div class="header-actions"><button type="button" class="secondary" id="preview-button">Pré-visualizar</button><button type="submit" form="page-form" id="create-button">Publicar página</button></div></header><div id="notice" role="status" aria-live="polite"></div><div class="editor-layout"><form id="page-form" novalidate><section class="form-card" data-form-section="basicos"><div class="card-heading"><div><h2>Estrutura da página</h2><p>Defina o modelo e a identificação pública.</p></div></div><label class="field"><span>Modelo de página</span><select id="template" required></select></label><div class="grid"><label class="field"><span>Título</span><input id="title" name="title" required maxlength="120" autocomplete="off"></label><label class="field"><span>Slug / nome do arquivo</span><input id="slug" autocomplete="off" required pattern="[a-z0-9]+(?:-[a-z0-9]+)*"><small>Gerado automaticamente em kebab-case.</small></label></div><label class="field"><span>Pasta de destino</span><div class="inline"><input id="directory" autocomplete="off" required><button type="button" class="secondary" id="browse-directory">Escolher</button></div><small>A página será criada em <strong id="path-preview"></strong></small></label></section><section id="dynamic-fields" class="dynamic-fields"></section><aside class="notice-info"><strong>Antes de publicar:</strong> revise a prévia, confira os caminhos de imagens e atualize manualmente índices e sitemap quando a página precisar aparecer neles.</aside></form><aside class="preview-pane"><div class="preview-toolbar"><strong>Pré-visualização</strong><span id="preview-status">Ainda não gerada</span></div><iframe id="preview-frame" title="Pré-visualização da página" sandbox="allow-same-origin"></iframe></aside></div></section></main><script nonce="${nonce}">window.AECA_TEMPLATES=${safeCatalog};window.AECA_CLASSIFICATIONS=${safeClassifications};</script><script nonce="${nonce}" src="${scriptUri}"></script></body></html>`;
 }
 
 function deactivate() {}

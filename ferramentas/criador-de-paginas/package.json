@@ -9,6 +9,10 @@
   },
   "categories": ["Other"],
   "main": "./extension.js",
+  "activationEvents": [
+    "onCommand:aeca.criadorDePaginas.abrir",
+    "onCommand:aeca.criadorDePaginas.editar"
+  ],
   "scripts": {
     "test": "node --test"
   },

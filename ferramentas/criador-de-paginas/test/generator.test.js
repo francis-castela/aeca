@@ -83,6 +83,126 @@ test('mantém parágrafo e lista vazios visíveis para edição no canvas', () =
   assert.match(html, /<ul><li><br><\/li><\/ul>/);
 });
 
+test('renderiza bloco de imagem com tamanho, alinhamento e proporção de corte seguros', () => {
+  const html = generator.renderBlocks([
+    {
+      type: 'image',
+      src: '/espetaculos/2026/img/cena.webp',
+      alt: 'Cena do espetáculo',
+      caption: 'Foto de ensaio',
+      width: '50%',
+      align: 'center',
+      aspectRatio: '16/9',
+      objectPosition: 'top'
+    }
+  ]);
+  assert.match(html, /<figure style="max-width:50%;width:100%;margin-left:auto;margin-right:auto;text-align:center">/);
+  assert.match(html, /<img style="aspect-ratio:16\/9;object-fit:cover;object-position:top" src="\/espetaculos\/2026\/img\/cena\.webp" alt="Cena do espetáculo">/);
+  assert.match(html, /<figcaption>Foto de ensaio<\/figcaption>/);
+});
+
+test('renderiza bloco infobox lateral com ou sem poster e com linhas flexíveis', () => {
+  const htmlWithPoster = generator.renderBlocks([
+    {
+      type: 'infobox',
+      label: 'Ficha da peça',
+      poster: { src: '/espetaculos/2026/img/cartaz.webp', alt: 'Cartaz', caption: 'Cartaz oficial' },
+      rows: [
+        { label: 'Estreia', value: '2026' },
+        ['Local', 'Teatro Municipal'],
+        { label: 'Apresentações', value: '11/07 - Sábado - 20:00\n12/07 - Domingo - 20:00<br>18/07 - Sábado - 20:00' }
+      ]
+    }
+  ]);
+  assert.match(htmlWithPoster, /<section class="show-infobox" aria-label="Ficha da peça">/);
+  assert.match(htmlWithPoster, /<figure class="show-infobox-poster"><img src="\/espetaculos\/2026\/img\/cartaz\.webp" alt="Cartaz"><figcaption>Cartaz oficial<\/figcaption><\/figure>/);
+  assert.match(htmlWithPoster, /<th scope="row">Estreia<\/th><td>2026<\/td>/);
+  assert.match(htmlWithPoster, /<th scope="row">Local<\/th><td>Teatro Municipal<\/td>/);
+  assert.match(htmlWithPoster, /<th scope="row">Apresentações<\/th><td>11\/07 - Sábado - 20:00<br>12\/07 - Domingo - 20:00<br>18\/07 - Sábado - 20:00<\/td>/);
+
+  const htmlWithoutPoster = generator.renderBlocks([
+    {
+      type: 'infobox',
+      rows: [{ label: 'Classificação', value: 'Livre' }]
+    }
+  ]);
+  assert.match(htmlWithoutPoster, /<section class="show-infobox"/);
+  assert.doesNotMatch(htmlWithoutPoster, /<figure class="show-infobox-poster">/);
+  assert.match(htmlWithoutPoster, /<th scope="row">Classificação<\/th><td>Livre<\/td>/);
+});
+
+test('renderiza tachado e alinhamento de texto em parágrafos e títulos', () => {
+  const html = generator.renderBlocks([
+    {
+      type: 'heading',
+      level: 2,
+      text: 'Título Central',
+      align: 'center'
+    },
+    {
+      type: 'paragraph',
+      text: 'Texto com <s>tachado</s> e <del>deletado</del> e ~~markdown~~.',
+      align: 'right'
+    }
+  ]);
+  assert.match(html, /<h2 style="text-align:center">Título Central<\/h2>/);
+  assert.match(html, /<p style="text-align:right">Texto com <del>tachado<\/del> e <del>deletado<\/del> e <del>markdown<\/del>\.<\/p>/);
+});
+
+test('renderiza botão de ingressos, botão de WhatsApp, tabela de lotes e classificação indicativa', () => {
+  const html = generator.renderBlocks([
+    {
+      type: 'ticketButton',
+      url: 'https://www.sympla.com.br/evento/ainda-me-lembro-de-voce/3360195',
+      title: 'Comprar ingresso agora',
+      subtitle: 'Pagamento seguro via Sympla'
+    },
+    {
+      type: 'ticketLots',
+      notice: '<b>MEIA ENTRADA</b> válida para beneficiados.',
+      lots: [
+        { name: '1º LOTE', dates: '26/04 a 16/05/2026', inteira: 'R$ 30,00', inteiraTaxa: '+ R$ 3,99 taxa', meia: 'R$ 15,00', meiaTaxa: '+ R$ 3,99 taxa' }
+      ],
+      infoSummary: 'Entenda como funcionam os lotes',
+      infoItems: ['Quanto antes você compra, menor é o valor do ingresso.']
+    },
+    {
+      type: 'whatsapp',
+      url: 'https://wa.me/5547997085692',
+      intro: 'Dúvidas? Entre em contato com Francis via WhatsApp:',
+      label: 'SUPORTE VIA WHATSAPP'
+    },
+    {
+      type: 'classification',
+      title: 'Autoclassificação indicativa',
+      rating: '14',
+      description: 'Não recomendado para menores de 14 anos.',
+      details: 'Contém: violência, sangue, sofrimento.'
+    }
+  ]);
+  assert.match(html, /class="btn-cta-sympla btn-cta-ticket"/);
+  assert.match(html, /<span class="cta-titulo">Comprar ingresso agora<\/span>/);
+  assert.match(html, /class="lotes-secao"/);
+  assert.match(html, /<th scope="row">1º LOTE<br><span class="lote-vigencia">26\/04 a 16\/05\/2026<\/span><\/th>/);
+  assert.match(html, /class="btn-cta-whatsapp"/);
+  assert.match(html, /SUPORTE VIA WHATSAPP/);
+  assert.match(html, /class="classificacao-box"/);
+  assert.match(html, /\/css\/classificacao\/classificacao-14\.png/);
+  assert.match(html, /Não recomendado para menores de 14 anos\./);
+});
+
+test('renderiza corretamente cada faixa etária de classificação indicativa', () => {
+  ['livre', '6', '10', '12', '14', '16', '18'].forEach(rating => {
+    const html = generator.renderBlocks([
+      {
+        type: 'classification',
+        rating
+      }
+    ]);
+    assert.match(html, new RegExp(`/css/classificacao/classificacao-${rating}\\.png`));
+  });
+});
+
 test('embute imagens do site na prévia e rejeita caminhos fora da raiz', () => {
   const root = path.resolve(__dirname, '../../..');
   const html = generator.embedLocalImages('<img src="/css/logos/favicon.webp">', root);

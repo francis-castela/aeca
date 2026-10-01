@@ -146,8 +146,8 @@ function renderInlineText(value) {
     .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
     .replace(/(^|[^*])\*([^*\n]+)\*(?!\*)/g, '$1<i>$2</i>')
     .replace(/~~(.+?)~~/g, '<del>$1</del>');
-  const pattern = /<\/?(?:b|i|u|s|del|strong|em|ul|ol|li)\s*>|<a\s+href\s*=\s*(?:"([^"]*)"|'([^']*)')\s*>|<\/a>/gi;
-  const tagNames = { b: 'b', strong: 'b', i: 'i', em: 'i', u: 'u', s: 'del', del: 'del', ul: 'ul', ol: 'ol', li: 'li' };
+  const pattern = /<\/?(?:b|i|u|s|strike|del|strong|em|ul|ol|li)\s*>|<br\s*\/?>|<a\s+href\s*=\s*(?:"([^"]*)"|'([^']*)')\s*>|<\/a>/gi;
+  const tagNames = { b: 'b', strong: 'b', i: 'i', em: 'i', u: 'u', s: 'del', strike: 'del', del: 'del', ul: 'ul', ol: 'ol', li: 'li' };
   let output = '';
   let cursor = 0;
   let match;
@@ -157,6 +157,7 @@ function renderInlineText(value) {
       const href = safeContentUrl(match[1] ?? match[2]);
       if (href) output += `<a href="${escapeHtml(href)}">`;
     } else if (/^<\/a/i.test(match[0])) output += '</a>';
+    else if (/^<br\s*\/?>/i.test(match[0])) output += '<br>';
     else {
       const name = match[0].match(/^<\/?([a-z]+)/i)?.[1]?.toLowerCase();
       const safeName = tagNames[name];
@@ -172,25 +173,72 @@ function safeClassNames(value, fallback = '') {
   return classes.length ? classes.join(' ') : fallback;
 }
 
+function safeImageStyles(block) {
+  const figureStyles = [];
+  const imgStyles = [];
+  const width = String(block?.width || '').trim();
+  if (width && /^(?:[1-9]\d{0,2}%|\d+(?:\.\d+)?(?:px|rem))$/.test(width)) {
+    figureStyles.push(`max-width:${width}`);
+    figureStyles.push('width:100%');
+  }
+  const align = String(block?.align || '').trim().toLowerCase();
+  if (align === 'center') {
+    figureStyles.push('margin-left:auto;margin-right:auto;text-align:center');
+  } else if (align === 'left') {
+    figureStyles.push('margin-left:0;margin-right:auto;text-align:left');
+  } else if (align === 'right') {
+    figureStyles.push('margin-left:auto;margin-right:0;text-align:right');
+  }
+  const ratio = String(block?.aspectRatio || '').trim();
+  if (ratio && /^\d+\/\d+$/.test(ratio)) {
+    imgStyles.push(`aspect-ratio:${ratio}`);
+    imgStyles.push('object-fit:cover');
+  }
+  const pos = String(block?.objectPosition || '').trim().toLowerCase();
+  if (pos && /^(?:top|center|bottom|left|right)$/.test(pos)) {
+    imgStyles.push(`object-position:${pos}`);
+  }
+  return {
+    figureStyle: figureStyles.join(';'),
+    imgStyle: imgStyles.join(';')
+  };
+}
+
 function renderBlocks(blocks) {
   return (Array.isArray(blocks) ? blocks : []).map(block => {
     if (!block || typeof block !== 'object') return '';
     if (block.type === 'heading') {
       const level = Math.min(6, Math.max(2, Number(block.level) || 2));
-      return `<h${level}>${escapeHtml(block.text)}</h${level}>`;
+      const align = ['left', 'center', 'right', 'justify'].includes(block.align) ? ` style="text-align:${block.align}"` : '';
+      return `<h${level}${align}>${escapeHtml(block.text)}</h${level}>`;
     }
     if (block.type === 'paragraph') {
       const text = renderInlineText(block.text);
       if (!text.trim()) return '<p><br></p>';
       const className = safeClassNames(block.className, '');
+      const align = ['left', 'center', 'right', 'justify'].includes(block.align) ? `text-align:${block.align}` : '';
+      const styleAttr = align ? ` style="${align}"` : '';
       return text.split(/(<(?:ul|ol)>[\s\S]*?<\/(?:ul|ol)>)/gi).map(part => {
         if (!part) return '';
-        return /^<(?:ul|ol)>/i.test(part) ? part : part.trim() ? `<p${className ? ` class="${escapeHtml(className)}"` : ''}>${part}</p>` : '';
+        return /^<(?:ul|ol)>/i.test(part) ? part : part.trim() ? `<p${className ? ` class="${escapeHtml(className)}"` : ''}${styleAttr}>${part}</p>` : '';
       }).filter(Boolean).join('\n');
     }
     if (block.type === 'infobox') {
-      const poster = block.poster?.src ? `<figure class="show-infobox-poster"><img src="${escapeHtml(imagePath(block.poster.src))}" alt="${escapeHtml(block.poster.alt || '')}">${block.poster.caption ? `<figcaption>${escapeHtml(block.poster.caption)}</figcaption>` : ''}</figure>` : '';
-      const rows = (Array.isArray(block.rows) ? block.rows : []).map(row => `<tr><th scope="row">${escapeHtml(row.label)}</th><td>${renderInlineText(row.value)}</td></tr>`).join('');
+      const rawPosterSrc = String(block.poster?.src || '').trim();
+      let posterSrc = '';
+      if (rawPosterSrc.startsWith('data:image/')) {
+        posterSrc = rawPosterSrc;
+      } else if (rawPosterSrc.startsWith('/')) {
+        posterSrc = imagePath(rawPosterSrc);
+      } else if (rawPosterSrc) {
+        posterSrc = safeContentUrl(rawPosterSrc);
+      }
+      const poster = posterSrc ? `<figure class="show-infobox-poster"><img src="${escapeHtml(posterSrc)}" alt="${escapeHtml(block.poster.alt || '')}">${block.poster.caption ? `<figcaption>${escapeHtml(block.poster.caption)}</figcaption>` : ''}</figure>` : '';
+      const rows = (Array.isArray(block.rows) ? block.rows : []).map(row => {
+        const label = row?.label ?? (Array.isArray(row) ? row[0] : '');
+        const value = row?.value ?? (Array.isArray(row) ? row[1] : '');
+        return (label || value) ? `<tr><th scope="row">${escapeHtml(label)}</th><td>${renderInlineText(value)}</td></tr>` : '';
+      }).filter(Boolean).join('');
       return `<section class="show-infobox" aria-label="${escapeHtml(block.label || 'Informações da página')}">${poster}${rows ? `<table class="show-infobox-meta"><tbody>${rows}</tbody></table>` : ''}</section>`;
     }
     if (block.type === 'quote') return `<blockquote><p>${escapeHtml(block.text)}</p>${block.cite ? `<cite>${escapeHtml(block.cite)}</cite>` : ''}</blockquote>`;
@@ -220,6 +268,49 @@ function renderBlocks(blocks) {
       }).filter(Boolean).join('');
       return `<ul class="apoio-grid" aria-label="${escapeHtml(block.label || 'Apoiadores')}">${items}</ul>`;
     }
+    if (block.type === 'ticketButton') {
+      const href = safeContentUrl(block.url) || '#';
+      const title = escapeHtml(block.title || 'Comprar ingresso agora');
+      const subtitle = escapeHtml(block.subtitle || 'Pagamento seguro via Sympla');
+      return `<a href="${href}" class="btn-cta-sympla btn-cta-ticket" target="_blank" rel="noopener noreferrer"><span class="cta-titulo">${title}</span><span class="cta-subtitulo">${subtitle}</span></a>`;
+    }
+    if (block.type === 'whatsapp') {
+      const href = safeContentUrl(block.url || 'https://wa.me/5547997085692') || '#';
+      const intro = escapeHtml(block.intro ?? 'Dúvidas? Entre em contato com Francis via WhatsApp:');
+      const label = escapeHtml(block.label || 'SUPORTE VIA WHATSAPP');
+      const introHtml = intro ? `<p style="text-align: center;">${intro}</p>\n` : '';
+      return `<div class="whatsapp-cta-block">\n${introHtml}<a href="${href}" class="btn-cta-whatsapp" target="_blank" rel="noopener noreferrer">${label}</a>\n</div>`;
+    }
+    if (block.type === 'ticketLots') {
+      const noticeText = block.notice ?? '<b>MEIA ENTRADA</b> válida para beneficiados pela <a href="/meia-entrada">Lei da Meia-Entrada</a> ou para qualquer pessoa que leve 1kg de alimento não perecível, que será doado a organizações de caridade e apoio.';
+      const noticeHtml = noticeText ? `<p>${renderInlineText(noticeText)}</p>\n` : '';
+      const lots = (Array.isArray(block.lots) ? block.lots : []).map(lot => {
+        const name = escapeHtml(lot.name ?? (Array.isArray(lot) ? lot[0] : ''));
+        const vigencia = lot.dates ? `<br><span class="lote-vigencia">${escapeHtml(lot.dates)}</span>` : '';
+        const inteiraVal = lot.inteira ? `<span class="preco-valor">${escapeHtml(lot.inteira)}</span>` : (Array.isArray(lot) ? `<span class="preco-valor">${escapeHtml(lot[1] || '')}</span>` : '');
+        const inteiraTaxa = lot.inteiraTaxa ? `<span class="preco-taxa">${escapeHtml(lot.inteiraTaxa)}</span>` : '';
+        const meiaVal = lot.meia ? `<span class="preco-valor">${escapeHtml(lot.meia)}</span>` : (Array.isArray(lot) ? `<span class="preco-valor">${escapeHtml(lot[2] || '')}</span>` : '');
+        const meiaTaxa = lot.meiaTaxa ? `<span class="preco-taxa">${escapeHtml(lot.meiaTaxa)}</span>` : '';
+        return `<tr><th scope="row">${name}${vigencia}</th><td data-label="Inteira">${inteiraVal}${inteiraTaxa}</td><td data-label="Meia">${meiaVal}${meiaTaxa}</td></tr>`;
+      }).join('');
+      const infoItems = (Array.isArray(block.infoItems) ? block.infoItems : [
+        'Quanto antes você compra, menor é o valor do ingresso.',
+        'Cada lote tem um período de datas específico.',
+        'Quando o período termina, entra automaticamente o lote seguinte.'
+      ]).map(item => `<li>${escapeHtml(item)}</li>`).join('');
+      const infoSummary = escapeHtml(block.infoSummary || 'Entenda como funcionam os lotes');
+      return `<section class="lotes-secao" aria-label="${escapeHtml(block.label || 'Tabela de preços por lote e orientações')}">\n${noticeHtml}<div class="lotes-layout"><table class="tabela-vitrine tabela-precos tabela-centralizadogrande"><thead><tr><th scope="col">INGRESSOS</th><th scope="col">INTEIRA</th><th scope="col">MEIA</th></tr></thead><tbody>${lots}</tbody></table><details class="lotes-spoiler"><summary>${infoSummary}</summary><ol>${infoItems}</ol></details></div>\n</section>`;
+    }
+    if (block.type === 'classification') {
+      const rating = String(block.rating || '14').toLowerCase();
+      const validRatings = ['livre', '6', '10', '12', '14', '16', '18'];
+      const safeRating = validRatings.includes(rating) ? rating : '14';
+      const iconSrc = `/css/classificacao/classificacao-${safeRating}.png`;
+      const desc = escapeHtml(block.description || (safeRating === 'livre' ? 'Livre para todos os públicos.' : `Não recomendado para menores de ${safeRating} anos.`));
+      const details = escapeHtml(block.details || 'Contém: temas sensíveis.');
+      const title = escapeHtml(block.title || 'Autoclassificação indicativa');
+      return `<section class="classificacao-bloco" aria-label="${title}">\n<h3>${title}</h3>\n<hr>\n<div class="classificacao-box"><img src="${iconSrc}" alt="Classificação indicativa ${safeRating === 'livre' ? 'livre' : `${safeRating} anos`}"><div class="classificacao-texto"><p>${desc}</p><p>${details}</p></div></div>\n</section>`;
+    }
     if (block.type === 'table') {
       const headers = Array.isArray(block.headers) ? block.headers : [];
       const rows = Array.isArray(block.rows) ? block.rows : [];
@@ -238,7 +329,10 @@ function renderBlocks(blocks) {
       if (src && !src.startsWith('/') && !/^https?:/i.test(src)) return '';
       const className = safeClassNames(block.className, '');
       const imageClass = safeClassNames(block.imageClassName, '');
-      return src ? `<figure${className ? ` class="${escapeHtml(className)}"` : ''}><img${imageClass ? ` class="${escapeHtml(imageClass)}"` : ''} src="${escapeHtml(src)}" alt="${escapeHtml(block.alt || '')}">${block.caption ? `<figcaption>${escapeHtml(block.caption)}</figcaption>` : ''}</figure>` : '';
+      const { figureStyle, imgStyle } = safeImageStyles(block);
+      const figureAttr = figureStyle ? ` style="${escapeHtml(figureStyle)}"` : '';
+      const imgAttr = imgStyle ? ` style="${escapeHtml(imgStyle)}"` : '';
+      return src ? `<figure${className ? ` class="${escapeHtml(className)}"` : ''}${figureAttr}><img${imageClass ? ` class="${escapeHtml(imageClass)}"` : ''}${imgAttr} src="${escapeHtml(src)}" alt="${escapeHtml(block.alt || '')}">${block.caption ? `<figcaption>${escapeHtml(block.caption)}</figcaption>` : ''}</figure>` : '';
     }
     if (block.type === 'gallery') {
       const images = (Array.isArray(block.images) ? block.images : []).map(image => {

@@ -7,9 +7,7 @@
       "request": "launch",
       "runtimeExecutable": "${execPath}",
       "args": [
-        "--extensionDevelopmentPath=C:/Users/wesle/Documents/aeca/ferramentas/criador-de-paginas",
-        "--new-window",
-        "--folder-uri=file:///C:/Users/wesle/Documents/aeca"
+        "--extensionDevelopmentPath=${workspaceFolder}/ferramentas/criador-de-paginas"
       ]
     }
   ]

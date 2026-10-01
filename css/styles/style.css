@@ -598,7 +598,8 @@ img[data-zoom-bound="true"]:focus-visible {
     line-height: 1.55;
 }
 
-.show-infobox .show-infobox-meta td > br {
+.show-infobox .show-infobox-meta td > span + br,
+.show-infobox .show-infobox-meta td > a + br {
     display: none;
 }
 
@@ -822,6 +823,18 @@ th[scope="row"] {
     color: var(--text-soft);
 }
 
+.lotes-secao,
+.classificacao-bloco,
+.whatsapp-cta-block {
+    width: 100%;
+}
+
+.lotes-secao .lotes-layout {
+    margin-top: 0.5rem;
+}
+
+.lotes-secao + p[style*="text-align: center"],
+.lotes-secao + .whatsapp-cta-block p[style*="text-align: center"],
 .lotes-layout + p[style*="text-align: center"] {
     margin-top: 0.25rem;
     margin-bottom: 0.55rem;
