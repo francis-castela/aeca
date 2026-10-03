@@ -288,9 +288,9 @@ function renderBlocks(blocks) {
         const name = escapeHtml(lot.name ?? (Array.isArray(lot) ? lot[0] : ''));
         const vigencia = lot.dates ? `<br><span class="lote-vigencia">${escapeHtml(lot.dates)}</span>` : '';
         const inteiraVal = lot.inteira ? `<span class="preco-valor">${escapeHtml(lot.inteira)}</span>` : (Array.isArray(lot) ? `<span class="preco-valor">${escapeHtml(lot[1] || '')}</span>` : '');
-        const inteiraTaxa = lot.inteiraTaxa ? `<span class="preco-taxa">${escapeHtml(lot.inteiraTaxa)}</span>` : '';
+        const inteiraTaxa = lot.inteiraTaxa ? `<br><span class="preco-taxa">${escapeHtml(lot.inteiraTaxa)}</span>` : '';
         const meiaVal = lot.meia ? `<span class="preco-valor">${escapeHtml(lot.meia)}</span>` : (Array.isArray(lot) ? `<span class="preco-valor">${escapeHtml(lot[2] || '')}</span>` : '');
-        const meiaTaxa = lot.meiaTaxa ? `<span class="preco-taxa">${escapeHtml(lot.meiaTaxa)}</span>` : '';
+        const meiaTaxa = lot.meiaTaxa ? `<br><span class="preco-taxa">${escapeHtml(lot.meiaTaxa)}</span>` : '';
         return `<tr><th scope="row">${name}${vigencia}</th><td data-label="Inteira">${inteiraVal}${inteiraTaxa}</td><td data-label="Meia">${meiaVal}${meiaTaxa}</td></tr>`;
       }).join('');
       const infoItems = (Array.isArray(block.infoItems) ? block.infoItems : [

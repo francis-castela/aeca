@@ -161,7 +161,7 @@ test('renderiza botão de ingressos, botão de WhatsApp, tabela de lotes e class
       type: 'ticketLots',
       notice: '<b>MEIA ENTRADA</b> válida para beneficiados.',
       lots: [
-        { name: '1º LOTE', dates: '26/04 a 16/05/2026', inteira: 'R$ 30,00', inteiraTaxa: '+ R$ 3,99 taxa', meia: 'R$ 15,00', meiaTaxa: '+ R$ 3,99 taxa' }
+        { name: '1º LOTE', dates: 'até XX/XX', inteira: 'R$ 30,00', inteiraTaxa: '+ R$ 3,99 taxa', meia: 'R$ 15,00', meiaTaxa: '+ R$ 3,99 taxa' }
       ],
       infoSummary: 'Entenda como funcionam os lotes',
       infoItems: ['Quanto antes você compra, menor é o valor do ingresso.']

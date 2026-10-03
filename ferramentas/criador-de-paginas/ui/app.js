@@ -1025,11 +1025,11 @@
         const td1 = tr.insertCell();
         td1.setAttribute('data-label', 'Inteira');
         td1.contentEditable = 'true';
-        td1.innerHTML = '<span class="preco-valor">R$ 50,00</span><span class="preco-taxa">+ R$ 5,00 taxa</span>';
+        td1.innerHTML = '<span class="preco-valor">R$ 50,00</span><br><span class="preco-taxa">+ R$ 5,00 taxa</span>';
         const td2 = tr.insertCell();
         td2.setAttribute('data-label', 'Meia');
         td2.contentEditable = 'true';
-        td2.innerHTML = '<span class="preco-valor">R$ 25,00</span><span class="preco-taxa">+ R$ 3,99 taxa</span>';
+        td2.innerHTML = '<span class="preco-valor">R$ 25,00</span><br><span class="preco-taxa">+ R$ 3,99 taxa</span>';
         tr.prepend(th);
         syncPreviewToBlocks();
         pushHistorySnapshot(true);
@@ -1234,7 +1234,7 @@
       replacement = doc.createElement('section');
       replacement.className = 'lotes-secao';
       replacement.setAttribute('aria-label', 'Tabela de preços por lote e orientações');
-      replacement.innerHTML = `<p><b>MEIA ENTRADA</b> válida para beneficiados pela <a href="/meia-entrada">Lei da Meia-Entrada</a> ou para quem doar 1kg de alimento.</p><div class="lotes-layout"><table class="tabela-vitrine tabela-precos tabela-centralizadogrande"><thead><tr><th scope="col">INGRESSOS</th><th scope="col">INTEIRA</th><th scope="col">MEIA</th></tr></thead><tbody><tr><th scope="row">1º LOTE<br><span class="lote-vigencia">26/04 a 16/05/2026</span></th><td data-label="Inteira"><span class="preco-valor">R$ 30,00</span><span class="preco-taxa">+ R$ 3,99 taxa</span></td><td data-label="Meia"><span class="preco-valor">R$ 15,00</span><span class="preco-taxa">+ R$ 3,99 taxa</span></td></tr></tbody></table><details class="lotes-spoiler"><summary>Entenda como funcionam os lotes</summary><ol><li>Quanto antes você compra, menor é o valor do ingresso.</li><li>Cada lote tem um período de datas específico.</li><li>Quando o período termina, entra automaticamente o lote seguinte.</li></ol></details></div>`;
+      replacement.innerHTML = `<p><b>MEIA ENTRADA</b> válida para beneficiados pela <a href="/meia-entrada">Lei da Meia-Entrada</a> ou para quem doar 1kg de alimento.</p><div class="lotes-layout"><table class="tabela-vitrine tabela-precos tabela-centralizadogrande"><thead><tr><th scope="col">INGRESSOS</th><th scope="col">INTEIRA</th><th scope="col">MEIA</th></tr></thead><tbody><tr><th scope="row">1º LOTE<br><span class="lote-vigencia">26/04 a 16/05/2026</span></th><td data-label="Inteira"><span class="preco-valor">R$ 30,00</span><br><span class="preco-taxa">+ R$ 3,99 taxa</span></td><td data-label="Meia"><span class="preco-valor">R$ 15,00</span><br><span class="preco-taxa">+ R$ 3,99 taxa</span></td></tr></tbody></table><details class="lotes-spoiler"><summary>Entenda como funcionam os lotes</summary><ol><li>Quanto antes você compra, menor é o valor do ingresso.</li><li>Cada lote tem um período de datas específico.</li><li>Quando o período termina, entra automaticamente o lote seguinte.</li></ol></details></div>`;
     }
     else if (type === 'classification') {
       replacement = doc.createElement('section');
@@ -1573,9 +1573,9 @@
       notice: '<b>MEIA ENTRADA</b> válida para beneficiados pela <a href="/meia-entrada">Lei da Meia-Entrada</a> ou para qualquer pessoa que leve 1kg de alimento não perecível, que será doado a organizações de caridade e apoio.',
       label: 'Tabela de preços por lote e orientações',
       lots: [
-        { name: '1º LOTE', dates: '26/04 a 16/05/2026', inteira: 'R$ 30,00', inteiraTaxa: '+ R$ 3,99 taxa', meia: 'R$ 15,00', meiaTaxa: '+ R$ 3,99 taxa' },
-        { name: '2º LOTE', dates: '17/05 a 13/06/2026', inteira: 'R$ 40,00', inteiraTaxa: '+ R$ 4,00 taxa', meia: 'R$ 20,00', meiaTaxa: '+ R$ 3,99 taxa' },
-        { name: '3º LOTE', dates: 'A partir de 14/06/2026', inteira: 'R$ 50,00', inteiraTaxa: '+ R$ 5,00 taxa', meia: 'R$ 25,00', meiaTaxa: '+ R$ 3,99 taxa' }
+        { name: '1º LOTE', dates: 'até XX/XX', inteira: 'R$ 30,00', inteiraTaxa: '+ R$ 3,99 taxa', meia: 'R$ 15,00', meiaTaxa: '+ R$ 3,99 taxa' },
+        { name: '2º LOTE', dates: 'de XX/XX a XX/XX', inteira: 'R$ 40,00', inteiraTaxa: '+ R$ 4,00 taxa', meia: 'R$ 20,00', meiaTaxa: '+ R$ 3,99 taxa' },
+        { name: '3º LOTE', dates: 'a partir de XX/XX', inteira: 'R$ 50,00', inteiraTaxa: '+ R$ 5,00 taxa', meia: 'R$ 25,00', meiaTaxa: '+ R$ 3,99 taxa' }
       ],
       infoSummary: 'Entenda como funcionam os lotes',
       infoItems: [
