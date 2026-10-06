@@ -645,6 +645,7 @@ table,
     background: var(--panel-gradient);
     box-shadow: var(--shadow-card);
     overflow: hidden;
+    table-layout: fixed;
 }
 
 thead th {
@@ -1695,7 +1696,6 @@ body.has-quick-cta #scroll-topo {
     .tabela-vitrine {
         display: table;
         width: 100%;
-        table-layout: fixed;
     }
 
     thead th,
